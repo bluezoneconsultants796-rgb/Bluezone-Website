@@ -53,7 +53,7 @@
 
   /* ---- Surfaces ---- */
   --tint:#EAFBF5; --tint2:#DFF7ED; --mint:#F7F9FA; --line:#E2E6EA; --line2:#C8CFD7;
-  --ivory:#F7F9FA; --gold:#F59E0B; --gold-l:#FCD34D; --wa:#12C48B;
+  --ivory:#F7F9FA; --gold:#00D68F; --gold-l:#7FF7D3; --wa:#12C48B;
 
   --r:20px; --r-sm:12px; --r-lg:24px;
 
@@ -213,7 +213,7 @@ nav.main>div:hover .drop,nav.main>div:focus-within .drop{opacity:1;visibility:vi
    neutral / outline / gold — now built the Osyntha way. */
 .tag{display:inline-flex;align-items:center;gap:5px;font:600 10.5px var(--fb);letter-spacing:.01em;padding:5px 10px;border-radius:999px;background:rgba(var(--accent-rgb),.10);color:var(--green-dd);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.22)}
 .tag.t2{background:rgba(var(--ink-rgb),.05);color:var(--ink2);box-shadow:inset 0 0 0 1px rgba(var(--ink-rgb),.08)}
-.tag.t3{background:rgba(245,158,11,.12);color:#92400E;box-shadow:inset 0 0 0 1px rgba(245,158,11,.26)}
+.tag.t3{background:rgba(4,90,64,.14);color:#04513A;box-shadow:inset 0 0 0 1px rgba(4,90,64,.28)}
 .chip{display:inline-flex;align-items:center;font:500 12.5px var(--fb);padding:6px 13px;border-radius:999px;background:rgba(var(--ink-rgb),.045);color:var(--ink2);box-shadow:inset 0 0 0 1px rgba(var(--ink-rgb),.06);transition:box-shadow .15s,color .15s,background .15s}
 a.chip:hover{background:rgba(var(--accent-rgb),.09);color:var(--green-dd);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.22)}
 
@@ -466,7 +466,7 @@ legend .ic{width:18px;height:18px;color:var(--green)}
 
 .notice{display:flex;gap:12px;background:rgba(var(--accent-rgb),.08);border-radius:var(--r-sm);padding:16px 18px;font-size:13.5px;color:#075940;align-items:flex-start;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.2)}
 .notice .ic{flex:none;margin-top:2px;color:var(--green-dd)}
-.notice.gold{background:rgba(245,158,11,.09);color:#92400E;box-shadow:inset 0 0 0 1px rgba(245,158,11,.28)}
+.notice.gold{background:rgba(0,214,143,.10);color:#04513A;box-shadow:inset 0 0 0 1px rgba(0,214,143,.30)}
 .notice.gold .ic{color:var(--gold)}
 
 footer.site{background:linear-gradient(165deg,var(--ink),var(--ink-deep));color:rgba(247,249,250,.65);margin-top:96px}
@@ -578,12 +578,12 @@ html.rv .rv.on{opacity:1;transform:none}
 
 
 /* ===== v4: university-grade layer (overrides above) ===== */
-:root{--brand:#045A40;--gold:#F5B301;--plum:#3F2A72;--warm:#F3F2EF;--r:2px;--r-sm:2px;--r-lg:3px;--mint:#fff;--tint:#F3F2EF;--tint2:#E4EEE8;--green:#0A7A55;--green-d:#045A40;--green-dd:#045A40;--green-mid:#0A7A55;--ink2:#3C4652;--e1:none;--e2:0 1px 0 rgba(0,0,0,.07);--e3:0 10px 28px -14px rgba(0,0,0,.3);--e4:0 18px 44px -18px rgba(0,0,0,.35);--wrap:1120px;--accent-rgb:4,90,64;--accent-dark-rgb:3,61,44;--line:#DDE3DE;--line2:#C7D0C9}
+:root{--brand:#045A40;--gold:#00D68F;--plum:#04231A;--warm:#F3F2EF;--r:2px;--r-sm:2px;--r-lg:3px;--mint:#fff;--tint:#F3F2EF;--tint2:#E4EEE8;--green:#0A7A55;--green-d:#045A40;--green-dd:#045A40;--green-mid:#0A7A55;--ink2:#3C4652;--e1:none;--e2:0 1px 0 rgba(0,0,0,.07);--e3:0 10px 28px -14px rgba(0,0,0,.3);--e4:0 18px 44px -18px rgba(0,0,0,.35);--wrap:1120px;--accent-rgb:4,90,64;--accent-dark-rgb:3,61,44;--line:#DDE3DE;--line2:#C7D0C9}
 /* ---- Awards / highlight ribbon (Stirling-style two-tone banner) ---- */
 .award-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;box-shadow:var(--e2)}
 .award-strip>div{padding:26px 26px;display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:104px}
 .award-strip>div:nth-child(1){background:var(--brand);color:#fff}
-.award-strip>div:nth-child(2){background:var(--gold);color:#1a1300}
+.award-strip>div:nth-child(2){background:var(--gold);color:#04231A}
 .award-strip>div:nth-child(3){background:var(--warm);color:var(--ink)}
 .award-strip b{font:800 15px var(--fd);letter-spacing:-.01em}
 .award-strip span{font:600 12.5px var(--fb);opacity:.85}
@@ -592,7 +592,7 @@ html.rv .rv.on{opacity:1;transform:none}
 .city-hero .duo{position:absolute;inset:0;z-index:0}
 .city-hero .duo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,38,27,.35) 0%,rgba(2,38,27,.92) 100%)}
 .city-hero .wrap{position:relative;z-index:1;padding:48px 24px 34px}
-.city-hero h1{color:#fff}.city-hero .eyebrow{color:var(--gold-l,#FCD34D)}.city-hero .lead{color:rgba(255,255,255,.9)}
+.city-hero h1{color:#fff}.city-hero .eyebrow{color:var(--gold-l,#7FF7D3)}.city-hero .lead{color:rgba(255,255,255,.9)}
 .city-hero .crumbs{color:rgba(255,255,255,.75)}.city-hero .crumbs a{color:#fff}
 .office-badge{display:flex;gap:10px;align-items:flex-start;background:var(--tint2);border:1px solid var(--line2);border-radius:2px;padding:12px 14px;margin:10px 0;font:600 12.5px var(--fb);color:var(--ink)}
 .office-badge .ic{flex:none;color:var(--gold);margin-top:1px}
@@ -601,7 +601,7 @@ html.rv .rv.on{opacity:1;transform:none}
 .chips .chip{cursor:pointer;user-select:none}
 .chips .chip.act{background:var(--brand);color:#fff;box-shadow:none}
 .story{background:#fff;border-radius:2px;box-shadow:var(--e2);overflow:hidden;display:flex;flex-direction:column;position:relative}
-.story .tag.sample{position:absolute;top:10px;left:10px;z-index:2;background:rgba(245,179,1,.95);color:#1a1300;box-shadow:none}
+.story .tag.sample{position:absolute;top:10px;left:10px;z-index:2;background:rgba(4,90,64,.92);color:#fff;box-shadow:none;backdrop-filter:blur(2px)}
 .story-ph{aspect-ratio:1/1;display:block}
 .story-ph img{width:100%;height:100%;object-fit:cover;display:block}
 .story-b{padding:18px 20px 22px}
@@ -614,7 +614,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em}h2{font-size:clamp(26px,3vw,36px)
 .btn{border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;box-shadow:none;letter-spacing:0}
 .btn-solid{background:var(--brand);color:#fff;box-shadow:none}.btn-solid:hover{background:#033325;color:#fff;box-shadow:none}
 .btn-line{background:#fff;border:2px solid var(--brand);color:var(--ink);box-shadow:none}.btn-line:hover{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:none}
-.btn-gold{background:var(--gold);color:#1a1300;position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s}.btn-gold:hover{background:#FFC933;color:#1a1300;transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(245,158,11,.5)}.btn-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-120%);transition:transform .7s var(--ease)}.btn-gold:hover::after{transform:translateX(120%)}
+.btn-gold{background:var(--gold);color:#04231A;position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s}.btn-gold:hover{background:#4CF2C4;color:#04231A;transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(0,214,143,.55)}.btn-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-120%);transition:transform .7s var(--ease)}.btn-gold:hover::after{transform:translateX(120%)}
 @media (prefers-reduced-motion:reduce){.btn-gold,.btn-gold::after{transition:none;transform:none}}
 .btn .ic{width:20px;height:20px;padding:3px;border:1.5px solid currentColor;border-radius:50%}.btn-sm{padding:8px 16px;font-size:13px}.btn-sm .ic{width:17px;height:17px;padding:2px}
 header.site,header.site.scrolled{background:#fff;backdrop-filter:none;border-bottom:0;box-shadow:0 1px 0 var(--line)}
@@ -648,7 +648,7 @@ nav.main>div>a.nl:hover,nav.main>div>a.nl[aria-current]{background:none;color:va
 .bigband{background:linear-gradient(100deg,#033D2C,var(--brand) 55%,#0A7A55);color:#fff}.bigband .in{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:52px 48px}
 .bigband h2{color:#fff;font-size:clamp(30px,4vw,50px);line-height:1.05;max-width:17ch}
 .badge{background:#fff;color:var(--brand);padding:22px 24px;max-width:240px;text-align:center;font-weight:800;box-shadow:10px 10px 0 var(--gold);display:grid;gap:8px;justify-items:center}.badge .ic{width:34px;height:34px}
-.feat{display:grid;grid-template-columns:1fr 1fr;position:relative;margin:0 20px 20px 0}.feat::after{content:"";position:absolute;right:-20px;bottom:-20px;width:46%;height:40px;background:#8CC63F;z-index:-1}
+.feat{display:grid;grid-template-columns:1fr 1fr;position:relative;margin:0 20px 20px 0}.feat::after{content:"";position:absolute;right:-20px;bottom:-20px;width:46%;height:40px;background:var(--green);z-index:-1}
 .feat .txt{background:var(--warm);padding:52px 48px;display:flex;flex-direction:column;align-items:flex-start;gap:16px;justify-content:center}.feat .pic{min-height:340px}
 .news h3{font-size:18px;margin:14px 0 8px}.news h3 a{color:var(--brand);text-decoration:underline;text-underline-offset:3px}.news p{font-size:14.5px;color:var(--ink2)}.news .duo{aspect-ratio:16/10}
 .dest .duo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(2,38,27,.9))}.dest>*:not(.duo):not(.go){position:relative;z-index:1}
@@ -711,7 +711,7 @@ Kingdom, France and Cyprus, with further European destinations supported case-by
       <span class="mark"><img src="assets/logo-icon.png" alt="Bluezone Consultants logo" width="40" height="40"></span>
       <span class="word"><b>Bluezone</b><span>Consultants</span></span>
     </a>
-    <div class="hr"><div class="hutil"><a href="#/offices"><span data-ic="map-pin"></span>Our offices</a><a href="#/contact"><span data-ic="chat"></span>Talk to a counselor</a><a id="u-phone" href="#" hidden><span data-ic="phone"></span><span id="u-phone-t"></span></a><a href="#/universities"><span data-ic="search"></span>Search universities</a></div><nav class="main" aria-label="Primary">
+    <div class="hr"><div class="hutil-toggle"><button class="hutil-trigger" type="button" aria-haspopup="true" aria-expanded="false">Quick links<span data-ic="chevron-down"></span></button><div class="hutil"><a href="#/offices"><span data-ic="map-pin"></span>Our offices</a><a href="#/contact"><span data-ic="chat"></span>Talk to a counselor</a><a id="u-phone" href="#" hidden><span data-ic="phone"></span><span id="u-phone-t"></span></a><a href="#/universities"><span data-ic="search"></span>Search universities</a></div></div><nav class="main" aria-label="Primary">
       <div><a class="nl" data-nav="about" href="#/about">About Us</a></div>
       <div>
         <a class="nl" data-nav="destinations" href="#/destinations" aria-haspopup="true" aria-expanded="false" aria-controls="drop-dest">Study Destinations <span data-ic="chevron-down"></span></a>
@@ -994,6 +994,17 @@ function wireReveal(){
       document.documentElement.classList.add('rv');}
     catch(e){IO=false;}
   }
+  /* Stagger reveals within a grid (~70ms per item) instead of firing all
+     at once: each .rv gets a transition-delay based on its index among
+     .rv siblings sharing the same parent. Singletons get 0ms, unaffected. */
+  document.querySelectorAll('.rv:not(.on)').forEach(function(el){
+    if(!el.dataset.rvStag){
+      var sibs=el.parentElement?Array.prototype.filter.call(el.parentElement.children,function(c){return c.classList.contains('rv');}):[];
+      var idx=sibs.indexOf(el);
+      if(idx>0)el.style.transitionDelay=(Math.min(idx,8)*70)+'ms';
+      el.dataset.rvStag='1';
+    }
+  });
   if(IO){document.querySelectorAll('.rv:not(.on)').forEach(function(el){IO.observe(el);});}
   else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('on');});}
 }
@@ -1694,10 +1705,10 @@ function pageHome(){
     ['Two countries, one standard','Offices in Pakistan and Australia — the same rigor whether you are applying from home or planning the next step from abroad.'],
     ['End-to-end, not transactional','From eligibility assessment to airport arrival and beyond: one team that knows your file at every stage of the journey.']];
   $('#page').innerHTML=
-  '<section class="s-hero"><span class="duo hbg">'+IMG('bz-campus-1','Students on an international campus',1600,700,false)+'</span><div class="hcopy"><h1>Study abroad with <em>clarity,</em> not guesswork.</h1><p>Bluezone Consultants guides students from Pakistan and beyond through every stage — choosing the right country and university, securing admission and arriving prepared.</p><div class="cta-row"><a class="btn btn-gold" href="#/apply">Apply Now '+I('arrow-right')+'</a><a class="btn btn-ghost" href="#/contact">Talk to a Counselor</a></div></div></section>'+
+  '<section class="s-hero"><span class="duo hbg">'+IMG('bz-campus-1','Students on an international campus',1600,700,false)+'</span><div class="hcopy"><h1>Study abroad with <em>clarity,</em> not guesswork.</h1><p>Honest, counselor-led guidance from first consultation to first semester.</p><div class="cta-row"><a class="btn btn-gold" href="#/apply">Apply Now '+I('arrow-right')+'</a></div><a class="hero-alt" href="#/contact">Talk to a counselor instead</a></div></section>'+
   '<div class="wrap"><form class="hsearch" id="hsearch" role="search"><input id="hs-q" type="search" placeholder="Search universities, programs or countries" aria-label="Search universities"><button type="submit" aria-label="Search">'+I('search')+'</button></form></div>'+
   '<div class="wrap"><div class="promo"><div class="in"><h2>Free first consultation — Mansehra, Abbottabad &amp; online</h2><a class="btn btn-gold" href="#/contact">Book now '+I('arrow-right')+'</a></div></div></div>'+
-  '<div class="wrap" style="margin-top:28px"><div class="award-strip rv"><div><b>6 Study Destinations</b><span>China · Italy · Lithuania · UK · France · Cyprus</span></div><div><b>3 Counselor-Led Offices</b><span>Mansehra · Abbottabad · Perth (WA)</span></div><div><b>Zero Guaranteed-Outcome Claims</b><span>Honest advice, every single time</span></div></div></div>'+
+  '<div class="wrap" style="margin-top:48px"><div class="award-strip rv"><div><b>6 Study Destinations</b><span>China · Italy · Lithuania · UK · France · Cyprus</span></div><div><b>3 Counselor-Led Offices</b><span>Mansehra · Abbottabad · Perth (WA)</span></div><div><b>Zero Guaranteed-Outcome Claims</b><span>Honest advice, every single time</span></div></div></div>'+
   '<section class="sec"><div class="wrap">'+shead('','Study with Bluezone — <em>six destinations, one honest process</em>')+'<div class="pillars">'+[['globe','Study destinations','Six country guides — China, Italy, Lithuania, the UK, France and Cyprus.','#/destinations','Explore destinations'],['grad','University directory','Search institutions with indicative fees and recognition flags.','#/universities','Search universities'],['award','Scholarships','Verified official calls — MAECI, CSC, Chevening, Eiffel and more.','#/scholarships','Browse scholarships']].map(function(x){return '<div class="pillar rv"><span class="pi">'+I(x[0])+'</span><h3>'+x[1]+'</h3><p>'+x[2]+'</p><a class="btn btn-solid" href="'+x[3]+'">'+x[4]+' '+I('arrow-right')+'</a></div>';}).join('')+'</div></div></section>'+
   '<section class="sec tint"><div class="wrap">'+shead('Success Stories','200+ students placed in China <em>— and counting.</em>','Through our China office, Guangxi Future Link, more than 200 students have been admitted and issued a visa, most now studying on fully-funded scholarships. Here is the layout each verified story will follow.')+'<div class="grid3 story-grid">'+STORIES.slice(0,3).map(storyCard).join('')+'</div><div style="text-align:center;margin-top:8px"><a class="btn btn-line" href="#/testimonials">See All Success Stories '+I('arrow-right')+'</a></div></div></section>'+
   '<div class="wrap"><div class="bigband"><div class="in"><h2>Advice you can check — never a guaranteed outcome.</h2><div class="badge">'+I('circle-check')+'<span>Honest guidance from Mansehra, Abbottabad &amp; Perth</span></div></div></div></div>'+
@@ -1742,10 +1753,10 @@ function pageHome(){
 }
 function pageAbout(){
   $('#page').innerHTML=crumb([{t:'About Us'}])+
-  '<section class="phero"><div class="wrap ph-grid"><div>'+
+  '<section class="phero phero-lg"><div class="wrap ph-grid"><div>'+
     '<span class="eyebrow">About Bluezone</span><h1>A consultancy built on <em>verifiable</em> advice.</h1>'+
     '<p class="lead">Bluezone Consultants Pvt. Ltd. is an international education consultancy helping students explore higher education opportunities abroad and supporting them throughout the admission process — from first conversation to first semester.</p>'+
-    '<div class="cta-row"><a class="btn btn-solid" href="#/contact">Meet the team</a><a class="btn btn-line" href="#/destinations">Explore destinations</a></div>'+
+    '<div class="cta-row"><a class="btn btn-solid" href="#/contact">Meet the team</a></div><a class="cta-alt" href="#/destinations">Explore destinations</a>'+
   '</div><span class="arch duo">'+IMG('bz-about','Counseling session at Bluezone',620,720,false)+'</span></div></section>'+
   '<section class="sec dark"><div class="wrap">'+
     '<div class="shead"><span class="eyebrow">At a Glance</span><h2>Figures we can <em>stand behind</em> — or none at all.</h2></div>'+
@@ -1776,7 +1787,7 @@ function pageAbout(){
 }
 function pageDestinations(){
   $('#page').innerHTML=crumb([{t:'Study Destinations'}])+
-  '<section class="phero"><div class="wrap"><span class="eyebrow">Study Destinations</span>'+
+  '<section class="phero phero-lg"><div class="wrap"><span class="eyebrow">Study Destinations</span>'+
   '<h1>Choose a country like it <em>matters</em> — because it does.</h1>'+
   '<p class="lead">Each destination has a dedicated guide: universities, programs, indicative fees, scholarships, eligibility, the admission process, visa orientation and student life.</p></div></section>'+
   '<section class="sec"><div class="wrap">'+
