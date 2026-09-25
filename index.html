@@ -380,6 +380,9 @@ a.chip:hover{background:rgba(var(--accent-rgb),.09);color:var(--green-dd);box-sh
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:980px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid4{grid-template-columns:1fr}}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 
 .sch-card{border-left:3px solid var(--green)}
 .sch-card .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
@@ -591,6 +594,20 @@ html.rv .rv.on{opacity:1;transform:none}
 .city-hero .wrap{position:relative;z-index:1;padding:48px 24px 34px}
 .city-hero h1{color:#fff}.city-hero .eyebrow{color:var(--gold-l,#FCD34D)}.city-hero .lead{color:rgba(255,255,255,.9)}
 .city-hero .crumbs{color:rgba(255,255,255,.75)}.city-hero .crumbs a{color:#fff}
+.office-badge{display:flex;gap:10px;align-items:flex-start;background:var(--tint2);border:1px solid var(--line2);border-radius:2px;padding:12px 14px;margin:10px 0;font:600 12.5px var(--fb);color:var(--ink)}
+.office-badge .ic{flex:none;color:var(--gold);margin-top:1px}
+.office-badge b{color:var(--brand)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px}
+.chips .chip{cursor:pointer;user-select:none}
+.chips .chip.act{background:var(--brand);color:#fff;box-shadow:none}
+.story{background:#fff;border-radius:2px;box-shadow:var(--e2);overflow:hidden;display:flex;flex-direction:column;position:relative}
+.story .tag.sample{position:absolute;top:10px;left:10px;z-index:2;background:rgba(245,179,1,.95);color:#1a1300;box-shadow:none}
+.story-ph{aspect-ratio:1/1;display:block}
+.story-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.story-b{padding:18px 20px 22px}
+.story-b h3{font-size:16px;margin:2px 0 10px}
+.story-b .qfacts{grid-template-columns:1fr;margin:10px 0}
+.story-b p{font:italic 400 13.5px var(--fb);color:var(--ink2);margin-top:12px}
 h1,h2,h3{font-weight:800;letter-spacing:-.02em}h2{font-size:clamp(26px,3vw,36px)}
 .duo{background:#dfe5e1;border-radius:0}.duo img{filter:none;mix-blend-mode:normal;opacity:1}
 .shead{max-width:none;text-align:center;margin:0 auto 44px}.shead .lead{margin:0 auto}.shead .eyebrow{display:none}
@@ -666,7 +683,7 @@ footer.site .brand .word span{color:#8FD9BC}.f-brand p{color:rgba(255,255,255,.8
           <a href="#/programs"><span class="dc">A</span><span>All Programs<small>17 study fields</small></span></a>
           <a href="#/admission-guide"><span class="dc">B</span><span>Admission Guide<small>Step-by-step journey</small></span></a>
           <a href="#/services"><span class="dc">C</span><span>Student Services<small>How we support you</small></span></a>
-          <a href="#/testimonials"><span class="dc">D</span><span>Testimonials<small>Student stories</small></span></a>
+          <a href="#/testimonials"><span class="dc">D</span><span>Success Stories<small>200+ placed in China alone</small></span></a>
         </div>
       </div>
       <div><a class="nl" data-nav="scholarships" href="#/scholarships">Scholarships</a></div>
@@ -819,14 +836,15 @@ const CONFIG={
   offices:{ // DUMMY VALUES — replace every phone/email before going live (search for DUMMY / 0000 / dummy.example)
     mansehra:{"phone": "+92 000 0000001", "whatsapp": "920000000001", "email": "mansehra@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=Office%20101%20%26%20102%2C%20Above%20Passport%20Office%2C%20Ari%20Ada%2C%20Mansehra%2C%20Pakistan", "mapq": "Office 101 & 102, Above Passport Office, Ari Ada, Mansehra, Pakistan"},
     abbottabad:{"phone": "+92 000 0000002", "whatsapp": "920000000002", "email": "abbottabad@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=Near%20Old%20Police%20Chowki%2C%20Supply%2C%20Abbottabad%2C%20Pakistan", "mapq": "Near Old Police Chowki, Supply, Abbottabad, Pakistan"},
-    australia:{"phone": "+61 0 0000 0003", "whatsapp": "61000000003", "email": "australia@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=35%20Hagart%20Way%2C%20Lockridge%20WA%206054%2C%20Australia", "mapq": "35 Hagart Way, Lockridge WA 6054, Australia", "hours": "Mon – Fri · 09:00 – 17:00 (AWST) — DUMMY HOURS"}
+    australia:{"phone": "+61 0 0000 0003", "whatsapp": "61000000003", "email": "australia@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=35%20Hagart%20Way%2C%20Lockridge%20WA%206054%2C%20Australia", "mapq": "35 Hagart Way, Lockridge WA 6054, Australia", "hours": "Mon – Fri · 09:00 – 17:00 (AWST) — DUMMY HOURS"},
+    guangxi:{"phone": "+86 000 0000004", "whatsapp": "860000000004", "email": "guangxi@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=Guangxi%20Future%20Link%2C%20Guangxi%2C%20China", "mapq": "Guangxi Future Link Office, Guangxi Zhuang Autonomous Region, China", "hours": "Mon – Fri · 09:00 – 18:00 (CST) — DUMMY HOURS", "partner":"Guangxi Future Link"}
   },
   social:{"facebook": "https://www.facebook.com/DUMMY_REPLACE_ME", "instagram": "https://www.instagram.com/DUMMY_REPLACE_ME", "linkedin": "https://www.linkedin.com/company/DUMMY_REPLACE_ME", "youtube": "https://www.youtube.com/@DUMMY_REPLACE_ME"},
   stats:[
-    {label:'Students guided',value:null},
+    {label:'Students admitted & visaed (China)',value:'200+'},
     {label:'Destination countries',value:6},
     {label:'University options listed',value:null},
-    {label:'Counselor-led offices',value:3}
+    {label:'Counselor-led offices',value:4}
   ]
 };
 
@@ -861,7 +879,7 @@ function seo(t,d,path,ld){
     if(ld)document.getElementById('seo-jsonld').textContent=JSON.stringify(ld);
   }catch(e){}
 }
-const ORG_LD={"@context":"https://schema.org","@type":"EducationalOrganization","name":"Bluezone Consultants Pvt. Ltd.","areaServed":["Pakistan","Australia"],"telephone":CONFIG.offices.mansehra.phone,"sameAs":Object.keys(CONFIG.social).map(function(k){return CONFIG.social[k];})};
+const ORG_LD={"@context":"https://schema.org","@type":"EducationalOrganization","name":"Bluezone Consultants Pvt. Ltd.","areaServed":["Pakistan","Australia","China"],"telephone":CONFIG.offices.mansehra.phone,"sameAs":Object.keys(CONFIG.social).map(function(k){return CONFIG.social[k];})};
 const ldGraph=function(){return {"@context":"https://schema.org","@graph":[ORG_LD].concat([].slice.call(arguments))};};
 const crumbLd=items=>({"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":CONFIG.siteUrl+"/"}].concat(items.map(function(it,i){return {"@type":"ListItem","position":i+2,"name":it,"item":CONFIG.siteUrl+"/"};}))});
 const faqLd=faqs=>({"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f[0],"acceptedAnswer":{"@type":"Answer","text":f[1]}}))});
@@ -886,7 +904,7 @@ function accBlock(faqs){
     return '<div class="acc-item"><h4><button type="button" class="acc-head" data-acc aria-expanded="false" aria-controls="'+id+'-panel" id="'+id+'-btn"><span>'+f[0]+'</span>'+I('chevron-down')+'</button></h4><div class="acc-body" id="'+id+'-panel" role="region" aria-labelledby="'+id+'-btn" aria-hidden="true"><div><p>'+f[1]+'</p></div></div></div>';
   }).join('')+'</div>';
 }
-const QF={"home": [["Study abroad consultant in Abbottabad", "Bluezone Consultants has an office in Abbottabad (Near Old Police Chowki, Supply). It provides university selection, admission processing, scholarship guidance, document preparation, application filing and visa guidance for China, Italy, Lithuania, the UK, France and Cyprus. Walk-ins are welcome Monday to Saturday, 10:00–18:00 Pakistan time; the first consultation is free and carries no obligation."], ["Trusted education consultancy in Mansehra", "Bluezone Consultants operates from Mansehra (Office 101 & 102, Above Passport Office, Ari Ada). We do not ask you to take our word for it: we publish no invented success rates or partner counts, we state that we never guarantee admission, scholarships or visas, and you can visit the office and ask for our current partner list."], ["Best consultant for MBBS in China from Pakistan", "We cannot honestly call ourselves “the best” — no verified ranking exists. What Bluezone Consultants does from its Mansehra and Abbottabad offices is MBBS-in-China counseling: program structure and indicative costs, university shortlisting, document preparation, application filing, and checking a university’s current recognition status before you apply."], ["Study abroad consultant in Perth, Western Australia", "Bluezone Consultants has an Australia Office at 35 Hagart Way, Lockridge WA 6054. It offers the same guidance process as our Pakistan offices — shortlisting, applications, scholarship screening and visa orientation — for our six published destinations. Confirm a Perth appointment time when you book, as our published hours are Pakistan time."], ["Does Bluezone guarantee admission, a scholarship or a visa?", "No. Bluezone Consultants prepares accurate, complete applications and tracks them to a decision, but admission belongs to universities, scholarships to the awarding body, and visas to embassies."]], "about": [["What is Bluezone Consultants?", "Bluezone Consultants Pvt. Ltd. is an international education consultancy that helps students with university admission, scholarships and visa guidance for China, Italy, Lithuania, the United Kingdom, France and Cyprus, from offices in Mansehra, Abbottabad and Perth (WA)."], ["Where are Bluezone’s offices?", "Bluezone Consultants offices — Mansehra: Office 101 & 102, Above Passport Office, Ari Ada. Abbottabad: Near Old Police Chowki, Supply. Australia: 35 Hagart Way, Lockridge WA 6054. Pakistan offices run Monday to Saturday, 10:00–18:00 Pakistan time."], ["Does Bluezone publish a partner-university count or success rate?", "No, deliberately. Bluezone Consultants maintains a verified partner list with current MoU status, fee schedules and quota positions, and shares it on request through the Mansehra and Abbottabad offices."], ["Is the first consultation with Bluezone free?", "Yes. Bluezone Consultants offers a free first consultation at its Mansehra and Abbottabad offices, or online, with no obligation."]], "services": [["What does a study abroad consultant like Bluezone actually do?", "Bluezone Consultants runs ten student services, including university selection, admission processing, scholarship guidance, document preparation, application filing and visa guidance, delivered from Mansehra, Abbottabad and Perth."], ["Can Bluezone help with my student visa?", "Bluezone Consultants gives educational guidance on visa categories, documents and interview preparation. It is not legal advice, and the visa decision always rests with the embassy."], ["How do I book a consultation in Mansehra or Abbottabad?", "Bluezone Consultants takes bookings for its Mansehra and Abbottabad offices through the contact form on this site, or walk in Monday to Saturday, 10:00–18:00 Pakistan time. Booked consultations get a dedicated slot with a counselor who has read your documents first; we reply within one working day."]], "china": [["Best consultant for MBBS in China from Pakistan", "Bluezone Consultants does not claim to be “the best”; it offers verifiable MBBS-in-China guidance from Mansehra and Abbottabad — shortlisting, eligibility review, document preparation, application filing and recognition checks. We confirm each university’s current listing before you apply."], ["How long is MBBS in China and what does it cost?", "Typically six years including a final-year internship. Bluezone Consultants’s fee guide shows MBBS tuition of roughly CNY 34,000–50,000 per year, indicative only; the exact figure is confirmed with the university at application."], ["Is a Chinese MBBS recognized in Pakistan?", "That depends on the university’s current listing and the medical council’s rules when you return. Bluezone Consultants verifies status with official registries during university selection, before any application is filed."], ["Which visa do I need to study in China?", "Students admitted to Chinese universities typically apply for an X1 (over 180 days) or X2 visa, with the admission notice and JW202 form where applicable. Bluezone Consultants provides educational visa guidance; embassies make the decision."]], "italy": [["Italy scholarship consultant in Pakistan", "Bluezone Consultants guides Pakistani students on the Italian government’s MAECI scholarship and regional DSU grants, screening eligibility against each year’s official call from its Mansehra and Abbottabad offices. Benefits vary by call and are never guaranteed."], ["Are Italian public universities free?", "No. Public tuition is income-based (ISEE) and indicatively ranges from about €0 to €3,000 per year. Bluezone Consultants estimates roughly where a family would land before you apply."], ["What is Universitaly and do I need it?", "Universitaly is the government portal that sits between a university offer and the visa application for non-EU students where applicable. Bluezone Consultants walks students through pre-enrolment as part of application filing."], ["Study in Italy consultant in Mansehra or Abbottabad", "Visit Bluezone Consultants at Mansehra (Office 101 & 102, Above Passport Office, Ari Ada) or Abbottabad (Near Old Police Chowki, Supply), Monday to Saturday, 10:00–18:00 Pakistan time, for a free first consultation covering programs taught in English, budget and scholarships."]], "lithuania": [["Study in Lithuania consultant from Pakistan", "Bluezone Consultants advises Pakistani students from Mansehra and Abbottabad on English-taught Bachelor’s and Master’s programs in Lithuania. Indicative tuition is €2,900–8,500 per year, and living costs are among the lowest in the EU."], ["Do I need IELTS for Lithuania?", "Not always; some universities accept alternative proof or run their own English assessment. Bluezone Consultants confirms the requirement per program before you book a test."], ["Which scholarships exist for Lithuania?", "State scholarships and university tuition waivers exist under annual calls. Bluezone Consultants checks what is open in your application year through its scholarship guidance service; benefits are never guaranteed."]], "uk": [["UK study consultant in Pakistan — help with UCAS", "Bluezone Consultants routes each UK application correctly from Mansehra and Abbottabad: UCAS for most undergraduate courses (up to five choices), direct applications for many postgraduate and independent-provider routes."], ["How much does it cost to study in the UK?", "Indicative tuition is £15,000–28,000 per year, per Bluezone Consultants’s destination guide; exact fees only become official with your offer letter."], ["Does Bluezone guarantee a UK visa or the Graduate Route?", "No. Visa decisions rest with UK Visas and Immigration, and Graduate Route rules can change. Bluezone Consultants gives educational visa guidance and prepares complete applications."]], "france": [["Campus France consultant in Pakistan", "Bluezone Consultants guides students through the Études en France / Campus France procedure, treating it as its own deadline alongside the university application. The procedure is filed in your name; our Mansehra and Abbottabad counselors check every document first."], ["How much do French public universities cost for non-EU students?", "Around €3,000 per year at the regulated rate, indicatively; some exemptions apply. Bluezone Consultants confirms current rates during university selection."], ["Can I apply for the Eiffel scholarship myself?", "No; Eiffel Excellence requires nomination by a French institution. Bluezone Consultants flags this during shortlisting so students do not miss the nomination window."]], "cyprus": [["Study in Cyprus consultant from Pakistan", "Bluezone Consultants covers institutions in the Republic of Cyprus — the internationally recognized EU member state — with counseling from Mansehra and Abbottabad on English-taught programs, applications and residence-permit documents."], ["How much does it cost to study in Cyprus?", "Indicative tuition is €3,500–9,500 per year, with medicine at the top of the range. Bluezone Consultants confirms exact fees at offer stage."], ["Does Bluezone advise on institutions outside the Republic of Cyprus?", "No. Degree recognition for professional registration abroad is uncertain for institutions outside the government-controlled area, so Bluezone Consultants lists only Republic of Cyprus institutions."]]};
+const QF={"home": [["Study abroad consultant in Abbottabad", "Bluezone Consultants has an office in Abbottabad (Near Old Police Chowki, Supply). It provides university selection, admission processing, scholarship guidance, document preparation, application filing and visa guidance for China, Italy, Lithuania, the UK, France and Cyprus. Walk-ins are welcome Monday to Saturday, 10:00–18:00 Pakistan time; the first consultation is free and carries no obligation."], ["Trusted education consultancy in Mansehra", "Bluezone Consultants operates from Mansehra (Office 101 & 102, Above Passport Office, Ari Ada). We do not ask you to take our word for it: we publish no invented success rates or partner counts, we state that we never guarantee admission, scholarships or visas, and you can visit the office and ask for our current partner list."], ["Best consultant for MBBS in China from Pakistan", "We cannot honestly call ourselves “the best” — no verified ranking exists. What Bluezone Consultants does from its Mansehra and Abbottabad offices is MBBS-in-China counseling: program structure and indicative costs, university shortlisting, document preparation, application filing, and checking a university’s current recognition status before you apply."], ["Study abroad consultant in Perth, Western Australia", "Bluezone Consultants has an Australia Office at 35 Hagart Way, Lockridge WA 6054. It offers the same guidance process as our Pakistan offices — shortlisting, applications, scholarship screening and visa orientation — for our six published destinations. Confirm a Perth appointment time when you book, as our published hours are Pakistan time."], ["Does Bluezone guarantee admission, a scholarship or a visa?", "No. Bluezone Consultants prepares accurate, complete applications and tracks them to a decision, but admission belongs to universities, scholarships to the awarding body, and visas to embassies."]], "about": [["What is Bluezone Consultants?", "Bluezone Consultants Pvt. Ltd. is an international education consultancy that helps students with university admission, scholarships and visa guidance for China, Italy, Lithuania, the United Kingdom, France and Cyprus, from offices in Mansehra, Abbottabad and Perth (WA)."], ["Where are Bluezone’s offices?", "Bluezone Consultants offices — Mansehra: Office 101 & 102, Above Passport Office, Ari Ada. Abbottabad: Near Old Police Chowki, Supply. Australia: 35 Hagart Way, Lockridge WA 6054. Pakistan offices run Monday to Saturday, 10:00–18:00 Pakistan time."], ["Does Bluezone publish a partner-university count or success rate?", "No, deliberately. Bluezone Consultants maintains a verified partner list with current MoU status, fee schedules and quota positions, and shares it on request through the Mansehra and Abbottabad offices."], ["Is the first consultation with Bluezone free?", "Yes. Bluezone Consultants offers a free first consultation at its Mansehra and Abbottabad offices, or online, with no obligation."]], "services": [["What does a study abroad consultant like Bluezone actually do?", "Bluezone Consultants runs ten student services, including university selection, admission processing, scholarship guidance, document preparation, application filing and visa guidance, delivered from Mansehra, Abbottabad and Perth."], ["Can Bluezone help with my student visa?", "Bluezone Consultants gives educational guidance on visa categories, documents and interview preparation. It is not legal advice, and the visa decision always rests with the embassy."], ["How do I book a consultation in Mansehra or Abbottabad?", "Bluezone Consultants takes bookings for its Mansehra and Abbottabad offices through the contact form on this site, or walk in Monday to Saturday, 10:00–18:00 Pakistan time. Booked consultations get a dedicated slot with a counselor who has read your documents first; we reply within one working day."]], "china": [["Best consultant for MBBS in China from Pakistan", "Bluezone Consultants does not claim to be “the best”; it offers verifiable MBBS-in-China guidance from Mansehra and Abbottabad — shortlisting, eligibility review, document preparation, application filing and recognition checks. We confirm each university’s current listing before you apply."], ["How long is MBBS in China and what does it cost?", "Typically six years including a final-year internship. Bluezone Consultants’s fee guide shows MBBS tuition of roughly CNY 34,000–50,000 per year, indicative only; the exact figure is confirmed with the university at application."], ["Is a Chinese MBBS recognized in Pakistan?", "That depends on the university’s current listing and the medical council’s rules when you return. Bluezone Consultants verifies status with official registries during university selection, before any application is filed."], ["Which visa do I need to study in China?", "Students admitted to Chinese universities typically apply for an X1 (over 180 days) or X2 visa, with the admission notice and JW202 form where applicable. Bluezone Consultants provides educational visa guidance; embassies make the decision."], ["What is Guangxi Future Link and how many students has it placed?", "Guangxi Future Link is Bluezone Consultants’s partner office in the Guangxi Zhuang Autonomous Region, China. Through this partnership, more than 200 students have been admitted and issued a visa, with most currently studying on fully-funded scholarships (CSC, provincial or university-level, per each year’s official call)."]], "italy": [["Italy scholarship consultant in Pakistan", "Bluezone Consultants guides Pakistani students on the Italian government’s MAECI scholarship and regional DSU grants, screening eligibility against each year’s official call from its Mansehra and Abbottabad offices. Benefits vary by call and are never guaranteed."], ["Are Italian public universities free?", "No. Public tuition is income-based (ISEE) and indicatively ranges from about €0 to €3,000 per year. Bluezone Consultants estimates roughly where a family would land before you apply."], ["What is Universitaly and do I need it?", "Universitaly is the government portal that sits between a university offer and the visa application for non-EU students where applicable. Bluezone Consultants walks students through pre-enrolment as part of application filing."], ["Study in Italy consultant in Mansehra or Abbottabad", "Visit Bluezone Consultants at Mansehra (Office 101 & 102, Above Passport Office, Ari Ada) or Abbottabad (Near Old Police Chowki, Supply), Monday to Saturday, 10:00–18:00 Pakistan time, for a free first consultation covering programs taught in English, budget and scholarships."]], "lithuania": [["Study in Lithuania consultant from Pakistan", "Bluezone Consultants advises Pakistani students from Mansehra and Abbottabad on English-taught Bachelor’s and Master’s programs in Lithuania. Indicative tuition is €2,900–8,500 per year, and living costs are among the lowest in the EU."], ["Do I need IELTS for Lithuania?", "Not always; some universities accept alternative proof or run their own English assessment. Bluezone Consultants confirms the requirement per program before you book a test."], ["Which scholarships exist for Lithuania?", "State scholarships and university tuition waivers exist under annual calls. Bluezone Consultants checks what is open in your application year through its scholarship guidance service; benefits are never guaranteed."]], "uk": [["UK study consultant in Pakistan — help with UCAS", "Bluezone Consultants routes each UK application correctly from Mansehra and Abbottabad: UCAS for most undergraduate courses (up to five choices), direct applications for many postgraduate and independent-provider routes."], ["How much does it cost to study in the UK?", "Indicative tuition is £15,000–28,000 per year, per Bluezone Consultants’s destination guide; exact fees only become official with your offer letter."], ["Does Bluezone guarantee a UK visa or the Graduate Route?", "No. Visa decisions rest with UK Visas and Immigration, and Graduate Route rules can change. Bluezone Consultants gives educational visa guidance and prepares complete applications."]], "france": [["Campus France consultant in Pakistan", "Bluezone Consultants guides students through the Études en France / Campus France procedure, treating it as its own deadline alongside the university application. The procedure is filed in your name; our Mansehra and Abbottabad counselors check every document first."], ["How much do French public universities cost for non-EU students?", "Around €3,000 per year at the regulated rate, indicatively; some exemptions apply. Bluezone Consultants confirms current rates during university selection."], ["Can I apply for the Eiffel scholarship myself?", "No; Eiffel Excellence requires nomination by a French institution. Bluezone Consultants flags this during shortlisting so students do not miss the nomination window."]], "cyprus": [["Study in Cyprus consultant from Pakistan", "Bluezone Consultants covers institutions in the Republic of Cyprus — the internationally recognized EU member state — with counseling from Mansehra and Abbottabad on English-taught programs, applications and residence-permit documents."], ["How much does it cost to study in Cyprus?", "Indicative tuition is €3,500–9,500 per year, with medicine at the top of the range. Bluezone Consultants confirms exact fees at offer stage."], ["Does Bluezone advise on institutions outside the Republic of Cyprus?", "No. Degree recognition for professional registration abroad is uncertain for institutions outside the government-controlled area, so Bluezone Consultants lists only Republic of Cyprus institutions."]]};
 const QF_T={"home": "Quick answers about Bluezone", "about": "Quick facts about Bluezone", "services": "Quick answers on our services", "china": "Quick answers: MBBS & study in China", "italy": "Quick answers: study & scholarships in Italy", "lithuania": "Quick answers: study in Lithuania", "uk": "Quick answers: study in the UK", "france": "Quick answers: study in France", "cyprus": "Quick answers: study in Cyprus"};
 function qfAdd(k){var q=QF[k];if(!q)return;$('#page').insertAdjacentHTML('beforeend','<section class="sec white qf-sec" id="quick-facts"><div class="wrap">'+shead('Quick Facts',QF_T[k])+'<dl class="qf">'+q.map(function(f){return '<div><dt>'+f[0]+'</dt><dd>'+f[1]+'</dd></div>';}).join('')+'</dl></div></section>');}
 function stepsGrid(items){
@@ -1552,6 +1570,7 @@ function pageHome(){
   '<div class="wrap"><div class="promo"><div class="in"><h2>Free first consultation — Mansehra, Abbottabad &amp; online</h2><a class="btn btn-gold" href="#/contact">Book now '+I('arrow-right')+'</a></div></div></div>'+
   '<div class="wrap" style="margin-top:28px"><div class="award-strip rv"><div><b>6 Study Destinations</b><span>China · Italy · Lithuania · UK · France · Cyprus</span></div><div><b>3 Counselor-Led Offices</b><span>Mansehra · Abbottabad · Perth (WA)</span></div><div><b>Zero Guaranteed-Outcome Claims</b><span>Honest advice, every single time</span></div></div></div>'+
   '<section class="sec"><div class="wrap">'+shead('','Study with Bluezone — <em>six destinations, one honest process</em>')+'<div class="pillars">'+[['globe','Study destinations','Six country guides — China, Italy, Lithuania, the UK, France and Cyprus.','#/destinations','Explore destinations'],['grad','University directory','Search institutions with indicative fees and recognition flags.','#/universities','Search universities'],['award','Scholarships','Verified official calls — MAECI, CSC, Chevening, Eiffel and more.','#/scholarships','Browse scholarships']].map(function(x){return '<div class="pillar rv"><span class="pi">'+I(x[0])+'</span><h3>'+x[1]+'</h3><p>'+x[2]+'</p><a class="btn btn-solid" href="'+x[3]+'">'+x[4]+' '+I('arrow-right')+'</a></div>';}).join('')+'</div></div></section>'+
+  '<section class="sec tint"><div class="wrap">'+shead('Success Stories','200+ students placed in China <em>— and counting.</em>','Through our China office, Guangxi Future Link, more than 200 students have been admitted and issued a visa, most now studying on fully-funded scholarships. Here is the layout each verified story will follow.')+'<div class="grid3 story-grid">'+STORIES.slice(0,3).map(storyCard).join('')+'</div><div style="text-align:center;margin-top:8px"><a class="btn btn-line" href="#/testimonials">See All Success Stories '+I('arrow-right')+'</a></div></div></section>'+
   '<div class="wrap"><div class="bigband"><div class="in"><h2>Advice you can check — never a guaranteed outcome.</h2><div class="badge">'+I('circle-check')+'<span>Honest guidance from Mansehra, Abbottabad &amp; Perth</span></div></div></div></div>'+
   '<section class="sec"><div class="wrap">'+
     shead('Study Destinations'
@@ -1649,6 +1668,16 @@ function pageEurope(){
   wireReveal();
   seo('Other European Study Destinations | Bluezone Consultants','Bluezone also supports applications across wider European destinations — ask a counselor about availability for your intake.','destinations/europe');
 }
+function guangxiBlock(){
+  return '<section class="sec white" id="guangxi"><div class="wrap split">'+
+    '<div>'+shead('Our China Partner','Guangxi Future Link — <em>our office on the ground.</em>')+
+    '<p>Bluezone Consultants runs its China placements together with <b>Guangxi Future Link</b>, our partner office based in the Guangxi Zhuang Autonomous Region. Having a team physically in China — not just in Pakistan — means faster document turnaround, direct university liaison, and support that continues after a student lands.</p>'+
+    '<div class="office-badge">'+I('award')+'<span><b>200+</b> students admitted and issued a visa through this partnership so far — most are currently studying in China on fully-funded scholarships (CSC, provincial or university-level, per each year\u2019s official call).</span></div>'+
+    '<ul>'+['On-the-ground support once you land in Guangxi','Direct coordination with partner universities on admission status','Scholarship screening against each year\u2019s official CSC / provincial / university call','The same no-guaranteed-outcome standard as our Pakistan offices'].map(function(x){return '<li>'+I('circle-check')+'<span>'+x+'</span></li>';}).join('')+'</ul>'+
+    '<div class="cta-row"><a class="btn btn-solid btn-sm" href="#/offices">Guangxi Office Details</a><a class="btn btn-line btn-sm" href="#/testimonials">See Success Stories</a></div>'+
+    '</div>'+duo('bz-guangxi-office','Guangxi Future Link partner office, China','4/3')+
+  '</div></section>';
+}
 function mbbsBlock(){
   var rows=[
     ['Duration','6 years','5 academic years + structured internship'],
@@ -1701,7 +1730,7 @@ function pageCountry(cid){
   var list=UNIVERSITIES.filter(function(u){return u.country===c.name;});
   var schs=SCHOLARSHIPS.filter(function(s){return s.country===c.name;});
   var subs=[['why','Why '+c.name],['unis','Universities']];
-  if(cid==='china')subs.push(['mbbs','MBBS in China']);
+  if(cid==='china')subs.push(['guangxi','Guangxi Office'],['mbbs','MBBS in China']);
   if(cid==='italy')subs.push(['isch','Scholarship Hub']);
   if(schs.length&&cid!=='italy')subs.push(['sch','Scholarships']);
   subs.push(['fees','Fees'],['proc','Admission'],['visa','Visa'],['life','Student Life'],['faq','FAQs']);
@@ -1722,7 +1751,7 @@ function pageCountry(cid){
     shead('Universities in '+c.name,'Public and private, <em>clearly separated.</em>','Use the tabs to separate public from private / independent institutions. Every card shows tuition (indicative), intake, medium and scholarship status.')+
     '<div id="dir-host"></div>'+DUE+
   '</div></section>'+
-  (cid==='china'?mbbsBlock():'')+
+  (cid==='china'?guangxiBlock()+mbbsBlock():'')+
   (cid==='italy'?italyHub():'')+
   ((schs.length&&cid!=='italy')?'<section class="sec tint" id="sch"><div class="wrap">'+
     shead(c.name+' Scholarships','Every call, <em>read literally.</em>')+
@@ -2001,29 +2030,63 @@ function pageServices(focus){
   if(focus){var el=document.getElementById('svc-'+focus);if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});},80);}
   seo('Student Services — Application, Visa & Pre-Departure Support | Bluezone','Bluezone student services: university selection, admission processing, scholarships, documents, visa guidance, accommodation, arrival and ongoing support.','services',ldGraph(faqLd(QF.services)));
 }
+var STORY_COUNTRIES=['China','Italy','Lithuania','United Kingdom','France','Cyprus'];
+var STORIES=[
+  {country:'China',flag:'🇨🇳',uni:'Guangxi Medical University (via Guangxi Future Link)',program:'MBBS',scholarship:'Fully-Funded (CSC)',seed:'bz-story-cn1'},
+  {country:'China',flag:'🇨🇳',uni:'Guangxi University (via Guangxi Future Link)',program:"Bachelor's — Engineering",scholarship:'Fully-Funded (Provincial)',seed:'bz-story-cn2'},
+  {country:'China',flag:'🇨🇳',uni:'Nanning Normal University (via Guangxi Future Link)',program:"Master's — Business",scholarship:'Fully-Funded (University)',seed:'bz-story-cn3'},
+  {country:'China',flag:'🇨🇳',uni:'Guilin Medical University (via Guangxi Future Link)',program:'MBBS',scholarship:'Partial Scholarship',seed:'bz-story-cn4'},
+  {country:'Italy',flag:'🇮🇹',uni:'To be confirmed',program:"Bachelor's",scholarship:'DSU Regional Grant',seed:'bz-story-it1'},
+  {country:'Lithuania',flag:'🇱🇹',uni:'To be confirmed',program:"Bachelor's",scholarship:'University Waiver',seed:'bz-story-lt1'},
+  {country:'United Kingdom',flag:'🇬🇧',uni:'To be confirmed',program:"Master's",scholarship:'Self-Funded',seed:'bz-story-uk1'},
+  {country:'Cyprus',flag:'🇨🇾',uni:'To be confirmed',program:"Bachelor's",scholarship:'University Waiver',seed:'bz-story-cy1'}
+];
+function storyCard(s,i){
+  return '<div class="story rv" data-country="'+s.country+'"><span class="tag sample">SAMPLE — to be replaced with a real, consented story</span>'+
+  '<span class="duo story-ph">'+IMG(s.seed,'Portrait placeholder for a Bluezone student success story',320,320)+'</span>'+
+  '<div class="story-b"><span class="eyebrow">'+s.flag+' '+s.country+'</span><h3>Student Name — to be provided</h3>'+
+  '<div class="qfacts"><div><span>University</span><b>'+s.uni+'</b></div><div><span>Program</span><b>'+s.program+'</b></div><div><span>Scholarship</span><b>'+s.scholarship+'</b></div></div>'+
+  '<p>\u201cQuote from the student, in their own words, once approved for publication.\u201d</p></div></div>';
+}
 function pageTestimonials(){
-  $('#page').innerHTML=crumb([{t:'Testimonials'}])+
-  '<section class="phero"><div class="wrap"><span class="eyebrow">Testimonials &amp; Success Stories</span>'+
-  '<h1>Only words we can <em>verify.</em></h1>'+
-  '<p class="lead">We publish a student\u2019s story only with their written consent, their real name, their university, and their photo. Until then, this page shows you exactly what each story will contain.</p></div></section>'+
-  '<section class="sec"><div class="wrap grid3">'+
-    [0,1,2].map(function(){return '<div class="tst rv"><span class="qmark">"</span><p>Verified testimonial placeholder — the student\u2019s own words will appear here once provided and approved.</p><div class="ph"><span class="av">'+I('user')+'</span><div><b>Name — to be provided</b><span>University · Country · Program · Year</span></div></div></div>';}).join('')+
+  $('#page').innerHTML=crumb([{t:'Success Stories'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Success Stories</span>'+
+  '<h1>Real placements. <em>Verified, one by one.</em></h1>'+
+  '<p class="lead">We publish a student\u2019s story only with their written consent, their real name, their university, and their photo. The cards below show exactly what each finished story will contain — the layout is ready, and it fills in as students confirm.</p></div></section>'+
+  '<div class="wrap" style="margin-top:28px"><div class="award-strip rv"><div><b>200+ Admissions &amp; Visas</b><span>Processed through our China office — Guangxi Future Link</span></div><div><b>Mostly Fully-Funded</b><span>Most of these students are on fully-funded scholarships in China</span></div><div><b>4 Offices, 1 Standard</b><span>Mansehra · Abbottabad · Perth (WA) · Guangxi, China</span></div></div></div>'+
+  '<section class="sec"><div class="wrap">'+
+    shead('Our China Track Record','Guangxi Future Link — <em>the numbers behind it.</em>','Bluezone Consultants runs its China placements together with our partner office, Guangxi Future Link, based in the Guangxi Zhuang Autonomous Region. Since opening that partnership, more than 200 students have been admitted and issued a visa through this office, and the large majority are currently studying in China on fully-funded scholarships — CSC, provincial or university-level awards, depending on the program and the year\u2019s official call.')+
+    '<p>We are publishing named, photographed student stories from this pipeline as each student confirms and approves their own account — see the sample layout below. We do not publish a story, a number, or a quote from any student without their written sign-off first.</p>'+
   '</div></section>'+
   '<section class="sec tint"><div class="wrap">'+
-    shead('Success Stories','The full <em>anatomy</em> of a placement.','Each success story documents the complete journey — so future students can see what the process actually looks like.')+
-    '<div class="card rv"><span class="tag">Template — populated with real journeys as students confirm</span>'+
-    '<div class="qfacts">'+
-    '<div><span>Student profile</span><b>Provided with consent</b></div>'+
-    '<div><span>Academic background</span><b>Verified transcripts</b></div>'+
-    '<div><span>Chosen country</span><b>—</b></div>'+
-    '<div><span>University</span><b>—</b></div>'+
-    '<div><span>Program</span><b>—</b></div>'+
-    '<div><span>Scholarship</span><b>As awarded per official call</b></div></div>'+
-    '<p><b>Admission journey:</b> the consultation that started it, the shortlist, the documents, the wait, the offer — documented honestly, including anything that went wrong and how it was fixed.</p></div>'+
+    shead('Story Wall','Browse by <em>destination.</em>')+
+    '<div class="chips" role="tablist" aria-label="Filter by country"><span class="chip act" data-f="all">All Destinations</span>'+STORY_COUNTRIES.map(function(c){return '<span class="chip" data-f="'+c+'">'+c+'</span>';}).join('')+'</div>'+
+    '<div class="grid3 story-grid" id="story-grid">'+STORIES.map(storyCard).join('')+'</div>'+
   '</div></section>'+
-  ctab('Are you a Bluezone student?','If you\u2019d like your journey documented here, send us your details — we\u2019ll verify everything and publish only what you approve.',{pt:'Share Your Story',p:'#/contact',st:'See Our Services',s:'#/services'});
+  '<section class="sec white"><div class="wrap">'+
+    shead('How We Verify a Success Story','No name, no photo, no <em>quote</em> without consent.')+
+    '<div class="card rv"><span class="tag">Our publishing checklist</span>'+
+    '<div class="qfacts">'+
+    '<div><span>1. Written consent</span><b>Signed off by the student (or guardian, if a minor)</b></div>'+
+    '<div><span>2. Identity check</span><b>Matched against our admission &amp; visa file</b></div>'+
+    '<div><span>3. University &amp; scholarship</span><b>Confirmed against the offer/award letter</b></div>'+
+    '<div><span>4. Quote approval</span><b>Student reviews the exact wording before it goes live</b></div>'+
+    '<div><span>5. Right to remove</span><b>Any student can ask us to take their story down, any time</b></div>'+
+    '<div><span>Aggregate figures (e.g. "200+")</span><b>Tracked internally from admission &amp; visa records, not estimated</b></div></div>'+
+    '<p><b>Admission journey we document per story:</b> the first consultation, the shortlist, the documents, the wait, the offer, the scholarship (if any) and the visa — including anything that went wrong along the way and how it was fixed.</p></div>'+
+  '</div></section>'+
+  ctab('Are you a Bluezone student — in China or elsewhere?','If you\u2019d like your journey documented here, send us your details. We\u2019ll verify everything and publish only what you approve.',{pt:'Share Your Story',p:'#/contact',st:'See Our China Office',s:'#/offices'});
   wireReveal();
-  seo('Testimonials & Success Stories | Bluezone Consultants','Verified student testimonials and documented admission journeys from Bluezone Consultants — published only with student consent.','testimonials');
+  var grid=document.getElementById('story-grid');
+  document.querySelectorAll('.chips .chip').forEach(function(ch){
+    ch.addEventListener('click',function(){
+      document.querySelectorAll('.chips .chip').forEach(function(c){c.classList.remove('act');});
+      ch.classList.add('act');
+      var f=ch.getAttribute('data-f');
+      grid.querySelectorAll('.story').forEach(function(card){card.style.display=(f==='all'||card.getAttribute('data-country')===f)?'':'none';});
+    });
+  });
+  seo('Success Stories — 200+ Admissions in China via Guangxi Future Link | Bluezone','Bluezone Consultants success stories: 200+ students admitted and visaed through our China office, Guangxi Future Link, mostly on fully-funded scholarships. Verified student journeys published with consent.','testimonials',ldGraph(faqLd([['How many students has Bluezone placed in China?','More than 200 students have been admitted and issued a visa through our China office, Guangxi Future Link, based in the Guangxi Zhuang Autonomous Region — most are currently studying on fully-funded scholarships.'],['Does Bluezone publish student success stories?','Yes, but only with the student\\u2019s written consent, real name, university and photo confirmed against our admission and visa records — never invented or estimated.'],['What is Guangxi Future Link?','Guangxi Future Link is Bluezone Consultants\\u2019s partner office in the Guangxi Zhuang Autonomous Region, China, through which we process admissions, scholarships and visas for students choosing to study in China.']])));
 }
 function pageBlog(slug){
   if(slug){
@@ -2070,23 +2133,26 @@ function officeCard(key,name,addr,flag){
   var maps=o.map
     ?'<a class="btn btn-line btn-sm" href="'+esc(o.map)+'" target="_blank" rel="noopener">'+I('map-pin')+'Google Maps</a><a class="btn btn-line btn-sm" href="'+esc(o.map)+'" target="_blank" rel="noopener">Get Directions '+I('arrow-up-right')+'</a>'
     :'<button type="button" class="btn btn-line btn-sm" data-pend="Google Maps link for the '+name+'">'+I('map-pin')+'Google Maps</button><button type="button" class="btn btn-line btn-sm" data-pend="Directions link for the '+name+'">Get Directions</button>';
+  var partnerLine=o.partner?'<div class="row">'+I('globe')+'<span>Operated with our partner, <b>'+esc(o.partner)+'</b></span></div>':'';
+  var badge=key==='guangxi'?'<div class="office-badge">'+I('award')+'<span><b>200+</b> students admitted &amp; visaed through this office — mostly on fully-funded scholarships</span></div>':'';
   return '<div class="office rv"><div class="oh"><span class="ci">'+I('map-pin')+'</span><div><small>'+flag+'</small><h3>'+name+'</h3></div></div>'+
-  '<div class="row">'+I('building')+'<span>'+addr+'</span></div>'+phone+email+
-  '<div class="row">'+I('clock')+'<span>'+(o.hours||CONFIG.hours)+'</span></div>'+
+  '<div class="row">'+I('building')+'<span>'+addr+'</span></div>'+partnerLine+phone+email+
+  '<div class="row">'+I('clock')+'<span>'+(o.hours||CONFIG.hours)+'</span></div>'+badge+
   '<div class="oactions">'+maps+'<a class="btn btn-solid btn-sm" href="#/contact">Contact Office</a></div></div>';
 }
 var OFFICES=[
   ['mansehra','Mansehra Office','Office 101 &amp; 102, Above Passport Office, Ari Ada, Mansehra, Pakistan','Pakistan'],
   ['abbottabad','Abbottabad Office','Near Old Police Chowki, Supply, Abbottabad, Pakistan','Pakistan'],
-  ['australia','Australia Office','35 Hagart Way, Lockridge WA 6054, Australia','Australia']];
+  ['australia','Australia Office','35 Hagart Way, Lockridge WA 6054, Australia','Australia'],
+  ['guangxi','China Office — Guangxi Future Link','Guangxi Future Link Partner Office, Guangxi Zhuang Autonomous Region, China','China']];
 function pageContact(detailed){
   var cards=OFFICES.map(function(o){return officeCard(o[0],o[1],o[2],o[3]);}).join('');
   $('#page').innerHTML=crumb([{t:detailed?'Our Offices':'Contact'}])+
   '<section class="phero"><div class="wrap"><span class="eyebrow">'+(detailed?'Our Offices':'Contact Us')+'</span>'+
-  '<h1>Three offices, <em>one team.</em></h1>'+
+  '<h1>Four offices, <em>one team.</em></h1>'+
   '<p class="lead">Walk in, call, or message us — whichever suits you. Your first consultation is free and carries no obligation.</p></div></section>'+
-  '<section class="sec"><div class="wrap grid3">'+cards+'</div></section>'+
-  '<section class="sec tint"><div class="wrap grid3">'+OFFICES.map(function(o){var q=(CONFIG.offices[o[0]]||{}).mapq;return q?'<iframe class="mapframe" loading="lazy" title="Map: '+o[1]+'" src="https://www.google.com/maps?q='+encodeURIComponent(q)+'&output=embed"></iframe>':'';}).join('')+'</div></section>'+
+  '<section class="sec"><div class="wrap grid4">'+cards+'</div></section>'+
+  '<section class="sec tint"><div class="wrap grid4">'+OFFICES.map(function(o){var q=(CONFIG.offices[o[0]]||{}).mapq;return q?'<iframe class="mapframe" loading="lazy" title="Map: '+o[1]+'" src="https://www.google.com/maps?q='+encodeURIComponent(q)+'&output=embed"></iframe>':'';}).join('')+'</div></section>'+
   (detailed?'':(
   '<section class="sec white"><div class="wrap grid2"><div>'+
     shead('Send a Message','We reply within <em>one working day.</em>')+
@@ -2381,7 +2447,7 @@ document.getElementById('drop-dest').innerHTML='<div class="dh">Country guides</
   '<a href="#/destinations/europe"><span class="dc">+</span><span>Other European destinations</span></a>';
 document.getElementById('mm-body').innerHTML=
   '<div class="mm-group">Main</div>'+
-  [['Home','#/'],['About Us','#/about'],['Universities','#/universities'],['Scholarships','#/scholarships'],['Student Services','#/services'],['Testimonials','#/testimonials'],['Admission Guide','#/admission-guide'],['Blog','#/blog'],['Contact','#/contact']].map(function(l){return '<a class="mlink" href="'+l[1]+'">'+l[0]+' '+I('chevron-right')+'</a>';}).join('')+
+  [['Home','#/'],['About Us','#/about'],['Universities','#/universities'],['Scholarships','#/scholarships'],['Student Services','#/services'],['Success Stories','#/testimonials'],['Admission Guide','#/admission-guide'],['Blog','#/blog'],['Contact','#/contact']].map(function(l){return '<a class="mlink" href="'+l[1]+'">'+l[0]+' '+I('chevron-right')+'</a>';}).join('')+
   '<div class="mm-group">Study Destinations</div><div class="mm-sub">'+
   COUNTRIES.map(function(c){return '<a href="#/'+c.route+'">'+c.name+'</a>';}).join('')+'<a href="#/destinations/europe">Other European destinations</a></div>'+
   '<div class="mm-ctas"><a class="btn btn-solid" href="#/apply">Apply Now '+I('arrow-right')+'</a><a class="btn btn-line" href="#/contact">Talk to a Counselor</a></div>';
