@@ -24,7 +24,7 @@
   Build sitemap.xml from ROUTES + one URL per university / program /
   scholarship / blog slug in the data below.
 -->
-<script type="application/ld+json" id="seo-jsonld">{"@context": "https://schema.org", "@type": "EducationalOrganization", "name": "Bluezone Consultants Pvt. Ltd.", "description": "International education consultancy assisting students with university admission, scholarships and visa guidance.", "areaServed": ["Pakistan", "Australia"], "address": [{"@type": "PostalAddress", "streetAddress": "Office 101 & 102, Above Passport Office, Ari Ada", "addressLocality": "Mansehra", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "Near Old Police Chowki, Supply", "addressLocality": "Abbottabad", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "35 Hagart Way, Lockridge WA 6054", "addressCountry": "AU"}], "telephone": "+92 000 0000001", "sameAs": ["https://www.facebook.com/DUMMY_REPLACE_ME", "https://www.instagram.com/DUMMY_REPLACE_ME", "https://www.linkedin.com/company/DUMMY_REPLACE_ME", "https://www.youtube.com/@DUMMY_REPLACE_ME"]}</script>
+<script type="application/ld+json" id="seo-jsonld">{"@context": "https://schema.org", "@graph": [{"@type": "EducationalOrganization", "name": "Bluezone Consultants Pvt. Ltd.", "description": "International education consultancy assisting students with university admission, scholarships and visa guidance.", "areaServed": ["Pakistan", "Australia"], "address": [{"@type": "PostalAddress", "streetAddress": "Office 101 & 102, Above Passport Office, Ari Ada", "addressLocality": "Mansehra", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "Near Old Police Chowki, Supply", "addressLocality": "Abbottabad", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "35 Hagart Way, Lockridge WA 6054", "addressCountry": "AU"}], "telephone": "+92 000 0000001", "sameAs": ["https://www.facebook.com/DUMMY_REPLACE_ME", "https://www.instagram.com/DUMMY_REPLACE_ME", "https://www.linkedin.com/company/DUMMY_REPLACE_ME", "https://www.youtube.com/@DUMMY_REPLACE_ME"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the first consultation free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The first consultation carries no obligation."}}, {"@type": "Question", "name": "Do you guarantee admission or a visa?", "acceptedAnswer": {"@type": "Answer", "text": "No. We prepare accurate, complete applications and track them to a decision. Decisions belong to universities and embassies."}}, {"@type": "Question", "name": "Which countries can I be guided for?", "acceptedAnswer": {"@type": "Answer", "text": "China, Italy, Lithuania, the United Kingdom, France and Cyprus, with further European destinations supported case-by-case through our counseling desk."}}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -614,7 +614,8 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em}h2{font-size:clamp(26px,3vw,36px)
 .btn{border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;box-shadow:none;letter-spacing:0}
 .btn-solid{background:var(--brand);color:#fff;box-shadow:none}.btn-solid:hover{background:#033325;color:#fff;box-shadow:none}
 .btn-line{background:#fff;border:2px solid var(--brand);color:var(--ink);box-shadow:none}.btn-line:hover{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:none}
-.btn-gold{background:var(--gold);color:#1a1300}.btn-gold:hover{background:#FFC933;color:#1a1300}
+.btn-gold{background:var(--gold);color:#1a1300;position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s}.btn-gold:hover{background:#FFC933;color:#1a1300;transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(245,158,11,.5)}.btn-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-120%);transition:transform .7s var(--ease)}.btn-gold:hover::after{transform:translateX(120%)}
+@media (prefers-reduced-motion:reduce){.btn-gold,.btn-gold::after{transition:none;transform:none}}
 .btn .ic{width:20px;height:20px;padding:3px;border:1.5px solid currentColor;border-radius:50%}.btn-sm{padding:8px 16px;font-size:13px}.btn-sm .ic{width:17px;height:17px;padding:2px}
 header.site,header.site.scrolled{background:#fff;backdrop-filter:none;border-bottom:0;box-shadow:0 1px 0 var(--line)}
 .navbar{height:auto;padding:12px 24px 8px;align-items:flex-start}
@@ -631,7 +632,9 @@ nav.main>div>a.nl{white-space:nowrap;font:700 15px var(--fb);color:var(--brand);
 nav.main>div>a.nl:hover,nav.main>div>a.nl[aria-current]{background:none;color:var(--brand);border-bottom-color:var(--gold)}
 .nav-cta{align-self:flex-end}.drop{border-radius:0;top:calc(100% + 4px)}
 .s-hero{position:relative;min-height:560px;display:flex;align-items:center;color:#fff}
-.s-hero .hbg{position:absolute;inset:0}.s-hero .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,38,27,.86) 0%,rgba(2,38,27,.55) 55%,rgba(2,38,27,.12) 100%)}
+.s-hero .hbg{position:absolute;inset:0;overflow:hidden}.s-hero .hbg img{width:100%;height:100%;object-fit:cover;animation:heroPan 22s ease-in-out infinite alternate}.s-hero .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,38,27,.86) 0%,rgba(2,38,27,.55) 55%,rgba(2,38,27,.12) 100%)}
+@keyframes heroPan{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.12) translate3d(-1.5%,-1%,0)}}
+@media (prefers-reduced-motion:reduce){.s-hero .hbg img{animation:none}}
 .s-hero .hcopy{position:relative;z-index:2;padding:80px 24px 120px;width:100%;max-width:var(--wrap);margin:0 auto}
 .s-hero h1{color:#fff;max-width:15ch;font-size:clamp(38px,5.4vw,66px)}.s-hero h1 em{color:var(--gold)}
 .s-hero p{max-width:54ch;color:rgba(255,255,255,.92);font-size:18px;margin-top:18px}
@@ -661,7 +664,46 @@ footer.site .brand .word span{color:#8FD9BC}.f-brand p{color:rgba(255,255,255,.8
 </head>
 <body>
 <a class="skip" href="#page">Skip to content</a>
-<noscript><div>This website requires JavaScript to be enabled.</div></noscript>
+<noscript>
+<div>This website works best with JavaScript enabled. A summary of this page is below.</div>
+<main style="max-width:820px;margin:24px auto;padding:0 20px;font:16px/1.7 Inter,sans-serif;color:#0B1017">
+<h1>Bluezone Consultants Pvt. Ltd. — Study Abroad Guidance from Pakistan &amp; Australia</h1>
+<p>Bluezone Consultants guides students from Pakistan and beyond through every stage of studying
+abroad — choosing the right country and university, preparing a complete application, applying
+for scholarships, and getting visa-ready. We do not guarantee admission, scholarships or visas;
+those decisions belong to universities and embassies.</p>
+<h2>Destinations</h2>
+<p>China, Italy, Lithuania, the United Kingdom, France and Cyprus, with further European
+destinations supported case-by-case through our counseling desk.</p>
+<h2>Offices</h2>
+<ul>
+<li><strong>Mansehra, Pakistan</strong> — Office 101 &amp; 102, Above Passport Office, Ari Ada. Mon–Sat, 10:00–18:00 PKT.</li>
+<li><strong>Abbottabad, Pakistan</strong> — Near Old Police Chowki, Supply. Mon–Sat, 10:00–18:00 PKT.</li>
+<li><strong>Perth, Australia</strong> — Lockridge, WA, serving Western Australia.</li>
+<li><strong>Guangxi, China</strong> — via our partner office, Guangxi Future Link.</li>
+</ul>
+<h2>What we do</h2>
+<ul>
+<li>University &amp; country shortlisting based on academic profile and budget</li>
+<li>Application preparation and document verification</li>
+<li>Scholarship guidance (e.g. MAECI and DSU for Italy, and other official calls per destination)</li>
+<li>Student visa guidance</li>
+<li>Pre-departure briefing and settling-in support</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<p><strong>Is the first consultation free?</strong><br>Yes. It carries no obligation.</p>
+<p><strong>Do you guarantee admission or a visa?</strong><br>No. We prepare accurate, complete
+applications and track them to a decision. Decisions belong to universities and embassies.</p>
+<p><strong>Which countries can I be guided for?</strong><br>China, Italy, Lithuania, the United
+Kingdom, France and Cyprus, with further European destinations supported case-by-case.</p>
+<p>See our dedicated pages for
+<a href="study-abroad-consultant-mansehra.html">Mansehra</a>,
+<a href="study-abroad-consultant-abbottabad.html">Abbottabad</a>,
+<a href="study-abroad-consultant-haripur.html">Haripur</a>,
+<a href="study-abroad-consultant-hazara-division.html">Hazara Division</a> and
+<a href="study-abroad-consultant-perth.html">Perth</a>.</p>
+</main>
+</noscript>
 
 <header class="site" id="site-header">
   <div class="wrap navbar">
@@ -922,9 +964,21 @@ const DUE='<p class="snote">'+I('info')+'Tuition and living costs change every i
 
 /* reveal (fails visible) */
 let IO=null;
+function countUp(el){
+  var raw=el.textContent.trim(),m=raw.match(/^(\d+)(\D*)$/);
+  if(!m||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var end=parseInt(m[1],10),suffix=m[2]||'',start=0,dur=900,t0=null;
+  function step(ts){
+    if(!t0)t0=ts;
+    var p=Math.min(1,(ts-t0)/dur),eased=1-Math.pow(1-p,3);
+    el.textContent=Math.round(end*eased)+suffix;
+    if(p<1)requestAnimationFrame(step);else el.textContent=end+suffix;
+  }
+  requestAnimationFrame(step);
+}
 function wireReveal(){
   if(IO===null){
-    try{IO=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');IO.unobserve(x.target);}});},{threshold:.06});
+    try{IO=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');IO.unobserve(x.target);if(x.target.classList.contains('stats')){x.target.querySelectorAll('.v').forEach(countUp);}}});},{threshold:.06});
       document.documentElement.classList.add('rv');}
     catch(e){IO=false;}
   }

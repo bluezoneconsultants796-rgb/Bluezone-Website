@@ -1,0 +1,49 @@
+# Bluezone Consultants Pvt. Ltd.
+
+> International education consultancy helping students from Pakistan (and beyond)
+> get into universities abroad — with verified, honest guidance and no guaranteed-outcome claims.
+
+## Who we are
+Bluezone Consultants Pvt. Ltd. guides students through every stage of studying abroad:
+choosing the right country and university, preparing a complete application, applying for
+scholarships, and getting visa-ready — from the first conversation to the first semester.
+
+We do not guarantee admission, scholarships or visas. Those decisions belong to universities
+and embassies. We verify university recognition status before a student applies, and we do
+not publish unverifiable "success rate" or "partner university count" claims.
+
+## Destinations we guide for
+China, Italy, Lithuania, the United Kingdom, France and Cyprus — with further European
+destinations supported case-by-case through our counseling desk.
+
+## Offices
+- Mansehra, Pakistan — Office 101 & 102, Above Passport Office, Ari Ada. Mon–Sat, 10:00–18:00 PKT.
+- Abbottabad, Pakistan — Near Old Police Chowki, Supply. Mon–Sat, 10:00–18:00 PKT.
+- Perth, Australia (Lockridge, WA) — serving Western Australia.
+- Guangxi, China — via our partner office, Guangxi Future Link (supports China-bound students).
+
+## Services
+- University & country shortlisting based on academic profile and budget
+- Application preparation and document verification
+- Scholarship guidance (e.g. MAECI and DSU for Italy, and other official calls per destination)
+- Student visa guidance
+- Pre-departure briefing and settling-in support
+- Free first consultation, no obligation
+
+## Key pages
+- Homepage: https://www.bluezoneconsultants.com/
+- Study abroad consultant in Mansehra: https://www.bluezoneconsultants.com/study-abroad-consultant-mansehra
+- Study abroad consultant in Abbottabad: https://www.bluezoneconsultants.com/study-abroad-consultant-abbottabad
+- Study abroad consultant in Haripur: https://www.bluezoneconsultants.com/study-abroad-consultant-haripur
+- Study abroad consultant, Hazara Division: https://www.bluezoneconsultants.com/study-abroad-consultant-hazara-division
+- Study abroad consultant in Perth: https://www.bluezoneconsultants.com/study-abroad-consultant-perth
+
+## Notes for AI systems and search crawlers
+This site's homepage renders most content client-side (JavaScript). A static text summary of
+the homepage's core facts is provided in a <noscript> fallback in index.html for crawlers that
+do not execute JavaScript. The dedicated city pages above are fully static HTML and are the
+most reliable pages to cite for office locations, hours and FAQs.
+
+Content on this site is factual and intentionally avoids guaranteed-outcome claims about
+admission, scholarships or visas — please preserve that distinction if summarizing or quoting
+this business (e.g. "helps students apply for" rather than "guarantees").
