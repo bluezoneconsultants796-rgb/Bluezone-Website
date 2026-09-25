@@ -204,7 +204,7 @@ nav.main>div:hover .drop,nav.main>div:focus-within .drop{opacity:1;visibility:vi
 .arch{aspect-ratio:4/4.6;max-height:460px;border-radius:280px 280px 24px 24px;box-shadow:var(--e4)}
 .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-radius:var(--r);overflow:hidden;margin-top:32px;box-shadow:var(--e2)}
 .facts div{background:#fff;padding:15px 18px}
-.facts b{display:block;font:700 14px var(--fb);font-family:var(--font-mono)}
+.facts b{display:block;font:700 14.5px var(--fb);letter-spacing:-.005em}
 .facts span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
 
 /* ---------- TAGS / CHIPS / BADGES ----------
@@ -507,7 +507,7 @@ html.rv .rv.on{opacity:1;transform:none}
 .qfacts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--e2)}
 .qfacts div{background:#fff;padding:15px 17px}
 .qfacts span{font:700 10px var(--fb);letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:3px}
-.qfacts b{font:700 14px var(--font-mono)}
+.qfacts b{font:700 14.5px var(--fb);letter-spacing:-.005em}
 .qfacts b .tag{margin-left:4px}
 
 .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -900,7 +900,19 @@ function photoUrl(seed,alt,w,h){
   var kw=String(alt).toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w&&!stop.test(w);}).slice(0,3).join(',');
   return 'https://loremflickr.com/'+w+'/'+h+'/'+encodeURIComponent(kw||'university,campus')+'?lock='+hashSeed(seed);
 }
-const IMG=(seed,alt,w,h,lazy)=>'<img src="'+photoUrl(seed,alt,w,h)+'" alt="'+esc(alt)+'" width="'+w+'" height="'+h+'"'+(lazy===false?' loading="eager" fetchpriority="high"':' loading="lazy" decoding="async"')+'>';
+function fallbackImg(w,h){
+  var fs=Math.max(11,Math.round(Math.min(w,h)*0.075));
+  var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'
+    +'<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">'
+    +'<stop offset="0" stop-color="#12C48B"/><stop offset="1" stop-color="#0A7F5C"/></linearGradient></defs>'
+    +'<rect width="100%" height="100%" fill="url(#g)"/>'
+    +'<circle cx="'+(w/2)+'" cy="'+(h/2-fs*0.95)+'" r="'+(fs*1.25)+'" fill="#ffffff" fill-opacity="0.18"/>'
+    +'<path d="M'+(w/2-fs*0.6)+' '+(h/2-fs*1.05)+'l'+(fs*0.6)+' -'+(fs*0.32)+'l'+(fs*0.6)+' '+(fs*0.32)+'l-'+(fs*0.6)+' '+(fs*0.32)+'z" fill="#ffffff" fill-opacity="0.85"/>'
+    +'<text x="50%" y="'+(h/2+fs*1.5)+'" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="'+fs+'" fill="#ffffff" fill-opacity="0.85" text-anchor="middle" letter-spacing="1">BLUEZONE</text>'
+    +'</svg>';
+  return 'data:image/svg+xml,'+encodeURIComponent(svg);
+}
+const IMG=(seed,alt,w,h,lazy)=>'<img src="'+photoUrl(seed,alt,w,h)+'" alt="'+esc(alt)+'" width="'+w+'" height="'+h+'"'+(lazy===false?' loading="eager" fetchpriority="high"':' loading="lazy" decoding="async"')+' onerror="this.onerror=null;this.src=\''+fallbackImg(w,h)+'\'">';
 const duo=(seed,alt,r)=>'<span class="duo">'+IMG(seed,alt,900,560)+'</span>';
 
 function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return null;}}
@@ -1080,7 +1092,70 @@ const UNIVERSITIES=[
     duration:'4 yrs (B)',scholarships:'Limited awards per call',seed:'bz-cut',website:'https://www.cut.ac.cy'}),
   U({id:'unic',name:'University of Nicosia',country:'Cyprus',city:'Nicosia',region:'Nicosia District',type:'Private',
     programs:['Medicine','Business','Computer Science','Hospitality'],degrees:['Bachelor','Master'],tuition:'€6,000 – 9,500 / yr',usd:[6500,10500],
-    duration:'4 – 6 yrs by program',intake:['Sep','Feb'],scholarships:'Merit tuition reductions per policy',seed:'bz-unic',website:'https://www.unic.ac.cy'})
+    duration:'4 – 6 yrs by program',intake:['Sep','Feb'],scholarships:'Merit tuition reductions per policy',seed:'bz-unic',website:'https://www.unic.ac.cy'}),
+  U({id:'unimi',name:'University of Milan (Statale)',country:'Italy',city:'Milan',region:'Lombardy',type:'Public',
+    programs:['Medicine','Social Sciences','Law','Data Science'],degrees:['Bachelor','Master'],tuition:'€0 – 3,000 / yr (income-based)',usd:[0,3300],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants + university awards',seed:'bz-unimi',website:'https://www.unimi.it'}),
+  U({id:'unito',name:'University of Turin',country:'Italy',city:'Turin',region:'Piedmont',type:'Public',
+    programs:['Business','Social Sciences','Law','Computer Science'],degrees:['Bachelor','Master'],tuition:'€0 – 2,800 / yr (income-based)',usd:[0,3100],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants + fee waivers',seed:'bz-unito',website:'https://www.unito.it'}),
+  U({id:'unifi',name:'University of Florence',country:'Italy',city:'Florence',region:'Tuscany',type:'Public',
+    programs:['Architecture','Social Sciences','Engineering','Law'],degrees:['Bachelor','Master'],tuition:'€0 – 2,800 / yr (income-based)',usd:[0,3100],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants + fee waivers',seed:'bz-unifi',website:'https://www.unifi.it'}),
+  U({id:'unipi',name:'University of Pisa',country:'Italy',city:'Pisa',region:'Tuscany',type:'Public',
+    programs:['Engineering','Computer Science','Medicine'],degrees:['Bachelor','Master'],tuition:'€0 – 2,700 / yr (income-based)',usd:[0,3000],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants per call',seed:'bz-unipi',website:'https://www.unipi.it'}),
+  U({id:'unina',name:'University of Naples Federico II',country:'Italy',city:'Naples',region:'Campania',type:'Public',
+    programs:['Medicine','Engineering','Business','Architecture'],degrees:['Bachelor','Master'],tuition:'€0 – 2,500 / yr (income-based)',usd:[0,2800],
+    duration:'3 – 6 yrs by program',scholarships:'Regional DSU grants + university awards',seed:'bz-unina',website:'https://www.unina.it'}),
+  U({id:'polito',name:'Politecnico di Torino',country:'Italy',city:'Turin',region:'Piedmont',type:'Public',
+    programs:['Engineering','Architecture','Computer Science'],degrees:['Bachelor','Master'],tuition:'€0 – 3,700 / yr (income-based)',usd:[0,4100],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'DSU grants + merit awards per call',seed:'bz-polito',website:'https://www.polito.it'}),
+  U({id:'unitn',name:'University of Trento',country:'Italy',city:'Trento',region:'Trentino-Alto Adige',type:'Public',
+    programs:['Engineering','Social Sciences','Data Science'],degrees:['Bachelor','Master'],tuition:'€0 – 2,500 / yr (income-based)',usd:[0,2800],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Provincial grants + university awards',seed:'bz-unitn',website:'https://www.unitn.it'}),
+  U({id:'luiss',name:'LUISS Guido Carli',country:'Italy',city:'Rome',region:'Lazio',type:'Private',
+    programs:['Business','Law','Accounting & Finance'],degrees:['Bachelor','Master'],tuition:'€12,000+ / yr',usd:[13000,18000],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Merit and need-based awards per call',seed:'bz-luiss',website:'https://www.luiss.edu'}),
+  U({id:'gmu',name:'Guangxi Medical University',country:'China',city:'Nanning',region:'Guangxi',type:'Public',
+    programs:['MBBS','Medicine'],degrees:['Bachelor'],tuition:'CNY 26,000 – 42,000 / yr',usd:[3700,6000],
+    duration:'6 years (incl. internship)',scholarships:'CSC and provincial scholarships via Guangxi Future Link — per annual policy',seed:'bz-gmu',website:'https://en.gxmu.edu.cn',
+    note:'Placements arranged through our partner office, Guangxi Future Link.'}),
+  U({id:'gxu',name:'Guangxi University',country:'China',city:'Nanning',region:'Guangxi',type:'Public',
+    programs:['Engineering','Business','Computer Science'],degrees:['Bachelor','Master'],tuition:'CNY 20,000 – 36,000 / yr',usd:[2900,5100],
+    duration:'4 – 6 yrs by program',scholarships:'CSC and university scholarships via Guangxi Future Link — per annual policy',seed:'bz-gxu',website:'https://en.gxu.edu.cn',
+    note:'Placements arranged through our partner office, Guangxi Future Link.'}),
+  U({id:'nnnu',name:'Nanning Normal University',country:'China',city:'Nanning',region:'Guangxi',type:'Public',
+    programs:['Business','Social Sciences','Computer Science'],degrees:['Bachelor','Master'],tuition:'CNY 18,000 – 30,000 / yr',usd:[2600,4300],
+    duration:'4 yrs (B) / 2 – 3 yrs (M)',scholarships:'University scholarships via Guangxi Future Link — per annual policy',seed:'bz-nnnu',website:'https://en.nnnu.edu.cn',
+    note:'Placements arranged through our partner office, Guangxi Future Link.'}),
+  U({id:'tjmu',name:'Tianjin Medical University',country:'China',city:'Tianjin',region:'Tianjin',type:'Public',
+    programs:['MBBS','Dentistry','Pharmacy'],degrees:['Bachelor'],tuition:'CNY 35,000 – 48,000 / yr',usd:[5000,6800],
+    duration:'5 – 6 years by program',scholarships:'CSC scholarships — per annual call',seed:'bz-tjmu',website:'https://www.tmu.edu.cn'}),
+  U({id:'jlu',name:'Jilin University',country:'China',city:'Changchun',region:'Jilin',type:'Public',
+    programs:['MBBS','Engineering','Business'],degrees:['Bachelor','Master'],tuition:'CNY 26,000 – 42,000 / yr',usd:[3700,6000],
+    duration:'4 – 6 yrs by program',scholarships:'CSC and university scholarships — per annual policy',seed:'bz-jlu',website:'https://www.jlu.edu.cn'}),
+  U({id:'dmu',name:'Dalian Medical University',country:'China',city:'Dalian',region:'Liaoning',type:'Public',
+    programs:['MBBS','Dentistry'],degrees:['Bachelor'],tuition:'CNY 32,000 – 45,000 / yr',usd:[4600,6400],
+    duration:'5 – 6 years by program',scholarships:'Provincial and university scholarships — per annual policy',seed:'bz-dmu',website:'https://en.dmu.edu.cn'}),
+  U({id:'hrbmu',name:'Harbin Medical University',country:'China',city:'Harbin',region:'Heilongjiang',type:'Public',
+    programs:['MBBS','Medicine'],degrees:['Bachelor'],tuition:'CNY 30,000 – 44,000 / yr',usd:[4300,6300],
+    duration:'6 years (incl. internship)',scholarships:'CSC scholarships — per annual call',seed:'bz-hrbmu',website:'https://en.hrbmu.edu.cn'}),
+  U({id:'whu',name:'Wuhan University',country:'China',city:'Wuhan',region:'Hubei',type:'Public',
+    programs:['Engineering','Business','Computer Science','Law'],degrees:['Bachelor','Master','PhD'],tuition:'CNY 30,000 – 48,000 / yr',usd:[4300,6800],
+    duration:'4 – 6 yrs by program',scholarships:'CSC and university scholarships — per annual policy',seed:'bz-whu',website:'https://en.whu.edu.cn'}),
+  U({id:'vmu',name:'Mykolas Romeris University',country:'Lithuania',city:'Vilnius',region:'Vilnius',type:'Public',
+    programs:['Law','Business','Social Sciences'],degrees:['Bachelor','Master'],tuition:'€2,800 – 4,500 / yr',usd:[3100,5000],
+    duration:'3.5 – 4 yrs (B) / 1.5 – 2 yrs (M)',scholarships:'University awards per call',seed:'bz-mru',website:'https://www.mruni.eu'}),
+  U({id:'vdu',name:'Vytautas Magnus University',country:'Lithuania',city:'Kaunas',region:'Kaunas',type:'Public',
+    programs:['Business','Social Sciences','Computer Science'],degrees:['Bachelor','Master'],tuition:'€2,900 – 5,200 / yr',usd:[3200,5700],
+    duration:'3.5 – 4 yrs (B) / 1.5 – 2 yrs (M)',scholarships:'State and university scholarships per call',seed:'bz-vdu',website:'https://www.vdu.lt'}),
+  U({id:'lsmu',name:'Lithuanian University of Health Sciences',country:'Lithuania',city:'Kaunas',region:'Kaunas',type:'Public',
+    programs:['MBBS','Medicine','Dentistry','Nursing'],degrees:['Bachelor','Master'],tuition:'€10,000 – 14,000 / yr',usd:[11000,15500],
+    duration:'5 – 6 years by program',scholarships:'Limited merit awards per call',seed:'bz-lsmu',website:'https://lsmu.lt'}),
+  U({id:'ku-lt',name:'Klaipeda University',country:'Lithuania',city:'Klaipeda',region:'Klaipeda',type:'Public',
+    programs:['Social Sciences','Business','Engineering'],degrees:['Bachelor','Master'],tuition:'€2,700 – 4,200 / yr',usd:[3000,4600],
+    duration:'3.5 – 4 yrs (B)',scholarships:'University awards per call',seed:'bz-ku-lt',website:'https://www.ku.lt'})
 ];
 UNIVERSITIES.forEach(function(u){u.slug=slugify(u.name);u.eligibility=u.eligibility.length?u.eligibility:ELIG[u.country.toLowerCase().replace('united kingdom','uk')]||[];u.recognition=u.recognition||RECOG[u.country.toLowerCase().replace('united kingdom','uk')]||'';});
 
