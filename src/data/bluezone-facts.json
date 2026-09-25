@@ -1,0 +1,136 @@
+{
+  "$schema_note": "Single source of truth for Bluezone entity facts. Every page, JSON-LD block, llms.txt entry and metadata description should trace back to a value in this file. Do not hand-edit a fact in only one place on the site — update it here first, then propagate. NAP fields marked DUMMY must not be treated as real until src/docs/PLACEHOLDERS.md items are resolved.",
+  "last_updated": "2026-09-25",
+
+  "entity": {
+    "legal_name": "Bluezone Consultants Pvt. Ltd.",
+    "brand_name": "Bluezone Consultants",
+    "entity_type": "EducationalOrganization",
+    "founded_country": "Pakistan",
+    "website": "https://www.bluezoneconsultants.com/",
+    "canonical_description": "Bluezone Consultants Pvt. Ltd. is an international education consultancy that guides students from Pakistan (and beyond) through university admission, scholarship applications and student-visa guidance for study abroad, from the first consultation to the first semester.",
+    "short_description": "International education consultancy helping students from Pakistan apply to universities abroad, with guidance from eligibility check through to visa preparation.",
+    "what_it_is_not": "Bluezone is not a visa-issuing authority, not a university, and does not guarantee admission, scholarships or visa outcomes. Those decisions belong to universities and embassies.",
+    "logo": "https://www.bluezoneconsultants.com/assets/logo-full.png"
+  },
+
+  "services": [
+    {
+      "name": "University & country shortlisting",
+      "description": "Shortlisting universities and countries against a student's academic profile, budget and goals.",
+      "audience": "Prospective study-abroad students and families"
+    },
+    {
+      "name": "Admission / application processing",
+      "description": "Preparing and filing applications through the correct destination channel (e.g. UCAS, Universitaly, Études en France, or direct to the university).",
+      "audience": "Students with a chosen shortlist"
+    },
+    {
+      "name": "Scholarship guidance",
+      "description": "Screening which scholarship calls a student genuinely qualifies for (e.g. MAECI and DSU for Italy, and other official calls per destination) before any application fee is paid.",
+      "audience": "Students seeking funded or partially funded study"
+    },
+    {
+      "name": "Document preparation & verification",
+      "description": "Checking transcripts, certificates and supporting documents before submission.",
+      "audience": "Students preparing an application"
+    },
+    {
+      "name": "Student visa guidance",
+      "description": "Educational guidance on visa categories, documentation and interview preparation. Outcomes rest with embassies; Bluezone does not guarantee visa approval.",
+      "audience": "Students who have received an offer"
+    },
+    {
+      "name": "Pre-departure briefing & settling-in support",
+      "description": "Orientation on travel, accommodation and first weeks abroad.",
+      "audience": "Students preparing to depart"
+    }
+  ],
+
+  "destinations": [
+    { "country": "China", "notes": "Supported directly and via partner office Guangxi Future Link (Guangxi, China)." },
+    { "country": "Italy", "notes": "Includes guidance on MAECI and DSU scholarship calls where a student qualifies." },
+    { "country": "Lithuania", "notes": "" },
+    { "country": "United Kingdom", "notes": "Applications filed via UCAS where applicable." },
+    { "country": "France", "notes": "Applications filed via Études en France where applicable." },
+    { "country": "Cyprus", "notes": "" }
+  ],
+  "destinations_note": "Further European destinations are supported case-by-case through the counseling desk. Bluezone does not currently advertise Australia, the USA or Canada as study destinations; the Perth office serves Western Australia locally and should not be described as a channel for sending Pakistani students to study in Australia unless and until that service is confirmed.",
+
+  "programs": [
+    "MBBS / Medicine", "Dentistry", "Engineering", "Business", "IT & Computing"
+  ],
+  "programs_note": "17 study fields are referenced site-wide under Programs; only publish specifics (entry requirements, costs) that have been verified per destination.",
+
+  "offices": [
+    {
+      "id": "mansehra",
+      "city": "Mansehra",
+      "region": "Khyber Pakhtunkhwa",
+      "country": "Pakistan",
+      "address": "Office 101 & 102, Above Passport Office, Ari Ada, Mansehra, Pakistan",
+      "phone": "+92 000 0000001",
+      "phone_status": "DUMMY — placeholder, see PLACEHOLDERS.md",
+      "email": "mansehra@dummy.example",
+      "email_status": "DUMMY",
+      "hours": "Mon–Sat, 10:00–18:00 PKT",
+      "page": "https://www.bluezoneconsultants.com/study-abroad-consultant-mansehra"
+    },
+    {
+      "id": "abbottabad",
+      "city": "Abbottabad",
+      "region": "Khyber Pakhtunkhwa",
+      "country": "Pakistan",
+      "address": "Near Old Police Chowki, Supply, Abbottabad, Pakistan",
+      "phone": "+92 000 0000002",
+      "phone_status": "DUMMY",
+      "email": "abbottabad@dummy.example",
+      "email_status": "DUMMY",
+      "hours": "Mon–Sat, 10:00–18:00 PKT",
+      "page": "https://www.bluezoneconsultants.com/study-abroad-consultant-abbottabad"
+    },
+    {
+      "id": "perth",
+      "city": "Perth (Lockridge)",
+      "region": "Western Australia",
+      "country": "Australia",
+      "address": "35 Hagart Way, Lockridge WA 6054, Australia",
+      "phone": "+61 0 0000 0003",
+      "phone_status": "DUMMY",
+      "email": "australia@dummy.example",
+      "email_status": "DUMMY",
+      "hours": "Mon–Fri 09:00–17:00 AWST (DUMMY, unconfirmed)",
+      "page": "https://www.bluezoneconsultants.com/study-abroad-consultant-perth",
+      "note": "Serves Western Australia; not a channel for placing Pakistani students to study in Australia."
+    },
+    {
+      "id": "guangxi",
+      "city": "Guangxi",
+      "region": "Guangxi",
+      "country": "China",
+      "address": "Partner office: Guangxi Future Link",
+      "relationship": "Partner office, supports China-bound students",
+      "page": null
+    }
+  ],
+
+  "service_area_locations_without_office": [
+    { "city": "Haripur", "nearest_office": "abbottabad", "page": "https://www.bluezoneconsultants.com/study-abroad-consultant-haripur" },
+    { "city": "Islamabad", "nearest_office": "abbottabad", "note": "Islamabad students are also close to Mansehra depending on route; nearest formal office is Abbottabad.", "page": "https://www.bluezoneconsultants.com/study-abroad-consultant-islamabad" },
+    { "division": "Hazara Division", "nearest_offices": ["mansehra", "abbottabad"], "page": "https://www.bluezoneconsultants.com/study-abroad-consultant-hazara-division" }
+  ],
+
+  "social_profiles": {
+    "facebook": "https://www.facebook.com/DUMMY_REPLACE_ME",
+    "instagram": "https://www.instagram.com/DUMMY_REPLACE_ME",
+    "linkedin": "https://www.linkedin.com/company/DUMMY_REPLACE_ME",
+    "youtube": "https://www.youtube.com/@DUMMY_REPLACE_ME",
+    "status": "All DUMMY placeholders — do not treat as live sameAs targets until real handles are published. See PLACEHOLDERS.md."
+  },
+
+  "policy_language": {
+    "no_guarantee": "We do not guarantee admission, scholarships or visa outcomes. Those decisions belong to universities and embassies.",
+    "free_consultation": "The first consultation is free and carries no obligation.",
+    "sourcing_rule": "Do not publish unverifiable \"success rate\" or \"partner university count\" claims. Tuition, deadline, scholarship-rule and visa-requirement claims must carry an official source and a last-checked date, or be labelled as an estimate."
+  }
+}

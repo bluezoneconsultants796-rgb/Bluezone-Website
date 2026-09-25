@@ -1,4 +1,53 @@
 User-agent: *
 Allow: /
 
+# Explicit allow entries for known AI answer-engine and search crawlers,
+# so a future blanket rule change doesn't silently exclude one of these.
+# Reviewed 2026-09-25 — see src/docs/ai-discoverability-strategy.md.
+
+# OpenAI — used to surface pages in ChatGPT search
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — used when a user shares a link or ChatGPT fetches a page live
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI — general model-training / retrieval crawler
+User-agent: GPTBot
+Allow: /
+
+# Anthropic — Claude web crawler
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google — used for Gemini / AI features training and grounding
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Bing — powers Copilot and Bing AI features
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+# Apple — Apple Intelligence / Siri search
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl — used as training data by many AI systems
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://www.bluezoneconsultants.com/sitemap.xml
