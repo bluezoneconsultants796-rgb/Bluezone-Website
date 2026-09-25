@@ -895,10 +895,42 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slugify=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 function hashSeed(s){s=String(s);var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;}return Math.abs(h)%1500;}
-function photoUrl(seed,alt,w,h){
+function photoKeywords(alt){
   var stop=/^(a|an|the|of|on|in|and|with|for|at|to|our|your)$/i;
-  var kw=String(alt).toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w&&!stop.test(w);}).slice(0,3).join(',');
-  return 'https://loremflickr.com/'+w+'/'+h+'/'+encodeURIComponent(kw||'university,campus')+'?lock='+hashSeed(seed);
+  return String(alt).toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w&&!stop.test(w);}).slice(0,4).join(' ');
+}
+/* ---------- LIVE FREE-STOCK IMAGES (Wikimedia Commons) ----------
+   loremflickr.com (the old source) has been broken since Flickr locked down its
+   API in late 2024 — it now only ever returns one generic default photo, no
+   matter what keyword you ask for. Wikimedia Commons has a free, key-less,
+   CORS-enabled search API, so we use that instead: every <img> starts out
+   showing the on-brand SVG placeholder immediately, then a background fetch
+   swaps in a real, relevant, freely-licensed photo once it's found. If the
+   fetch fails for any reason the placeholder just stays — the page never breaks. */
+var bzImgCache={};
+function bzWikiImageUrl(query,width){
+  var key=query+'|'+width;
+  if(bzImgCache[key])return bzImgCache[key];
+  var endpoint='https://commons.wikimedia.org/w/api.php?origin=*&format=json&action=query'
+    +'&generator=search&gsrnamespace=6&gsrlimit=1&gsrsearch='+encodeURIComponent('filetype:bitmap '+query)
+    +'&prop=imageinfo&iiprop=url&iiurlwidth='+Math.round(width);
+  var p=fetch(endpoint).then(function(r){return r.json();}).then(function(data){
+    var pages=data&&data.query&&data.query.pages;
+    if(!pages)return null;
+    var page=Object.keys(pages).map(function(k){return pages[k];})[0];
+    var info=page&&page.imageinfo&&page.imageinfo[0];
+    return (info&&(info.thumburl||info.url))||null;
+  }).catch(function(){return null;});
+  bzImgCache[key]=p;
+  return p;
+}
+function bzLoadImages(root){
+  (root||document).querySelectorAll('img[data-bz-kw]:not([data-bz-done])').forEach(function(img){
+    img.setAttribute('data-bz-done','1');
+    var kw=img.getAttribute('data-bz-kw');
+    var w=parseInt(img.getAttribute('data-bz-w'),10)||800;
+    bzWikiImageUrl(kw,w).then(function(url){ if(url)img.src=url; });
+  });
 }
 function fallbackImg(w,h){
   var fs=Math.max(11,Math.round(Math.min(w,h)*0.075));
@@ -912,7 +944,7 @@ function fallbackImg(w,h){
     +'</svg>';
   return 'data:image/svg+xml,'+encodeURIComponent(svg);
 }
-const IMG=(seed,alt,w,h,lazy)=>'<img src="'+photoUrl(seed,alt,w,h)+'" alt="'+esc(alt)+'" width="'+w+'" height="'+h+'"'+(lazy===false?' loading="eager" fetchpriority="high"':' loading="lazy" decoding="async"')+' onerror="this.onerror=null;this.src=\''+fallbackImg(w,h)+'\'">';
+const IMG=(seed,alt,w,h,lazy)=>'<img src="'+fallbackImg(w,h)+'" data-bz-kw="'+esc(photoKeywords(alt)||'university campus')+'" data-bz-w="'+w+'" alt="'+esc(alt)+'" width="'+w+'" height="'+h+'"'+(lazy===false?' loading="eager" fetchpriority="high"':' loading="lazy" decoding="async"')+' onerror="this.onerror=null;this.removeAttribute(\'data-bz-kw\');this.src=\''+fallbackImg(w,h)+'\'">';
 const duo=(seed,alt,r)=>'<span class="duo">'+IMG(seed,alt,900,560)+'</span>';
 
 function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return null;}}
@@ -1655,6 +1687,7 @@ function mountDir(host,opts){
     refs.list.innerHTML=out.length?out.map(uRow).join(''):
       '<div class="empty">'+I('search')+'<p>No universities match these filters.</p><button type="button" class="clearf" data-clear>'+I('rotate')+'Clear all filters</button></div>';
     wireReveal();
+    bzLoadImages(refs.list);
   }
   function reset(){
     S.q='';S.type='';S.program='';S.degree='';S.city='';S.region='';S.english=false;S.scholar=false;S.intake='';S.band='';S.sort='default';
@@ -2578,6 +2611,7 @@ function route(){
   document.querySelectorAll('nav.main a.nl').forEach(function(a){a.removeAttribute('aria-current');});
   if(key){var a=document.querySelector('nav.main a.nl[data-nav="'+key+'"]');if(a)a.setAttribute('aria-current','page');}
   window.scrollTo({top:0,behavior:'auto'});
+  bzLoadImages();
 }
 
 /* ---------- 9. INIT (runs once, wires the static shell) ---------- */
