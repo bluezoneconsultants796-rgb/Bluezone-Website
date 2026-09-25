@@ -251,9 +251,12 @@ a.chip:hover{background:rgba(var(--accent-rgb),.09);color:var(--green-dd);box-sh
 
 .journey{padding:96px 0}
 .j-list{display:grid;grid-template-columns:repeat(5,1fr);gap:0 30px}
-.j-list li{padding:24px 0;border-top:1px solid rgba(247,249,250,.12)}
-.j-num{font:800 54px var(--font-mono);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(18,196,139,.5);display:block;transition:.3s var(--ease)}
-.j-list li:hover .j-num{color:var(--green-mid);-webkit-text-stroke:1px transparent;transform:translateX(2px)}
+.j-list li{padding:20px 0 0;border-top:1px solid rgba(247,249,250,.14)}
+/* Solid ghost-numeral, not a thin hollow outline — a low-opacity fill
+   reads as a confident background mark; a 1px stroke at this size just
+   looks thin and unfinished, especially in mono at low contrast. */
+.j-num{font:800 46px var(--font-mono);line-height:1;color:rgba(247,249,250,.18);display:block;margin-bottom:2px;transition:color .3s var(--ease),transform .3s var(--ease)}
+.j-list li:hover .j-num{color:var(--green-mid);transform:translateX(2px)}
 .j-list h3{font-size:15px;margin:13px 0 6px;color:#fff}
 .j-list p{font-size:13px;color:rgba(247,249,250,.55);line-height:1.55}
 
