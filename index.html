@@ -327,17 +327,17 @@ a.chip:hover{background:var(--tint);color:var(--brand)}
 /* ---------- DESTINATION TILES ---------- */
 .dest-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .grid-d2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.dest{position:relative;border-radius:var(--r);overflow:hidden;min-height:208px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#fff;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.dest{position:relative;border-radius:var(--r);overflow:hidden;min-height:208px;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .dest:hover{transform:translateY(var(--lift));box-shadow:var(--e3)}
 .dest .duo{position:absolute;inset:0;border-radius:0}
-.dest .duo img{transition:transform .6s var(--ease);filter:saturate(.82) contrast(1.06) brightness(.92)}
+.dest .duo img{transition:transform .6s var(--ease);filter:saturate(.86) contrast(1.05) brightness(.96)}
 .dest:hover .duo img{transform:scale(1.06)}
-.dest::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(6,20,14,.32) 0%,rgba(6,20,14,0) 45%);mix-blend-mode:multiply}
-.dest::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(2,8,5,.94) 0%,rgba(2,8,5,.68) 24%,rgba(2,8,5,.18) 52%,rgba(2,8,5,.05) 68%,rgba(2,8,5,.22) 100%)}
+.dest::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(2,8,5,.5) 0%,rgba(2,8,5,.05) 38%,rgba(2,8,5,0) 55%,rgba(2,8,5,.14) 100%)}
 .dest>*{position:relative;z-index:2}
-.dest h3{color:#fff;font-size:22px;letter-spacing:-.015em;font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.55)}
-.dest small{font:600 11.5px var(--fb);color:rgba(255,255,255,.92);text-transform:uppercase;letter-spacing:.06em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.dest .go{position:absolute;top:16px;right:16px;z-index:2;width:32px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(4,18,12,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;transition:.2s var(--ease)}
+.dest-info{display:inline-flex;flex-direction:column;gap:5px;align-self:flex-start;max-width:100%;background:rgba(4,16,11,.5);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 24px rgba(0,0,0,.22);border-radius:14px;padding:12px 16px}
+.dest h3{color:#fff;font-size:21px;letter-spacing:-.015em;font-weight:700;line-height:1.15}
+.dest small{font:600 10.5px var(--fb);color:rgba(255,255,255,.82);text-transform:uppercase;letter-spacing:.07em}
+.dest .go{position:absolute;top:16px;right:16px;z-index:2;width:32px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(4,18,12,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;transition:.2s var(--ease)}
 .dest .go .ic{width:14px;height:14px;color:#fff}
 .dest:hover .go{background:#fff;border-color:#fff;transform:rotate(45deg)}
 .dest:hover .go .ic{color:var(--ink)}
@@ -345,6 +345,7 @@ a.chip:hover{background:var(--tint);color:var(--brand)}
 .dest.wide{grid-column:span 4}
 .dest.md{grid-column:span 2}
 .dest.slim{grid-column:span 6;min-height:110px;flex-direction:row;align-items:center;justify-content:space-between;gap:20px}
+.dest.slim .dest-info{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none;padding:0}
 
 .feat-index{display:grid;grid-template-columns:1fr 1fr;column-gap:60px}
 .feat-index li{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:24px 0;border-top:1px solid var(--line2)}
@@ -1771,7 +1772,7 @@ function mountDir(host,opts){
 function pageHome(){
   var tiles=COUNTRIES.map(function(c,i){
     var cls=c.id==='china'?'cn':(c.id==='italy'||c.id==='france')?'wide':'md';
-    return '<a class="dest '+cls+' rv" href="#/'+c.route+'"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></a>';
+    return '<a class="dest '+cls+' rv" href="#/'+c.route+'"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><span class="dest-info"><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></span></a>';
   }).join('');
   var why=[
     ['Counselor-led, from day one','You meet a counselor in Mansehra, Abbottabad or online before you meet a form. Advice is based on your marks and budget, discussed in person.'],
@@ -1789,7 +1790,7 @@ function pageHome(){
   '<section class="sec"><div class="wrap">'+
     shead('Study Destinations'
 ,'Six countries, <em>each with</em> a dedicated guide.','Every destination below has a dedicated country guide — universities, fees, scholarships, admission steps and FAQs.')+
-    '<div class="dest-grid">'+tiles+'<a class="dest slim rv" href="#/destinations/europe"><span class="duo"><img src="assets/dest-europe.jpg" alt="Other European study destinations" width="1280" height="220" loading="lazy"></span><div><small>Also supported via our counseling desk</small><h3>Other European destinations</h3></div><span class="go">'+I('arrow-right')+'</span></a></div>'+
+    '<div class="dest-grid">'+tiles+'<a class="dest slim rv" href="#/destinations/europe"><span class="duo"><img src="assets/dest-europe.jpg" alt="Other European study destinations" width="1280" height="220" loading="lazy"></span><span class="dest-info"><small>Also supported via our counseling desk</small><h3>Other European destinations</h3></span><span class="go">'+I('arrow-right')+'</span></a></div>'+
   '</div></section>'+
   '<section class="sec tint"><div class="wrap">'+
     shead('Why Bluezone','What sets our <em>process apart.</em>')+
@@ -1865,7 +1866,7 @@ function pageDestinations(){
   '<h1>Choose a country like it <em>matters</em> — because it does.</h1>'+
   '<p class="lead">Each destination has a dedicated guide: universities, programs, indicative fees, scholarships, eligibility, the admission process, visa orientation and student life.</p></div></section>'+
   '<section class="sec"><div class="wrap">'+
-    '<div class="grid-d2">'+COUNTRIES.map(function(c){return '<a class="dest rv" href="#/'+c.route+'"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></a>';}).join('')+
+    '<div class="grid-d2">'+COUNTRIES.map(function(c){return '<a class="dest rv" href="#/'+c.route+'"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><span class="dest-info"><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></span></a>';}).join('')+
     '<a class="dest rv" href="#/destinations/europe"><span class="duo">'+IMG('bz-europe','Europe',640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>Supported via counseling</small><h3>Other European destinations</h3></a></div>'+
   '</div></section>'+
   ctab('Undecided between two countries?','We run side-by-side comparisons on total cost, program fit and post-study reality — with your actual marks on the table.',{pt:'Get a Free Profile Assessment'});
