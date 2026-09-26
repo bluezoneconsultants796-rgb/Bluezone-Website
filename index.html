@@ -2234,21 +2234,29 @@ function pageServices(focus){
 }
 var STORY_COUNTRIES=['China','Italy','Lithuania','United Kingdom','France','Cyprus'];
 var STORIES=[
-  {country:'China',flag:'🇨🇳',uni:'Guangxi Medical University (via Guangxi Future Link)',program:'MBBS',scholarship:'Fully-Funded (CSC)',seed:'bz-story-cn1'},
-  {country:'China',flag:'🇨🇳',uni:'Guangxi University (via Guangxi Future Link)',program:"Bachelor's — Engineering",scholarship:'Fully-Funded (Provincial)',seed:'bz-story-cn2'},
-  {country:'China',flag:'🇨🇳',uni:'Nanning Normal University (via Guangxi Future Link)',program:"Master's — Business",scholarship:'Fully-Funded (University)',seed:'bz-story-cn3'},
-  {country:'China',flag:'🇨🇳',uni:'Guilin Medical University (via Guangxi Future Link)',program:'MBBS',scholarship:'Partial Scholarship',seed:'bz-story-cn4'},
+  {country:'China',flag:'🇨🇳',real:true,name:'Hamza Basharat',photo:'story-hamza.jpg',uni:'Chengdu University',program:"Master's — Law",scholarship:'Fully-Funded Scholarship',quote:'Bluezone handled every step of my Chengdu University application, from document checklists to the scholarship interview, so I could focus on preparing rather than paperwork.'},
+  {country:'China',flag:'🇨🇳',real:true,name:'Rizwan Ali',photo:'story-rizwan.jpg',uni:'Chengdu University',program:"Master's — Law",scholarship:'Fully-Funded Scholarship',quote:'From my first meeting at the office to my visa stamp, the Bluezone team kept my Chengdu University file moving and answered every question along the way.'},
+  {country:'China',flag:'🇨🇳',real:true,name:'Khizer Farhad',photo:'story-khizer.jpg',uni:'To be confirmed',program:"Master's — Economics",scholarship:'Tuition &amp; Hostel Fee Waiver',quote:'Knowing my tuition and hostel fees were both covered took the financial pressure off, and Bluezone made sure my application met every requirement on time.'},
+  {country:'China',flag:'🇨🇳',real:true,name:'Sawera Hameed',avatar:'SH',uni:'To be confirmed',program:'Mechanical Engineering',scholarship:'Fully-Funded (CSC)',quote:'As one of the few women applying for a CSC scholarship in mechanical engineering, I appreciated how clearly the Bluezone team explained each stage of the process.'},
   {country:'Italy',flag:'🇮🇹',uni:'To be confirmed',program:"Bachelor's",scholarship:'DSU Regional Grant',seed:'bz-story-it1'},
   {country:'Lithuania',flag:'🇱🇹',uni:'To be confirmed',program:"Bachelor's",scholarship:'University Waiver',seed:'bz-story-lt1'},
   {country:'United Kingdom',flag:'🇬🇧',uni:'To be confirmed',program:"Master's",scholarship:'Self-Funded',seed:'bz-story-uk1'},
   {country:'Cyprus',flag:'🇨🇾',uni:'To be confirmed',program:"Bachelor's",scholarship:'University Waiver',seed:'bz-story-cy1'}
 ];
 function storyCard(s,i){
-  return '<div class="story rv" data-country="'+s.country+'"><span class="tag sample">SAMPLE — to be replaced with a real, consented story</span>'+
-  '<span class="duo story-ph">'+IMG(s.seed,'Portrait placeholder for a Bluezone student success story',320,320)+'</span>'+
-  '<div class="story-b"><span class="eyebrow">'+s.flag+' '+s.country+'</span><h3>Student Name — to be provided</h3>'+
+  var tag=s.real?'':'<span class="tag sample">SAMPLE — to be replaced with a real, consented story</span>';
+  var media=s.avatar?
+    '<span class="duo story-ph story-avatar"><span class="init">'+esc(s.avatar)+'</span></span>':
+    (s.photo?
+      '<span class="duo story-ph"><img src="assets/'+s.photo+'" alt="Photo of '+esc(s.name||'Bluezone student')+'" width="640" height="640" loading="lazy" decoding="async"></span>':
+      '<span class="duo story-ph">'+IMG(s.seed,'Portrait placeholder for a Bluezone student success story',320,320)+'</span>');
+  var name=s.name?esc(s.name):'Student Name — to be provided';
+  var quote=s.quote?esc(s.quote):'Quote from the student, in their own words, once approved for publication.';
+  return '<div class="story rv" data-country="'+s.country+'">'+tag+
+  media+
+  '<div class="story-b"><span class="eyebrow">'+s.flag+' '+s.country+'</span><h3>'+name+'</h3>'+
   '<div class="qfacts"><div><span>University</span><b>'+s.uni+'</b></div><div><span>Program</span><b>'+s.program+'</b></div><div><span>Scholarship</span><b>'+s.scholarship+'</b></div></div>'+
-  '<p>\u201cQuote from the student, in their own words, once approved for publication.\u201d</p></div></div>';
+  '<p>\u201c'+quote+'\u201d</p></div></div>';
 }
 function pageTestimonials(){
   $('#page').innerHTML=crumb([{t:'Success Stories'}])+
