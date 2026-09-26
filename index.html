@@ -256,6 +256,7 @@ a.chip:hover{background:var(--tint);color:var(--brand)}
 .sec.dark{background:linear-gradient(175deg,var(--ink) 0%,var(--ink-deep) 100%);color:#F7F9FA;position:relative}
 .sec.dark::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.55),transparent)}
 .sec.dark h2,.sec.dark h3{color:#fff}
+.sec.dark .eyebrow{color:var(--gold)}
 .sec.dark p{color:rgba(247,249,250,.66)}
 .sec.dark .em{color:var(--gold)}
 
@@ -373,20 +374,24 @@ a.chip:hover{background:var(--tint);color:var(--brand)}
 .dest-grid>.dest:nth-child(6){transition-delay:.37s}
 .dest-grid>.dest:nth-child(7){transition-delay:.44s}
 
-.feat-index{display:grid;grid-template-columns:1fr 1fr;column-gap:60px}
-.feat-index li{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:24px 0;border-top:1px solid var(--line2)}
-.feat-index .num{font:700 22px var(--font-mono);color:var(--brand-mid)}
+.feat-index{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.feat-index li{display:flex;gap:18px;padding:28px;border-radius:var(--r);background:#fff;border:1px solid var(--line);transition:box-shadow .25s var(--ease),transform .25s var(--ease),border-color .25s var(--ease)}
+.feat-index li:hover{box-shadow:var(--e2);transform:translateY(var(--lift));border-color:var(--line2)}
+.feat-index .num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--tint);color:var(--brand);display:grid;place-items:center;font:700 15.5px var(--fd)}
 .feat-index h3{font-size:17px;margin-bottom:6px}
 .feat-index p{font-size:14.5px;line-height:1.6}
 
 /* ---------- JOURNEY / PROCESS ---------- */
 .journey{padding:88px 0}
-.j-list{display:grid;grid-template-columns:repeat(5,1fr);gap:0 28px}
-.j-list li{padding:20px 0 0;border-top:1px solid rgba(255,255,255,.14)}
-.j-num{font:700 40px var(--font-mono);line-height:1;color:rgba(255,255,255,.22);display:block;margin-bottom:2px;transition:color .3s var(--ease),transform .3s var(--ease)}
-.j-list li:hover .j-num{color:var(--gold);transform:translateX(2px)}
-.j-list h3{font-size:15px;margin:12px 0 6px;color:#fff}
+.j-list{display:grid;grid-template-columns:repeat(5,1fr);gap:36px 28px;margin-top:8px}
+.j-list li{position:relative;list-style:none}
+.j-num{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--ink-deep);border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);font:700 13.5px var(--fd);margin-bottom:16px;transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
+.j-list li:hover .j-num{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.16)}
+.j-list li:not(:nth-child(5n+1))::before{content:"";position:absolute;top:19px;left:-28px;width:28px;height:1.5px;background:rgba(255,255,255,.22)}
+.j-list h3{font-size:15px;margin:0 0 6px;color:#fff}
 .j-list p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55}
+@media(max-width:900px){.j-list li::before{display:none}}
+.journey .wrap>div:last-child{display:flex;gap:14px;flex-wrap:wrap;margin-top:44px}
 
 /* ---------- DIRECTORY / FILTER DRAWER ---------- */
 .dir-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:36px;align-items:start}
