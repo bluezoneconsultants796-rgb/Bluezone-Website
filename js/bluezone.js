@@ -1,0 +1,1940 @@
+/* =====================================================================
+   BLUEZONE CONSULTANTS — single-file application. No external JS.
+   Structure: ICONS → CONFIG → HELPERS → DATA → DIRECTORY ENGINE →
+   PAGES → ROUTER → INIT. All figures are editable, indicative data.
+   ===================================================================== */
+
+/* ---------- 1. Inline icon set (zero dependencies) ---------- */
+const ICONS={
+ 'arrow-right':'<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>',
+ 'arrow-up-right':'<path d="M7 17 17 7"/><path d="M8 7h9v9"/>',
+ 'chevron-down':'<path d="M6 9l6 6 6-6"/>',
+ 'chevron-right':'<path d="M9 6l6 6-6 6"/>',
+ 'menu':'<path d="M4 7h16M4 12h16M4 17h16"/>',
+ 'x':'<path d="M6 6l12 12M18 6 6 18"/>',
+ 'search':'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+ 'map-pin':'<path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+ 'phone':'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.1 9.6a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/>',
+ 'mail':'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+ 'calendar':'<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+ 'clock':'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
+ 'user':'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/>',
+ 'users':'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-5.5 6.5-5.5s6.5 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M17.8 14.8c2.3.7 3.7 2.3 3.7 5.2"/>',
+ 'info':'<circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/>',
+ 'check':'<path d="M5 13l4 4L19 7"/>',
+ 'circle-check':'<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5.5"/>',
+ 'circle-alert':'<circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/>',
+ 'alert':'<path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4"/><path d="M12 17.5h.01"/>',
+ 'shield':'<path d="M12 2l8 3.5V11c0 5-3.4 8.8-8 11-4.6-2.2-8-6-8-11V5.5L12 2z"/><path d="M8.5 11.5l2.5 2.5 4.5-5"/>',
+ 'grad':'<path d="M2 9l10-4 10 4-10 4L2 9z"/><path d="M6 11.2V16c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.8"/><path d="M22 9v5"/>',
+ 'globe':'<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.5 4 5.7 4 9s-1.4 6.5-4 9c-2.6-2.5-4-5.7-4-9s1.4-6.5 4-9z"/>',
+ 'wallet':'<path d="M3 7a2 2 0 0 1 2-2h12v3"/><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2H5"/><path d="M16.5 14h.01"/>',
+ 'building':'<path d="M3 21h18"/><rect x="5" y="7" width="9" height="14"/><path d="M14 21V11h6v10"/><path d="M8 11h.01M8 15h.01M8 18h.01"/>',
+ 'stethoscope':'<path d="M5 3v5a5 5 0 0 0 10 0V3"/><path d="M8 3h4"/><path d="M10 13v3a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="9" r="2"/>',
+ 'cog':'<circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>',
+ 'briefcase':'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/>',
+ 'cpu':'<rect x="6" y="6" width="12" height="12" rx="2"/><rect x="10" y="10" width="4" height="4"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>',
+ 'award':'<circle cx="12" cy="9" r="6"/><path d="M8.7 14 7 22l5-3 5 3-1.7-8"/>',
+ 'landmark':'<path d="M3 21h18"/><path d="M5 21V10M9 21v-8M15 21v-8M19 21V10"/><path d="M2 9l10-6 10 6H2z"/>',
+ 'languages':'<path d="M3 5h10M8 3v2c0 4-2 7-5 9"/><path d="M5.5 8c1.3 2.8 3.7 5 7 6"/><path d="M13 21l4-9 4 9"/><path d="M14.5 18h5"/>',
+ 'flask':'<path d="M9.5 3h5"/><path d="M10 3v5l-5.6 10.5A1.8 1.8 0 0 0 6 21h12a1.8 1.8 0 0 0 1.6-2.5L14 8V3"/><path d="M7.5 15h9"/>',
+ 'sun':'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/>',
+ 'flag':'<path d="M5 22V3"/><path d="M5 4c4-2.2 7 2.2 12 0v9c-5 2.2-8-2.2-12 0"/>',
+ 'compass':'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-1.8 5.2-5.2 1.8 1.8-5.2 5.2-1.8z"/>',
+ 'book':'<path d="M12 6.5C10 4.7 7 4 3 4v13.5c4 0 7 .7 9 2.5 2-1.8 5-2.5 9-2.5V4c-4 0-7 .7-9 2.5z"/><path d="M12 6.5v13.5"/>',
+ 'clipboard':'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.5h6V4"/><path d="M9 13.5l2 2 4-4.5"/>',
+ 'quote':'<path d="M10 8H6.5A2.5 2.5 0 0 0 4 10.5V16h5v-5.5H6.5"/><path d="M19 8h-3.5A2.5 2.5 0 0 0 13 10.5V16h5v-5.5h-2.5"/>',
+ 'scale':'<path d="M12 3v18"/><path d="M8 21h8"/><path d="M4 7h16"/><path d="M6 7l-2.5 5.5a3 3 0 0 0 6 0L7 7"/><path d="M18 7l-2.5 5.5a3 3 0 0 0 6 0L19 7"/>',
+ 'utensils':'<path d="M5 2v6a2.5 2.5 0 0 0 5 0V2"/><path d="M7.5 8.5V22"/><path d="M15 2c-1.8 2.5-2.5 5-2.5 8 0 1.6 1 2.5 2.5 2.5V22"/>',
+ 'heart':'<path d="M12 20.5C7.2 16.6 3 13.2 3 9.1A4.4 4.4 0 0 1 7.4 4.7c1.7 0 3.3 1 4.1 2.4h1A4.6 4.6 0 0 1 16.6 4.7 4.4 4.4 0 0 1 21 9.1c0 4.1-4.2 7.5-9 11.4z"/>',
+ 'pill':'<rect x="2.5" y="8.5" width="19" height="7" rx="3.5" transform="rotate(-45 12 12)"/><path d="M8.7 8.7l6.6 6.6"/>',
+ 'smile':'<circle cx="12" cy="12" r="9"/><path d="M8.3 14s1.4 1.8 3.7 1.8 3.7-1.8 3.7-1.8"/><path d="M9.3 9.5h.01M14.7 9.5h.01"/>',
+ 'banknote':'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/>',
+ 'chart':'<path d="M3 21h18"/><path d="M8 21v-8M12 21V5M16 21v-11"/>',
+ 'bed':'<path d="M2 20v-7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7"/><path d="M2 20h20"/><path d="M2 16h20"/><path d="M6 11V7h12v4"/>',
+ 'plane':'<path d="M11 13 3 11l18-7-7 18-2.5-7.5L11 13z"/>',
+ 'luggage':'<rect x="6" y="7" width="12" height="14" rx="2"/><path d="M9 7V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3"/><path d="M9 20v1.5M15 20v1.5"/>',
+ 'lifering':'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l4 4M14.4 14.4l4 4M18.4 5.6l-4 4M9.6 14.4l-4 4"/>',
+ 'file':'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/>',
+ 'filecheck':'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 14.5l2 2 4-4"/>',
+ 'upload':'<path d="M12 15V4"/><path d="M7 9l5-5 5 5"/><path d="M4 20h16"/>',
+ 'facebook':'<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H6.5v3.5H9V21h3.8v-8.5h2.7l.6-3.5h-3.3V6.8c0-.5.4-.8.9-.8H15V3z"/>',
+ 'instagram':'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/>',
+ 'linkedin':'<rect x="2.5" y="2.5" width="19" height="19" rx="3"/><path d="M7 10.5V17"/><path d="M7 7h.01"/><path d="M11 17v-6.5"/><path d="M11 13.3a2.3 2.3 0 0 1 4.6 0V17"/>',
+ 'youtube':'<path d="M21.5 12c0-3-.3-4.4-.3-4.4-.3-1.5-1.2-2.4-2.6-2.6-1.6-.3-3.8-.4-6.6-.4s-5 .1-6.6.4c-1.4.2-2.3 1.1-2.6 2.6 0 0-.3 1.4-.3 4.4s.3 4.4.3 4.4c.3 1.5 1.2 2.4 2.6 2.6 1.6.3 3.8.4 6.6.4s5-.1 6.6-.4c1.4-.2 2.3-1.1 2.6-2.6 0 0 .3-1.4.3-4.4z"/><path d="M10 9.2l5 2.8-5 2.8V9.2z"/>',
+ 'chat':'<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.6 0-3.1-.4-4.4-1.1L3 20l1.1-4.4A8.5 8.5 0 1 1 21 11.5z"/>',
+ 'rotate':'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>',
+ 'sliders':'<path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="8" cy="18" r="2"/>',
+ 'dot':'<circle cx="12" cy="12" r="4"/>'
+};
+const I=(n)=>'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICONS[n]||ICONS.dot)+'</svg>';
+
+/* ---------- 2. CONFIG — everything an admin edits first ---------- */
+const CONFIG={
+  siteName:'Bluezone Consultants Pvt. Ltd.',
+  siteUrl:'https://www.bluezoneconsultants.com',
+  whatsapp:'920000000001',     // DUMMY — international format, digits only, e.g. '923001234567'
+  // Lead delivery. Leave either blank to keep that form in local demo mode.
+  // Get these two URLs from formspree.io — one form per endpoint.
+  endpoints:{
+    contact:'',   // e.g. 'https://formspree.io/f/abcd1234'
+    apply:''      // e.g. 'https://formspree.io/f/wxyz5678'
+  },
+  maxUploadMB:10,  // combined document size warning — match your Formspree plan's limit
+  hours:'Mon – Sat · 10:00 – 18:00 (PKT)',
+  offices:{ // DUMMY VALUES — replace every phone/email before going live (search for DUMMY / 0000 / dummy.example)
+    mansehra:{"phone": "+92 000 0000001", "whatsapp": "920000000001", "email": "mansehra@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=Office%20101%20%26%20102%2C%20Above%20Passport%20Office%2C%20Ari%20Ada%2C%20Mansehra%2C%20Pakistan", "mapq": "Office 101 & 102, Above Passport Office, Ari Ada, Mansehra, Pakistan"},
+    abbottabad:{"phone": "+92 000 0000002", "whatsapp": "920000000002", "email": "abbottabad@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=Near%20Old%20Police%20Chowki%2C%20Supply%2C%20Abbottabad%2C%20Pakistan", "mapq": "Near Old Police Chowki, Supply, Abbottabad, Pakistan"},
+    australia:{"phone": "+61 0 0000 0003", "whatsapp": "61000000003", "email": "australia@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=35%20Hagart%20Way%2C%20Lockridge%20WA%206054%2C%20Australia", "mapq": "35 Hagart Way, Lockridge WA 6054, Australia", "hours": "Mon – Fri · 09:00 – 17:00 (AWST) — DUMMY HOURS"},
+    guangxi:{"phone": "+86 000 0000004", "whatsapp": "860000000004", "email": "guangxi@dummy.example", "map": "https://www.google.com/maps/search/?api=1&query=Guangxi%20Future%20Link%2C%20Guangxi%2C%20China", "mapq": "Guangxi Future Link Office, Guangxi Zhuang Autonomous Region, China", "hours": "Mon – Fri · 09:00 – 18:00 (CST) — DUMMY HOURS", "partner":"Guangxi Future Link"}
+  },
+  social:{"facebook": "https://www.facebook.com/DUMMY_REPLACE_ME", "instagram": "https://www.instagram.com/DUMMY_REPLACE_ME", "linkedin": "https://www.linkedin.com/company/DUMMY_REPLACE_ME", "youtube": "https://www.youtube.com/@DUMMY_REPLACE_ME"},
+  stats:[
+    {label:'Student applications supported (China)',value:'200+'},
+    {label:'Destination countries',value:6},
+    {label:'University options listed',value:null},
+    {label:'Counselor-led offices',value:4}
+  ]
+};
+
+/* ---------- 3. HELPERS ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const slugify=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+function hashSeed(s){s=String(s);var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;}return Math.abs(h)%1500;}
+function photoKeywords(alt){
+  var stop=/^(a|an|the|of|on|in|and|with|for|at|to|our|your)$/i;
+  return String(alt).toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w&&!stop.test(w);}).slice(0,4).join(' ');
+}
+/* ---------- LIVE FREE-STOCK IMAGES (Wikimedia Commons) ----------
+   loremflickr.com (the old source) has been broken since Flickr locked down its
+   API in late 2024 — it now only ever returns one generic default photo, no
+   matter what keyword you ask for. Wikimedia Commons has a free, key-less,
+   CORS-enabled search API, so we use that instead: every <img> starts out
+   showing the on-brand SVG placeholder immediately, then a background fetch
+   swaps in a real, relevant, freely-licensed photo once it's found. If the
+   fetch fails for any reason the placeholder just stays — the page never breaks. */
+var bzImgCache={};
+function bzWikiImageUrl(query,width){
+  var key=query+'|'+width;
+  if(bzImgCache[key])return bzImgCache[key];
+  var endpoint='https://commons.wikimedia.org/w/api.php?origin=*&format=json&action=query'
+    +'&generator=search&gsrnamespace=6&gsrlimit=1&gsrsearch='+encodeURIComponent('filetype:bitmap '+query)
+    +'&prop=imageinfo&iiprop=url&iiurlwidth='+Math.round(width);
+  var p=fetch(endpoint).then(function(r){return r.json();}).then(function(data){
+    var pages=data&&data.query&&data.query.pages;
+    if(!pages)return null;
+    var page=Object.keys(pages).map(function(k){return pages[k];})[0];
+    var info=page&&page.imageinfo&&page.imageinfo[0];
+    return (info&&(info.thumburl||info.url))||null;
+  }).catch(function(){return null;});
+  bzImgCache[key]=p;
+  return p;
+}
+function bzLoadImages(root){
+  (root||document).querySelectorAll('img[data-bz-kw]:not([data-bz-done])').forEach(function(img){
+    img.setAttribute('data-bz-done','1');
+    var kw=img.getAttribute('data-bz-kw');
+    var w=parseInt(img.getAttribute('data-bz-w'),10)||800;
+    bzWikiImageUrl(kw,w).then(function(url){ if(url)img.src=url; });
+  });
+}
+function fallbackImg(w,h){
+  var fs=Math.max(11,Math.round(Math.min(w,h)*0.075));
+  var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'
+    +'<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">'
+    +'<stop offset="0" stop-color="#0A7A55"/><stop offset="1" stop-color="#045A40"/></linearGradient></defs>'
+    +'<rect width="100%" height="100%" fill="url(#g)"/>'
+    +'<circle cx="'+(w/2)+'" cy="'+(h/2-fs*0.95)+'" r="'+(fs*1.25)+'" fill="#ffffff" fill-opacity="0.18"/>'
+    +'<path d="M'+(w/2-fs*0.6)+' '+(h/2-fs*1.05)+'l'+(fs*0.6)+' -'+(fs*0.32)+'l'+(fs*0.6)+' '+(fs*0.32)+'l-'+(fs*0.6)+' '+(fs*0.32)+'z" fill="#ffffff" fill-opacity="0.85"/>'
+    +'<text x="50%" y="'+(h/2+fs*1.5)+'" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="'+fs+'" fill="#ffffff" fill-opacity="0.85" text-anchor="middle" letter-spacing="1">BLUEZONE</text>'
+    +'</svg>';
+  return 'data:image/svg+xml,'+encodeURIComponent(svg);
+}
+const IMG=(seed,alt,w,h,lazy)=>'<img src="'+fallbackImg(w,h)+'" data-bz-kw="'+esc(photoKeywords(alt)||'university campus')+'" data-bz-w="'+w+'" alt="'+esc(alt)+'" width="'+w+'" height="'+h+'"'+(lazy===false?' loading="eager" fetchpriority="high"':' loading="lazy" decoding="async"')+' onerror="this.onerror=null;this.removeAttribute(\'data-bz-kw\');this.src=\''+fallbackImg(w,h)+'\'">';
+const duo=(seed,alt,r)=>'<span class="duo">'+IMG(seed,alt,900,560)+'</span>';
+
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return null;}}
+function toast(msg,ic){
+  const box=document.getElementById('toasts');if(!box)return;
+  const t=document.createElement('div');t.className='toast';
+  t.innerHTML=I(ic||'circle-check')+'<span>'+msg+'</span>';
+  box.appendChild(t);
+  setTimeout(function(){setTimeout(function(){t.remove();},350);},3600);
+}
+function seo(t,d,path,ld){
+  try{
+    document.title=t;
+    document.querySelector('meta[name=description]').content=d;
+    document.querySelector('meta[property="og:title"]').content=t;
+    document.querySelector('meta[property="og:description"]').content=d;
+    document.getElementById('canonical').href=CONFIG.siteUrl+(path?'/'+path:'/');
+    if(ld)document.getElementById('seo-jsonld').textContent=JSON.stringify(ld);
+  }catch(e){}
+}
+const ORG_LD={"@context":"https://schema.org","@type":"EducationalOrganization","name":"Bluezone Consultants Pvt. Ltd.","areaServed":["Pakistan","Australia","China"],"telephone":CONFIG.offices.mansehra.phone,"sameAs":Object.keys(CONFIG.social).map(function(k){return CONFIG.social[k];})};
+const ldGraph=function(){return {"@context":"https://schema.org","@graph":[ORG_LD].concat([].slice.call(arguments))};};
+const crumbLd=items=>({"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":CONFIG.siteUrl+"/"}].concat(items.map(function(it,i){return {"@type":"ListItem","position":i+2,"name":it,"item":CONFIG.siteUrl+"/"};}))});
+const faqLd=faqs=>({"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f[0],"acceptedAnswer":{"@type":"Answer","text":f[1]}}))});
+
+function crumb(items){
+  let h='<nav class="crumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a>';
+  items.forEach(function(i){h+=I('chevron-right')+(i.h?'<a href="'+i.h+'">'+i.t+'</a>':'<span>'+i.t+'</span>');});
+  return h+'</nav>';
+}
+function shead(ey,title,lead){
+  return '<div class="shead rv"><span class="eyebrow">'+ey+'</span><h2>'+title+'</h2>'+(lead?'<p class="lead">'+lead+'</p>':'')+'</div>';
+}
+function ctab(title,sub,o){
+  o=o||{};
+  return '<section class="sec"><div class="wrap"><div class="ctab rv"><div><h2>'+title+'</h2><p>'+sub+'</p><small>Free consultation · No obligation</small></div>'+
+  '<div class="ctas"><a class="btn btn-solid" href="'+(o.p||'apply.html')+'">'+(o.pt||'Apply Now')+' '+I('arrow-right')+'</a><a class="btn btn-ghost" href="'+(o.s||'contact.html')+'">'+(o.st||'Talk to a Counselor')+'</a></div></div></div></section>';
+}
+var accUid=0;
+function accBlock(faqs){
+  return '<div class="acc rv">'+faqs.map(function(f){
+    var id='acc-'+(++accUid);
+    return '<div class="acc-item"><h4><button type="button" class="acc-head" data-acc aria-expanded="false" aria-controls="'+id+'-panel" id="'+id+'-btn"><span>'+f[0]+'</span>'+I('chevron-down')+'</button></h4><div class="acc-body" id="'+id+'-panel" role="region" aria-labelledby="'+id+'-btn" aria-hidden="true"><div><p>'+f[1]+'</p></div></div></div>';
+  }).join('')+'</div>';
+}
+const QF={"home": [["What does the Abbottabad office offer?", "Bluezone Consultants has an office in Abbottabad (Near Old Police Chowki, Supply). It provides university selection, admission processing, scholarship guidance, document preparation, application filing and visa guidance for China, Italy, Lithuania, the UK, France and Cyprus. Walk-ins are welcome Monday to Saturday, 10:00–18:00 Pakistan time; the first consultation is free and carries no obligation."], ["What can I check about Bluezone before choosing a consultancy?", "Bluezone Consultants operates from Mansehra (Office 101 & 102, Above Passport Office, Ari Ada). We publish no invented success rates or partner counts, we state clearly that admission, scholarship and visa decisions rest with the relevant institution or authority, and you can visit the office and ask for our current partner list."], ["How should students choose an MBBS consultancy for China?", "Look for a consultancy that shows its process rather than a ranking claim: how it checks a university's current recognition status, what its fee estimates are based on, and whether it will name its partner universities on request. From its Mansehra and Abbottabad offices, Bluezone provides MBBS-in-China counseling covering program structure and indicative costs, university shortlisting, document preparation, application filing, and recognition checks before you apply."], ["What does the Perth office offer?", "Bluezone Consultants has an Australia Office at 35 Hagart Way, Lockridge WA 6054. It offers the same guidance process as our Pakistan offices — shortlisting, applications, scholarship screening and visa orientation — for our six published destinations. Confirm a Perth appointment time when you book, as our published hours are Pakistan time."], ["Does Bluezone guarantee admission, a scholarship or a visa?", "No. Admission, scholarship and visa decisions are made by the relevant university or authority. Bluezone Consultants prepares accurate, complete applications and tracks them to a decision."]], "about": [["What is Bluezone Consultants?", "Bluezone Consultants Pvt. Ltd. is an international education consultancy that helps students with university admission, scholarships and visa guidance for China, Italy, Lithuania, the United Kingdom, France and Cyprus, from offices in Mansehra, Abbottabad, Perth (WA) and Guangxi (China)."], ["Where are Bluezone’s offices?", "Bluezone Consultants has four offices — Mansehra: Office 101 & 102, Above Passport Office, Ari Ada. Abbottabad: Near Old Police Chowki, Supply. Australia: 35 Hagart Way, Lockridge WA 6054. China: Guangxi Future Link Partner Office, Guangxi Zhuang Autonomous Region. Pakistan offices run Monday to Saturday, 10:00–18:00 Pakistan time."], ["Does Bluezone publish a partner-university count or success rate?", "No. Bluezone Consultants maintains a current partner list with MoU status, fee schedules and quota positions, and shares it on request through the Mansehra and Abbottabad offices."], ["Is the first consultation with Bluezone free?", "Yes. Bluezone Consultants offers a free first consultation at its Mansehra and Abbottabad offices, or online, with no obligation."]], "services": [["What does a study abroad consultant like Bluezone actually do?", "Bluezone Consultants runs ten student services, including university selection, admission processing, scholarship guidance, document preparation, application filing and visa guidance, delivered from Mansehra, Abbottabad and Perth."], ["Can Bluezone help with my student visa?", "Bluezone Consultants gives educational guidance on visa categories, documents and interview preparation. It is not legal advice, and the visa decision always rests with the embassy."], ["How do I book a consultation in Mansehra or Abbottabad?", "Bluezone Consultants takes bookings for its Mansehra and Abbottabad offices through the contact form on this site, or walk in Monday to Saturday, 10:00–18:00 Pakistan time. Booked consultations get a dedicated slot with a counselor who has read your documents first; we reply within one working day."]], "china": [["How should students choose an MBBS consultancy for China?", "Compare how each consultancy checks a university's current recognition status, how it explains its fees, and whether it will name its partner universities. Bluezone offers MBBS-in-China guidance from Mansehra and Abbottabad — shortlisting, eligibility review, document preparation, application filing and recognition checks — and confirms each university's current listing before you apply."], ["How long is MBBS in China and what does it cost?", "Typically six years including a final-year internship. Bluezone Consultants’s fee guide shows MBBS tuition of roughly CNY 34,000–50,000 per year, indicative only; the exact figure is confirmed with the university at application."], ["Is a Chinese MBBS recognized in Pakistan?", "That depends on the university’s current listing and the medical council’s rules when you return. Bluezone Consultants checks status with official registries during university selection, before any application is filed."], ["Which visa do I need to study in China?", "Students admitted to Chinese universities typically apply for an X1 (over 180 days) or X2 visa, with the admission notice and JW202 form where applicable. Bluezone Consultants provides educational visa guidance; embassies make the decision."], ["What is Guangxi Future Link and how many students has it supported?", "Guangxi Future Link is Bluezone Consultants’s partner office in the Guangxi Zhuang Autonomous Region, China. Through this partnership, more than 200 student applications have been supported, with many students studying on funded scholarships (CSC, provincial or university-level, per each year’s official call)."]], "italy": [["How does Bluezone support Italian scholarship applications?", "Bluezone Consultants guides Pakistani students on the Italian government’s MAECI scholarship and regional DSU grants, screening eligibility against each year’s official call from its Mansehra and Abbottabad offices. Benefits and eligibility follow the terms of each official call."], ["Are Italian public universities free?", "No. Public tuition is income-based (ISEE) and indicatively ranges from about €0 to €3,000 per year. Bluezone Consultants estimates roughly where a family would land before you apply."], ["What is Universitaly and do I need it?", "Universitaly is the government portal that sits between a university offer and the visa application for non-EU students where applicable. Bluezone Consultants walks students through pre-enrolment as part of application filing."], ["Where can I get a study-in-Italy consultation in Pakistan?", "Visit Bluezone Consultants at Mansehra (Office 101 & 102, Above Passport Office, Ari Ada) or Abbottabad (Near Old Police Chowki, Supply), Monday to Saturday, 10:00–18:00 Pakistan time, for a free first consultation covering programs taught in English, budget and scholarships."]], "lithuania": [["What support is available for Lithuania applications from Pakistan?", "Bluezone Consultants advises Pakistani students from Mansehra and Abbottabad on English-taught Bachelor’s and Master’s programs in Lithuania. Indicative tuition is €2,900–8,500 per year, and living costs are among the lowest in the EU."], ["Do I need IELTS for Lithuania?", "Not always; some universities accept alternative proof or run their own English assessment. Bluezone Consultants confirms the requirement per program before you book a test."], ["Which scholarships exist for Lithuania?", "State scholarships and university tuition waivers exist under annual calls. Bluezone Consultants checks what is open in your application year through its scholarship guidance service; benefits follow the terms of each call."]], "uk": [["How does Bluezone help with UCAS applications?", "Bluezone Consultants routes each UK application correctly from Mansehra and Abbottabad: UCAS for most undergraduate courses (up to five choices), direct applications for many postgraduate and independent-provider routes."], ["How much does it cost to study in the UK?", "Indicative tuition is £15,000–28,000 per year, per Bluezone Consultants’s destination guide; exact fees only become official with your offer letter."], ["Does Bluezone guarantee a UK visa or the Graduate Route?", "No. Visa decisions rest with UK Visas and Immigration, and Graduate Route rules can change. Bluezone Consultants gives educational visa guidance and prepares complete applications."]], "france": [["How does Bluezone support the Campus France procedure?", "Bluezone Consultants guides students through the Études en France / Campus France procedure, treating it as its own deadline alongside the university application. The procedure is filed in your name; our Mansehra and Abbottabad counselors check every document first."], ["How much do French public universities cost for non-EU students?", "Around €3,000 per year at the regulated rate, indicatively; some exemptions apply. Bluezone Consultants confirms current rates during university selection."], ["Can I apply for the Eiffel scholarship myself?", "No; Eiffel Excellence requires nomination by a French institution. Bluezone Consultants flags this during shortlisting so students do not miss the nomination window."]], "cyprus": [["What support is available for Cyprus applications from Pakistan?", "Bluezone Consultants covers institutions in the Republic of Cyprus — the internationally recognized EU member state — with counseling from Mansehra and Abbottabad on English-taught programs, applications and residence-permit documents."], ["How much does it cost to study in Cyprus?", "Indicative tuition is €3,500–9,500 per year, with medicine at the top of the range. Bluezone Consultants confirms exact fees at offer stage."], ["Does Bluezone advise on institutions outside the Republic of Cyprus?", "No. Degree recognition for professional registration abroad is uncertain for institutions outside the government-controlled area, so Bluezone Consultants lists only Republic of Cyprus institutions."]]};
+const QF_T={"home": "Quick answers about Bluezone", "about": "Quick facts about Bluezone", "services": "Quick answers on our services", "china": "Quick answers: MBBS & study in China", "italy": "Quick answers: study & scholarships in Italy", "lithuania": "Quick answers: study in Lithuania", "uk": "Quick answers: study in the UK", "france": "Quick answers: study in France", "cyprus": "Quick answers: study in Cyprus"};
+function qfAdd(k){var q=QF[k];if(!q)return;$('#page').insertAdjacentHTML('beforeend','<section class="sec white qf-sec" id="quick-facts"><div class="wrap">'+shead('Quick Facts',QF_T[k])+'<dl class="qf">'+q.map(function(f){return '<div><dt>'+f[0]+'</dt><dd>'+f[1]+'</dd></div>';}).join('')+'</dl></div></section>');}
+function stepsGrid(items){
+  return '<ol class="steps">'+items.map(function(s,i){return '<li class="rv"><span class="sn">Step '+String(i+1).padStart(2,'0')+'</span><h3>'+s[0]+'</h3><p>'+s[1]+'</p></li>';}).join('')+'</ol>';
+}
+function feeTable(rows,dark){
+  return '<div class="fee-block'+(dark?' fee-dark':'')+' rv"><div class="fee-row fee-head"><span>Item</span><b>Amount</b><span>Notes</span></div>'+
+  rows.map(function(r){return '<div class="fee-row"><b>'+r[0]+'</b><span class="val">'+r[1]+'</span><small>'+(r[2]||'')+'</small></div>';}).join('')+'</div>';
+}
+function notice(text,kind){
+  var ic=kind==='gold'?'calendar':(kind==='warn'?'alert':'shield');
+  return '<div class="notice'+(kind==='gold'?' gold':'')+'">'+I(ic)+'<span>'+text+'</span></div>';
+}
+const DUE='<p class="snote">'+I('info')+'Tuition and living costs change every intake and are shown as indicative estimates. Last updated: pending verification — we confirm current figures with the university before you commit.</p>';
+
+/* reveal (fails visible) */
+let IO=null;
+function countUp(el){
+  var raw=el.textContent.trim(),m=raw.match(/^(\d+)(\D*)$/);
+  if(!m||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var end=parseInt(m[1],10),suffix=m[2]||'',start=0,dur=900,t0=null;
+  function step(ts){
+    if(!t0)t0=ts;
+    var p=Math.min(1,(ts-t0)/dur),eased=1-Math.pow(1-p,3);
+    el.textContent=Math.round(end*eased)+suffix;
+    if(p<1)requestAnimationFrame(step);else el.textContent=end+suffix;
+  }
+  requestAnimationFrame(step);
+}
+function wireReveal(){
+  if(IO===null){
+    try{IO=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');IO.unobserve(x.target);if(x.target.classList.contains('stats')){x.target.querySelectorAll('.v').forEach(countUp);}}});},{threshold:.06});
+      document.documentElement.classList.add('rv');}
+    catch(e){IO=false;}
+  }
+  /* Stagger reveals within a grid (~70ms per item) instead of firing all
+     at once: each .rv gets a transition-delay based on its index among
+     .rv siblings sharing the same parent. Singletons get 0ms, unaffected. */
+  document.querySelectorAll('.rv:not(.on)').forEach(function(el){
+    if(!el.dataset.rvStag){
+      var sibs=el.parentElement?Array.prototype.filter.call(el.parentElement.children,function(c){return c.classList.contains('rv');}):[];
+      var idx=sibs.indexOf(el);
+      if(idx>0)el.style.transitionDelay=(Math.min(idx,8)*70)+'ms';
+      el.dataset.rvStag='1';
+    }
+  });
+  if(IO){document.querySelectorAll('.rv:not(.on)').forEach(function(el){IO.observe(el);});}
+  else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('on');});}
+}
+
+/* ---------- 4. DATA ---------- */
+const ELIG={
+  china:['FSc (Pre-Medical) or equivalent for medical programs','Minimum aggregate typically 60%+ (varies by university)','MDCAT / national admission test — per current PMDC rules','Physically fit; medical examination form required'],
+  italy:['12 years of schooling for Bachelor entry; recognized Bachelor for Master entry','Qualification recognition / declaration procedures where applicable','English proficiency (e.g. IELTS / B2) for English-taught programs, per university','Italian language certificate for Italian-taught programs'],
+  lithuania:['12 years of schooling for Bachelor; relevant Bachelor for Master','English proficiency per program (IELTS / TOEFL or internal test where accepted)','Program-specific prerequisites (e.g. science subjects for health programs)'],
+  uk:['Recognized secondary qualifications for undergraduate entry (A-Levels or equivalent)','Approved English test (e.g. IELTS) per institution requirement','Relevant Bachelor for postgraduate entry','Foundation / International Year routes available where eligible'],
+  france:['Recognized secondary certificate (Bachelor entry) or Bachelor (Master entry)','Études en France / Campus France procedure where applicable','French or English proficiency per program','Program-specific prerequisites'],
+  cyprus:['Recognized secondary school leaving certificate','English proficiency per institution (many accept internal tests)','Program-specific requirements (e.g. science for health programs)']
+};
+const RECOG={
+  china:'Recognition and international listings (e.g. WHO / WFME directories, national medical council status) change over time. Bluezone verifies the current status of each university with official registries before you apply.',
+  italy:'Italian public degrees sit within the European Higher Education Area. Verify programme accreditation and professional recognition for your chosen programme and home country.',
+  lithuania:'Lithuanian universities are part of the European Higher Education Area; verify programme accreditation and recognition for your intended career path.',
+  uk:'UK degrees are regulated higher education qualifications. Check the Office for Students register status of any provider and professional recognition for your field.',
+  france:'French higher education qualifications are recognized within the European Higher Education Area; verify programme accreditation details per institution.',
+  cyprus:'Republic of Cyprus universities are part of the European Higher Education Area. Verify institution recognition and, for professional fields, registration requirements in your home country.'
+};
+function U(o){return Object.assign({
+  degrees:['Bachelor'],medium:'English',intake:['Sep'],scholarships:'',
+  accommodation:'On-campus hostel available',eligibility:[],recognition:'',
+  lastUpdated:'Pending verification',usd:[3000,8000],note:''
+},o);}
+const UNIVERSITIES=[
+  U({id:'njmu',name:'Nanjing Medical University',country:'China',city:'Nanjing',region:'Jiangsu',type:'Public',
+    programs:['MBBS','Medicine'],tuition:'CNY 34,000 – 50,000 / yr',usd:[4800,7100],duration:'6 years (incl. internship)',
+    scholarships:'University and provincial scholarships — per annual policy',seed:'bz-njmu',website:'https://english.njmu.edu.cn',
+    note:'Long-standing English-medium MBBS options; verify current intake quotas with our team.'}),
+  U({id:'zzu',name:'Zhengzhou University',country:'China',city:'Zhengzhou',region:'Henan',type:'Public',
+    programs:['MBBS','Engineering','Business'],degrees:['Bachelor','Master'],tuition:'CNY 28,000 – 45,000 / yr',usd:[4000,6400],
+    duration:'4 – 6 years by program',scholarships:'Merit tuition waivers — per annual policy',seed:'bz-zzu',website:'https://www.zzu.edu.cn'}),
+  U({id:'seu',name:'Southeast University',country:'China',city:'Nanjing',region:'Jiangsu',type:'Public',
+    programs:['MBBS','Engineering','Computer Science'],degrees:['Bachelor','Master'],tuition:'CNY 30,000 – 50,000 / yr',usd:[4300,7100],
+    duration:'4 – 6 years by program',scholarships:'Scholarship options available per university policy',seed:'bz-seu',website:'https://www.seu.edu.cn'}),
+  U({id:'sdu',name:'Shandong University',country:'China',city:'Jinan',region:'Shandong',type:'Public',
+    programs:['MBBS','Engineering','Business'],degrees:['Bachelor','Master','PhD'],tuition:'CNY 32,000 – 52,000 / yr',usd:[4600,7400],
+    duration:'4 – 6 years by program',scholarships:'CSC and university scholarships — per annual call',seed:'bz-sdu',website:'https://www.sdu.edu.cn'}),
+  U({id:'ujs',name:'Jiangsu University',country:'China',city:'Zhenjiang',region:'Jiangsu',type:'Public',
+    programs:['MBBS','Business','Computer Science'],degrees:['Bachelor','Master'],tuition:'CNY 24,000 – 40,000 / yr',usd:[3400,5700],
+    duration:'4 – 6 years by program',scholarships:'First-year scholarships for many international students — per policy',seed:'bz-ujs',website:'https://www.ujs.edu.cn'}),
+  U({id:'unibo',name:'University of Bologna',country:'Italy',city:'Bologna',region:'Emilia-Romagna',type:'Public',
+    programs:['Business','Engineering','Law','Social Sciences'],degrees:['Bachelor','Master'],tuition:'€0 – 3,000 / yr (income-based)',usd:[0,3300],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants + university fee waivers',seed:'bz-bologna',website:'https://www.unibo.it'}),
+  U({id:'polimi',name:'Politecnico di Milano',country:'Italy',city:'Milan',region:'Lombardy',type:'Public',
+    programs:['Engineering','Computer Science','Architecture'],degrees:['Bachelor','Master'],tuition:'€0 – 4,000 / yr (income-based)',usd:[0,4400],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'DSU grants + merit awards per call',seed:'bz-polimi',website:'https://www.polimi.it'}),
+  U({id:'sapienza',name:'Sapienza University of Rome',country:'Italy',city:'Rome',region:'Lazio',type:'Public',
+    programs:['Medicine','Engineering','Social Sciences','Law'],degrees:['Bachelor','Master'],tuition:'€0 – 3,000 / yr (income-based)',usd:[0,3300],
+    duration:'3 – 6 yrs by program',scholarships:'DSU grants + university awards',seed:'bz-sapienza',website:'https://www.uniroma1.it'}),
+  U({id:'unipd',name:'University of Padua',country:'Italy',city:'Padua',region:'Veneto',type:'Public',
+    programs:['Business','Engineering','Data Science','Social Sciences'],degrees:['Bachelor','Master'],tuition:'€0 – 3,000 / yr (income-based)',usd:[0,3300],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional grants + fee waivers',seed:'bz-padua',website:'https://www.unipd.it'}),
+  U({id:'bocconi',name:'Bocconi University',country:'Italy',city:'Milan',region:'Lombardy',type:'Private',
+    programs:['Business','Accounting & Finance','Management'],degrees:['Bachelor','Master'],tuition:'€15,000+ / yr',usd:[16000,22000],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Merit and need-based awards per call',seed:'bz-bocconi',website:'https://www.unibocconi.it'}),
+  U({id:'vu',name:'Vilnius University',country:'Lithuania',city:'Vilnius',region:'Vilnius',type:'Public',
+    programs:['Medicine','Business','Computer Science','Social Sciences'],degrees:['Bachelor','Master'],tuition:'€3,000 – 5,500 / yr',usd:[3300,6000],
+    duration:'3 – 6 yrs by program',scholarships:'State scholarships and tuition waivers per call',seed:'bz-vu',website:'https://www.vu.lt'}),
+  U({id:'ktu',name:'Kaunas University of Technology',country:'Lithuania',city:'Kaunas',region:'Kaunas',type:'Public',
+    programs:['Engineering','Computer Science','Data Science'],degrees:['Bachelor','Master'],tuition:'€2,900 – 5,000 / yr',usd:[3200,5500],
+    duration:'3.5 – 4 yrs (B) / 1.5 – 2 yrs (M)',scholarships:'University awards per call',seed:'bz-ktu',website:'https://ktu.lt'}),
+  U({id:'viltech',name:'VILNIUS TECH',country:'Lithuania',city:'Vilnius',region:'Vilnius',type:'Public',
+    programs:['Engineering','Architecture','Computer Science'],degrees:['Bachelor','Master'],tuition:'€2,900 – 4,800 / yr',usd:[3200,5300],
+    duration:'3.5 – 4 yrs (B)',scholarships:'Limited awards per call',seed:'bz-viltech',website:'https://vilniustech.lt'}),
+  U({id:'ism',name:'ISM University of Management & Economics',country:'Lithuania',city:'Vilnius',region:'Vilnius',type:'Private',
+    programs:['Business','Management','Accounting & Finance'],degrees:['Bachelor','Master'],tuition:'€5,000 – 8,500 / yr',usd:[5500,9300],
+    duration:'3 – 4 yrs (B)',scholarships:'Merit scholarships per policy',seed:'bz-ism',website:'https://www.ism.lt'}),
+  U({id:'leeds',name:'University of Leeds',country:'United Kingdom',city:'Leeds',region:'England',type:'Public',
+    programs:['Business','Engineering','Law','Computer Science'],degrees:['Bachelor','Master'],tuition:'£15,000 – 26,000 / yr',usd:[19000,33000],
+    duration:'3 yrs (B) / 1 yr (M)',intake:['Sep','Jan'],scholarships:'University awards per cycle',seed:'bz-leeds',website:'https://www.leeds.ac.uk'}),
+  U({id:'glasgow',name:'University of Glasgow',country:'United Kingdom',city:'Glasgow',region:'Scotland',type:'Public',
+    programs:['Medicine','Engineering','Business','Data Science'],degrees:['Bachelor','Master'],tuition:'£16,000 – 28,000 / yr',usd:[20000,36000],
+    duration:'3 – 5 yrs (B) / 1 yr (M)',scholarships:'International leadership awards per cycle',seed:'bz-glasgow',website:'https://www.gla.ac.uk'}),
+  U({id:'regents',name:"Regent's University London",country:'United Kingdom',city:'London',region:'England',type:'Independent',
+    programs:['Business','Management','Hospitality','Law'],degrees:['Bachelor','Master'],tuition:'£19,000+ / yr',usd:[24000,30000],
+    duration:'3 yrs (B) / 1 yr (M)',intake:['Sep','Jan'],scholarships:'Institution awards per cycle',seed:'bz-regents',website:'https://www.regents.ac.uk',
+    note:'Independent higher education provider in central London — distinct from chartered universities; check the Office for Students register.'}),
+  U({id:'sorbonne',name:'Sorbonne University',country:'France',city:'Paris',region:'Île-de-France',type:'Public',
+    programs:['Medicine','Engineering','Social Sciences'],degrees:['Bachelor','Master','PhD'],tuition:'≈ €3,000 / yr (public rate, indicative)',usd:[3000,3800],
+    duration:'3 yrs (L) / 2 yrs (M)',scholarships:'Eiffel and embassy programs via nomination',seed:'bz-sorbonne',website:'https://www.sorbonne-universite.fr'}),
+  U({id:'saclay',name:'Université Paris-Saclay',country:'France',city:'Paris',region:'Île-de-France',type:'Public',
+    programs:['Engineering','Computer Science','Data Science'],degrees:['Bachelor','Master','PhD'],tuition:'≈ €3,000 / yr (public rate, indicative)',usd:[3000,3800],
+    duration:'3 yrs (L) / 2 yrs (M)',scholarships:'IdEx and national programs per call',seed:'bz-saclay',website:'https://www.universite-paris-saclay.fr'}),
+  U({id:'escp',name:'ESCP Business School',country:'France',city:'Paris',region:'Île-de-France',type:'Private',
+    programs:['Business','Management','Accounting & Finance'],degrees:['Bachelor','Master'],tuition:'€18,000+ / yr',usd:[19500,25000],
+    duration:'3 yrs (B) / 1 – 2 yrs (M)',scholarships:'Merit and need awards per call',seed:'bz-escp',website:'https://www.escp.eu',
+    note:'Grande école — private institution with multi-country campuses.'}),
+  U({id:'ucy',name:'University of Cyprus',country:'Cyprus',city:'Nicosia',region:'Nicosia District',type:'Public',
+    programs:['Engineering','Computer Science','Business','Social Sciences'],degrees:['Bachelor','Master'],tuition:'€3,500 – 5,000 / yr',usd:[3800,5500],
+    duration:'4 yrs (B) / 1.5 – 2 yrs (M)',scholarships:'Limited awards per call',seed:'bz-ucy',website:'https://www.ucy.ac.cy'}),
+  U({id:'cut',name:'Cyprus University of Technology',country:'Cyprus',city:'Limassol',region:'Limassol District',type:'Public',
+    programs:['Engineering','Computer Science','Nursing'],degrees:['Bachelor','Master'],tuition:'€3,500 – 5,000 / yr',usd:[3800,5500],
+    duration:'4 yrs (B)',scholarships:'Limited awards per call',seed:'bz-cut',website:'https://www.cut.ac.cy'}),
+  U({id:'unic',name:'University of Nicosia',country:'Cyprus',city:'Nicosia',region:'Nicosia District',type:'Private',
+    programs:['Medicine','Business','Computer Science','Hospitality'],degrees:['Bachelor','Master'],tuition:'€6,000 – 9,500 / yr',usd:[6500,10500],
+    duration:'4 – 6 yrs by program',intake:['Sep','Feb'],scholarships:'Merit tuition reductions per policy',seed:'bz-unic',website:'https://www.unic.ac.cy'}),
+  U({id:'unimi',name:'University of Milan (Statale)',country:'Italy',city:'Milan',region:'Lombardy',type:'Public',
+    programs:['Medicine','Social Sciences','Law','Data Science'],degrees:['Bachelor','Master'],tuition:'€0 – 3,000 / yr (income-based)',usd:[0,3300],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants + university awards',seed:'bz-unimi',website:'https://www.unimi.it'}),
+  U({id:'unito',name:'University of Turin',country:'Italy',city:'Turin',region:'Piedmont',type:'Public',
+    programs:['Business','Social Sciences','Law','Computer Science'],degrees:['Bachelor','Master'],tuition:'€0 – 2,800 / yr (income-based)',usd:[0,3100],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants + fee waivers',seed:'bz-unito',website:'https://www.unito.it'}),
+  U({id:'unifi',name:'University of Florence',country:'Italy',city:'Florence',region:'Tuscany',type:'Public',
+    programs:['Architecture','Social Sciences','Engineering','Law'],degrees:['Bachelor','Master'],tuition:'€0 – 2,800 / yr (income-based)',usd:[0,3100],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants + fee waivers',seed:'bz-unifi',website:'https://www.unifi.it'}),
+  U({id:'unipi',name:'University of Pisa',country:'Italy',city:'Pisa',region:'Tuscany',type:'Public',
+    programs:['Engineering','Computer Science','Medicine'],degrees:['Bachelor','Master'],tuition:'€0 – 2,700 / yr (income-based)',usd:[0,3000],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Regional DSU grants per call',seed:'bz-unipi',website:'https://www.unipi.it'}),
+  U({id:'unina',name:'University of Naples Federico II',country:'Italy',city:'Naples',region:'Campania',type:'Public',
+    programs:['Medicine','Engineering','Business','Architecture'],degrees:['Bachelor','Master'],tuition:'€0 – 2,500 / yr (income-based)',usd:[0,2800],
+    duration:'3 – 6 yrs by program',scholarships:'Regional DSU grants + university awards',seed:'bz-unina',website:'https://www.unina.it'}),
+  U({id:'polito',name:'Politecnico di Torino',country:'Italy',city:'Turin',region:'Piedmont',type:'Public',
+    programs:['Engineering','Architecture','Computer Science'],degrees:['Bachelor','Master'],tuition:'€0 – 3,700 / yr (income-based)',usd:[0,4100],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'DSU grants + merit awards per call',seed:'bz-polito',website:'https://www.polito.it'}),
+  U({id:'unitn',name:'University of Trento',country:'Italy',city:'Trento',region:'Trentino-Alto Adige',type:'Public',
+    programs:['Engineering','Social Sciences','Data Science'],degrees:['Bachelor','Master'],tuition:'€0 – 2,500 / yr (income-based)',usd:[0,2800],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Provincial grants + university awards',seed:'bz-unitn',website:'https://www.unitn.it'}),
+  U({id:'luiss',name:'LUISS Guido Carli',country:'Italy',city:'Rome',region:'Lazio',type:'Private',
+    programs:['Business','Law','Accounting & Finance'],degrees:['Bachelor','Master'],tuition:'€12,000+ / yr',usd:[13000,18000],
+    duration:'3 yrs (B) / 2 yrs (M)',scholarships:'Merit and need-based awards per call',seed:'bz-luiss',website:'https://www.luiss.edu'}),
+  U({id:'gmu',name:'Guangxi Medical University',country:'China',city:'Nanning',region:'Guangxi',type:'Public',
+    programs:['MBBS','Medicine'],degrees:['Bachelor'],tuition:'CNY 26,000 – 42,000 / yr',usd:[3700,6000],
+    duration:'6 years (incl. internship)',scholarships:'CSC and provincial scholarships via Guangxi Future Link — per annual policy',seed:'bz-gmu',website:'https://en.gxmu.edu.cn',
+    note:'Placements arranged through our partner office, Guangxi Future Link.'}),
+  U({id:'gxu',name:'Guangxi University',country:'China',city:'Nanning',region:'Guangxi',type:'Public',
+    programs:['Engineering','Business','Computer Science'],degrees:['Bachelor','Master'],tuition:'CNY 20,000 – 36,000 / yr',usd:[2900,5100],
+    duration:'4 – 6 yrs by program',scholarships:'CSC and university scholarships via Guangxi Future Link — per annual policy',seed:'bz-gxu',website:'https://en.gxu.edu.cn',
+    note:'Placements arranged through our partner office, Guangxi Future Link.'}),
+  U({id:'nnnu',name:'Nanning Normal University',country:'China',city:'Nanning',region:'Guangxi',type:'Public',
+    programs:['Business','Social Sciences','Computer Science'],degrees:['Bachelor','Master'],tuition:'CNY 18,000 – 30,000 / yr',usd:[2600,4300],
+    duration:'4 yrs (B) / 2 – 3 yrs (M)',scholarships:'University scholarships via Guangxi Future Link — per annual policy',seed:'bz-nnnu',website:'https://en.nnnu.edu.cn',
+    note:'Placements arranged through our partner office, Guangxi Future Link.'}),
+  U({id:'tjmu',name:'Tianjin Medical University',country:'China',city:'Tianjin',region:'Tianjin',type:'Public',
+    programs:['MBBS','Dentistry','Pharmacy'],degrees:['Bachelor'],tuition:'CNY 35,000 – 48,000 / yr',usd:[5000,6800],
+    duration:'5 – 6 years by program',scholarships:'CSC scholarships — per annual call',seed:'bz-tjmu',website:'https://www.tmu.edu.cn'}),
+  U({id:'jlu',name:'Jilin University',country:'China',city:'Changchun',region:'Jilin',type:'Public',
+    programs:['MBBS','Engineering','Business'],degrees:['Bachelor','Master'],tuition:'CNY 26,000 – 42,000 / yr',usd:[3700,6000],
+    duration:'4 – 6 yrs by program',scholarships:'CSC and university scholarships — per annual policy',seed:'bz-jlu',website:'https://www.jlu.edu.cn'}),
+  U({id:'dmu',name:'Dalian Medical University',country:'China',city:'Dalian',region:'Liaoning',type:'Public',
+    programs:['MBBS','Dentistry'],degrees:['Bachelor'],tuition:'CNY 32,000 – 45,000 / yr',usd:[4600,6400],
+    duration:'5 – 6 years by program',scholarships:'Provincial and university scholarships — per annual policy',seed:'bz-dmu',website:'https://en.dmu.edu.cn'}),
+  U({id:'hrbmu',name:'Harbin Medical University',country:'China',city:'Harbin',region:'Heilongjiang',type:'Public',
+    programs:['MBBS','Medicine'],degrees:['Bachelor'],tuition:'CNY 30,000 – 44,000 / yr',usd:[4300,6300],
+    duration:'6 years (incl. internship)',scholarships:'CSC scholarships — per annual call',seed:'bz-hrbmu',website:'https://en.hrbmu.edu.cn'}),
+  U({id:'whu',name:'Wuhan University',country:'China',city:'Wuhan',region:'Hubei',type:'Public',
+    programs:['Engineering','Business','Computer Science','Law'],degrees:['Bachelor','Master','PhD'],tuition:'CNY 30,000 – 48,000 / yr',usd:[4300,6800],
+    duration:'4 – 6 yrs by program',scholarships:'CSC and university scholarships — per annual policy',seed:'bz-whu',website:'https://en.whu.edu.cn'}),
+  U({id:'vmu',name:'Mykolas Romeris University',country:'Lithuania',city:'Vilnius',region:'Vilnius',type:'Public',
+    programs:['Law','Business','Social Sciences'],degrees:['Bachelor','Master'],tuition:'€2,800 – 4,500 / yr',usd:[3100,5000],
+    duration:'3.5 – 4 yrs (B) / 1.5 – 2 yrs (M)',scholarships:'University awards per call',seed:'bz-mru',website:'https://www.mruni.eu'}),
+  U({id:'vdu',name:'Vytautas Magnus University',country:'Lithuania',city:'Kaunas',region:'Kaunas',type:'Public',
+    programs:['Business','Social Sciences','Computer Science'],degrees:['Bachelor','Master'],tuition:'€2,900 – 5,200 / yr',usd:[3200,5700],
+    duration:'3.5 – 4 yrs (B) / 1.5 – 2 yrs (M)',scholarships:'State and university scholarships per call',seed:'bz-vdu',website:'https://www.vdu.lt'}),
+  U({id:'lsmu',name:'Lithuanian University of Health Sciences',country:'Lithuania',city:'Kaunas',region:'Kaunas',type:'Public',
+    programs:['MBBS','Medicine','Dentistry','Nursing'],degrees:['Bachelor','Master'],tuition:'€10,000 – 14,000 / yr',usd:[11000,15500],
+    duration:'5 – 6 years by program',scholarships:'Limited merit awards per call',seed:'bz-lsmu',website:'https://lsmu.lt'}),
+  U({id:'ku-lt',name:'Klaipeda University',country:'Lithuania',city:'Klaipeda',region:'Klaipeda',type:'Public',
+    programs:['Social Sciences','Business','Engineering'],degrees:['Bachelor','Master'],tuition:'€2,700 – 4,200 / yr',usd:[3000,4600],
+    duration:'3.5 – 4 yrs (B)',scholarships:'University awards per call',seed:'bz-ku-lt',website:'https://www.ku.lt'})
+];
+UNIVERSITIES.forEach(function(u){u.slug=slugify(u.name);u.eligibility=u.eligibility.length?u.eligibility:ELIG[u.country.toLowerCase().replace('united kingdom','uk')]||[];u.recognition=u.recognition||RECOG[u.country.toLowerCase().replace('united kingdom','uk')]||'';});
+
+const SCHOLARSHIPS=[
+  {id:'maeci',name:'MAECI — Italian Government Scholarship',country:'Italy',provider:'Italian Ministry of Foreign Affairs',
+   degrees:['Master','PhD'],funding:'per-call',deadline:'Annual call — see official portal',fullyFunded:false,
+   blurb:"Italy's government scholarship programme for international students, covering selected study levels at Italian institutions.",
+   who:['International students not residing in Italy',"Applicants to Master's, PhD, research programmes, and Italian language & culture courses, as defined in each annual call"],
+   benefits:['Monthly grant where awarded','Tuition exemption where offered by the institution','Health insurance where included — benefits vary according to the official call and selected program'],
+   duration:'Typically 9 months, per call conditions',
+   docs:['Valid passport','Academic transcripts & certificates','Study plan / research proposal','Language certificate where required','References where required'],
+   procedure:['Read the annual call on the official Study in Italy portal','Register and submit the online application before the deadline','Upload all required documents','Track selection results on the portal'],
+   source:'https://studyinitaly.esteri.it',lastUpdated:'Pending verification — check the current call'},
+  {id:'dsu',name:'Regional (DSU) Grants — Italy',country:'Italy',provider:'Regional DSU offices',
+   degrees:['Bachelor','Master','PhD'],funding:'per-call',deadline:'Per region & academic year',fullyFunded:false,
+   blurb:'Income- and merit-based student support offered by Italian regions: grants, meal and accommodation support.',
+   who:["Enrolled students who meet the region's financial (ISEE) and merit conditions",'Both domestic and eligible international students, per regional rules'],
+   benefits:['Cash grant where awarded','Canteen meals at subsidised rates','Dormitory accommodation where available — benefits are set per region and academic year and are not guaranteed'],
+   duration:'One academic year at a time',
+   docs:['ISEE financial indicators','Enrollment proof','Academic merit records per regional criteria'],
+   procedure:['Prepare your ISEE / financial documentation after arrival in Italy',"Apply through your region's DSU portal within the published window",'Ranking published per regional timeline'],
+   source:'https://www.dsu.it',lastUpdated:'Per region & academic year'},
+  {id:'csc',name:'China Scholarship Council (CSC)',country:'China',provider:'China Scholarship Council',
+   degrees:['Bachelor','Master','PhD'],funding:'full',deadline:'Per annual call — verify current cycle',fullyFunded:true,
+   blurb:"China's national scholarship programme for international students across Chinese universities.",
+   who:['International students applying to CSC-participating universities','Applicants meeting the specific programme and university criteria per call'],
+   benefits:['Tuition waiver','University accommodation or subsidy','Monthly living stipend','Comprehensive medical insurance'],
+   duration:'Full study period per award terms',
+   docs:['Passport','Academic records','Study plan','Language proficiency','Recommendation letters'],
+   procedure:['Confirm your university and programme participate in the current call','Prepare documents and apply within the window (via the CSC portal or your university)','University reviews and nominates; CSC announces results'],
+   source:'https://www.csc.edu.cn',lastUpdated:'Pending verification — check the current call'},
+  {id:'unisch',name:'University-Level Scholarships — China',country:'China',provider:'Individual universities',
+   degrees:['Bachelor','Master'],funding:'partial',deadline:'Per university policy',fullyFunded:false,
+   blurb:'Many Chinese universities offer first-year or continuing tuition reductions to international students based on merit.',
+   who:["Admitted international students meeting each university's merit criteria"],
+   benefits:['Tuition reduction or waiver percentages set per university','Renewal conditions typically require academic performance standards'],
+   duration:'Per university policy',
+   docs:['Admission application','Academic transcripts','University-specific forms'],
+   procedure:['Apply for admission through Bluezone','Indicate scholarship interest in your application','University assesses eligibility alongside admission'],
+   source:'',lastUpdated:'Per university & intake'},
+  {id:'chevening',name:'Chevening Scholarships',country:'United Kingdom',provider:'UK Foreign, Commonwealth & Development Office',
+   degrees:['Master'],funding:'full',deadline:'Annual — typically opens in autumn; see official site',fullyFunded:true,
+   blurb:"The UK government's international scholarship for future leaders undertaking one-year master's degrees.",
+   who:['Applicants with an undergraduate degree','Typically around two years of work experience','Applicants to eligible one-year UK master\u2019s programmes — see official criteria'],
+   benefits:['Full tuition fees','Monthly living allowance','Travel and arrival costs'],
+   duration:"One-year master's degree",
+   docs:['Academic transcripts','Two references','University offers (unconditional by the deadline)','English proficiency per requirements'],
+   procedure:['Apply online via the official Chevening portal','Secure and submit university course choices','Interview shortlist and final selection'],
+   source:'https://www.chevening.org',lastUpdated:'Check the current cycle'},
+  {id:'emjm',name:'Erasmus Mundus Joint Masters',country:'Multiple (EU)',provider:'European Commission',
+   degrees:['Master'],funding:'full',deadline:'Per programme consortium',fullyFunded:true,
+   blurb:"Prestigious integrated master's degrees delivered across multiple European universities.",
+   who:['Students holding a relevant first degree',"Applicants to the specific consortium's programme"],
+   benefits:['Tuition coverage','Monthly allowance','Travel and installation costs — per programme and category'],
+   duration:'1 – 2 years across partner universities',
+   docs:['Degree & transcripts','Motivation letter','Recommendations','Language certificate'],
+   procedure:['Choose programmes on the official catalogue','Apply directly to each consortium','Selection per programme; scholarship categories assigned by the consortium'],
+   source:'https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en',lastUpdated:'Per programme'},
+  {id:'eiffel',name:'Eiffel Excellence Scholarship',country:'France',provider:'Campus France (Ministry for Europe & Foreign Affairs)',
+   degrees:['Master','PhD'],funding:'per-call',deadline:'Institutions nominate annually — typically autumn',fullyFunded:false,
+   blurb:"France's excellence scholarship attracting top international students — note: your French institution must nominate you.",
+   who:['International students nominated by their French host institution','Applicants up to the age limits defined per level in the current call'],
+   benefits:['Monthly allowance','International travel','Insurance benefits — tuition arrangements are handled by the institution per official terms'],
+   duration:'Duration of the programme',
+   docs:['Nominated by the institution — students do not apply directly'],
+   procedure:['Apply for admission to a French programme early','Request nomination by your institution','Institution submits nominations to Campus France'],
+   source:'https://www.campusfrance.org/en/eiffel-scholarship-program-of-excellence',lastUpdated:'Per annual call'},
+  {id:'ltsch',name:'Lithuanian State Scholarships',country:'Lithuania',provider:'Lithuanian state (via national programmes)',
+   degrees:['Master','PhD'],funding:'per-call',deadline:'Per annual call',fullyFunded:false,
+   blurb:'State-funded scholarships and tuition waivers for international students at Lithuanian universities.',
+   who:['International students admitted to participating Lithuanian institutions',"Applicants meeting the current call's criteria"],
+   benefits:['Monthly grant or tuition waiver — benefits vary according to the official call and programme'],
+   duration:'Per call terms',
+   docs:['Admission proof','Academic records','Application per call format'],
+   procedure:['Secure admission at a participating university','Apply per the current call via the official channel','Selection per published criteria'],
+   source:'https://studyin.lt',lastUpdated:'Per annual call'}
+];
+SCHOLARSHIPS.forEach(function(s){s.slug=slugify(s.name);});
+const MAECI=SCHOLARSHIPS.find(function(s){return s.id==='maeci';});
+const DSU=SCHOLARSHIPS.find(function(s){return s.id==='dsu';});
+
+function P(o){return Object.assign({degrees:['Bachelor','Master'],countries:['China','Italy','Lithuania','United Kingdom','France','Cyprus'],careers:[],customFaq:null},o);}
+const PROGRAMS=[
+  P({id:'mbbs',name:'MBBS / Medicine',icon:'stethoscope',dur:'5 – 6 years (incl. internship)',countries:['China','Italy','United Kingdom','Cyprus'],
+    blurb:'The core medical degree for future physicians. Duration, medium of instruction and internship structure differ by country.',
+    careers:['Physician (after licensing)','Residency pathways','Public health','Medical research','Hospital administration'],
+    customFaq:['Is an MBBS abroad recognized in Pakistan?','Recognition depends on the university\u2019s current listing and the rules of the national medical council at the time of your return. Bluezone verifies each university\u2019s status with official registries before you apply — never rely on secondhand claims.']}),
+  P({id:'dentistry',name:'Dentistry',icon:'smile',dur:'5 – 6 years',countries:['China','Italy','United Kingdom','Cyprus'],
+    blurb:'Clinical dental programmes combining biomedical science with supervised practical training.',
+    careers:['Dentist (after licensing)','Orthodontics specialization','Oral surgery pathways','Private practice','Community dental health']}),
+  P({id:'pharmacy',name:'Pharmacy',icon:'pill',dur:'4 – 5 years',countries:['China','Italy','United Kingdom','Cyprus'],
+    blurb:'Pharmaceutical science degrees leading to careers across clinical, industrial and regulatory pharmacy.',
+    careers:['Pharmacist (after licensing)','Pharmaceutical industry','Drug regulation','Clinical research','Quality assurance']}),
+  P({id:'nursing',name:'Nursing',icon:'heart',dur:'3 – 4 years',countries:['Italy','United Kingdom','Cyprus','Lithuania'],
+    blurb:'Professional nursing degrees with clinical placements — in strong demand across Europe and beyond.',
+    careers:['Registered nurse','Midwifery specialization','Critical care','Community health','Nursing education']}),
+  P({id:'engineering',name:'Engineering',icon:'cog',dur:'3 – 4 years (B) / 1 – 2 years (M)',
+    blurb:'Mechanical, civil, electrical and allied disciplines, with strong English-taught options in every destination we cover.',
+    careers:['Design engineer','Project management','R&D','Energy & infrastructure','Manufacturing systems']}),
+  P({id:'computer-science',name:'Computer Science',icon:'cpu',dur:'3 – 4 years (B) / 1 – 2 years (M)',
+    blurb:'Foundational computing degrees — algorithms, systems, and software engineering — with the widest English-taught availability.',
+    careers:['Software engineer','Systems architect','DevOps','Cloud engineering','Product engineering']}),
+  P({id:'ai',name:'Artificial Intelligence',icon:'cpu',dur:'3 – 4 years (B) / 1 – 2 years (M)',countries:['Italy','Lithuania','United Kingdom','France'],
+    blurb:'Specialist AI and machine learning programmes, increasingly offered as dedicated degrees rather than electives.',
+    careers:['ML engineer','AI research','Data products','Robotics','Applied NLP']}),
+  P({id:'business',name:'Business',icon:'briefcase',dur:'3 – 4 years (B) / 1 – 2 years (M)',
+    blurb:'General business and management degrees — the most portable qualification across all our destinations.',
+    careers:['Management trainee','Entrepreneurship','Consulting','Operations','Business development']}),
+  P({id:'accounting-finance',name:'Accounting & Finance',icon:'banknote',dur:'3 – 4 years (B) / 1 – 2 years (M)',countries:['Italy','Lithuania','United Kingdom','France','Cyprus'],
+    blurb:'Quantitative finance and accounting tracks with pathways toward professional certifications.',
+    careers:['Financial analyst','Accounting (toward ACCA/CA)','Auditing','Investment analysis','Corporate finance']}),
+  P({id:'management',name:'Management',icon:'compass',dur:'3 – 4 years (B) / 1 – 2 years (M)',
+    blurb:'Leadership-focused degrees covering strategy, people and organisations.',
+    careers:['Project manager','HR pathways','Strategy & operations','Supply chain','Public management']}),
+  P({id:'law',name:'Law',icon:'scale',dur:'3 – 4 years',countries:['Italy','United Kingdom','France','Cyprus'],
+    blurb:'LLB and civil-law degrees. Note: legal systems differ — choose with your intended jurisdiction in mind.',
+    careers:['Legal practice (per jurisdiction)','Corporate compliance','International organizations','Policy','Academia']}),
+  P({id:'hospitality',name:'Hospitality',icon:'utensils',dur:'3 – 4 years',countries:['Cyprus','United Kingdom','France','Italy'],
+    blurb:'Hotel, tourism and events management — Cyprus and France are traditional strongholds with industry-integrated study.',
+    careers:['Hotel management','Tourism operations','Events','F&B management','Resort & guest experience']}),
+  P({id:'architecture',name:'Architecture',icon:'landmark',dur:'5 years (integrated)',countries:['Italy','Lithuania','United Kingdom','France'],
+    blurb:'Design and built-environment degrees; Italy remains a historic centre for architectural study.',
+    careers:['Architect (after licensing)','Urban design','Interior architecture','Heritage conservation','Construction management']}),
+  P({id:'social-sciences',name:'Social Sciences',icon:'users',dur:'3 – 4 years',
+    blurb:'Economics, politics, international relations, psychology and sociology.',
+    careers:['Policy & NGOs','Research','Journalism','Human resources','Public administration']}),
+  P({id:'data-science',name:'Data Science',icon:'chart',dur:'1 – 2 years (M) / 3 – 4 years (B)',countries:['Lithuania','Italy','United Kingdom','France'],
+    blurb:'Statistics, machine learning and data engineering for the analytics economy.',
+    careers:['Data scientist','Data engineer','Analytics consulting','Business intelligence','Quantitative research']}),
+  P({id:'cyber-security',name:'Cyber Security',icon:'shield',dur:'3 – 4 years (B) / 1 – 2 years (M)',countries:['Lithuania','United Kingdom','Italy'],
+    blurb:'A high-demand specialisation of computing focused on protecting systems, networks and data.',
+    careers:['Security analyst','Penetration testing','SOC engineering','Governance & compliance','Threat intelligence']}),
+  P({id:'other',name:'Other Programs',icon:'book',dur:'Varies',
+    blurb:'Arts, design, media, education, agriculture, environmental science and more — ask a counselor about availability.',
+    careers:['Varies by field']})
+];
+PROGRAMS.forEach(function(p){p.slug=slugify(p.name);});
+
+const DEST_PHOTO={china:'dest-china.jpg',italy:'dest-italy.jpg',lithuania:'dest-lithuania.jpg',uk:'dest-uk.jpg',france:'dest-france.jpg',cyprus:'dest-cyprus.jpg'};
+function destImg(c,w,h){return DEST_PHOTO[c.id]?'<img src="assets/'+DEST_PHOTO[c.id]+'" alt="'+c.name+'" width="'+w+'" height="'+h+'" loading="lazy">':IMG(c.seed,c.name,w,h);}
+const COUNTRIES=[
+ {id:'china',name:'China',route:'study-in-china',title:'Study in China',seed:'bz-china-hero',
+  sub:'Explore internationally oriented universities and academic opportunities in China with professional admission guidance from Bluezone Consultants.',
+  facts:[{k:'Language',v:'English-taught programs widely available'},{k:'Main intake',v:'September (some March)'},{k:'Indicative tuition',v:'CNY 24,000 – 52,000 / yr'},{k:'Student visa',v:'X1 / X2 category'}],
+  why:[
+    {icon:'grad',t:'Quality education',d:'A large, rapidly internationalizing university system with dedicated programs, hostels and support services for foreign students.'},
+    {icon:'globe',t:'International student environment',d:'Students from across Asia, Africa and the Middle East study together — a genuinely multinational campus culture.'},
+    {icon:'wallet',t:'Affordable study options',d:'Tuition and living costs are typically lower than Western alternatives, with scholarship opportunities at many universities.'},
+    {icon:'building',t:'Modern campuses',d:'New campuses, teaching hospitals, laboratories and digital infrastructure are the norm rather than the exception.'},
+    {icon:'stethoscope',t:'Medical education',d:'English-medium MBBS programs at selected universities, with teaching hospitals attached for clinical training.'},
+    {icon:'cog',t:'Engineering',d:'Broad engineering portfolios from established national and provincial universities.'},
+    {icon:'briefcase',t:'Business',d:'English-taught business and international trade programs connected to one of the world\u2019s largest economies.'},
+    {icon:'cpu',t:'Computer Science',d:'Strong CS and IT departments with international admissions tracks.'},
+    {icon:'award',t:'Scholarships',d:'University, provincial and national (CSC) scholarship schemes — each governed by its own annual call.'}],
+  fees:[
+    ['Tuition — MBBS (English)','CNY 34,000 – 50,000 / yr','Indicative; confirm the current schedule with the university'],
+    ['Tuition — Engineering / CS / Business','CNY 20,000 – 40,000 / yr','Indicative; varies by university and program'],
+    ['Hostel accommodation','CNY 4,000 – 12,000 / yr','On-campus international hostels'],
+    ['Food','CNY 1,200 – 2,200 / month','University canteens; halal options in many cities'],
+    ['Medical insurance','A few hundred CNY / yr','University-arranged insurance is mandatory']],
+  process:[['Eligibility Assessment','We review your academics and target program fit.'],['University Selection','Shortlisting universities matched to budget, program and city.'],['Document Preparation','Passport, transcripts, certificates and forms compiled.'],['Application','Submitted to universities with tracking throughout.'],['Admission Letter','Offer issued by the university upon acceptance.'],['JW / visa documentation','JW202 (or equivalent) issued where applicable.'],['Visa','X1/X2 student visa application with our guidance.'],['Travel','Flights, arrival planning and university liaison.'],['University Registration','On-arrival registration and settling-in support.']],
+  visa:{title:'China Student Visa — General Guide',paras:['Students admitted to Chinese universities typically apply for an X1 visa (study over 180 days) or X2 (shorter study), using the admission notice and JW202 form issued by the university where applicable.','Requirements, processing times and procedures are set by Chinese embassies and consulates and can change. Bluezone prepares your documentation and guides the process — we never guarantee outcomes, and current rules should always be confirmed with the official embassy channel.']},
+  life:{title:'Student life in China',paras:['Campus life is largely self-contained: hostels, canteens, sports facilities and shops sit within walking distance. Chinese language classes are usually built into English-medium programs to help with clinical and daily communication.','Costs of living are modest by international standards, and high-speed rail connects most university cities for travel during holidays.']},
+  faqs:[
+    ['Is an MBBS degree from China recognized in Pakistan?','Recognition depends on the university\u2019s current listings and national medical council rules at the time you return. Bluezone checks current status with official registries before you apply.'],
+    ['Is the medium of instruction English?','For most medical and technical programs, yes — but "English-taught" can still include a few hours of compulsory Chinese each week for ward rounds and daily communication. We confirm the exact split for your specific program before you apply.'],
+    ['How long is MBBS in China?','Six years for most universities — five years of coursework plus a final-year internship. A few universities structure it slightly differently, so we check the calendar for your specific one before you commit.'],
+    ['Do I need MDCAT to apply?','If PMDC\u2019s current rules require it for your intake, yes — these rules have changed more than once in recent years, so we check what applies for your season of application.'],
+    ['What does it cost?','Our fee guide above gives the range by university; the figure is confirmed with the university at application, and we check scholarship options you may qualify for before that becomes final.'],
+    ['When should I apply for the September intake?','Starting in winter gives you the most options, since scholarship deadlines typically close earlier than admission deadlines.'],
+    ['Is halal food available?','In most cities we place students, yes — options range from a dedicated halal canteen to a stall near campus. We confirm which applies for your specific city.'],
+    ['Do universities provide hostels?','Most universities offering international programs provide on-campus hostels; standards and costs vary by university.'],
+    ['Can I do my internship in Pakistan?','Some universities allow it; Pakistan\u2019s own rules for recognizing an internship completed abroad add a second consideration. We check both before you plan around it.'],
+    ['What documents are needed to apply?','The core set is your passport, transcripts and certificates, photographs, and a physical exam form — plus a police clearance certificate if your target university requires it. A full checklist for your university is issued once you are shortlisted.'],
+    ['Can my parents visit me?','Yes. Family visits use a separate visa category from your student visa; we can also walk parents through that application.'],
+    ['Does Bluezone guarantee admission?','No. Admission decisions belong to the university. We prepare an application that is accurate and complete, and track it through to a decision.']],
+  seo:{title:'Study in China — Universities, MBBS, Fees & Admission | Bluezone',desc:'Guide to studying in China: English-taught programs, MBBS options, indicative fees, scholarships, admission steps and student visa guidance.'}},
+ {id:'italy',name:'Italy',route:'study-in-italy',title:'Study in Italy',seed:'bz-italy-hero',
+  sub:'Explore public and private universities, English-taught programs, scholarships and European higher education opportunities.',
+  facts:[{k:'Language',v:'English & Italian-taught programs'},{k:'Main intake',v:'September'},{k:'Indicative tuition (public)',v:'€0 – 3,000 / yr (income-based)'},{k:'Visa',v:'Type-D pre-entry, per current rules'}],
+  why:[
+    {icon:'globe',t:'European education',d:'Italy sits at the heart of the European Higher Education Area — the oldest university in the Western world is here, and it still sets the tone.'},
+    {icon:'landmark',t:'Public universities',d:'A deep network of state universities with income-based tuition that makes cost depend more on your family situation than the institution\u2019s brand.'},
+    {icon:'building',t:'Private universities',d:'Specialized private institutions — particularly in business, design and finance — with their own fee and scholarship structures.'},
+    {icon:'languages',t:'English-taught programs',d:'A growing portfolio of full degrees taught in English, especially in engineering, business and science.'},
+    {icon:'award',t:'Scholarships',d:'Government (MAECI), regional (DSU) and university awards — each with its own annual call and conditions.'},
+    {icon:'users',t:'International environment',d:'One of Europe\u2019s largest international student communities, drawn by cost, culture and quality.'},
+    {icon:'flask',t:'Research opportunities',d:'Strong research output in medicine, engineering, aerospace and design, with doctoral positions across institutions.'},
+    {icon:'sun',t:'Student life',d:'From Bologna\u2019s arcade streets to Milan\u2019s design districts — student life here is a daily education in itself.'}],
+  fees:[
+    ['Public university tuition','€0 – 3,000 / yr','Income-based (ISEE) — indicative; confirm per university'],
+    ['Private institution tuition','€6,000 – 20,000+ / yr','Varies widely by institution'],
+    ['Living costs','€700 – 1,200 / month','City-dependent; northern cities and Milan are higher'],
+    ['Regional grant support','Grant / meals / dorm','Where awarded per DSU call — not guaranteed'],
+    ['Health cover','Student options available','Required for enrollment and residence permit']],
+  process:[['Course Selection','We map your academic background to suitable degree programs.'],['University Selection','Balancing public and private options, cities and budgets.'],['Eligibility Check','Qualification recognition and entry requirements reviewed.'],['Application','University applications prepared and submitted.'],['Admission','Offer and enrollment confirmation from the university.'],['Pre-enrolment','Universitaly pre-enrolment completed where applicable.'],['Visa','Type-D pre-entry visa application guided by our team.'],['Arrival','Travel, housing and first-days support.'],['Enrollment','Final enrollment, ISEE and permit steps on arrival.']],
+  visa:{title:'Italy Student Visa — General Guide',paras:['Non-EU students admitted to Italian institutions typically apply for a Type-D pre-entry study visa through the Italian embassy or consulate serving their region, after completing university enrollment steps and, where applicable, Universitaly pre-enrolment.','Financial means, health coverage and accommodation evidence are commonly requested. Rules and amounts are set by Italian authorities and change periodically — this page is a general educational guide, and current requirements must always be confirmed with the official embassy channel. Bluezone assists with documentation but does not guarantee visa outcomes.']},
+  life:{title:'Student life in Italy',paras:['Italy\u2019s student cities reward curiosity: lectures in the morning, a subsidized canteen lunch, and museums, mountains or coastline within reach by regional train. University dormitories exist but are limited — most students share private apartments, and DSU grants can include dormitory and canteen access where awarded.','Learn some Italian regardless of your program\u2019s language: it transforms daily life, part-time work options, and your relationship with the city you live in.']},
+  faqs:[
+    ['Can I study in Italy in English?','Yes, and the selection has grown a lot in the last few years — especially in engineering, business and the sciences. We check that your specific program is actually English-taught before you apply, because some listings are more aspirational than accurate.'],
+    ['Are Italian public universities free?','No, but they\u2019re close for many families. Tuition is calculated against your family\u2019s income (ISEE), which is why one student pays almost nothing and another pays a few thousand euros for the identical degree. We estimate roughly where you\u2019d land before you apply.'],
+    ['What is the MAECI scholarship?','It\u2019s the Italian government\u2019s own scholarship, not a university\u2019s — which matters because eligibility and benefits reset with every year\u2019s official call. We read that call the day it\u2019s published and tell you plainly whether this year\u2019s terms fit you, rather than pointing at last year\u2019s.'],
+    ['What are regional (DSU) scholarships?','Money, meals, and sometimes a dorm bed — offered by the region you study in, not the university, and reassessed every year against your income and grades. We help with the ISEE paperwork after you arrive; the award itself is the region\u2019s call, not ours.'],
+    ['Do I need to know Italian?','Not to get admitted to an English-taught program — but you\u2019ll want it within your first semester regardless, for the bureaucracy alone. Italian-taught degrees need a certified B2, which we factor into your timeline if that\u2019s the route you pick.'],
+    ['What is Universitaly pre-enrolment?','It\u2019s the government portal that sits between your university offer and your visa application — miss this step and your offer doesn\u2019t convert into anything. We walk through it with you line by line.'],
+    ['When do applications open?','Spring through summer for most September-entry programs — but scholarship calls open and close on their own separate calendar, often earlier. We build your timeline backward from whichever deadline hits first, not from the program deadline alone.'],
+    ['Can I work while studying?','Yes, within limited hours set by current immigration rules — worth checking again once you\u2019re actually there, since the limits aren\u2019t fixed forever. We flag the current figure in your pre-departure briefing.'],
+    ['What about the residence permit?','You apply for it within days of landing, not weeks — the deadline is tighter than most students expect. It\u2019s the first thing in our pre-departure briefing for exactly that reason.'],
+    ['What are Bachelor entry requirements?','Twelve years of schooling with a qualification Italy recognizes as equivalent — Pakistani certificates sometimes need an extra recognition step (a Dichiarazione di Valore) that isn\u2019t obvious from the university\u2019s website. We check whether yours needs it before you apply.'],
+    ['What are Master entry requirements?','A Bachelor\u2019s in a related field, plus whatever the specific program adds — a portfolio, prerequisite courses, an entrance test. We read the exact list for your target program rather than assuming your Bachelor\u2019s is “close enough.”'],
+    ['Do I need health insurance?','Yes — you can\u2019t finish enrollment or get your residence permit without it. Student-specific policies cost far less than a general one; we point you to those rather than let you overpay by default.'],
+    ['Is accommodation provided?','Rarely as a guarantee — dorm spots are limited and usually tied to a DSU grant. Most students end up renting privately, so we start that search with you before you land, not after.'],
+    ['How expensive is Italy?','It depends entirely on the city, more than almost any other country we work with. A student in Padua and a student in Milan can have genuinely different lives on the same budget — we build your monthly number around the actual city, not a national average.'],
+    ['Does Bluezone guarantee scholarships or visas?','No. Scholarship and visa decisions rest with the university, the region, or the embassy. What we control is the quality and accuracy of your application.']],
+  seo:{title:'Study in Italy — Public & Private Universities, Scholarships, Admission | Bluezone',desc:'Complete guide to studying in Italy: English-taught degrees, public vs private universities, MAECI and regional scholarships, fees, admission steps and visa guide.'}},
+ {id:'lithuania',name:'Lithuania',route:'study-in-lithuania',title:'Study in Lithuania',seed:'bz-lithuania-hero',
+  sub:'A quietly excellent EU destination: English-taught programs, modern campuses and affordable living in the Baltic region.',
+  facts:[{k:'Language',v:'English-taught programs'},{k:'Main intake',v:'September (some January)'},{k:'Indicative tuition',v:'€2,900 – 8,500 / yr'},{k:'Residence',v:'Type-D visa → residence permit'}],
+  why:[
+    {icon:'globe',t:'European education',d:'Full member of the European Higher Education Area with internationally legible degrees.'},
+    {icon:'languages',t:'English-taught programs',d:'A high share of international programs delivered entirely in English.'},
+    {icon:'users',t:'International students',d:'A growing, welcoming international community across Vilnius and Kaunas.'},
+    {icon:'cpu',t:'Technology and innovation',d:'A strong national focus on ICT, engineering and fintech — visible in the curriculum.'},
+    {icon:'wallet',t:'Affordable options',d:'Among the most competitive tuition and living costs in the EU.'},
+    {icon:'flag',t:'EU environment',d:'Schengen membership and European study mobility options.'}],
+  fees:[
+    ['Tuition (public universities)','€2,900 – 5,500 / yr','Indicative; confirm per program'],
+    ['Tuition (private institutions)','€5,000 – 8,500 / yr','Indicative'],
+    ['Living costs','€400 – 700 / month','Vilnius modestly above Kaunas'],
+    ['Dormitory accommodation','€90 – 200 / month','Where available per university'],
+    ['State scholarships','Benefits per official call','Not guaranteed']],
+  process:[['Program Selection','Matching your background to English-taught programs.'],['University Selection','Public and private options compared on cost and fit.'],['Eligibility Check','Documents and recognition verified.'],['Application','Submitted with all required documents.'],['Admission','Offer and (where applicable) online interview outcomes.'],['Visa','Type-D visa application guided by our team.'],['Arrival','Arrival support and temporary residence permit steps.']],
+  visa:{title:'Lithuania — Visa & Residence, General Guide',paras:['Non-EU students admitted to Lithuanian universities typically enter on a national (Type-D) visa and then register a temporary residence permit after arrival, with the university issuing the admission documents that underpin the application.','Procedures and requirements are set by Lithuanian migration authorities and can change — treat this as general orientation and confirm current rules with official sources. Bluezone guides documentation but does not guarantee outcomes.']},
+  life:{title:'Student life in Lithuania',paras:['Vilnius and Kaunas are compact, green and student-friendly — everything is reachable, and costs stay predictable. Universities are internationally oriented, with English-taught cohorts from dozens of countries.','Winters are real: bring a proper coat, and expect to love the long summer evenings in return.']},
+  faqs:[
+    ['Are programs taught in English?','Yes, and it\u2019s one of the higher shares of English-taught programs we see anywhere in the EU. No Lithuanian is required to get in the door.'],
+    ['What does it cost?','Tuition runs roughly €2,900–8,500 a year depending on the university, and living costs are genuinely among the cheapest in the EU — one of the few destinations where the sticker price and the lived cost are both low. We confirm the exact figure for your program before you apply.'],
+    ['Do I need IELTS?','Not always — several universities run their own English check instead of requiring IELTS. We find out which applies to your target program before you spend money on a test you might not need.'],
+    ['What scholarships exist?','State scholarships and university-level tuition waivers, both reset every year by their own call. We check what\u2019s actually open the year you\u2019re applying, not last year\u2019s numbers.'],
+    ['What are entry requirements?','Twelve years of schooling for a Bachelor\u2019s, a relevant degree for a Master\u2019s — plus whatever prerequisite subjects the specific program adds, which we check line by line rather than assuming a general match.'],
+    ['Can I work while studying?','Yes, within hours set by current rules — we confirm the exact number for your permit type before you take on any work.'],
+    ['Is Lithuania in the Schengen area?','Yes — your residence permit lets you travel across Schengen, with the usual conditions attached. Worth knowing before you plan that first weekend trip.'],
+    ['What about accommodation?','Dorms where available — otherwise a shared apartment, and rent here won\u2019t shock you the way it might in Western Europe. We help line up housing before you land.'],
+    ['When should I apply?','Summer deadlines for September entry, but apply earlier if you can — the residence permit process has its own timeline that doesn\u2019t compress well if left late.'],
+    ['Does Bluezone guarantee admission?','No — admission decisions are made by the university. What we do is make sure nothing in your application gives a reviewer a reason to say no that has nothing to do with your actual qualifications.']],
+  seo:{title:'Study in Lithuania — Universities, Programs, Fees & Admission | Bluezone',desc:'Guide to studying in Lithuania: English-taught programs, public and private universities, indicative fees, scholarships and residence permit guidance.'}},
+ {id:'uk',name:'United Kingdom',route:'study-in-uk',title:'Study in the UK',seed:'bz-uk-hero',
+  sub:'Universities and higher education providers with global recognition — from historic institutions to independent specialist colleges.',
+  facts:[{k:'Language',v:'English (SELT where required)'},{k:'Intakes',v:'September / January'},{k:'Indicative tuition',v:'£15,000 – 28,000 / yr'},{k:'Post-study',v:'Graduate Route — per current rules'}],
+  why:[
+    {icon:'grad',t:'Global recognition',d:'UK qualifications carry weight everywhere — employers and universities know exactly what they mean.'},
+    {icon:'landmark',t:'Universities',d:'Chartered universities with centuries of architecture and research depth alongside modern campuses.'},
+    {icon:'building',t:'Independent providers',d:'Specialist higher education providers — in business, hospitality, law and the arts — with their own characters and fee structures.'},
+    {icon:'briefcase',t:'Career outcomes',d:'Programs built around employability: placements, accreditations and industry links.'},
+    {icon:'clock',t:'One-year master\u2019s',d:'Taught master\u2019s degrees typically complete in twelve months — a faster route to a postgraduate qualification.'},
+    {icon:'award',t:'Scholarships',d:'Chevening, university awards and institution scholarships, each per its own cycle.'},
+    {icon:'compass',t:'Foundation & International Year routes',d:'Structured pathways for students whose qualifications need a bridge to UK entry.'}],
+  fees:[
+    ['Undergraduate tuition','£15,000 – 26,000 / yr','Indicative; varies by university and subject'],
+    ['Postgraduate tuition','£16,000 – 28,000 / yr','Indicative'],
+    ['Independent provider tuition','£18,000+ / yr','Per institution'],
+    ['Living costs','Varies by city','Visa maintenance requirements are set annually — verify current figures'],
+    ['Application (UCAS where used)','Fee per current UCAS schedule','Applies to undergraduate applications']],
+  process:[['Course Selection','Degree, subject and pathway matched to your profile.'],['Provider Selection','Universities and independent providers compared.'],['Entry & English Check','Qualifications and SELT requirements confirmed.'],['Application','UCAS where applicable; direct applications otherwise.'],['Offers','Conditional / unconditional offers tracked.'],['CAS & Visa','Confirmation of Acceptance issued; visa application guided.'],['Arrival','Pre-departure briefing and arrival support.']],
+  visa:{title:'UK Student Route — General Guide',paras:['International students typically study under the Student route, requiring a Confirmation of Acceptance for Studies (CAS) from a licensed sponsor plus English and financial evidence per current Immigration Rules.','The Graduate Route may allow post-study work after successful completion, subject to the rules in force at that time. Immigration policy changes — always confirm current requirements with official UK government sources. Bluezone guides the process but does not guarantee outcomes.']},
+  life:{title:'Student life in the UK',paras:['Student unions, societies and sport are central to UK campus life — joining something in your first fortnight is the fastest way to feel at home. Accommodation is typically arranged through the university for the first year.','Costs vary dramatically between London and regional cities; we budget with you per offer.']},
+  faqs:[
+    ['What is UCAS?','The single portal most undergraduate applications go through — up to five course choices in one application. Deadlines shift slightly each cycle, so we work off the current year\u2019s dates, not last year\u2019s calendar.'],
+    ['Do all providers use UCAS?','No — postgraduate applications and several independent providers take direct applications instead. Sending a master\u2019s application through UCAS by mistake is a real way to lose a whole intake, so we route each one correctly from the start.'],
+    ['What English test do I need?','An approved test, yes — but the exact score, and whether it needs to be a specific SELT for your visa route, changes by institution and program. We confirm both before you book a test you might not need, or the wrong one.'],
+    ['How much are tuition fees?','Our fee guide gives you a realistic range by university; the exact number only becomes official once your offer letter says so. We don\u2019t put a firm figure in front of you before that letter exists.'],
+    ['What is the Graduate Route?','Post-study work permission for graduates who qualify — but the operative word is “when you complete,” not when you enroll. UK immigration policy has moved before and can move again before your graduation date, so we brief you on the current rules, not the rules from your first year.'],
+    ['Can I work during studies?','Yes, within hours set by your specific visa conditions — we go through exactly what those are for your case, because “the Student route” isn\u2019t one uniform rule for everyone on it.'],
+    ['What are foundation and International Year programs?','A bridge year for students whose current qualifications don\u2019t clear a program\u2019s direct-entry bar yet. It\u2019s not a downgrade — it\u2019s a practical route in when the numbers don\u2019t line up, and we\u2019ll tell you plainly if it\u2019s yours.'],
+    ['Are private providers the same as universities?','No, and the difference matters more than the marketing suggests. “University” is a protected, regulated status; other providers sit on a different register with different oversight. We check exactly where your target institution sits before you commit.'],
+    ['When should I apply?','About a year out is comfortable for most routes — but some close earlier than students expect, and we build your specific deadline backward from the program, not a generic rule of thumb.'],
+    ['Does Bluezone guarantee a visa?','No — that decision sits entirely with UK Visas and Immigration, not with us. What we control is making sure nothing in your application gives them a paperwork reason to say no.']],
+  seo:{title:'Study in the UK — Universities, Providers, Fees & Student Route | Bluezone',desc:'Guide to UK study: universities vs independent providers, UCAS and direct routes, indicative fees, scholarships, Student route and Graduate Route guidance.'}},
+ {id:'france',name:'France',route:'study-in-france',title:'Study in France',seed:'bz-france-hero',
+  sub:'Public universities, grandes écoles and specialized schools — with English-taught options growing every year.',
+  facts:[{k:'Language',v:'English & French-taught'},{k:'Main intake',v:'September'},{k:'Indicative tuition (public)',v:'≈ €3,000 / yr (non-EU, indicative)'},{k:'Procedure',v:'Campus France / Études en France'}],
+  why:[
+    {icon:'landmark',t:'Public universities',d:'Low regulated tuition for degree programs, within a system that spans every discipline.'},
+    {icon:'award',t:'Grandes écoles',d:'France\u2019s selective elite institutions — in engineering, business and public administration — with strong networks.'},
+    {icon:'building',t:'Specialized schools',d:'Art, design, hospitality and culinary schools with global reputations.'},
+    {icon:'languages',t:'English-taught growth',d:'Hundreds of programs now run in English, especially at master\u2019s level.'},
+    {icon:'globe',t:'European placement',d:'A founding member of EU mobility schemes with pan-European research networks.'},
+    {icon:'wallet',t:'Value for money',d:'Public rates plus CROUS student services — canteens, housing and health — keep costs contained.'},
+    {icon:'utensils',t:'Culture & industry',d:'Study inside one of the world\u2019s largest economies with an unmatched cultural backdrop.'}],
+  fees:[
+    ['Public university tuition','≈ €3,000 / yr (degrees, non-EU)','Indicative — confirm current regulated rates'],
+    ['Private / grande école tuition','€8,000 – 20,000+ / yr','Varies widely'],
+    ['Living costs','€700 – 1,000 / month','Paris above regional cities'],
+    ['CROUS services','Subsidised canteen & housing','Where available per institution'],
+    ['Visa (VLS-TS)','Fee per current schedule','Where applicable']],
+  process:[['Program Selection','Degrees, grandes écoles or specialized schools mapped to your goals.'],['Institution Selection','Public vs private balance by budget and field.'],['Eligibility Check','Qualifications and language requirements verified.'],['Campus France procedure','Études en France platform steps completed where applicable.'],['Application','Institution applications submitted per their processes.'],['Admission','Offers tracked to decision.'],['Visa (VLS-TS)','Visa application guided where applicable.'],['Arrival','Housing (CROUS where possible) and enrollment support.']],
+  visa:{title:'France Student Visa — General Guide',paras:['Non-EU students admitted to French institutions typically apply for a long-stay student visa (VLS-TS), often after completing the Études en France / Campus France procedure where it applies to their country and institution.','Financial, accommodation and insurance requirements are set by French authorities and change periodically — confirm current rules with official Campus France and consular sources. Bluezone assists documentation but does not guarantee outcomes.']},
+  life:{title:'Student life in France',paras:['CROUS-run canteens serve full meals at student prices, university housing keeps rent manageable, and student discounts touch everything from transport to cinema. Outside Paris, costs drop noticeably.','French helps everywhere — even for English-taught programs, plan to learn it alongside your degree.']},
+  faqs:[
+    ['What is the difference between universities and grandes écoles?','Public universities admit broadly by qualification; grandes écoles are deliberately selective, smaller, and built around a professional network that opens doors a general degree sometimes doesn\u2019t. Neither is “better” in the abstract — which one fits depends on your actual profile, and that\u2019s the first thing we assess.'],
+    ['Can I study in English?','At master\u2019s level, increasingly yes. At bachelor\u2019s level, it\u2019s still the exception rather than the rule — we check which category your target program falls into before you assume either way.'],
+    ['What do public universities cost?','Around €3,000 a year for non-EU students at the regulated rate — genuinely one of the lowest sticker prices in Western Europe. Some exemptions exist depending on your situation, which we check rather than assume you don\u2019t qualify for.'],
+    ['What is Études en France / Campus France?','The government checkpoint between your university application and your visa — for most non-EU students, you can\u2019t get to the visa without it. We treat it as its own project with its own deadline, not a footnote to the university application.'],
+    ['What scholarships exist?','Eiffel Excellence is the big one, but here\u2019s the catch students miss: you can\u2019t apply for it yourself — your French institution has to nominate you. We flag that requirement when we help you pick a program, not after the nomination window has closed.'],
+    ['Do I need French?','For admission to an English-taught program, no. For actually living in France — opening a bank account, dealing with CAF, talking to your landlord — yes, and we say that plainly rather than let you find out in month one.'],
+    ['Where will I live?','CROUS housing if you can get a spot — competitive, but heavily subsidised — otherwise private rental. A regional city and Paris are not the same budget conversation, and we have that conversation with you before you pick.'],
+    ['Can I work while studying?','Yes, within hours set by current rules for your visa category — we confirm the specific number rather than quote a figure that might already be out of date.'],
+    ['When should I start?','About a year out, because Études en France, the university application, and the visa each run their own clock — start any one of them late and the other two don\u2019t wait for you to catch up.'],
+    ['Does Bluezone handle the Campus France procedure?','We sit with you through every step and check every document before it\u2019s submitted — the procedure is filed in your name, not ours, but you\u2019re never doing it alone at 11pm trying to figure out a French government portal.']],
+  seo:{title:'Study in France — Universities, Grandes Écoles, Fees & Campus France | Bluezone',desc:'Guide to studying in France: public universities vs grandes écoles and private schools, English-taught programs, fees, Eiffel scholarships, Campus France procedure and visa guidance.'}},
+ {id:'cyprus',name:'Cyprus',route:'study-in-cyprus',title:'Study in Cyprus',seed:'bz-cyprus-hero',jurisdiction:true,
+  sub:'Study in the Republic of Cyprus — an EU jurisdiction with English-taught programs and a genuinely international campus culture.',
+  facts:[{k:'Jurisdiction',v:'Republic of Cyprus (EU member)'},{k:'Language',v:'English-taught programs'},{k:'Indicative tuition',v:'€3,500 – 9,500 / yr'},{k:'Residence',v:'Student permit via institution'}],
+  why:[
+    {icon:'flag',t:'EU jurisdiction',d:'The Republic of Cyprus is an EU member — its degrees sit within the European Higher Education Area.'},
+    {icon:'languages',t:'English-taught programs',d:'Most international programs run fully in English, with wide availability across fields.'},
+    {icon:'users',t:'International classrooms',d:'Students from across Europe, Asia, Africa and the Middle East on compact, friendly campuses.'},
+    {icon:'wallet',t:'Moderate costs',d:'Tuition and living costs between European and Asian averages.'},
+    {icon:'utensils',t:'Hospitality & medicine',d:'Particular strength in hospitality management and a well-known English-taught medical school.'},
+    {icon:'sun',t:'Mediterranean life',d:'A safe, sunny, English-widely-spoken environment that eases the transition abroad.'}],
+  fees:[
+    ['Tuition (public)','€3,500 – 5,000 / yr','Indicative'],
+    ['Tuition (private)','€5,000 – 9,500 / yr','Indicative; medicine higher'],
+    ['Living costs','€500 – 800 / month','Moderate by EU standards'],
+    ['Accommodation','€200 – 450 / month','Shared flats or student housing'],
+    ['Institutional scholarships','Merit reductions per policy','Confirm current terms']],
+  process:[['Program Selection','Fields and institutions matched to your profile.'],['Institution Selection','Public and private options compared.'],['Eligibility Check','Certificates and English evidence verified.'],['Application','Direct institutional applications submitted.'],['Admission','Offer and (where applicable) interview outcomes.'],['Permit','Student temporary residence permit processed via the institution.'],['Arrival','Housing and registration support.']],
+  visa:{title:'Cyprus Student Residence — General Guide',paras:['International students admitted to Republic of Cyprus institutions typically apply for a temporary residence permit for study purposes, with the institution issuing the admission documents that support the application.','Procedures are set by Cypriot migration authorities and change periodically — confirm current requirements with official sources and your institution. Bluezone guides documentation; outcomes rest with the authorities.']},
+  life:{title:'Student life in Cyprus',paras:['Nicosia and Limassol are compact, walkable and sociable; campuses mix students from dozens of countries, and English is the working language of international programs.','Rent and food are reasonable, distances are short, and the Mediterranean climate makes student life unusually pleasant year-round.']},
+  faqs:[
+    ['Which jurisdiction does Bluezone cover for Cyprus?','Only the Republic of Cyprus — the internationally recognized EU member state. We don\u2019t list or advise on institutions outside its government\u2019s control, because degree recognition for professional registration abroad is genuinely uncertain there, and that\u2019s not a risk we\u2019ll let a student take without saying so plainly.'],
+    ['Are programs in English?','Yes — the large majority of international programs, public or private, run in English. One of the more straightforward destinations on that front.'],
+    ['What does it cost?','Our fee guide gives you the real range — medicine sits well above everything else, so don\u2019t average across programs. The exact number is confirmed once you have an offer, not before.'],
+    ['Do I need IELTS?','Not always — plenty of institutions run their own placement test instead. We check whether your target one does before you book an external exam you might not need.'],
+    ['Can I work while studying?','Some limited work rights may apply depending on current rules — we confirm what\u2019s actually in force for your permit before you take anything on.'],
+    ['Is Cyprus in the EU?','Yes — the Republic of Cyprus is a full EU member, and its degrees sit within the European Higher Education Area like any other EU qualification.'],
+    ['What scholarships exist?','Merit-based tuition reductions, set by each institution on its own policy — we check what\u2019s currently on offer rather than quote a number that might have already changed.'],
+    ['How do I get my residence permit?','Your institution files it with Cypriot migration authorities on your behalf — our job is making sure your documents are correct and complete before that filing happens, not after it\u2019s rejected.']],
+  seo:{title:'Study in Cyprus — Republic of Cyprus Universities, Fees & Admission | Bluezone',desc:'Guide to studying in the Republic of Cyprus (EU): public and private universities, English-taught programs, indicative fees, scholarships and student residence guidance.'}}
+];
+
+const SERVICES=[
+  {id:'university-selection',icon:'search',t:'University Selection',d:'We shortlist universities against your academics, budget, program and city preferences, based on where you are genuinely competitive.',pts:['Academic profile mapping','Budget & scholarship fit','City and lifestyle factors']},
+  {id:'admission-processing',icon:'clipboard',t:'Admission Processing',d:'End-to-end handling of your application: forms, fees, deadlines and follow-up with the university until a decision arrives.',pts:['Application drafting & review','Deadline management','University follow-up']},
+  {id:'scholarship-guidance',icon:'award',t:'Scholarship Guidance',d:'We identify scholarships you genuinely qualify for, decode the official calls, and help you assemble a competitive submission.',pts:['Eligibility screening against official calls','Document preparation','Deadline tracking']},
+  {id:'document-preparation',icon:'file',t:'Document Preparation',d:'Transcripts, certificates, translations and attestations — assembled correctly the first time, because errors here cost intakes.',pts:['Document checklists per country','Attestation & translation guidance','Format verification']},
+  {id:'application-filing',icon:'upload',t:'Application Filing',d:'Accurate, on-time submission through the correct channel — UCAS, Universitaly, Études en France or direct — with confirmation at every step.',pts:['Correct routing per country','Submission confirmation','Status tracking']},
+  {id:'visa-guidance',icon:'filecheck',t:'Visa Guidance',d:'Educational guidance on visa categories, documentation and interview preparation. Outcomes rest with the relevant embassy or immigration authority.',pts:['Document file preparation','Financial evidence guidance','Interview coaching where applicable']},
+  {id:'accommodation',icon:'bed',t:'Accommodation Guidance',d:'Hostel booking, dormitory applications and private housing options around your campus — arranged before you fly.',pts:['On-campus booking support','Private housing vetting','Arrival-ready confirmation']},
+  {id:'arrival',icon:'plane',t:'Airport / Arrival Assistance',d:'Pickup coordination, university registration accompaniment and first-week support so day one abroad feels planned, not improvised.',pts:['Airport pickup coordination','Registration accompaniment','First-week orientation']},
+  {id:'pre-departure',icon:'luggage',t:'Pre-Departure Briefing',d:'A structured briefing covering travel, money, weather, culture, safety and the paperwork you carry — tailored to your city and university.',pts:['Country-specific briefing pack','Packing & finances checklist','Family Q&A session']},
+  {id:'student-support',icon:'lifering',t:'Ongoing Student Support',d:'Our relationship doesn\u2019t end at boarding. Stay in touch from abroad for renewals, family visits and next-step planning.',pts:['Permit renewal reminders','Parents\u2019 queries handled locally','Alumni & next-steps advice']}
+];
+
+const POSTS=[
+  {"slug": "mbbs-china-from-mansehra", "title": "How to Apply for MBBS in China from Mansehra: A Step-by-Step Guide", "cat": "MBBS Abroad", "date": "2026-09-24", "read": "4 min", "seed": "bz-post7", "ex": "Eligibility, documents, visa and timeline for Mansehra students — and which steps you can complete without leaving town.", "body": ["<b>Short answer:</b> you apply through a Chinese university (directly or via a consultant), receive an admission notice, then apply for an X1 student visa. Typically the whole route takes several months, so start in winter for a September intake.", "<h2>1. Check eligibility first</h2>", "Most English-medium MBBS programs expect FSc (Pre-Medical) or equivalent, and many set a minimum aggregate around 60% — the exact figure is set per university. Pakistani students must also follow the current national admission test (MDCAT) and PMDC rules for foreign medical degrees, which have changed more than once. Check the official PMDC source for the intake you are applying to.", "<h2>2. Shortlist universities</h2>", "Compare tuition (our fee guide shows indicative MBBS tuition of CNY 34,000–50,000 a year), city, hostel arrangements and, most importantly, the university’s current recognition status. Read our <a href=\"study-in-china.html\">China guide</a> and <a href=\"blog.html?post=mbbs-china-vs-italy\">MBBS in China vs. Italy</a> for context.", "<h2>3. Prepare documents</h2>", "Passport, transcripts and certificates, photographs, a physical examination form, and police clearance where required. In Mansehra, you can get photographs, copies and most attestations done locally, and check the full set at our office at Ari Ada, above the Passport Office.", "<h2>4. Apply, receive the admission notice, get the visa</h2>", "Once admitted, students typically apply for an X1 visa (study over 180 days) with the admission notice and JW202 form where applicable. Requirements are set by Chinese embassies and can change.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants helps Mansehra students with shortlisting, document checks, application filing and verifying university recognition before you pay any fee. We cannot guarantee admission or a visa; those decisions rest with universities and embassies. Our Mansehra office is open Monday to Saturday, 10:00–18:00 PKT, and the first consultation is free.", "<p><b>Do I need to travel to Islamabad?</b><br>Not for guidance — you can start with our <a href=\"contact.html\">contact form</a> or at the Mansehra office. Embassy steps are handled as the embassy requires.</p>"]},
+  {"slug": "study-abroad-options-abbottabad-students", "title": "Best Study Abroad Options for Abbottabad Students: Matching Country to Profile", "cat": "Study Options", "date": "2026-09-24", "read": "4 min", "seed": "bz-post8", "ex": "There is no single best country. Here is how Abbottabad students with different goals and budgets can narrow the six options.", "body": ["<b>Short answer:</b> the best country depends on your subject, budget and comfort with language. For Abbottabad students, these are the six destinations we guide for, and who each tends to suit.", "<h2>If you want medicine</h2>", "<a href=\"study-in-china.html\">China</a> offers English-medium MBBS with indicative tuition of CNY 34,000–50,000 a year. Italy’s route is more competitive and, for many programs, Italian matters for clinical life. Cyprus also has medicine programs, at the top of its fee range.", "<h2>If you want engineering, business or computer science</h2>", "Lithuania (indicative tuition €2,900–8,500 a year), <a href=\"study-in-italy.html\">Italy</a> (public tuition indicatively €0–3,000, income-based) and France (around €3,000 at public universities for non-EU students) are the budget-friendlier routes. The UK (indicatively £15,000–28,000) is the most expensive but offers a strong global brand.", "<h2>If you need a cold-climate comfort check</h2>", "Abbottabad and the Galiyat hills mean many local students are already comfortable with cool weather. That helps in Lithuania; Cyprus is a very different climate.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants runs free first consultations at its Abbottabad office near Old Police Chowki, Supply. Bring your latest transcripts and a realistic budget; we will put the same six options against your profile in writing, and tell you when a route does not fit. See the <a href=\"scholarships.html\">scholarships directory</a> before deciding.", "<p><b>Can I visit without an appointment?</b><br>Yes, during office hours (Monday to Saturday, 10:00–18:00 PKT), though a booked slot means a counselor has read your documents first.</p>"]},
+  {"slug": "italy-scholarship-from-pakistan", "title": "How to Get an Italy Scholarship from Pakistan: MAECI, DSU and University Awards", "cat": "Scholarships", "date": "2026-09-24", "read": "4 min", "seed": "bz-post9", "ex": "Three layers of support, three different calendars. Here is what each one actually covers and when you apply.", "body": ["<b>Short answer:</b> Italy has government scholarships (MAECI), regional grants (DSU) and university-level awards. Each has its own official call, and none is guaranteed until awarded.", "<h2>MAECI — the Italian government scholarship</h2>", "Open to international students not residing in Italy, for levels such as Master’s, PhD and research, per the annual call. Benefits vary with the call and selected program, and duration is typically nine months per call. You apply through the official Study in Italy portal before the published deadline — read the call the day it is published. See our full walk-through in <a href=\"blog.html?post=maeci-scholarship-call\">Reading the MAECI Call Without Getting Burned</a>.", "<h2>DSU — regional grants</h2>", "Offered by the region where you study: fee reductions, dorm access where available, subsidised meals and cash grants based on ISEE indicators. Conditions differ by region and academic year, and you apply after arrival in Italy.", "<h2>Documents that trip Pakistani applicants</h2>", "Pakistani certificates sometimes need an extra recognition step (a Dichiarazione di Valore), and you will also need the Universitaly pre-enrolment for many degrees. Start these early.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants screens scholarship eligibility against each year’s official call from its Mansehra and Abbottabad offices, helps assemble applications, and tells you plainly when this year’s terms do not fit. We only call something “fully funded” when its official terms say so. See <a href=\"study-in-italy.html\">our Italy guide</a>.", "<p><b>Are Italian public universities free?</b><br>No. Tuition is income-based (ISEE) and indicatively ranges from about €0 to €3,000 a year.</p>"]},
+  {"slug": "cheapest-europe-study-tuition-pakistani-students", "title": "Cheapest Countries to Study in Europe for Pakistani Students: Tuition Compared", "cat": "Budget & Costs", "date": "2026-09-24", "read": "3 min", "seed": "bz-post10", "ex": "Indicative tuition across Italy, France, Lithuania and Cyprus — and why living costs change the picture.", "body": ["<b>Short answer:</b> on tuition alone, Italy’s public universities (indicatively €0–3,000 a year) and France’s regulated rate (around €3,000 for non-EU students) are the lowest, followed by Lithuania (€2,900–8,500) and Cyprus (€3,500–9,500). All figures are indicative — confirm them per program.", "<h2>Tuition is only half the budget</h2>", "Italy’s fee depends on family income (ISEE), so two students can pay very different amounts for the same degree. Living costs vary sharply by city: Padua and Milan are not the same budget, and outside Paris France is more affordable. Lithuania’s living costs are among the lowest in the EU.", "<h2>What is usually not in the sticker price</h2>", "Health insurance, residence permit fees, accommodation deposits and travel. Ask for these in writing before comparing destinations.", "<h2>Where scholarships change the maths</h2>", "Regional grants in Italy and Eiffel Excellence in France (by institutional nomination) can change the calculation, but each follows its own official call. Browse the <a href=\"scholarships.html\">scholarships directory</a>.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants builds a monthly budget around the actual city, not a national average, during the free first consultation at our Mansehra or Abbottabad office. Our <a href=\"study-in-lithuania.html\">Lithuania</a>, <a href=\"study-in-italy.html\">Italy</a> and <a href=\"study-in-france.html\">France</a> guides list the current indicative ranges."]},
+  {"slug": "study-abroad-timeline-hazara-students", "title": "Study Abroad Timeline for Hazara Students: What to Do and When", "cat": "Planning", "date": "2026-09-24", "read": "3 min", "seed": "bz-post11", "ex": "Scholarship deadlines close before admission deadlines. A month-by-month view for September intake, planned around long journeys.", "body": ["<b>Short answer:</b> start in winter. Scholarship deadlines usually close earlier than admission deadlines, and by spring your options have already narrowed.", "<h2>Winter: assess and shortlist</h2>", "Collect transcripts, decide budget, and shortlist countries. For China we begin preparations with students in winter and spring; for the UK, about a year ahead is comfortable, and France needs about a year because Études en France, the university application and the visa each run their own clock.", "<h2>Spring: apply</h2>", "Italy’s September-entry window runs spring to summer, but scholarship calls have their own separate calendar. Lithuania’s deadlines run through summer, though earlier is safer for the residence permit.", "<h2>Summer: visas and preparation</h2>", "Visa applications, insurance and the pre-departure briefing. Our <a href=\"blog.html?post=pre-departure-checklist\">pre-departure checklist</a> covers the last two weeks.", "<h2>If you live far from an office</h2>", "Students in Battagram, Torghar or Kohistan do not need many trips. Start remotely, get your checklist by message, and plan a single visit to Mansehra or Abbottabad to complete documents.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants plans each timeline backward from the first deadline that will hit you, not from the program deadline alone. Book through our <a href=\"contact.html\">contact form</a> and we reply within one working day."]},
+  {"slug": "documents-study-abroad-pakistan", "title": "Documents You Need to Study Abroad from Pakistan: A Practical Checklist", "cat": "Documents", "date": "2026-09-24", "read": "4 min", "seed": "bz-post12", "ex": "The core set, the extras that vary by country, and the mistakes that cost students an intake.", "body": ["<b>Short answer:</b> the core set is your passport, academic transcripts and certificates, photographs and — for medical programs — a physical examination form, with police clearance if your university asks. Exact requirements are set per university and country.", "<h2>The core set</h2>", "Passport (with validity beyond your intended stay), transcripts and certificates, recent photographs and, where required, a medical form and police clearance.", "<h2>Attestation and recognition</h2>", "Pakistani certificates are often required to be attested, translated or verified through official channels before submission. Italy, for example, can require an extra recognition step (Dichiarazione di Valore) that is not obvious from a university website. Check each authority’s current procedure — they change.", "<h2>Copies and backups</h2>", "We advise students to carry originals plus three attested sets, and keep digital backups of everything.", "<h2>Common mistakes</h2>", "Expired passports, mismatched name spellings across documents, and starting attestation late are the errors that most often cost students an intake.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants checks documents in person at the Mansehra and Abbottabad offices before anything is submitted, and gives you a per-university checklist after shortlisting rather than a generic list. Book via our <a href=\"contact.html\">contact form</a>."]},
+  {"slug": "is-foreign-mbbs-valid-in-pakistan", "title": "Is a Foreign MBBS Valid in Pakistan? What Recognition Actually Depends On", "cat": "Recognition", "date": "2026-09-24", "read": "4 min", "seed": "bz-post13", "ex": "Recognition depends on the university’s listing and the rules at the time you return. Here is how to check, and what warning signs to watch for.", "body": ["<b>Short answer:</b> it depends on the university’s current listing and the rules of Pakistan’s medical council at the time you return — not on what a consultant tells you today. This is general information, not legal advice.", "<h2>Two things decide it</h2>", "First, whether the specific university is currently recognised. Second, the rules in force when you finish, including any national licensing or admission-test requirements. Both can change during a six-year degree.", "<h2>How to check</h2>", "Look up the university and program on the official registries and check the medical council’s current requirements for graduates of foreign programs. Do it before applying, and again before you enrol.", "<h2>Warning signs</h2>", "Be cautious if anyone promises “100% recognition”, will not show you the registry listing, or refuses to put anything in writing.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants verifies a university’s current status with official registries before you apply, and says plainly when the picture is unclear. We never treat secondhand claims as verification. See our <a href=\"study-in-china.html\">China guide</a> and <a href=\"programs.html?p=mbbs\">MBBS program page</a>.", "<p><b>Does recognition ever change after I start?</b><br>It can. That is why we check both the university’s listing and the current rules, and why you should re-check before your final year.</p>"]},
+  {"slug": "how-to-choose-study-abroad-consultant-pakistan", "title": "How to Choose a Study Abroad Consultant in Pakistan: 8 Questions to Ask Before You Pay", "cat": "Choosing a Consultant", "date": "2026-09-24", "read": "4 min", "seed": "bz-post14", "ex": "A checklist you can apply to any consultancy, including ours.", "body": ["<b>Short answer:</b> ask what they will not promise. A trustworthy consultant states clearly what they control (your application) and what they do not (decisions).", "<h2>The 8 questions</h2>", "1. Do you guarantee admission or a visa? (The honest answer is no.) 2. Can I see your office and meet a counselor in person? 3. Will you put fees and services in writing? 4. Do you quote success rates or partner counts — and can you evidence them? 5. Which countries do you actually handle? 6. How do you verify a university’s recognition? 7. Who files my application, and in whose name? 8. What happens if I do not get in?", "<h2>Red flags</h2>", "Guaranteed outcomes, pressure to pay before assessment, and refusal to name the university or program.", "<h2>How Bluezone answers these</h2>", "Bluezone Consultants does not guarantee admission, scholarships or visas. We have physical offices at Ari Ada, Mansehra (Office 101 & 102, above the Passport Office) and Near Old Police Chowki, Supply, Abbottabad, plus Perth (WA). We do not publish a blanket success rate or partner count, and we track each application to a decision. The first consultation is free and carries no obligation — ask us these same eight questions."]},
+  {"slug": "life-in-europe-pakistani-students-costs", "title": "Studying in Europe from Abbottabad or Mansehra: What Daily Life and Costs Look Like", "cat": "Student Life", "date": "2026-09-24", "read": "3 min", "seed": "bz-post15", "ex": "Canteens, dorms and city budgets — the practical side that brochures skip.", "body": ["<b>Short answer:</b> life is affordable and predictable in some cities and expensive in others. The city matters more than the country.", "<h2>Food and campus</h2>", "Italy has subsidised canteen lunches; France has CROUS-run canteens with student prices; halal availability varies by city, so ask before choosing one rather than assume.", "<h2>Housing</h2>", "University dorms exist but are limited in Italy, so most students rent privately; CROUS housing in France is competitive but heavily subsidised. Lithuania offers dorms and inexpensive shared apartments.", "<h2>Compare cities, not countries</h2>", "Vilnius and Kaunas are compact and predictable; Padua and Milan differ sharply; a regional French city and Paris are not the same budget conversation.", "<h2>Where Bluezone fits</h2>", "Bluezone Consultants builds a per-city monthly budget and begins the housing search with students before they fly, then runs a pre-departure briefing. See our <a href=\"blog.html?post=pre-departure-checklist\">checklist</a> and destination guides."]},
+  {"slug": "study-abroad-consultant-perth-pakistan-connection", "title": "Bluezone in Perth and Pakistan: How Our Two-Country Setup Works", "cat": "Perth & Australia", "date": "2026-09-24", "read": "3 min", "seed": "bz-post16", "ex": "Time zones, contacts and what to expect if you are in Western Australia or have family in Hazara.", "body": ["<b>Short answer:</b> Bluezone Consultants has offices in Mansehra, Abbottabad and Lockridge, Perth. Perth is three hours ahead of Pakistan (AWST is UTC+8, PKT is UTC+5), which affects when calls can happen.", "<h2>Our Perth office</h2>", "35 Hagart Way, Lockridge WA 6054, in Perth’s north-eastern suburbs. Our published Monday–Saturday hours (10:00–18:00) are Pakistan time, so please confirm a Perth time when you book.", "<h2>What we guide for</h2>", "Our published destination guides cover China, Italy, Lithuania, the UK, France and Cyprus. If you are asking about a different destination, contact us and we will tell you plainly what we can and cannot help with.", "<h2>Booking across time zones</h2>", "A late-morning call in Perth typically overlaps with Pakistani office hours. Use our <a href=\"contact.html\">contact form</a> and choose the Australia Office.", "<h2>Where Bluezone fits</h2>", "The same team standards apply in all three offices: no guaranteed outcomes and a free first consultation. See <a href=\"offices.html\">our offices</a>."]},
+  {slug:'mbbs-china-vs-italy',title:'MBBS in China vs. Italy — A Practical Comparison',cat:'MBBS Abroad',date:'2025-01-14',read:'7 min',seed:'bz-post1',
+   ex:'Two very different routes to a medical career abroad. Here is how they actually compare on duration, cost, language and the return-home question.',
+   body:['Pakistani students weighing an MBBS abroad usually end up comparing China and Italy before anything else. They could not be more different routes, and the right answer depends almost entirely on your budget, your academic profile, and how you plan to use the degree.','China\u2019s English-medium MBBS programs run about six years including internship, with tuition broadly lower than private medical colleges at home. Italy\u2019s medicine programs sit in the European system — highly respected, with income-based tuition at public universities, but admission runs through competitive entry and, for many programs, Italian eventually matters for clinical life.','The question we ask every student first: what happens after graduation? Recognition rules, licensing exams and internship policies differ for each country and change over time. A decision made on fees alone, without mapping the return path, is a decision made half-blind.','At Bluezone we walk through this comparison with your actual marks in front of us — not a brochure. Book a consultation and we will map both routes against your profile.']},
+  {slug:'maeci-scholarship-call',title:'Reading the MAECI Scholarship Call Without Getting Burned',cat:'Scholarships',date:'2025-01-28',read:'6 min',seed:'bz-post2',
+   ex:'The Italian government scholarship is real, valuable — and routinely misrepresented by agents. Here is how to read the actual call.',
+   body:['Every year, the MAECI call publishes exactly what it offers, to whom, and for which study levels. And every year, somewhere, an agent summarizes all of that as "fully funded scholarship, guaranteed." Both halves of that sentence are wrong.','The call defines eligible study levels, participating institutions, benefit structures (grant, tuition treatment where offered, insurance) and deadlines for that specific year. Benefits vary according to the official call and selected program — that sentence exists because it is true, and it protects you.','Read three things carefully: who is excluded (residence rules), what happens if your program is not covered, and what the renewal conditions are. Then apply on the official portal yourself, with our help on the documents — not through anyone claiming to "arrange" the outcome.']},
+  {slug:'shortlist-universities',title:'How to Shortlist Universities in Five Steps',cat:'Admission Guides',date:'2025-02-06',read:'5 min',seed:'bz-post3',
+   ex:'Most students shortlist by name recognition. Here is the five-step method we actually use with our counseling students.',
+   body:['Name recognition is a lazy filter: it is crowded, it is expensive, and it ignores whether the program fits you. We run a different process in counseling: eligibility first, program second, cost third, city fourth, then — and only then — reputation.','Start by listing where your marks and qualifications genuinely clear the entry bar. Then check the actual curriculum of the program, not the brochure. Then map total cost across the full degree, not one year of tuition. Then ask whether you can live in that city for years — climate, community, halal food, cost. Reputation is the final seasoning, not the meal.','Do this on paper with a counselor and the list writes itself. Do it alone with social media and you will apply to the same ten universities as everyone else.']},
+  {slug:'english-tests-alternatives',title:'IELTS, PTE and the Alternatives: What Actually Works Where',cat:'Study Abroad',date:'2025-02-18',read:'6 min',seed:'bz-post4',
+   ex:'Not every route needs IELTS. But knowing which alternatives each country and institution actually accepts is where students lose intakes.',
+   body:['Here is the pattern we see: a student delays a whole year because they think IELTS is mandatory everywhere. Sometimes it is. Often it is not.','Lithuanian universities sometimes accept internal assessments or prior English-medium education. Cyprus institutions commonly offer their own placement tests. UK routes generally require an approved test — and for the Student route, a SELT in the right configuration. Italian English-taught programs each define their own accepted proof. The only approach that works is checking the current requirement for your exact program — which is literally our job.','If you do need a test, budget preparation time honestly: a month of disciplined practice beats three months of intention.']},
+  {slug:'pre-departure-checklist',title:'The Pre-Departure Checklist We Give Every Student',cat:'Student Visa',date:'2025-03-03',read:'4 min',seed:'bz-post5',
+   ex:'Documents, money, weather, and the phone calls to make before you fly. The briefing we run for every departing cohort.',
+   body:['The two weeks before a flight decide whether your first month abroad is smooth or stressful. The essentials: original documents plus three attested sets, digital backups of everything, currency arranged for arrival, the correct adaptors, and — critically — a written plan for your first 72 hours.','Know who meets you at the airport, where you sleep the first night, how you reach the university, and who to call if plans slip. Every student we send gets this mapped with us before departure, with the family invited to sit in.','And make two extra copies of everything. Not one. Two. You will thank us.']},
+  {slug:'why-lithuania',title:'Why Lithuania Is a Quietly Excellent Study Destination',cat:'Lithuania',date:'2025-03-17',read:'5 min',seed:'bz-post6',
+   ex:'It rarely makes the loud lists. That is partly why it is worth a serious look.',
+   body:['Lithuania does not market itself the way bigger systems do, so students discover it late — usually through a friend already there. The fundamentals, though, are quietly strong: EU-recognized degrees, a large share of English-taught programs, tuition and living costs well under Western Europe, and universities with genuine international cohorts.','Vilnius and Kaunas are compact cities where a student can live properly on a modest budget — dormitories under €200, groceries that do not shock, and everything within reach. For IT, engineering and business students in particular, the curriculum is current and the graduate pathways into the European market are real.','If your budget rules out the UK and your program exists in Lithuania, it belongs on your shortlist. Ask us for a detailed comparison.']}
+];
+
+/* ---------- 5. SHARED CARD RENDERERS ---------- */
+function uRow(u){
+  return '<article class="u-row rv">'+
+  '<a class="uimg" href="universities.html?u='+u.slug+'" aria-label="'+esc(u.name)+'"><span class="duo">'+IMG(u.seed,u.name,300,300)+'</span></a>'+
+  '<div><div class="u-head"><div><h3><a href="universities.html?u='+u.slug+'">'+esc(u.name)+'</a></h3>'+
+  '<p class="u-loc">'+I('map-pin')+esc(u.city)+', '+esc(u.country)+'</p></div>'+
+  '<div class="u-tags"><span class="tag">'+u.type+'</span>'+(/english/i.test(u.medium)?'<span class="tag t2">English-taught</span>':'')+(u.scholarships?'<span class="tag t3">Scholarships</span>':'')+'</div></div>'+
+  '<div class="u-chips">'+u.programs.slice(0,5).map(function(p){return '<a class="chip" href="programs.html?p='+slugify(p)+'">'+esc(p)+'</a>';}).join('')+'</div>'+
+  '<div class="u-meta"><div><b>'+esc(u.tuition)+'</b><span>Tuition / yr (indicative)</span></div>'+
+  '<div><b>'+u.intake.join(' / ')+'</b><span>Intake</span></div>'+
+  '<div><b>'+esc(u.duration)+'</b><span>Duration</span></div>'+
+  '<div><b>'+esc(u.medium)+'</b><span>Medium</span></div></div>'+
+  '<div class="u-actions"><a class="btn btn-solid btn-sm" href="apply.html">Apply '+I('arrow-right')+'</a>'+
+  '<a class="btn btn-line btn-sm" href="universities.html?u='+u.slug+'">View Details</a></div></div></article>';
+}
+function schCard(s){
+  var fund=s.fullyFunded
+    ?'<span class="tag t3">Fully Funded — subject to eligibility and official scholarship conditions</span>'
+    :'<span class="tag">Benefits per official call</span>';
+  return '<article class="card sch-card rv"><div class="top"><div><h3><a href="scholarships.html?s='+s.slug+'">'+esc(s.name)+'</a></h3>'+
+  '<div class="src">'+I('landmark')+esc(s.provider)+' · '+esc(s.country)+'</div></div></div>'+
+  '<div class="meta">'+fund+'<span class="tag t2">'+s.degrees.join(' · ')+'</span></div>'+
+  '<p>'+esc(s.blurb)+'</p>'+
+  '<p class="src">'+I('calendar')+'Deadline: '+esc(s.deadline)+' · Last updated: '+esc(s.lastUpdated)+'</p>'+
+  '<div class="cfoot"><a class="btn btn-solid btn-sm" href="scholarships.html?s='+s.slug+'">Learn More</a>'+
+  (s.source?'<a class="btn btn-line btn-sm" href="'+s.source+'" target="_blank" rel="noopener">Official Source '+I('arrow-up-right')+'</a>':'')+
+  '</div></article>';
+}
+
+/* ---------- 6. DIRECTORY ENGINE (self-contained, wired to its own DOM) ---------- */
+function mountDir(host,opts){
+  if(!host)return;
+  opts=opts||{};
+  host.classList.add('dir-wrap');
+  var list=opts.list||UNIVERSITIES;
+  var scoped=!!opts.country;
+  var S={q:'',country:opts.country||'',type:'',program:'',degree:'',city:'',region:'',english:false,scholar:false,intake:'',band:'',sort:'default'};
+  var cities=[].concat(new Set(list.map(function(u){return u.city;}))).sort();
+  var regions=[].concat(new Set(list.filter(function(u){return u.region&&u.region!==u.city;}).map(function(u){return u.region;}))).sort();
+  var programs=[].concat(new Set(list.flatMap(function(u){return u.programs;}))).sort();
+  var countries=scoped?[]:[].concat(new Set(list.map(function(u){return u.country;})));
+  var bands=[['','Any budget'],['1','Starting under $3,000 / yr'],['2','$3,000 – 6,000 / yr'],['3','$6,000 – 10,000 / yr'],['4','Above $10,000 / yr']];
+  host.innerHTML='<div class="dir-layout">'+
+    '<aside class="filters" id="dir-filters" aria-label="Filters">'+
+      '<div class="fh"><b>Refine</b><button type="button" class="clearf" data-clear>'+I('rotate')+'Reset</button></div>'+
+      (countries.length?'<div class="fgroup"><b>Country</b><select class="dir-f" data-k="country"><option value="">All countries</option>'+countries.map(function(c){return '<option>'+c+'</option>';}).join('')+'</select></div>':'')+
+      (regions.length>1?'<div class="fgroup"><b>Region / Province</b><select class="dir-f" data-k="region"><option value="">All regions</option>'+regions.map(function(r){return '<option>'+r+'</option>';}).join('')+'</select></div>':'')+
+      '<div class="fgroup"><b>City</b><select class="dir-f" data-k="city"><option value="">All cities</option>'+cities.map(function(c){return '<option>'+c+'</option>';}).join('')+'</select></div>'+
+      (opts.tabs?'':'<div class="fgroup"><b>Institution type</b>'+
+        '<label><input type="radio" name="dt" class="dir-f" data-k="type" value="" checked> All types</label>'+
+        '<label><input type="radio" name="dt" class="dir-f" data-k="type" value="public"> Public</label>'+
+        '<label><input type="radio" name="dt" class="dir-f" data-k="type" value="private"> Private / Independent</label></div>')+
+      '<div class="fgroup"><b>Program</b><select class="dir-f" data-k="program"><option value="">All programs</option>'+programs.map(function(p){return '<option>'+esc(p)+'</option>';}).join('')+'</select></div>'+
+      '<div class="fgroup"><b>Degree level</b><select class="dir-f" data-k="degree"><option value="">All levels</option><option>Bachelor</option><option>Master</option><option>PhD</option></select></div>'+
+      '<div class="fgroup"><b>Tuition (USD equiv.)</b><select class="dir-f" data-k="band">'+bands.map(function(b){return '<option value="'+b[0]+'">'+b[1]+'</option>';}).join('')+'</select></div>'+
+      '<div class="fgroup"><b>Options</b><label><input type="checkbox" class="dir-f" data-k="english"> English-taught</label>'+
+      '<label><input type="checkbox" class="dir-f" data-k="scholar"> Scholarship options</label></div>'+
+      '<div class="fgroup"><b>Intake</b><select class="dir-f" data-k="intake"><option value="">Any intake</option><option>Sep</option><option>Jan</option><option>Feb</option></select></div>'+
+      '<button type="button" class="btn btn-solid filter-done">Show Results</button>'+
+    '</aside>'+
+    '<div>'+
+      '<div class="dir-tools">'+
+        '<label class="searchbar">'+I('search')+'<input type="search" class="dir-q" placeholder="Search universities, cities, programs…" aria-label="Search universities"></label>'+
+        '<button type="button" class="btn btn-line btn-sm filter-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="dir-filters">'+I('sliders')+'Filters</button>'+
+        '<select class="dir-sort" aria-label="Sort universities"><option value="default">Sort: Default</option><option value="name">Name A–Z</option><option value="tlow">Tuition: low to high</option><option value="thigh">Tuition: high to low</option></select>'+
+      '</div>'+
+      '<div class="tabs-slot"></div>'+
+      '<p class="rmeta dir-count"></p>'+
+      '<div class="dir-list"></div>'+
+      '<p class="snote">'+I('info')+'Tuition figures are indicative estimates in local currency with USD equivalents; confirm current schedules with the university before committing. Re-verified each intake.</p>'+
+    '</div></div>';
+
+  var refs={list:host.querySelector('.dir-list'),count:host.querySelector('.dir-count'),tabs:host.querySelector('.tabs-slot')};
+  syncFilterDrawerState(host.querySelector('.filters'));
+  function syncTypeUI(){
+    host.querySelectorAll('input[type=radio].dir-f').forEach(function(r){r.checked=(r.value===(S.type||''));});
+    host.querySelectorAll('.tab').forEach(function(t){
+      var on=t.dataset.t===(S.type||'');
+      t.classList.toggle('on',on);
+      t.setAttribute('aria-pressed',on?'true':'false');
+    });
+  }
+  function render(){
+    var out=list.filter(function(u){
+      var q=S.q.toLowerCase();
+      var hay=(u.name+' '+u.city+' '+(u.region||'')+' '+u.country+' '+u.programs.join(' ')).toLowerCase();
+      return (!q||hay.indexOf(q)>-1)
+        &&(!S.country||u.country===S.country)
+        &&(!S.region||u.region===S.region)
+        &&(!S.city||u.city===S.city)
+        &&(!S.type||(S.type==='public'?u.type==='Public':u.type!=='Public'))
+        &&(!S.program||u.programs.indexOf(S.program)>-1)
+        &&(!S.degree||u.degrees.indexOf(S.degree)>-1)
+        &&(!S.english||/english/i.test(u.medium))
+        &&(!S.scholar||!!u.scholarships)
+        &&(!S.intake||u.intake.indexOf(S.intake)>-1)
+        &&(!S.band||(S.band==='1'&&u.usd[0]<3000)||(S.band==='2'&&u.usd[0]>=3000&&u.usd[0]<6000)||(S.band==='3'&&u.usd[0]>=6000&&u.usd[0]<10000)||(S.band==='4'&&u.usd[0]>=10000));
+    });
+    if(S.sort==='name')out=out.slice().sort(function(a,b){return a.name.localeCompare(b.name);});
+    if(S.sort==='tlow')out=out.slice().sort(function(a,b){return a.usd[0]-b.usd[0];});
+    if(S.sort==='thigh')out=out.slice().sort(function(a,b){return b.usd[0]-a.usd[0];});
+    if(refs.count)refs.count.innerHTML='<b>'+out.length+'</b> universit'+(out.length===1?'y':'ies')+' found';
+    refs.list.innerHTML=out.length?out.map(uRow).join(''):
+      '<div class="empty">'+I('search')+'<p>No universities match these filters.</p><button type="button" class="clearf" data-clear>'+I('rotate')+'Clear all filters</button></div>';
+    wireReveal();
+    bzLoadImages(refs.list);
+  }
+  function reset(){
+    S.q='';S.type='';S.program='';S.degree='';S.city='';S.region='';S.english=false;S.scholar=false;S.intake='';S.band='';S.sort='default';
+    var q=host.querySelector('.dir-q');if(q)q.value='';
+    var so=host.querySelector('.dir-sort');if(so)so.value='default';
+    host.querySelectorAll('select.dir-f').forEach(function(s){s.value='';});
+    var r=host.querySelectorAll('input[type=radio].dir-f');if(r.length)r[0].checked=true;
+    host.querySelectorAll('input[type=checkbox].dir-f').forEach(function(c){c.checked=false;});
+    syncTypeUI();render();
+  }
+  if(opts.tabs){
+    var pubs=list.filter(function(u){return u.type==='Public';}).length;
+    refs.tabs.innerHTML='<div class="tabs" role="group" aria-label="Filter by institution type">'+
+      '<button type="button" class="tab on" data-t="" aria-pressed="true">All ('+list.length+')</button>'+
+      '<button type="button" class="tab" data-t="public" aria-pressed="false">Public ('+pubs+')</button>'+
+      '<button type="button" class="tab" data-t="private" aria-pressed="false">Private / Independent ('+(list.length-pubs)+')</button></div>';
+    refs.tabs.addEventListener('click',function(e){
+      var t=e.target.closest('.tab');if(!t)return;
+      S.type=t.dataset.t;syncTypeUI();render();
+    });
+  }
+  var qi=host.querySelector('.dir-q');
+  if(qi)qi.addEventListener('input',function(e){S.q=e.target.value;render();});
+  var so=host.querySelector('.dir-sort');
+  if(so)so.addEventListener('change',function(e){S.sort=e.target.value;render();});
+  host.querySelectorAll('.dir-f').forEach(function(el){
+    el.addEventListener('change',function(){
+      S[el.dataset.k]=el.type==='checkbox'?el.checked:el.value;
+      if(el.type==='radio'&&!el.checked)return;
+      render();
+    });
+  });
+  host.addEventListener('click',function(e){
+    if(e.target.closest('[data-clear]')){reset();toast('Filters cleared','rotate');}
+  });
+  render();
+}
+
+/* ---------- 7. PAGES ---------- */
+function pageHome(){
+  var tiles=COUNTRIES.map(function(c,i){
+    var cls=c.id==='china'?'cn':(c.id==='italy'||c.id==='france')?'wide':'md';
+    return '<a class="dest '+cls+' rv" href="'+c.route+'.html"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><span class="dest-info"><small>'+c.facts[0].v+'</small><h3><span class="dflag dflag-'+c.id+'"></span>'+c.name+'</h3></span></a>';
+  }).join('');
+  var why=[
+    ['Counselor-led, from day one','You meet a counselor in Mansehra, Abbottabad or online before you meet a form. Advice is based on your marks and budget, discussed in person.'],
+    ['Clear about the process','Admission, scholarship and visa decisions are made by the relevant university or authority. We prepare complete, accurate applications and keep you informed of exactly where your file stands.'],
+    ['Offices in three countries','Pakistan, Australia and China — the same application standards whether you are applying from home or from abroad.'],
+    ['Support through arrival','From eligibility assessment to pre-departure briefing: one team follows your file through each stage of the process.']];
+  $('#page').innerHTML=
+  '<section class="s-hero"><span class="duo hbg"><img src="assets/home-hero.jpg" alt="Student preparing study abroad application with a counselor" width="1600" height="700" loading="eager" fetchpriority="high"></span><div class="hcopy"><h1>Study abroad with <em>clarity,</em> not guesswork.</h1><p>Counselor-led guidance from first consultation to first semester.</p><div class="cta-row"><a class="btn btn-gold" href="apply.html">Apply Now '+I('arrow-right')+'</a></div><a class="hero-alt" href="contact.html">Talk to a counselor instead</a></div></section>'+
+  '<div class="wrap"><form class="hsearch" id="hsearch" role="search"><input id="hs-q" type="search" placeholder="Search universities, programs or countries" aria-label="Search universities"><button type="submit" aria-label="Search">'+I('search')+'</button></form></div>'+
+  '<div class="wrap"><div class="promo"><div class="in"><h2>Free first consultation — Mansehra, Abbottabad &amp; online</h2><a class="btn btn-gold" href="contact.html">Book now '+I('arrow-right')+'</a></div></div></div>'+
+  '<div class="wrap" style="margin-top:48px"><div class="award-strip rv"><div><b>6 Study Destinations</b><span>China · Italy · Lithuania · UK · France · Cyprus</span></div><div><b>4 Counselor-Led Offices</b><span>Mansehra · Abbottabad · Perth (WA) · Guangxi, China</span></div><div><b>Free First Consultation</b><span>No obligation, in-person or online</span></div></div></div>'+
+  '<section class="sec"><div class="wrap">'+shead('','What Bluezone <em>offers</em>')+'<div class="pillars">'+[['globe','Study destinations','Six country guides — China, Italy, Lithuania, the UK, France and Cyprus.','destinations.html','Explore destinations'],['grad','University directory','Search institutions with indicative fees and recognition flags.','universities.html','Search universities'],['award','Scholarships','Official scholarship calls — MAECI, CSC, Chevening, Eiffel and more.','scholarships.html','Browse scholarships']].map(function(x){return '<div class="pillar rv"><span class="pi">'+I(x[0])+'</span><h3>'+x[1]+'</h3><p>'+x[2]+'</p><a class="btn btn-solid" href="'+x[3]+'">'+x[4]+' '+I('arrow-right')+'</a></div>';}).join('')+'</div></div></section>'+
+  '<section class="sec tint"><div class="wrap">'+shead('Success Stories','200+ student applications supported <em>in China.</em>','Through our China office, Guangxi Future Link, more than 200 students have applied and received admission and visa outcomes, many on funded scholarships. Full case studies are published as students provide and approve them.')+'<div class="grid3 story-grid">'+STORIES.slice(0,3).map(storyCard).join('')+'</div><div style="text-align:center;margin-top:8px"><a class="btn btn-line" href="testimonials.html">See All Success Stories '+I('arrow-right')+'</a></div></div></section>'+
+  '<div class="wrap"><div class="bigband"><div class="in"><h2>Application guidance you can follow, step by step.</h2><div class="badge">'+I('circle-check')+'<span>Counselor-led guidance from Mansehra, Abbottabad &amp; Perth</span></div></div></div></div>'+
+  '<section class="sec"><div class="wrap">'+
+    shead('Study Destinations'
+,'Six countries, <em>each with</em> a dedicated guide.','Every destination below has a dedicated country guide — universities, fees, scholarships, admission steps and FAQs.')+
+    '<div class="dest-grid">'+tiles+'<a class="dest slim rv" href="destinations-europe.html"><span class="duo"><img src="assets/dest-europe.jpg" alt="Other European study destinations" width="1280" height="220" loading="lazy"></span><span class="dest-info"><small>Also supported via our counseling desk</small><h3>Other European destinations</h3></span><span class="go">'+I('arrow-right')+'</span></a></div>'+
+  '</div></section>'+
+  '<section class="sec tint"><div class="wrap">'+
+    shead('Why Bluezone','What sets our <em>process apart.</em>')+
+    '<ol class="feat-index">'+why.map(function(w,i){return '<li class="rv"><span class="num">0'+(i+1)+'</span><div><h3>'+w[0]+'</h3><p>'+w[1]+'</p></div></li>';}).join('')+'</ol>'+
+  '</div></section>'+
+  '<section class="sec dark journey"><div class="wrap">'+
+    '<div class="shead"><span class="eyebrow">The Student Journey</span><h2>Ten steps, <em>start to campus.</em></h2><p class="lead">Every Bluezone student travels the same structured road — you always know what happens next.</p></div>'+
+    '<ol class="j-list">'+['Free Consultation','Profile Assessment','Country Selection','University Selection','Application Preparation','Admission Application','Offer / Admission','Visa Guidance','Pre-Departure','Arrival & Enrollment'].map(function(s,i){
+      var d=['Meet a counselor — free, no obligation.','We review academics, budget and goals.','Compare destinations honestly, on paper.','Shortlist universities that genuinely fit.','Documents, tests and translations compiled.','Filed through the correct official channel.','Offer tracked to decision.','Documentation and interview preparation.','Briefing on travel, money and first weeks.','Registration, settling-in and ongoing support.'][i];
+      return '<li class="rv"><span class="j-num">'+String(i+1).padStart(2,'0')+'</span><h3>'+s+'</h3><p>'+d+'</p></li>';}).join('')+'</ol>'+
+    '<div><a class="btn btn-solid" href="admission-guide.html">See the full journey '+I('arrow-right')+'</a><a class="btn btn-ghost" href="apply.html">Start at step one</a></div>'+
+  '</div></section>'+
+  '<section class="sec"><div class="wrap">'+
+    shead('Universities','Programs, fees and <em>entry requirements.</em>','Institution details, indicative fees and recognition status, with source links where available — search and filter the institutions we work with.')+
+    '<div id="dir-host"></div>'+
+    '<div><a class="tlink" href="universities.html">Open the full directory '+I('arrow-right')+'</a></div>'+
+  '</div></section>'+
+  '<section class="sec white"><div class="wrap">'+
+    shead('Scholarships','Official opportunities <em>and deadlines.</em>','We list scholarships with their official sources — "fully funded" is used only where the official terms say so.')+
+    '<div class="grid2">'+SCHOLARSHIPS.slice(0,4).map(schCard).join('')+'</div>'+
+    '<div><a class="tlink" href="scholarships.html">Browse all scholarships '+I('arrow-right')+'</a></div>'+
+  '</div></section>'+
+  '<section class="sec tint"><div class="wrap">'+
+    shead('Student Stories','Published with <em>student consent.</em>','We publish testimonials only with a student\u2019s written consent and confirmed details — never stock photos or invented names.')+
+    '<div class="grid3">'+[0,1,2].map(function(){return '<div class="tst rv"><span class="qmark">"</span><p>A student story will appear here — name, university, country, program and year — once provided and approved by the student.</p><div class="ph"><span class="av">'+I('user')+'</span><div><b>Student profile</b><span>Awaiting confirmation</span></div></div></div>';}).join('')+'</div>'+
+    '<div><a class="tlink" href="testimonials.html">Testimonials &amp; success stories '+I('arrow-right')+'</a></div>'+
+  '</div></section>'+
+  '<section class="sec"><div class="wrap"><div class="feat"><div class="txt"><h2>Book your free profile assessment</h2><p>Bring your marks, budget and questions. Leave with a written shortlist — free, and without obligation.</p><a class="btn btn-solid" href="contact.html">Book now '+I('arrow-right')+'</a></div><span class="duo pic">'+IMG('bz-counsel-2','A counselor meeting with a student',800,600)+'</span></div></div></section>'+
+  '<section class="sec"><div class="wrap">'+shead('','News from the <em>counseling desk</em>')+'<div class="news">'+POSTS.slice(0,3).map(function(p){return '<div class="rv"><a class="duo" href="blog.html?post='+p.slug+'">'+IMG(p.seed,p.title,640,400)+'</a><h3><a href="blog.html?post='+p.slug+'">'+p.title+'</a></h3><p>'+p.ex+'</p></div>';}).join('')+'</div><div><a class="btn btn-line" href="blog.html">All articles '+I('arrow-right')+'</a></div></div></section>'+
+  ctab('Not sure which country is right for you?','Sit with a counselor, put your marks and budget on the table, and leave with a written shortlist — free, and without obligation.');
+  mountDir($('#dir-host'),{list:UNIVERSITIES.slice(0,8)});
+  qfAdd('home');
+  wireReveal();
+  seo('Bluezone Consultants — Study Abroad Guidance from Pakistan, Australia & China','International education consultancy for China, Italy, Lithuania, the UK, France and Cyprus. University selection, application preparation, scholarship guidance and visa support.','',ldGraph(faqLd(QF.home)));
+}
+function pageAbout(){
+  $('#page').innerHTML=crumb([{t:'About Us'}])+
+  '<section class="phero phero-lg"><div class="wrap ph-grid"><div>'+
+    '<span class="eyebrow">About Bluezone</span><h1>Application guidance you can <em>follow and check.</em></h1>'+
+    '<p class="lead">Bluezone Consultants Pvt. Ltd. is an international education consultancy helping students explore higher education opportunities abroad and supporting them throughout the admission process — from first conversation to first semester.</p>'+
+    '<div class="cta-row"><a class="btn btn-solid" href="contact.html">Meet the team</a></div><a class="cta-alt" href="destinations.html">Explore destinations</a>'+
+  '</div><span class="arch duo">'+IMG('bz-about','Counseling session at Bluezone',620,720,false)+'</span></div></section>'+
+  '<section class="sec dark"><div class="wrap">'+
+    '<div class="shead"><span class="eyebrow">At a Glance</span><h2>Bluezone <em>in numbers.</em></h2></div>'+
+    '<div class="stats rv">'+CONFIG.stats.map(function(s){return '<div><span class="v">'+(s.value===null||s.value===undefined?'—':s.value)+'</span><span class="l">'+s.label+'</span>'+(s.value==null?'<span class="p">Pending confirmation</span>':'')+'</div>';}).join('')+'</div>'+
+    '<p>Figures are added as they are confirmed against our records.</p>'+
+  '</div></section>'+
+  '<section class="sec"><div class="wrap grid2"><div>'+
+    shead('Mission & Vision','Why we <em>show up.</em>')+
+    '<div><div><h3>Mission</h3><p>To make studying abroad a decision based on accurate information, honest assessment and careful preparation — for every student who walks into our offices, whatever their budget.</p></div>'+
+    '<div><h3>Vision</h3><p>A generation of students from our region studying at institutions that genuinely fit them, returning with skills their communities can build on.</p></div></div>'+
+  '</div><div><h3>Our values</h3><ol class="feat-index">'+
+    [['Transparency','You see what we submit, what it costs, and where you stand — always.'],['Accuracy','Fees, deadlines and rules are verified against official sources before they reach you.'],['Student-first','Recommendations follow your profile, not commission structures.'],['Accountability','When rules change mid-intake, we tell you before you ask.']].map(function(v,i){return '<li class="rv"><span class="num">0'+(i+1)+'</span><div><h3>'+v[0]+'</h3><p>'+v[1]+'</p></div></li>';}).join('')+'</ol></div></div></section>'+
+  '<section class="sec tint"><div class="wrap">'+
+    shead('What We Do','Support that runs the <em>full distance.</em>')+
+    '<div class="grid3">'+SERVICES.map(function(s){return '<div class="card rv"><span class="ci">'+I(s.icon)+'</span><h3>'+s.t+'</h3><p>'+s.d+'</p></div>';}).join('')+'</div>'+
+    '<div><a class="tlink" href="services.html">All student services '+I('arrow-right')+'</a></div>'+
+  '</div></section>'+
+  '<section class="sec"><div class="wrap"><div class="split"><div>'+
+    shead('University Partnerships','Partners we <em>can name.</em>')+
+    '<p>Bluezone works with public and private institutions across all six of our destinations. A current partner list — with MoU status, fee schedules and quota positions — is maintained by our admissions office and updated each intake.</p>'+
+    notice('We do not publish a headline "partner universities" count or a blanket success rate, since neither figure describes an individual student\u2019s chances. Ask us for the current partner list for your target country and program.')+
+    '<div><a class="btn btn-solid" href="contact.html">Request our current partner list</a></div>'+
+  '</div>'+duo('bz-partners','University partnership discussions','4/3')+'</div></div></section>'+
+  ctab('Ready to be advised properly?','Book a free consultation in Mansehra, Abbottabad, or online — and bring every question you have.',{pt:'Book Free Consultation',st:'See Our Offices',s:'offices.html'});
+  qfAdd('about');
+  wireReveal();
+  seo('About Bluezone Consultants — Mission, Values & Services','Meet Bluezone Consultants Pvt. Ltd.: our mission, values, student support system and offices in Pakistan, Australia and China.','about',ldGraph(faqLd(QF.about)));
+}
+function pageDestinations(){
+  $('#page').innerHTML=crumb([{t:'Study Destinations'}])+
+  '<section class="phero phero-lg"><div class="wrap"><span class="eyebrow">Study Destinations</span>'+
+  '<h1>Choose a country like it <em>matters</em> — because it does.</h1>'+
+  '<p class="lead">Each destination has a dedicated guide: universities, programs, indicative fees, scholarships, eligibility, the admission process, visa orientation and student life.</p></div></section>'+
+  '<section class="sec"><div class="wrap">'+
+    '<div class="grid-d2">'+COUNTRIES.map(function(c){return '<a class="dest rv" href="'+c.route+'.html"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><span class="dest-info"><small>'+c.facts[0].v+'</small><h3><span class="dflag dflag-'+c.id+'"></span>'+c.name+'</h3></span></a>';}).join('')+
+    '<a class="dest rv" href="destinations-europe.html"><span class="duo"><img src="assets/dest-europe.jpg" alt="Other European study destinations" width="640" height="400" loading="lazy"></span><span class="go">'+I('arrow-up-right')+'</span><span class="dest-info"><small>Supported via counseling</small><h3>Other European destinations</h3></span></a></div>'+
+  '</div></section>'+
+  ctab('Undecided between two countries?','We run side-by-side comparisons on total cost, program fit and post-study reality — with your actual marks on the table.',{pt:'Get a Free Profile Assessment'});
+  wireReveal();
+  seo('Study Destinations — China, Italy, Lithuania, UK, France, Cyprus | Bluezone','Compare study destinations with dedicated country guides: universities, fees, scholarships, admission processes and visa orientation.','destinations');
+}
+function pageEurope(){
+  $('#page').innerHTML=crumb([{t:'Study Destinations',h:'destinations.html'},{t:'Other European Destinations'}])+
+  '<section class="phero"><div class="wrap ph-grid"><div><span class="eyebrow">Beyond the six</span><h1>Other European <em>destinations.</em></h1>'+
+  '<p class="lead">Beyond our six core country guides, our counseling desk supports applications across the wider European higher education space on a case-by-case basis.</p>'+
+  '<div>'+['Germany','Poland','Hungary','Sweden','Latvia','Slovakia','Czech Republic','Netherlands'].map(function(c){return '<span class="chip">'+c+'</span>';}).join('')+'</div>'+
+  '<div><a class="btn btn-solid" href="contact.html">Ask about a specific country</a></div></div>'+duo('bz-europe-hero','European cities','4/4.6')+'</div></section>'+
+  '<section class="sec"><div class="wrap">'+notice('Availability, requirements and support for these destinations depend on the intake and your profile. Our counselors will tell you plainly whether a destination is a strong option for you — or not.','warn')+'</div></section>';
+  wireReveal();
+  seo('Other European Study Destinations | Bluezone Consultants','Bluezone also supports applications across wider European destinations — ask a counselor about availability for your intake.','destinations/europe');
+}
+function guangxiBlock(){
+  return '<section class="sec white" id="guangxi"><div class="wrap split">'+
+    '<div>'+shead('Our China Partner','Guangxi Future Link — <em>our office on the ground.</em>')+
+    '<p>Bluezone Consultants runs its China placements together with <b>Guangxi Future Link</b>, our partner office based in the Guangxi Zhuang Autonomous Region. Having a team physically in China — not just in Pakistan — means faster document turnaround, direct university liaison, and support that continues after a student lands.</p>'+
+    '<div class="office-badge">'+I('award')+'<span><b>200+</b> student applications supported through this partnership so far, with admission and visa outcomes tracked case by case — many students study in China on funded scholarships (CSC, provincial or university-level, per each year\u2019s official call).</span></div>'+
+    '<ul>'+['On-the-ground support once you land in Guangxi','Direct coordination with partner universities on admission status','Scholarship screening against each year\u2019s official CSC / provincial / university call','The same application standards as our Pakistan offices'].map(function(x){return '<li>'+I('circle-check')+'<span>'+x+'</span></li>';}).join('')+'</ul>'+
+    '<div class="cta-row"><a class="btn btn-solid btn-sm" href="offices.html">Guangxi Office Details</a><a class="btn btn-line btn-sm" href="testimonials.html">See Success Stories</a></div>'+
+    '</div>'+duo('bz-guangxi-office','Guangxi Future Link partner office, China','4/3')+
+  '</div></section>';
+}
+function mbbsBlock(){
+  var rows=[
+    ['Duration','6 years','5 academic years + structured internship'],
+    ['Medium of instruction','English','At universities offering English-medium MBBS; Chinese taught alongside'],
+    ['Indicative tuition','CNY 34,000 – 50,000 / yr','Confirm the current schedule with the university'],
+    ['Hostel','CNY 4,000 – 12,000 / yr','On-campus international hostels'],
+    ['Food','CNY 1,200 – 2,200 / month','Canteens; halal options in many cities'],
+    ['Insurance','University-arranged','Mandatory comprehensive cover, typically a few hundred CNY/yr'],
+    ['Clinical training','Teaching hospitals','Affiliated hospitals from the clinical years onward'],
+    ['Internship','Final year','In affiliated teaching hospitals; location options subject to university policy']];
+  return '<section class="sec dark" id="mbbs"><div class="wrap">'+
+    '<div class="shead"><span class="eyebrow">MBBS in China</span><h2>The medical route, <em>explained fully.</em></h2><p class="lead">China\u2019s English-medium MBBS programs — duration, eligibility, costs, clinical training and the admission timeline, without the brochure-speak.</p></div>'+
+    '<div class="grid2"><div>'+
+      '<h3>Program structure &amp; costs</h3>'+feeTable(rows,true)+
+    '</div><div>'+
+      '<h3>Eligibility &amp; requirements</h3>'+
+      '<ul>'+['FSc (Pre-Medical) or equivalent qualification','Minimum aggregate typically 60%+ — set per university','MDCAT / national admission test — per current PMDC rules, which change; our team tracks them each intake','English-medium program; Chinese taught alongside for clinical communication','Age and health requirements per university policy'].map(function(x){return '<li>'+I('circle-check')+'<span>'+x+'</span></li>';}).join('')+'</ul>'+
+      '<h3>Scholarship options</h3>'+
+      '<p>University-level merit reductions, provincial scholarships and the national CSC programme — each governed by its own annual call. We match you only to calls you actually qualify for.</p>'+
+      '<h3>Typical admission timeline</h3>'+
+      '<p>Applications for the September intake are strongest from winter through late spring; admission letters, JW202 documentation (where applicable) and visa filing follow through summer, with registration in September. We plan backwards from your city\u2019s embassy timelines.</p>'+
+      '<div>'+notice('Recognition of any MBBS degree depends on the university\u2019s current listings and your home country\u2019s medical council rules at the time of return. Bluezone verifies current status with official registries before you apply.')+'</div>'+
+    '</div></div>'+
+    '<div><a class="btn btn-solid" href="programs.html?p=mbbs">Explore MBBS worldwide '+I('arrow-right')+'</a></div>'+
+  '</div></section>';
+}
+function italyHub(){
+  function li(x){return '<li>'+I('circle-check')+'<span>'+x+'</span></li>';}
+  return '<section class="sec dark" id="isch"><div class="wrap">'+
+    '<div class="shead"><span class="eyebrow">Italy — Scholarship Hub</span><h2>Funding Italy, <em>accurately.</em></h2><p class="lead">Two layers of support — national and regional — each with its own call, conditions and calendar. Here is exactly how they work.</p></div>'+
+    '<div class="grid2">'+
+    '<div class="card">'+
+      '<div><h3>Italian Government — MAECI</h3><span class="tag t3">Benefits per official call</span></div>'+
+      '<p>'+esc(MAECI.blurb)+'</p>'+
+      '<ul>'+['Who: international students not residing in Italy',"Levels: Master's, PhD, research and Italian language & culture courses, per the annual call",'Benefits: monthly grant, tuition treatment and insurance where included — benefits vary according to the official call and selected program','Duration: typically 9 months per call','Apply: via the official Study in Italy portal before the published deadline'].map(li).join('')+'</ul>'+
+      '<div class="cfoot"><a class="btn btn-solid btn-sm" href="scholarships.html?s='+MAECI.slug+'">Full details</a><a class="btn btn-ghost btn-sm" href="'+MAECI.source+'" target="_blank" rel="noopener">Official portal '+I('arrow-up-right')+'</a></div>'+
+    '</div>'+
+    '<div class="card">'+
+      '<div><h3>Regional — DSU Grants</h3><span class="tag">Per region &amp; year</span></div>'+
+      '<p>'+esc(DSU.blurb)+'</p>'+
+      '<ul>'+['Tuition support: fee reductions where awarded','Accommodation: dormitory access where available','Meals: subsidised campus canteens','Financial assistance: cash grant based on ISEE indicators','Eligibility & timing: set per region and academic year — apply after arrival in Italy'].map(li).join('')+'</ul>'+
+      '<div class="cfoot"><a class="btn btn-solid btn-sm" href="scholarships.html?s='+DSU.slug+'">Full details</a></div>'+
+    '</div></div>'+
+    '<div>'+notice('Not every Italian scholarship is fully funded. Where a programme is genuinely fully funded according to its official terms, we display: "Fully Funded — subject to eligibility and official scholarship conditions." Always check the official call for the current year.','gold')+'</div>'+
+  '</div></section>';
+}
+function pageCountry(cid){
+  var c=null;COUNTRIES.forEach(function(x){if(x.id===cid)c=x;});
+  if(!c){page404();return;}
+  var list=UNIVERSITIES.filter(function(u){return u.country===c.name;});
+  var schs=SCHOLARSHIPS.filter(function(s){return s.country===c.name;});
+  var subs=[['why','Why '+c.name],['unis','Universities']];
+  if(cid==='china')subs.push(['guangxi','Guangxi Office'],['mbbs','MBBS in China']);
+  if(cid==='italy')subs.push(['isch','Scholarship Hub']);
+  if(schs.length&&cid!=='italy')subs.push(['sch','Scholarships']);
+  subs.push(['fees','Fees'],['proc','Admission'],['visa','Visa'],['life','Student Life'],['faq','FAQs']);
+  $('#page').innerHTML=crumb([{t:'Study Destinations',h:'destinations.html'},{t:c.name}])+
+  '<section class="phero"><div class="wrap ph-grid"><div>'+
+    '<span class="eyebrow">Destination Guide</span>'+
+    '<h1>Study in <em>'+c.name+'</em></h1><p class="lead">'+c.sub+'</p>'+
+    '<div class="cta-row"><a class="btn btn-solid" href="apply.html">Apply Now '+I('arrow-right')+'</a><a class="btn btn-line" href="contact.html">Check Your Eligibility</a></div>'+
+  '</div><span class="arch duo">'+IMG(c.seed,'Study in '+c.name,620,720,false)+'</span>'+
+  '<div class="facts">'+c.facts.map(function(f){return '<div><span>'+f.k+'</span><b>'+f.v+'</b></div>';}).join('')+'</div></div></section>'+
+  '<div class="subnav"><div class="wrap">'+subs.map(function(s){return '<a href="'+c.route+'.html" data-goto="'+s[0]+'">'+s[1]+'</a>';}).join('')+'</div></div>'+
+  (c.jurisdiction?'<section><div class="wrap">'+notice('A note on jurisdiction: the information on this page refers to institutions in the Republic of Cyprus — the internationally recognized EU member state. Rules and recognition differ for institutions in other areas of the island; verify jurisdiction status for any institution before applying.','warn')+'</div></section>':'')+
+  '<section class="sec" id="why"><div class="wrap">'+
+    shead('Why '+c.name+'?','What studying here <em>actually</em> offers.')+
+    '<ol class="feat-index">'+c.why.map(function(w,i){return '<li class="rv"><span class="num">0'+(i+1)+'</span><div><h3>'+w.t+'</h3><p>'+w.d+'</p></div></li>';}).join('')+'</ol>'+
+  '</div></section>'+
+  '<section class="sec white" id="unis"><div class="wrap">'+
+    shead('Universities in '+c.name,'Public and private, <em>clearly separated.</em>','Use the tabs to separate public from private / independent institutions. Every card shows tuition (indicative), intake, medium and scholarship status.')+
+    '<div id="dir-host"></div>'+DUE+
+  '</div></section>'+
+  (cid==='china'?guangxiBlock()+mbbsBlock():'')+
+  (cid==='italy'?italyHub():'')+
+  ((schs.length&&cid!=='italy')?'<section class="sec tint" id="sch"><div class="wrap">'+
+    shead(c.name+' Scholarships','Official calls <em>and eligibility.</em>')+
+    '<div class="grid2">'+schs.map(schCard).join('')+'</div>'+
+    '<div>'+notice('Scholarship benefits and eligibility are subject to the official scholarship call for each year. We label a scholarship "fully funded" only where its official terms support that description.','gold')+'</div>'+
+  '</div></section>':'')+
+  '<section class="sec" id="fees"><div class="wrap">'+
+    shead('Tuition & Living Costs','A <em>clear</em> cost picture.')+feeTable(c.fees)+DUE+
+  '</div></section>'+
+  '<section class="sec white" id="proc"><div class="wrap">'+
+    shead('Admission Process','From first consultation to <em>enrollment.</em>')+stepsGrid(c.process)+
+  '</div></section>'+
+  '<section class="sec" id="visa"><div class="wrap"><div class="split"><div>'+
+    shead('Visa Information',c.visa.title)+
+    '<p>'+c.visa.paras[0]+'</p><p>'+c.visa.paras[1]+'</p>'+
+    '<div>'+notice('General educational guidance only, not legal advice. Visa decisions are made by the relevant immigration authority; confirm current requirements with official sources for your jurisdiction.')+'</div>'+
+  '</div>'+duo(c.seed+'-visa','Visa documentation','4/3')+'</div></div></section>'+
+  '<section class="sec tint" id="life"><div class="wrap"><div class="split">'+
+    duo(c.seed+'-life','Student life','4/3')+
+    '<div>'+shead('Student Life',c.life.title)+'<p>'+c.life.paras[0]+'</p><p>'+c.life.paras[1]+'</p></div>'+
+  '</div></div></section>'+
+  '<section class="sec white" id="faq"><div class="wrap">'+
+    shead(c.name+' — FAQs','Questions we answer <em>every week.</em>')+accBlock(c.faqs)+
+  '</div></section>'+
+  ctab('Want this mapped to your profile?','Bring your transcripts to a free consultation and we will turn this guide into a personal shortlist — universities, costs and timeline included.',{pt:'Get a Free Profile Assessment'});
+  mountDir($('#dir-host'),{list:list,country:c.name,tabs:true});
+  qfAdd(c.id);
+  wireReveal();
+  seo(c.seo.title,c.seo.desc,c.route,ldGraph(faqLd(c.faqs.concat(QF[c.id]||[])),crumbLd(['Study Destinations',c.name])));
+}
+function pageUniversities(){
+  $('#page').innerHTML=crumb([{t:'Universities'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">University Directory</span>'+
+  '<h1>Search the <em>full directory.</em></h1>'+
+  '<p class="lead">Search, filter and sort across our full directory. Fees are indicative and flagged for verification; every university page links to an official source.</p></div></section>'+
+  '<section class="sec"><div class="wrap">'+
+    '<div id="dir-host"></div>'+DUE+
+  '</div></section>'+
+  ctab('Can\u2019t find your university?','We add institutions each intake based on student demand and confirmed recognition status — tell us what you\u2019re looking for.',{pt:'Request a University',st:'Browse Scholarships',s:'scholarships.html'});
+  mountDir($('#dir-host'),{list:UNIVERSITIES,tabs:true});
+  var _q=new URLSearchParams(location.search).get('q');
+  if(_q){var _qi=document.querySelector('.dir-q');if(_qi){_qi.value=_q;_qi.dispatchEvent(new Event('input',{bubbles:true}));}}
+  wireReveal();
+  seo('Universities Directory — Search, Filter & Compare | Bluezone','Search our international university directory: filter by country, city, program, degree, tuition band, English-taught intake and scholarships.','universities');
+}
+function pageUniversity(slug){
+  var u=null;UNIVERSITIES.forEach(function(x){if(x.slug===slug)u=x;});
+  if(!u){page404();return;}
+  var related=UNIVERSITIES.filter(function(x){return x.country===u.country&&x.slug!==slug;}).slice(0,3);
+  var c=null;COUNTRIES.forEach(function(x){if(x.name===u.country)c=x;});
+  $('#page').innerHTML=crumb([{t:'Universities',h:'universities.html'},{t:u.country,h:c?('index.html'+c.route):'universities.html'},{t:u.name}])+
+  '<section class="phero"><div class="wrap d-hero"><div>'+
+    '<div class="u-tags"><span class="tag">'+u.type+'</span>'+(/english/i.test(u.medium)?'<span class="tag t2">English-taught</span>':'')+(u.scholarships?'<span class="tag t3">Scholarships</span>':'')+'</div>'+
+    '<h1>'+esc(u.name)+'</h1>'+
+    '<p class="u-loc">'+I('map-pin')+esc(u.city)+', '+esc(u.region||u.country)+', '+esc(u.country)+'</p>'+
+    '<p class="lead">'+(u.note||'Profile, programs and application guidance for '+esc(u.name)+' — maintained by our admissions team and verified each intake.')+'</p>'+
+    '<div class="cta-row"><a class="btn btn-solid" href="apply.html">Apply '+I('arrow-right')+'</a>'+
+    (u.website?'<a class="btn btn-line" href="'+u.website+'" target="_blank" rel="noopener">Official Source '+I('arrow-up-right')+'</a>':'')+'</div>'+
+  '</div><div>'+
+    '<span class="duo dimg">'+IMG(u.seed,u.name,760,480,false)+'</span>'+
+    '<div class="qfacts">'+
+    '<div><span>Tuition</span><b>'+esc(u.tuition)+'</b></div>'+
+    '<div><span>Intake</span><b>'+u.intake.join(' / ')+'</b></div>'+
+    '<div><span>Duration</span><b>'+esc(u.duration)+'</b></div>'+
+    '<div><span>Medium</span><b>'+esc(u.medium)+'</b></div>'+
+    '<div><span>Degrees</span><b>'+u.degrees.join(' · ')+'</b></div>'+
+    '<div><span>Accommodation</span><b>'+esc(u.accommodation)+'</b></div></div>'+
+  '</div></div></section>'+
+  '<section class="sec white"><div class="wrap grid2"><div>'+
+    '<h2>Programs &amp; eligibility</h2>'+
+    '<div class="u-chips">'+u.programs.map(function(p){return '<a class="chip" href="programs.html?p='+slugify(p)+'">'+esc(p)+'</a>';}).join('')+'</div>'+
+    '<h3>Eligibility</h3>'+
+    '<ul>'+u.eligibility.map(function(e){return '<li>'+I('circle-check')+'<span>'+e+'</span></li>';}).join('')+'</ul>'+
+    '<h3>Recognition</h3><p>'+u.recognition+'</p>'+
+  '</div><div>'+
+    '<h2>Fees &amp; costs</h2>'+
+    feeTable([['Tuition',esc(u.tuition),'Indicative — confirm current schedule with the university'],['Accommodation',esc(u.accommodation),'Costs confirmed per university'],['Scholarships',u.scholarships||'Ask our team for current options','Per annual policy / call']])+DUE+
+    '<div>'+notice('Last updated: '+u.lastUpdated+'. We re-verify fee schedules, intakes and recognition status with official sources every intake.')+'</div>'+
+  '</div></div></section>'+
+  '<section class="sec tint"><div class="wrap">'+
+    shead('How you apply','The Bluezone route to an <em>offer letter.</em>')+
+    stepsGrid([['Eligibility Assessment','We verify your qualifications against this university\u2019s current entry requirements.'],['Application Preparation','Documents compiled and forms completed with our team.'],['Submission & Tracking','Filed through the correct channel, tracked to decision.'],['Offer & Next Steps','Admission letter, fee confirmation, and visa documentation where applicable.']])+
+  '</div></section>'+
+  (related.length?'<section class="sec white"><div class="wrap">'+
+    shead('Related universities','More options in <em>'+esc(u.country)+'.</em>')+related.map(uRow).join('')+
+  '</div></section>':'')+
+  ctab('Want a second opinion on this choice?','Send us your transcripts and we\u2019ll assess this university against your profile — and two alternatives you may not have considered.',{pt:'Check My Eligibility'});
+  wireReveal();
+  seo(esc(u.name)+' — Tuition, Programs & Admission | Bluezone',esc(u.name)+' ('+esc(u.city)+', '+esc(u.country)+'): programs, indicative tuition, intake, eligibility and application guidance.','universities/'+u.slug);
+}
+function pagePrograms(){
+  $('#page').innerHTML=crumb([{t:'Programs'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Programs Directory</span>'+
+  '<h1>Seventeen fields, <em>mapped to universities.</em></h1>'+
+  '<p class="lead">Each program page shows duration, countries, universities, estimated fees and career paths — drawn from the same data as our university directory.</p></div></section>'+
+  '<section class="sec"><div class="wrap">'+
+    '<div class="prog-grid">'+PROGRAMS.map(function(p){return '<a href="programs.html?p='+p.slug+'" class="rv"><span class="pi">'+I(p.icon)+'</span><span><b>'+esc(p.name)+'</b><small>'+esc(p.dur)+'</small></span></a>';}).join('')+'</div>'+
+  '</div></section>'+
+  ctab('Torn between two fields?','A one-hour assessment maps your marks, interests and budget onto realistic program options — with real universities attached.',{pt:'Find the Right Program',st:'Browse Universities',s:'universities.html'});
+  wireReveal();
+  seo('Study Programs Directory — 17 Fields | Bluezone Consultants','Browse study-abroad programs: MBBS, dentistry, engineering, computer science, AI, business, law, data science and more — with countries, fees and career paths.','programs');
+}
+function pageProgram(slug){
+  var p=null;PROGRAMS.forEach(function(x){if(x.slug===slug)p=x;});
+  if(!p){page404();return;}
+  var unis=UNIVERSITIES.filter(function(u){return u.programs.map(function(x){return slugify(x);}).indexOf(p.slug)>-1;});
+  var faqs=[
+    ['How long does '+p.name.toLowerCase()+' take abroad?','Typical duration is '+p.dur.toLowerCase()+' — confirm the exact structure per university and country.'],
+    ['Which countries should I consider?','Strong current options across '+p.countries.join(', ')+' — our directory shows exactly which universities offer it, in English, at what indicative cost.'],
+    ['What does it cost?','Tuition varies by country and institution type — see the indicative figures on this page; we confirm exact fees at offer stage.']];
+  if(p.customFaq)faqs.push(p.customFaq);
+  var feeRows=[
+    ['China','CNY 20,000 – 45,000 / yr','Indicative across programs'],
+    ['Italy (public)','€0 – 3,000 / yr','Income-based, indicative'],
+    ['Lithuania','€2,900 – 5,500 / yr','Indicative'],
+    ['Cyprus','€3,500 – 9,500 / yr','Indicative'],
+    ['United Kingdom','£15,000 – 28,000 / yr','Indicative'],
+    ['France (public)','≈ €3,000 / yr','Indicative — confirm regulated rates']];
+  $('#page').innerHTML=crumb([{t:'Programs',h:'programs.html'},{t:p.name}])+
+  '<section class="phero"><div class="wrap ph-grid"><div>'+
+    '<span class="eyebrow">Program Guide</span><h1>'+esc(p.name)+' <em>abroad.</em></h1><p class="lead">'+esc(p.blurb)+'</p>'+
+    '<div class="cta-row"><a class="btn btn-solid" href="apply.html">Apply for '+esc(p.name)+' '+I('arrow-right')+'</a><a class="btn btn-line" href="contact.html">Check Your Eligibility</a></div>'+
+  '</div>'+duo('bz-prog-'+p.slug,p.name+' studies','4/4.6')+'</div></section>'+
+  '<section class="sec"><div class="wrap grid4">'+
+    [['Duration',p.dur],['Degrees',p.degrees.join(' · ')],['Language','English-taught widely available'],['Countries',p.countries.length+' destinations']].map(function(f){return '<div class="card rv"><span>'+f[0]+'</span><b>'+f[1]+'</b></div>';}).join('')+
+  '</div></section>'+
+  '<section class="sec white"><div class="wrap">'+
+    shead('Estimated Fees','What <em>indicative</em> means here.','Regional tuition ranges for this field — every figure is confirmed with the university before you commit.')+
+    feeTable(feeRows)+DUE+
+  '</div></section>'+
+  (unis.length?'<section class="sec tint"><div class="wrap">'+
+    shead('Universities offering '+esc(p.name),'Where you can <em>actually</em> study it.')+
+    unis.map(uRow).join('')+
+    '<div><a class="tlink" href="universities.html">Open the full directory '+I('arrow-right')+'</a></div>'+
+  '</div></section>':'')+
+  '<section class="sec"><div class="wrap grid2"><div>'+
+    shead('Application Process','How a Bluezone application runs.')+
+    stepsGrid([['Eligibility Assessment','Your academics checked against program entry requirements.'],['University Shortlist','Three to five institutions matched to budget and profile.'],['Document Preparation','Transcripts, certificates and forms compiled correctly.'],['Application & Offer','Filed and tracked; offer confirmed with current fees.']])+
+  '</div><div>'+
+    shead('Career Paths','Where this degree <em>leads.</em>')+
+    '<div>'+p.careers.map(function(c){return '<span class="chip">'+esc(c)+'</span>';}).join('')+'</div>'+
+    notice('Licensing-dependent careers (medicine, dentistry, pharmacy, law, nursing) require recognition and registration steps in your intended country of practice — we map these before you choose a university.','warn')+
+  '</div></div></section>'+
+  '<section class="sec white"><div class="wrap">'+
+    shead('FAQ','About studying '+esc(p.name.toLowerCase())+' abroad.')+accBlock(faqs)+
+  '</div></section>'+
+  ctab('Want your shortlist built for you?','Our counselors map your marks and budget to real universities for this exact program — free, in one sitting.',{pt:'Get a Free Profile Assessment'});
+  wireReveal();
+  seo(esc(p.name)+' Abroad — Universities, Fees & Careers | Bluezone','Study '+p.name.toLowerCase()+' abroad: duration, countries, universities, indicative fees, career paths and application guidance.','programs/'+p.slug,ldGraph(faqLd(faqs)));
+}
+function pageScholarships(){
+  var state={country:'',degree:'',funding:''};
+  function render(){
+    var list=SCHOLARSHIPS.filter(function(s){
+      return (!state.country||s.country===state.country)&&
+        (!state.degree||s.degrees.indexOf(state.degree)>-1)&&
+        (!state.funding||(state.funding==='full'?s.fullyFunded:!s.fullyFunded));});
+    var el=document.getElementById('sch-list');
+    if(el)el.innerHTML=list.length?list.map(schCard).join(''):
+      '<div class="empty">'+I('search')+'<p>No scholarships match these filters.</p></div>';
+    wireReveal();
+  }
+  $('#page').innerHTML=crumb([{t:'Scholarships'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Scholarship Directory</span>'+
+  '<h1>Funding, stated <em>precisely.</em></h1>'+
+  '<p class="lead">Every entry links to its official source. "Fully funded" appears only where official terms support it — everything else says exactly what the call says.</p>'+
+  '<div>'+
+    '<select id="fl-c" class="btn btn-line btn-sm"><option value="">All countries</option>'+[].concat(new Set(SCHOLARSHIPS.map(function(s){return s.country;}))).map(function(c){return '<option>'+c+'</option>';}).join('')+'</select>'+
+    '<select id="fl-d" class="btn btn-line btn-sm"><option value="">All degrees</option><option>Bachelor</option><option>Master</option><option>PhD</option></select>'+
+    '<select id="fl-f" class="btn btn-line btn-sm"><option value="">Any funding level</option><option value="full">Fully funded (per official terms)</option><option value="other">Benefits per call</option></select>'+
+  '</div></div></section>'+
+  '<section class="sec"><div class="wrap">'+
+    '<div class="grid2" id="sch-list"></div>'+
+    '<div>'+notice('Benefits and eligibility are subject to the official scholarship call. Deadlines, amounts and conditions change every cycle — always verify on the official source linked from each card.','gold')+'</div>'+
+  '</div></section>'+
+  ctab('Want help with an application?','We decode the call, check your eligibility line by line, and help assemble the documents that make a competitive submission.',{pt:'Get Scholarship Guidance',p:'contact.html',st:'Browse Programs',s:'programs.html'});
+  [['fl-c','country'],['fl-d','degree'],['fl-f','funding']].forEach(function(pair){
+    var el=document.getElementById(pair[0]);
+    if(el)el.addEventListener('change',function(){state[pair[1]]=el.value;render();});
+  });
+  render();
+  wireReveal();
+  seo('Scholarships Directory — Official Calls & Sources | Bluezone','Browse study-abroad scholarships by country, degree and funding level — MAECI, CSC, Chevening, Eiffel, Erasmus Mundus and more, each linked to its official source.','scholarships');
+}
+function pageScholarship(slug){
+  var s=null;SCHOLARSHIPS.forEach(function(x){if(x.slug===slug)s=x;});
+  if(!s){page404();return;}
+  var fund=s.fullyFunded
+    ?'<span class="tag t3">Fully Funded — subject to eligibility and official scholarship conditions</span>'
+    :'<span class="tag">Benefits and eligibility are subject to the official scholarship call</span>';
+  $('#page').innerHTML=crumb([{t:'Scholarships',h:'scholarships.html'},{t:s.name}])+
+  '<section class="phero"><div class="wrap ph-grid"><div>'+
+    '<span class="eyebrow">Scholarship Profile</span>'+
+    '<h1>'+esc(s.name)+'</h1>'+
+    '<p class="lead">'+esc(s.blurb)+'</p>'+
+    '<div>'+fund+'<span class="tag t2">'+s.degrees.join(' · ')+'</span><span class="tag t2">'+esc(s.country)+'</span></div>'+
+    '<div class="cta-row">'+
+      (s.source?'<a class="btn btn-solid" href="'+s.source+'" target="_blank" rel="noopener">Official Source '+I('arrow-up-right')+'</a>':'')+
+      '<a class="btn btn-line" href="contact.html">Get Application Help</a></div>'+
+  '</div><div class="qfacts">'+
+    '<div><span>Provider</span><b>'+esc(s.provider)+'</b></div>'+
+    '<div><span>Deadline</span><b>'+esc(s.deadline)+'</b></div>'+
+    '<div><span>Duration</span><b>'+esc(s.duration)+'</b></div>'+
+    '<div><span>Last updated</span><b>'+esc(s.lastUpdated)+'</b></div>'+
+  '</div></div></section>'+
+  '<section class="sec white"><div class="wrap grid2"><div>'+
+    '<h2>Who can apply</h2>'+
+    '<ul>'+s.who.map(function(w){return '<li>'+I('circle-check')+'<span>'+esc(w)+'</span></li>';}).join('')+'</ul>'+
+    '<h2>Benefits</h2>'+
+    '<ul>'+s.benefits.map(function(b){return '<li>'+I('banknote')+'<span>'+esc(b)+'</span></li>';}).join('')+'</ul>'+
+  '</div><div>'+
+    '<h2>Application procedure</h2>'+
+    stepsGrid(s.procedure.map(function(p,i){return ['Step '+String(i+1).padStart(2,'0'),esc(p)];}))+
+    '<h2>Required documents</h2>'+
+    '<div>'+s.docs.map(function(d){return '<span class="chip">'+esc(d)+'</span>';}).join('')+'</div>'+
+    '<h2>Selection process</h2>'+
+    '<p>Selection follows the criteria published in the official call — typically academic merit, study plan quality and, where applicable, language evidence. Results are announced through the official portal only.</p>'+
+  '</div></div></section>'+
+  '<section class="sec tint"><div class="wrap">'+
+    notice('Read the official call for the current year before applying. Deadlines, benefit amounts and eligibility conditions change every cycle — this profile is updated by our team as new calls are published.','gold')+
+  '</div></section>'+
+  ctab('Applying for this scholarship?','Our team decodes the call, screens your eligibility line by line, and pressure-tests your documents before submission.',{pt:'Get Scholarship Guidance',p:'contact.html',st:'See All Scholarships',s:'scholarships.html'});
+  wireReveal();
+  seo(esc(s.name)+' — Eligibility, Benefits & How to Apply | Bluezone',esc(s.name)+' ('+esc(s.country)+'): who can apply, benefits per the official call, application procedure, documents and deadlines.','scholarships/'+s.slug);
+}
+function pageAdmissionGuide(){
+  var steps=[
+    ['Free Consultation','Meet a counselor — in Mansehra, Abbottabad or online. Bring your transcripts, your budget, and every question you have.'],
+    ['Profile Assessment','We assess your academics, test status and finances against realistic destinations and programs.'],
+    ['Country Selection','Side-by-side comparison of destinations on total cost, program fit, language and post-study reality.'],
+    ['University Selection','A written shortlist of universities where you are genuinely competitive — public and private separated clearly.'],
+    ['Application Preparation','Documents, translations, attestations and test bookings — compiled to each university\u2019s exact requirements.'],
+    ['Admission Application','Filed through the correct channel: direct, UCAS, Universitaly or Études en France, per country.'],
+    ['Offer / Admission','Offers tracked; conditions, fees and deadlines verified against the offer letter itself.'],
+    ['Visa Guidance','Documentation, financial evidence and interview preparation, tailored to your destination\u2019s current requirements.'],
+    ['Pre-Departure','Travel, money, climate, culture, safety and paperwork — a structured briefing for you and your family.'],
+    ['Arrival & Enrollment','Airport coordination, university registration and settling-in, with ongoing support afterward.']];
+  var docs=['Passport (valid, with buffer beyond your study period)','Academic transcripts & certificates — matric through latest','Provisional / final certificates where issued','English test score (IELTS / PTE / TOEFL) where required','MDCAT score report where applicable','CV / résumé for postgraduate applications','Passport-standard photographs','Physical examination form where required','Police clearance certificate where required'];
+  $('#page').innerHTML=crumb([{t:'Admission Guide'}])+
+  '<section class="phero"><div class="wrap ph-grid"><div><span class="eyebrow">Admission Guide</span>'+
+  '<h1>The whole journey, <em>step by step.</em></h1>'+
+  '<p class="lead">Ten stages from first conversation to enrollment day — what happens, what you provide, and what we do at each point.</p>'+
+  '<div class="cta-row"><a class="btn btn-solid" href="apply.html">Start your application '+I('arrow-right')+'</a><a class="btn btn-line" href="contact.html">Book step one</a></div></div>'+
+  duo('bz-admission','Admission documents','4/4.6')+'</div></section>'+
+  '<section class="sec dark"><div class="wrap">'+
+    '<div class="shead"><span class="eyebrow">The Timeline</span><h2>Ten steps to <em>campus.</em></h2></div>'+
+    '<ol class="j-list">'+steps.map(function(s,i){return '<li class="rv"><span class="j-num">'+String(i+1).padStart(2,'0')+'</span><h3>'+s[0]+'</h3><p>'+s[1]+'</p></li>';}).join('')+'</ol>'+
+  '</div></section>'+
+  '<section class="sec"><div class="wrap grid2"><div>'+
+    shead('Document Checklist','What to <em>gather.</em>')+
+    '<ul>'+docs.map(function(d){return '<li>'+I('file')+'<span>'+d+'</span></li>';}).join('')+'</ul>'+
+    notice('Each university and country specifies its own exact document set — this list is the common core. Your personalized checklist is issued after profile assessment.')+
+  '</div><div>'+
+    shead('Tests & Requirements','What to <em>prepare.</em>')+
+    stepsGrid([['English proficiency','IELTS, PTE or TOEFL where required — some institutions accept internal assessments. We confirm per program.'],['MDCAT','Pakistani medical applicants must follow the current national admission test rules for foreign degrees — tracked each intake.'],['Qualification recognition','Your certificates may need verification or attestation steps depending on destination — handled during preparation.'],['Financial planning','Evidence of funds is part of most visa routes. We help you plan the amounts and the paperwork early, not late.']])+
+  '</div></div></section>'+
+  ctab('Ready for step one?','A free consultation costs you one hour and saves you a year of wrong turns.',{pt:'Book Free Consultation'});
+  wireReveal();
+  seo('Admission Guide — The 10-Step Journey | Bluezone Consultants','The complete Bluezone admission journey: consultation, profile assessment, country and university selection, applications, visa guidance and arrival.','admission-guide');
+}
+function pageServices(focus){
+  $('#page').innerHTML=crumb([{t:'Student Services'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Student Services</span>'+
+  '<h1>Application Support <em>Services.</em></h1>'+
+  '<p class="lead">Ten services from one team, with your application information kept organized at every stage — from shortlisting universities to landing at the airport.</p></div></section>'+
+  SERVICES.map(function(s,i){
+    return '<section class="sec '+(i%2?'tint':'white')+'" id="svc-'+s.id+'"><div class="wrap split"><div>'+
+      '<span class="eyebrow">Service '+String(i+1).padStart(2,'0')+'</span>'+
+      '<h2>'+s.t+'</h2>'+
+      '<p class="lead">'+s.d+'</p>'+
+      '<ul>'+s.pts.map(function(p){return '<li>'+I('circle-check')+'<span>'+p+'</span></li>';}).join('')+'</ul>'+
+      '<div><a class="btn btn-gold btn-sm" href="apply.html">Apply Now '+I('arrow-right')+'</a><a class="btn btn-line btn-sm" href="contact.html">Ask about this service</a></div>'+
+    '</div>'+duo('bz-svc-'+s.id,s.t,'4/3')+'</div></section>';
+  }).join('')+
+  ctab('Which services do you actually need?','Most students need three of these ten. A one-hour assessment tells you which — and which you don\u2019t.',{pt:'Talk to a Counselor',p:'contact.html',st:'See the Journey',s:'admission-guide.html'});
+  qfAdd('services');
+  wireReveal();
+  if(focus){var el=document.getElementById('svc-'+focus);if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});},80);}
+  seo('Student Services — Application, Visa & Pre-Departure Support | Bluezone','Bluezone student services: university selection, admission processing, scholarships, documents, visa guidance, accommodation, arrival and ongoing support.','services',ldGraph(faqLd(QF.services)));
+}
+var STORY_COUNTRIES=['China','Italy','Lithuania','United Kingdom','France','Cyprus'];
+var STORIES=[
+  {country:'China',flag:'🇨🇳',real:true,name:'Hamza Basharat',photo:'story-hamza.jpg',uni:'Chengdu University',program:"Master's — Law",scholarship:'Fully-Funded Scholarship',quote:'Bluezone handled every step of my Chengdu University application, from document checklists to the scholarship interview, so I could focus on preparing rather than paperwork.'},
+  {country:'China',flag:'🇨🇳',real:true,name:'Rizwan Ali',photo:'story-rizwan.jpg',uni:'Chengdu University',program:"Master's — Law",scholarship:'Fully-Funded Scholarship',quote:'From my first meeting at the office to my visa stamp, the Bluezone team kept my Chengdu University file moving and answered every question along the way.'},
+  {country:'China',flag:'🇨🇳',real:true,name:'Khizer Farhad',photo:'story-khizer.jpg',uni:'To be confirmed',program:"Master's — Economics",scholarship:'Tuition &amp; Hostel Fee Waiver',quote:'Knowing my tuition and hostel fees were both covered took the financial pressure off, and Bluezone made sure my application met every requirement on time.'},
+  {country:'China',flag:'🇨🇳',real:true,name:'Sawera Hameed',avatar:'SH',uni:'To be confirmed',program:'Mechanical Engineering',scholarship:'Fully-Funded (CSC)',quote:'As one of the few women applying for a CSC scholarship in mechanical engineering, I appreciated how clearly the Bluezone team explained each stage of the process.'},
+  {country:'Italy',flag:'🇮🇹',uni:'To be confirmed',program:"Bachelor's",scholarship:'DSU Regional Grant',seed:'bz-story-it1'},
+  {country:'Lithuania',flag:'🇱🇹',uni:'To be confirmed',program:"Bachelor's",scholarship:'University Waiver',seed:'bz-story-lt1'},
+  {country:'United Kingdom',flag:'🇬🇧',uni:'To be confirmed',program:"Master's",scholarship:'Self-Funded',seed:'bz-story-uk1'},
+  {country:'Cyprus',flag:'🇨🇾',uni:'To be confirmed',program:"Bachelor's",scholarship:'University Waiver',seed:'bz-story-cy1'}
+];
+function storyCard(s,i){
+  var tag=s.real?'':'<span class="tag sample">SAMPLE — to be replaced with a real, consented story</span>';
+  var media=s.avatar?
+    '<span class="duo story-ph story-avatar"><span class="init">'+esc(s.avatar)+'</span></span>':
+    (s.photo?
+      '<span class="duo story-ph"><img src="assets/'+s.photo+'" alt="Photo of '+esc(s.name||'Bluezone student')+'" width="640" height="640" loading="lazy" decoding="async"></span>':
+      '<span class="duo story-ph">'+IMG(s.seed,'Portrait placeholder for a Bluezone student success story',320,320)+'</span>');
+  var name=s.name?esc(s.name):'Student Name — to be provided';
+  var quote=s.quote?esc(s.quote):'Quote from the student, in their own words, once approved for publication.';
+  return '<div class="story rv" data-country="'+s.country+'">'+tag+
+  media+
+  '<div class="story-b"><span class="eyebrow">'+s.flag+' '+s.country+'</span><h3>'+name+'</h3>'+
+  '<div class="qfacts"><div><span>University</span><b>'+s.uni+'</b></div><div><span>Program</span><b>'+s.program+'</b></div><div><span>Scholarship</span><b>'+s.scholarship+'</b></div></div>'+
+  '<p>\u201c'+quote+'\u201d</p></div></div>';
+}
+function pageTestimonials(){
+  $('#page').innerHTML=crumb([{t:'Success Stories'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Success Stories</span>'+
+  '<h1>Student outcomes, <em>published with consent.</em></h1>'+
+  '<p class="lead">We publish a student\u2019s story only with their written consent, their real name, their university, and their photo. The cards below show exactly what each finished story will contain — the layout is ready, and it fills in as students confirm.</p></div></section>'+
+  '<div class="wrap" style="margin-top:28px"><div class="award-strip rv"><div><b>200+ Applications Supported</b><span>Through our China office — Guangxi Future Link</span></div><div><b>Funded Scholarships</b><span>A share of these students are on funded scholarships in China</span></div><div><b>4 Offices</b><span>Mansehra · Abbottabad · Perth (WA) · Guangxi, China</span></div></div></div>'+
+  '<section class="sec"><div class="wrap">'+
+    shead('Our China Track Record','Guangxi Future Link — <em>the numbers behind it.</em>','Bluezone Consultants runs its China placements together with our partner office, Guangxi Future Link, based in the Guangxi Zhuang Autonomous Region. Since opening that partnership, more than 200 students have applied and received admission and visa outcomes through this office, and many are studying in China on funded scholarships — CSC, provincial or university-level awards, depending on the program and the year\u2019s official call.')+
+    '<p>We are publishing named, photographed student stories from this pipeline as each student confirms and approves their own account — see the sample layout below. We do not publish a story, a number, or a quote from any student without their written sign-off first.</p>'+
+  '</div></section>'+
+  '<section class="sec tint"><div class="wrap">'+
+    shead('Story Wall','Browse by <em>destination.</em>')+
+    '<div class="chips" role="tablist" aria-label="Filter by country"><span class="chip act" data-f="all">All Destinations</span>'+STORY_COUNTRIES.map(function(c){return '<span class="chip" data-f="'+c+'">'+c+'</span>';}).join('')+'</div>'+
+    '<div class="grid3 story-grid" id="story-grid">'+STORIES.map(storyCard).join('')+'</div>'+
+  '</div></section>'+
+  '<section class="sec white"><div class="wrap">'+
+    shead('How We Publish a Success Story','No name, no photo, no <em>quote</em> without consent.')+
+    '<div class="card rv"><span class="tag">Our publishing checklist</span>'+
+    '<div class="qfacts">'+
+    '<div><span>1. Written consent</span><b>Signed off by the student (or guardian, if a minor)</b></div>'+
+    '<div><span>2. Identity check</span><b>Matched against our admission &amp; visa file</b></div>'+
+    '<div><span>3. University &amp; scholarship</span><b>Confirmed against the offer/award letter</b></div>'+
+    '<div><span>4. Quote approval</span><b>Student reviews the exact wording before it goes live</b></div>'+
+    '<div><span>5. Right to remove</span><b>Any student can ask us to take their story down, any time</b></div>'+
+    '<div><span>Aggregate figures (e.g. "200+")</span><b>Tracked internally from admission &amp; visa records, not estimated</b></div></div>'+
+    '<p><b>Admission journey we document per story:</b> the first consultation, the shortlist, the documents, the wait, the offer, the scholarship (if any) and the visa — including anything that went wrong along the way and how it was fixed.</p></div>'+
+  '</div></section>'+
+  ctab('Are you a Bluezone student — in China or elsewhere?','If you\u2019d like your journey documented here, send us your details. We\u2019ll verify everything and publish only what you approve.',{pt:'Share Your Story',p:'contact.html',st:'See Our China Office',s:'offices.html'});
+  wireReveal();
+  var grid=document.getElementById('story-grid');
+  document.querySelectorAll('.chips .chip').forEach(function(ch){
+    ch.addEventListener('click',function(){
+      document.querySelectorAll('.chips .chip').forEach(function(c){c.classList.remove('act');});
+      ch.classList.add('act');
+      var f=ch.getAttribute('data-f');
+      grid.querySelectorAll('.story').forEach(function(card){card.style.display=(f==='all'||card.getAttribute('data-country')===f)?'':'none';});
+    });
+  });
+  seo('Success Stories — 200+ Applications Supported in China | Bluezone','Bluezone Consultants success stories: 200+ student applications supported through our China office, Guangxi Future Link, many on funded scholarships. Student journeys published with consent.','testimonials',ldGraph(faqLd([['How many students has Bluezone placed in China?','More than 200 student applications have been supported through our China office, Guangxi Future Link, based in the Guangxi Zhuang Autonomous Region — many are studying on funded scholarships.'],['Does Bluezone publish student success stories?','Yes, but only with the student\\u2019s written consent, real name, university and photo confirmed against our admission and visa records — never invented or estimated.'],['What is Guangxi Future Link?','Guangxi Future Link is Bluezone Consultants\\u2019s partner office in the Guangxi Zhuang Autonomous Region, China, through which we process admissions, scholarships and visas for students choosing to study in China.']])));
+}
+function pageBlog(slug){
+  if(slug){
+    var p=null;POSTS.forEach(function(x){if(x.slug===slug)p=x;});
+    if(!p){page404();return;}
+    var rel=POSTS.filter(function(x){return x.slug!==slug;}).slice(0,2);
+    $('#page').innerHTML=crumb([{t:'Blog',h:'blog.html'},{t:p.title}])+
+    '<article class="phero"><div class="wrap article">'+
+      '<span class="eyebrow">'+p.cat+'</span><h1>'+p.title+'</h1>'+
+      '<div class="pmeta"><span>'+I('user')+'Bluezone Editorial Team</span><span>'+I('calendar')+p.date+'</span><span>'+I('clock')+p.read+' read</span></div>'+
+    '</div></article>'+
+    '<div class="wrap article">'+
+      '<span class="duo aimg">'+IMG(p.seed,p.title,980,490,false)+'</span>'+
+      p.body.map(function(t,i){return '<p'+(i===0?'':'')+'>'+t+'</p>';}).join('')+
+    '</div>'+
+    '<section class="sec tint"><div class="wrap article">'+
+      shead('Related Reading','More from the <em>desk.</em>')+
+      rel.map(function(r){return '<div class="post-row"><a class="pimg" href="blog.html?post='+r.slug+'"><span class="duo">'+IMG(r.seed,r.title,380,260)+'</span></a><div><span class="eyebrow">'+r.cat+'</span><h3><a href="blog.html?post='+r.slug+'">'+r.title+'</a></h3><div class="pmeta"><span>'+I('calendar')+r.date+'</span><span>'+I('clock')+r.read+'</span></div><p>'+r.ex+'</p></div></div>';}).join('')+
+    '</div></section>'+
+    ctab('Reading is step zero.','Turn this research into a plan with a free counseling session.',{pt:'Book Free Consultation',p:'contact.html'});
+    wireReveal();
+    seo(p.title+' | Bluezone Blog',p.ex,'blog/'+p.slug,ldGraph({"@type":"BlogPosting","headline":p.title,"datePublished":p.date,"author":{"@type":"Organization","name":"Bluezone Consultants Pvt. Ltd."}}));
+    return;
+  }
+  $('#page').innerHTML=crumb([{t:'Blog'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Blog &amp; Guides</span>'+
+  '<h1>Research you can <em>act on.</em></h1>'+
+  '<p class="lead">Admission guides, scholarship explainers and country deep-dives — written by the counseling desk, not a content farm.</p>'+
+  '<div>'+[].concat(new Set(POSTS.map(function(p){return p.cat;}))).map(function(c){return '<span class="chip">'+c+'</span>';}).join('')+'</div></div></section>'+
+  '<section class="sec white"><div class="wrap">'+
+    POSTS.map(function(p){return '<div class="post-row rv"><a class="pimg" href="blog.html?post='+p.slug+'"><span class="duo">'+IMG(p.seed,p.title,380,260)+'</span></a>'+
+    '<div><span class="eyebrow">'+p.cat+'</span><h3><a href="blog.html?post='+p.slug+'">'+p.title+'</a></h3>'+
+    '<div class="pmeta"><span>'+I('user')+'Bluezone Editorial Team</span><span>'+I('calendar')+p.date+'</span><span>'+I('clock')+p.read+'</span></div>'+
+    '<p>'+p.ex+'</p><div><a class="tlink" href="blog.html?post='+p.slug+'">Read the article '+I('arrow-right')+'</a></div></div></div>';}).join('')+
+  '</div></section>'+
+  ctab('Have a question this blog didn\u2019t answer?','Ask a counselor directly — free, and answered by a human who knows the current intake.',{pt:'Ask a Counselor',p:'contact.html'});
+  wireReveal();
+  seo('Blog — Study Abroad Guides & Admission Advice | Bluezone','Study abroad guides, scholarship explainers and admission advice from the Bluezone counseling desk.','blog');
+}
+function officeCard(key,name,addr,flag){
+  var o=CONFIG.offices[key]||{};
+  var phone=o.phone?'<a href="tel:'+esc(o.phone)+'" class="row">'+I('phone')+'<span>'+esc(o.phone)+'</span></a>':'<div class="row">'+I('phone')+'<span class="pend">Phone — to be provided</span></div>';
+  var email=o.email?'<a href="mailto:'+esc(o.email)+'" class="row">'+I('mail')+'<span>'+esc(o.email)+'</span></a>':'<div class="row">'+I('mail')+'<span class="pend">Email — to be provided</span></div>';
+  var maps=o.map
+    ?'<a class="btn btn-line btn-sm" href="'+esc(o.map)+'" target="_blank" rel="noopener">'+I('map-pin')+'Google Maps</a><a class="btn btn-line btn-sm" href="'+esc(o.map)+'" target="_blank" rel="noopener">Get Directions '+I('arrow-up-right')+'</a>'
+    :'<button type="button" class="btn btn-line btn-sm" data-pend="Google Maps link for the '+name+'">'+I('map-pin')+'Google Maps</button><button type="button" class="btn btn-line btn-sm" data-pend="Directions link for the '+name+'">Get Directions</button>';
+  var partnerLine=o.partner?'<div class="row">'+I('globe')+'<span>Operated with our partner, <b>'+esc(o.partner)+'</b></span></div>':'';
+  var badge=key==='guangxi'?'<div class="office-badge">'+I('award')+'<span><b>200+</b> student applications supported through this office, many on funded scholarships</span></div>':'';
+  return '<div class="office rv"><div class="oh"><span class="ci">'+I('map-pin')+'</span><div><small>'+flag+'</small><h3>'+name+'</h3></div></div>'+
+  '<div class="row">'+I('building')+'<span>'+addr+'</span></div>'+partnerLine+phone+email+
+  '<div class="row">'+I('clock')+'<span>'+(o.hours||CONFIG.hours)+'</span></div>'+badge+
+  '<div class="oactions">'+maps+'<a class="btn btn-solid btn-sm" href="contact.html">Contact Office</a></div></div>';
+}
+var OFFICES=[
+  ['mansehra','Mansehra Office','Office 101 &amp; 102, Above Passport Office, Ari Ada, Mansehra, Pakistan','Pakistan'],
+  ['abbottabad','Abbottabad Office','Near Old Police Chowki, Supply, Abbottabad, Pakistan','Pakistan'],
+  ['australia','Australia Office','35 Hagart Way, Lockridge WA 6054, Australia','Australia'],
+  ['guangxi','China Office — Guangxi Future Link','Guangxi Future Link Partner Office, Guangxi Zhuang Autonomous Region, China','China']];
+function pageContact(detailed){
+  var cards=OFFICES.map(function(o){return officeCard(o[0],o[1],o[2],o[3]);}).join('');
+  $('#page').innerHTML=crumb([{t:detailed?'Our Offices':'Contact'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">'+(detailed?'Our Offices':'Contact Us')+'</span>'+
+  '<h1>Our <em>offices.</em></h1>'+
+  '<p class="lead">Our team supports students across four offices and online. Walk in, call, or message us — whichever suits you. Your first consultation is free and carries no obligation.</p></div></section>'+
+  '<section class="sec"><div class="wrap grid4">'+cards+'</div></section>'+
+  '<section class="sec tint"><div class="wrap grid4">'+OFFICES.map(function(o){var q=(CONFIG.offices[o[0]]||{}).mapq;return q?'<iframe class="mapframe" loading="lazy" title="Map: '+o[1]+'" src="https://www.google.com/maps?q='+encodeURIComponent(q)+'&output=embed"></iframe>':'';}).join('')+'</div></section>'+
+  (detailed?'':(
+  '<section class="sec white"><div class="wrap grid2"><div>'+
+    shead('Send a Message','We reply within <em>one working day.</em>')+
+    '<form id="cform" novalidate>'+
+    '<div class="frow"><div class="field"><label for="cf-name">Name <em>*</em></label><input id="cf-name" name="name" required></div>'+
+    '<div class="field"><label for="cf-phone">Phone / WhatsApp <em>*</em></label><input id="cf-phone" name="phone" required></div></div>'+
+    '<div class="frow one"><div class="field"><label for="cf-email">Email <em>*</em></label><input id="cf-email" name="email" type="email" required></div></div>'+
+    '<div class="frow one"><div class="field"><label for="cf-msg">Message <em>*</em></label><textarea id="cf-msg" name="msg" required placeholder="Tell us what you\u2019re planning — country, program, timeline…"></textarea></div></div>'+
+    '<div><button class="btn btn-solid" type="submit">Send Message '+I('arrow-right')+'</button></div>'+
+    '<p class="form-note">'+I('info')+(CONFIG.endpoints.contact?'':'Messages are stored locally in this demo environment — connect an endpoint via CONFIG.endpoints.contact for live delivery.')+'</p></form>'+
+  '</div><div>'+
+    shead('Visit or Call','Office <em>hours.</em>')+
+    '<div class="office"><div class="row">'+I('clock')+'<span>'+CONFIG.hours+'</span></div>'+
+    '<div class="row">'+I('globe')+'<span>Counseling also available online for students anywhere in Pakistan and abroad</span></div>'+
+    '<div class="row">'+I('chat')+'<span>WhatsApp — button at the bottom-right of every page</span></div></div>'+
+    accBlock([['Do I need an appointment?','Walk-ins are welcome during office hours; booked consultations get a dedicated slot and a counselor who has read your documents first.'],['Is the first consultation really free?','Yes — assessment, country guidance and a preliminary shortlist cost nothing and commit you to nothing.'],['Can my parents attend?','We encourage it. Decisions this big deserve the whole family hearing the same accurate information.'],['Do you help students already abroad?','Yes — our Australia office supports students planning next steps from overseas.']],'Contact FAQs')+
+  '</div></div></section>'+
+  ctab('Prefer to start right now?','Skip the inbox — submit a full application profile and our admissions team will call you.',{pt:'Submit My Application'})));
+  wireReveal();
+  var f=document.getElementById('cform');
+  if(f)f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d={};new FormData(f).forEach(function(v,k){d[k]=v;});
+    if(!d.name||!d.phone||!d.email||!d.msg){toast('Please complete all required fields.','circle-alert');return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){toast('Please enter a valid email address.','circle-alert');return;}
+
+    // Always keep a local backup, even when live delivery succeeds.
+    var arr=store('bz_messages')||[];arr.push({d:d,at:new Date().toISOString()});store('bz_messages',arr);
+
+    function showSuccess(){
+      f.innerHTML='<div class="success-panel"><span class="big">'+I('circle-check')+'</span><h3>Message received.</h3><p>Our team will reply within one working day. If it\u2019s urgent, call your nearest office.</p></div>';
+      toast('Message received — we\u2019ll be in touch.');
+    }
+    function showFallback(msg){
+      toast(msg,'circle-alert');
+      showSuccess(); // still confirm to the user — their message IS saved locally
+    }
+
+    if(CONFIG.endpoints.contact){
+      var fd=new FormData(f);
+      fd.set('_subject','New enquiry — Bluezone website');
+      fetch(CONFIG.endpoints.contact,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+        .then(function(r){ r.ok?showSuccess():showFallback('Delivery issue — please also call the office directly.'); })
+        .catch(function(){ showFallback('Connection issue — please also call the office directly.'); });
+    }else{
+      showSuccess();
+    }
+  });
+  seo((detailed?'Our Offices — ':'Contact Bluezone Consultants — ')+'Mansehra, Abbottabad & Australia',detailed?'Bluezone offices in Mansehra, Abbottabad (Pakistan) and Lockridge WA (Australia) — addresses, hours and directions.':'Contact Bluezone Consultants: offices in Mansehra, Abbottabad and Australia, contact form, WhatsApp and free consultations.',detailed?'offices':'contact');
+}
+function pageApply(){
+  var uploads=[['passport','Passport'],['certs','Academic Certificates'],['marks','Mark Sheets'],['cv','CV'],['other','Other Documents']];
+  $('#page').innerHTML=crumb([{t:'Apply Now'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Universal Application</span>'+
+  '<h1>Apply once, for <em>any destination.</em></h1>'+
+  '<p class="lead">Complete this once and our admissions team assesses your profile across all suitable countries and universities — then calls you to discuss options.</p></div></section>'+
+  '<section class="sec"><div class="wrap">'+
+  '<form class="form-shell" id="aform" novalidate>'+
+  '<fieldset><legend>'+I('user')+'Personal Information</legend>'+
+    '<div class="frow"><div class="field"><label for="af-fullname">Full Name <em>*</em></label><input id="af-fullname" name="fullname" required></div>'+
+    '<div class="field"><label for="af-guardian">Father / Guardian Name <em>*</em></label><input id="af-guardian" name="guardian" required></div></div>'+
+    '<div class="frow"><div class="field"><label for="af-dob">Date of Birth <em>*</em></label><input id="af-dob" name="dob" type="date" required></div>'+
+    '<div class="field"><label for="af-gender">Gender <em>*</em></label><select id="af-gender" name="gender" required><option value="">Select…</option><option>Male</option><option>Female</option><option>Other / prefer not to say</option></select></div></div>'+
+    '<div class="frow"><div class="field"><label for="af-phone">Phone <em>*</em></label><input id="af-phone" name="phone" type="tel" required placeholder="+92 …"></div>'+
+    '<div class="field"><label for="af-whatsapp">WhatsApp</label><input id="af-whatsapp" name="whatsapp" type="tel" placeholder="+92 …"></div></div>'+
+    '<div class="frow"><div class="field"><label for="af-email">Email <em>*</em></label><input id="af-email" name="email" type="email" required></div>'+
+    '<div class="field"><label for="af-city">City <em>*</em></label><input id="af-city" name="city" required></div></div>'+
+    '<div class="frow"><div class="field"><label for="af-country">Country <em>*</em></label><input id="af-country" name="country" required placeholder="Pakistan"></div>'+
+    '<div class="field"><label for="af-passportno">Passport Number <span>(optional)</span></label><input id="af-passportno" name="passportno"></div></div>'+
+  '</fieldset>'+
+  '<fieldset><legend>'+I('grad')+'Academic Background</legend>'+
+    '<div class="frow"><div class="field"><label for="af-qualification">Academic Qualification <em>*</em></label><select id="af-qualification" name="qualification" required><option value="">Select…</option><option>Matric / O-Level</option><option>Intermediate / FSc / A-Level</option><option>Bachelor\u2019s Degree</option><option>Master\u2019s Degree</option><option>Other</option></select></div>'+
+    '<div class="field"><label for="af-matric">Matric / O-Level Percentage</label><input id="af-matric" name="matric" type="number" min="0" max="100" step="0.01" aria-describedby="af-matric-hint"><p class="hint" id="af-matric-hint">Numbers only, e.g. 82.5</p></div></div>'+
+    '<div class="frow"><div class="field"><label for="af-inter">Intermediate / FSc / A-Level Percentage</label><input id="af-inter" name="inter" type="number" min="0" max="100" step="0.01"></div>'+
+    '<div class="field"><label for="af-mdcat">MDCAT Score</label><input id="af-mdcat" name="mdcat" placeholder="e.g. 160 / 200" aria-describedby="af-mdcat-hint"><p class="hint" id="af-mdcat-hint">For medical applicants, if taken</p></div></div>'+
+    '<div class="frow one"><div class="field"><label for="af-engtest">IELTS / PTE / TOEFL</label><input id="af-engtest" name="engtest" placeholder="e.g. IELTS 6.5 — or \u2018not taken yet\u2019"></div></div>'+
+  '</fieldset>'+
+  '<fieldset><legend>'+I('compass')+'Study Preferences</legend>'+
+    '<div class="frow"><div class="field"><label for="af-pcountry">Preferred Country <em>*</em></label><select id="af-pcountry" name="pcountry" required><option value="">Select…</option>'+COUNTRIES.map(function(c){return '<option>'+c.name+'</option>';}).join('')+'<option>Undecided — advise me</option></select></div>'+
+    '<div class="field"><label for="af-puniversity">Preferred University</label><input id="af-puniversity" name="puniversity" placeholder="Optional — leave blank for our recommendation"></div></div>'+
+    '<div class="frow"><div class="field"><label for="af-pprogram">Preferred Program <em>*</em></label><select id="af-pprogram" name="pprogram" required><option value="">Select…</option>'+PROGRAMS.filter(function(p){return p.id!=='other';}).map(function(p){return '<option>'+p.name+'</option>';}).join('')+'</select></div>'+
+    '<div class="field"><label for="af-budget">Budget (annual, tuition + living)</label><select id="af-budget" name="budget"><option value="">Select…</option><option>Under $5,000</option><option>$5,000 – 10,000</option><option>$10,000 – 20,000</option><option>Above $20,000</option><option>Not sure yet</option></select></div></div>'+
+    '<div class="frow"><div class="field"><label for="af-schreq">Scholarship Required</label><select id="af-schreq" name="schreq"><option>Yes — please check my eligibility</option><option>No</option><option>Maybe — explain my options</option></select></div></div>'+
+    '<div class="frow one"><div class="field"><label for="af-message">Message</label><textarea id="af-message" name="message" placeholder="Anything else we should know — timeline, family considerations, target intake…"></textarea></div></div>'+
+  '</fieldset>'+
+  '<fieldset><legend>'+I('upload')+'Documents</legend>'+
+    uploads.map(function(u){return '<div class="frow one"><div class="field"><label class="upload" for="up-'+u[0]+'">'+I('upload')+'<span><b>'+u[1]+'</b><span>PDF or image · optional at this stage</span></span><span class="fname" id="fn-'+u[0]+'"></span></label><input type="file" id="up-'+u[0]+'" name="'+u[0]+'" accept=".pdf,.jpg,.jpeg,.png"></div></div>';}).join('')+
+  '</fieldset>'+
+  '<div><button class="btn btn-solid" type="submit">Submit My Application '+I('arrow-right')+'</button></div>'+
+  '<p class="form-note">'+I('shield')+'Your information stays with Bluezone\u2019s admissions team only. Submitting this form is an enquiry — not a binding application — and no payment is requested at this stage.</p>'+
+  (CONFIG.endpoints.apply?'':'<p class="form-note">'+I('info')+'Demo mode: submissions are stored on this device. Connect your endpoint via CONFIG.endpoints.apply to transmit live applications.</p>')+
+  '</form></div></section>';
+  uploads.forEach(function(u){
+    var inp=document.getElementById('up-'+u[0]);
+    if(!inp)return;
+    inp.addEventListener('change',function(){
+      var lab=inp.closest('.upload');
+      var fn=document.getElementById('fn-'+u[0]);
+      if(fn)fn.textContent=inp.files.length?inp.files[0].name:'';
+      if(lab)lab.classList.toggle('has',!!inp.files.length);
+    });
+  });
+  var f=document.getElementById('aform');
+  if(f)f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d={};new FormData(f).forEach(function(v,k){d[k]=v;});
+    var req=['fullname','guardian','dob','gender','phone','email','city','country','qualification','pcountry','pprogram'];
+    var ok=true,first=null;
+    req.forEach(function(k){
+      var el=f.querySelector('[name='+k+']');
+      if(!el)return;
+      var bad=!d[k];
+      if(bad){ok=false;if(!first)first=el;}
+      try{el.setAttribute('aria-invalid',bad?'true':'false');}catch(x){}
+    });
+    if(!ok){toast('Please complete the required fields.','circle-alert');if(first)first.focus();return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){toast('Please enter a valid email address.','circle-alert');return;}
+
+    var fileInputs=uploads.map(function(u){return document.getElementById('up-'+u[0]);}).filter(function(i){return i&&i.files.length;});
+    var totalBytes=fileInputs.reduce(function(sum,i){return sum+i.files[0].size;},0);
+    if(totalBytes>CONFIG.maxUploadMB*1024*1024){
+      toast('Attached documents total over '+CONFIG.maxUploadMB+'MB — please remove or compress one before submitting.','circle-alert');
+      return;
+    }
+    var docs=fileInputs.map(function(i){return {name:i.files[0].name,size:i.files[0].size};});
+
+    function done(){
+      f.innerHTML='<div class="success-panel"><span class="big">'+I('circle-check')+'</span>'+
+      '<h2>Thank you. Our admissions team will contact you.</h2>'+
+      '<p class="lead">Your application profile has been recorded. Here is what happens next:</p>'+
+      '<div>'+
+      ['A counselor reviews your profile within one working day','We verify your eligibility for your preferred destination','We call or WhatsApp you to discuss university options','If you proceed, we issue your personalized document checklist'].map(function(x){return '<div>'+I('circle-check')+'<span>'+x+'</span></div>';}).join('')+'</div>'+
+      '<div><a class="btn btn-line" href="index.html">Back to Home</a><a class="btn btn-solid" href="admission-guide.html">Read the Admission Guide</a></div></div>';
+      toast('Application recorded — we\u2019ll be in touch.');
+      window.scrollTo({top:0,behavior:'auto'});
+    }
+    function fallback(msg){
+      var arr=store('bz_applications')||[];arr.push({d:d,docs:docs,at:new Date().toISOString()});store('bz_applications',arr);
+      toast(msg,'circle-alert');
+      done();
+    }
+
+    if(CONFIG.endpoints.apply){
+      var fd=new FormData(f);              // includes every text field AND every real file
+      fd.set('_subject','New application — '+ (d.fullname||'Unnamed') +' — '+ (d.pcountry||''));
+      fetch(CONFIG.endpoints.apply,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+        .then(function(r){ r.ok?done():fallback('Delivery issue — your application was saved locally. Please also call the office.'); })
+        .catch(function(){ fallback('Connection issue — your application was saved locally. Please also call the office.'); });
+    }else{
+      var arr=store('bz_applications')||[];arr.push({d:d,docs:docs,at:new Date().toISOString()});store('bz_applications',arr);
+      done();
+    }
+  });
+  wireReveal();
+  seo('Apply Now — Universal Application Form | Bluezone Consultants','Submit one application profile for study in China, Italy, Lithuania, the UK, France or Cyprus — our admissions team assesses it across all suitable universities.','apply');
+}
+function pageLegal(kind){
+  var privacy=kind==='privacy';
+  $('#page').innerHTML=crumb([{t:privacy?'Privacy Policy':'Terms & Conditions'}])+
+  '<section class="phero"><div class="wrap"><span class="eyebrow">Legal</span>'+
+  '<h1>'+(privacy?'Privacy Policy':'Terms &amp; Conditions')+'</h1>'+
+  '<div>'+
+  '<p>'+(privacy?'Bluezone Consultants Pvt. Ltd. collects the personal and academic information you submit through our application and contact forms solely to assess your study-abroad options and provide admission guidance.':'These terms describe the guidance and support services provided by Bluezone Consultants Pvt. Ltd. to students exploring higher education abroad.')+'</p>'+
+  '<p>'+(privacy?'Your information is shared only with universities you explicitly apply to, and is never sold or shared with unrelated third parties. You may request a copy or deletion of your data at any time by contacting our offices.':'Bluezone provides guidance, preparation and application-support services. We do not guarantee admission to any university, award of any scholarship, or issuance of any visa — these decisions rest solely with universities, scholarship bodies and government authorities.')+'</p>'+
+  '<p>'+(privacy?'Website fee figures, deadlines and requirements are indicative and subject to verification — see our data accuracy notes across the site.':'Fee figures and requirements shown on this website are indicative estimates, confirmed against official sources at each intake. Students are responsible for final confirmation of all figures with official sources before committing.')+'</p>'+
+  '<p>'+(privacy?'For questions about this policy, contact any Bluezone office listed on our contact page.':'Engagements are governed by applicable law in the jurisdiction of the office providing service. For questions about these terms, contact any Bluezone office.')+'</p>'+
+  notice('This page provides general legal information, not legal advice. Have counsel review final terms before deployment.','warn')+
+  '</div></div></section>';
+  wireReveal();
+  seo((privacy?'Privacy Policy':'Terms & Conditions')+' | Bluezone Consultants',privacy?'How Bluezone Consultants collects, uses and protects student information.':'Terms governing Bluezone Consultants\u2019 guidance and application-support services.',kind);
+}
+function page404(){
+  $('#page').innerHTML='<section class="phero"><div class="wrap"><span class="eyebrow">404</span>'+
+  '<h1>This page went <em>abroad.</em></h1><p class="lead">The page you\u2019re looking for doesn\u2019t exist — but plenty of good ones do.</p>'+
+  '<a class="btn btn-solid" href="index.html">Back to Home '+I('arrow-right')+'</a></div></section>';
+  wireReveal();
+  seo('Page Not Found | Bluezone Consultants','Page not found.','');
+}
+function pageError(err){
+  $('#page').innerHTML='<section class="phero"><div class="wrap"><span class="eyebrow">Something went wrong</span>'+
+  '<h1>That page failed to <em>render.</em></h1><p class="lead">An unexpected error occurred while building this page. Try returning home — and if it persists, check the browser console.</p>'+
+  '<a class="btn btn-solid" href="index.html">Back to Home '+I('arrow-right')+'</a></div></section>';
+  document.querySelectorAll('.rv').forEach(function(el){el.classList.add('on');});
+  seo('Error | Bluezone Consultants','Page error.','');
+}
+
+/* ---------- 8. ROUTER ---------- */
+var ROUTES={
+  '':pageHome,'about':pageAbout,'destinations':pageDestinations,'destinations/europe':pageEurope,
+  'study-in-china':function(){pageCountry('china');},'study-in-italy':function(){pageCountry('italy');},
+  'study-in-lithuania':function(){pageCountry('lithuania');},'study-in-uk':function(){pageCountry('uk');},
+  'study-in-france':function(){pageCountry('france');},'study-in-cyprus':function(){pageCountry('cyprus');},
+  'universities':pageUniversities,'programs':pagePrograms,'scholarships':pageScholarships,
+  'admission-guide':pageAdmissionGuide,'services':function(){pageServices();},'testimonials':pageTestimonials,
+  'blog':function(){pageBlog();},'contact':function(){pageContact(false);},'offices':function(){pageContact(true);},
+  'apply':pageApply,'privacy':function(){pageLegal('privacy');},'terms':function(){pageLegal('terms');}
+};
+var DYN=[
+  {p:'universities',fn:pageUniversity},{p:'programs',fn:pageProgram},
+  {p:'scholarships',fn:pageScholarship},{p:'blog',fn:function(s){pageBlog(s);}},
+  {p:'services',fn:function(s){pageServices(s);}}
+];
+function closeMenu(){
+  var m=document.getElementById('mmenu');
+  var wasOpen=!!(m&&m.classList.contains('open'));
+  if(m){
+    m.classList.remove('open');
+    m.setAttribute('aria-hidden','true');
+    try{m.inert=true;}catch(e){}
+  }
+  var s=document.getElementById('scrim');
+  if(s)s.classList.remove('show');
+  var burger=document.getElementById('burger');
+  if(burger)burger.setAttribute('aria-expanded','false');
+  document.querySelectorAll('.filters.open').forEach(function(f){closeFilterDrawer(f);});
+  if(wasOpen&&burger)burger.focus();
+}
+function openMenu(){
+  var m=document.getElementById('mmenu');
+  if(!m)return;
+  m.classList.add('open');
+  m.removeAttribute('aria-hidden');
+  try{m.inert=false;}catch(e){}
+  document.getElementById('scrim').classList.add('show');
+  document.getElementById('burger').setAttribute('aria-expanded','true');
+  var closeBtn=document.getElementById('mm-close');
+  if(closeBtn)closeBtn.focus();
+}
+function trapFocus(container,e){
+  var focusables=container.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])');
+  if(!focusables.length)return;
+  var first=focusables[0],last=focusables[focusables.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+}
+function syncFilterDrawerState(filtersEl){
+  if(!filtersEl)return;
+  var toggle=document.querySelector('.filter-toggle');
+  var isDrawerMode=toggle&&getComputedStyle(toggle).display!=='none';
+  var open=filtersEl.classList.contains('open');
+  if(isDrawerMode&&!open){try{filtersEl.inert=true;}catch(e){}}
+  else{try{filtersEl.inert=false;}catch(e){}}
+}
+function openFilterDrawer(filtersEl,toggleBtn){
+  if(!filtersEl)return;
+  filtersEl.classList.add('open');
+  filtersEl.removeAttribute('inert');
+  filtersEl.setAttribute('role','dialog');
+  filtersEl.setAttribute('aria-modal','true');
+  document.getElementById('scrim').classList.add('show');
+  if(toggleBtn)toggleBtn.setAttribute('aria-expanded','true');
+  var firstField=filtersEl.querySelector('select,input,button');
+  if(firstField)firstField.focus();
+}
+function closeFilterDrawer(filtersEl){
+  if(!filtersEl)return;
+  filtersEl.classList.remove('open');
+  filtersEl.removeAttribute('role');
+  filtersEl.removeAttribute('aria-modal');
+  syncFilterDrawerState(filtersEl);
+  var toggleBtn=document.querySelector('.filter-toggle');
+  if(toggleBtn){
+    toggleBtn.setAttribute('aria-expanded','false');
+    if(document.activeElement&&filtersEl.contains(document.activeElement))toggleBtn.focus();
+  }
+}
+function route(){
+  var raw=(typeof window.PAGE_ROUTE==='string')?(function(){var qs=new URLSearchParams(location.search);var slug=window.PAGE_DYN_PARAM?qs.get(window.PAGE_DYN_PARAM):null;return slug?(window.PAGE_ROUTE+'/'+slug):window.PAGE_ROUTE;})():(location.hash||'').replace(/^#\/?/,'');
+  var path=raw.split('?')[0];
+  var seg=path.split('/').filter(Boolean);
+  var fn=null,arg=null;
+  if(!seg.length)fn=pageHome;
+  else if(ROUTES[path])fn=ROUTES[path];
+  else if(seg.length===2){
+    for(var i=0;i<DYN.length;i++){if(DYN[i].p===seg[0]){fn=DYN[i].fn;arg=seg[1];break;}}
+  }
+  closeMenu();
+  try{ if(fn){ if(arg!==null)fn(arg); else fn(); } else page404(); }
+  catch(err){ if(window.console)console.error(err); pageError(err); }
+  var key=['about','destinations','universities','programs','scholarships','blog','contact'].indexOf(seg[0]||'')>-1?seg[0]:
+    (['study-in-china','study-in-italy','study-in-lithuania','study-in-uk','study-in-france','study-in-cyprus'].indexOf(path)>-1?'destinations':
+    (['admission-guide','testimonials','services'].indexOf(path)>-1?'programs':null));
+  document.querySelectorAll('nav.main a.nl').forEach(function(a){a.removeAttribute('aria-current');});
+  if(key){var a=document.querySelector('nav.main a.nl[data-nav="'+key+'"]');if(a)a.setAttribute('aria-current','page');}
+  window.scrollTo({top:0,behavior:'auto'});
+  bzLoadImages();
+}
+
+/* ---------- 9. INIT (runs once, wires the static shell) ---------- */
+document.querySelectorAll('[data-ic]').forEach(function(el){el.innerHTML=I(el.dataset.ic);});
+document.getElementById('drop-dest').innerHTML='<div class="dh">Country guides</div>'+
+  COUNTRIES.map(function(c){return '<a href="'+c.route+'.html"><span class="dc">'+c.name.charAt(0)+'</span><span>'+c.name+'<small>'+c.facts[2].v+'</small></span></a>';}).join('')+
+  '<a href="destinations-europe.html"><span class="dc">+</span><span>Other European destinations</span></a>';
+document.getElementById('mm-body').innerHTML=
+  '<div class="mm-group">Main</div>'+
+  [['Home','index.html'],['About Us','about.html'],['Universities','universities.html'],['Scholarships','scholarships.html'],['Student Services','services.html'],['Success Stories','testimonials.html'],['Admission Guide','admission-guide.html'],['Blog','blog.html'],['Contact','contact.html']].map(function(l){return '<a class="mlink" href="'+l[1]+'">'+l[0]+' '+I('chevron-right')+'</a>';}).join('')+
+  '<div class="mm-group">Study Destinations</div><div class="mm-sub">'+
+  COUNTRIES.map(function(c){return '<a href="'+c.route+'.html">'+c.name+'</a>';}).join('')+'<a href="destinations-europe.html">Other European destinations</a></div>'+
+  '<div class="mm-ctas"><a class="btn btn-solid" href="apply.html">Apply Now '+I('arrow-right')+'</a><a class="btn btn-line" href="contact.html">Talk to a Counselor</a></div>';
+document.getElementById('f-dest').innerHTML=COUNTRIES.map(function(c){return '<a href="'+c.route+'.html">'+c.name+'</a>';}).join('')+'<a href="destinations-europe.html">Other European</a>';
+document.getElementById('yr').textContent=new Date().getFullYear();
+if(CONFIG.offices.mansehra&&CONFIG.offices.mansehra.phone){
+  var up=document.getElementById('u-phone');
+  up.href='tel:'+CONFIG.offices.mansehra.phone;
+  document.getElementById('u-phone-t').textContent=CONFIG.offices.mansehra.phone;
+  up.hidden=false;
+}
+window.addEventListener('scroll',function(){document.getElementById('site-header').classList.toggle('scrolled',window.scrollY>8);},{passive:true});
+/* one global click delegation for accordions, subnav jumps, drawers, placeholders */
+document.addEventListener('click',function(e){
+  var a=e.target.closest('[data-acc]');
+  if(a){
+    var it=a.closest('.acc-item');
+    if(it){
+      var nowOpen=it.classList.toggle('open');
+      a.setAttribute('aria-expanded',nowOpen?'true':'false');
+      var panel=document.getElementById(a.getAttribute('aria-controls'));
+      if(panel)panel.setAttribute('aria-hidden',nowOpen?'false':'true');
+    }
+    return;
+  }
+  var g=e.target.closest('a[data-goto]');
+  if(g){e.preventDefault();var el=document.getElementById(g.dataset.goto);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return;}
+  var ft=e.target.closest('.filter-toggle');
+  if(ft){var w=ft.closest('.dir-wrap');if(w)openFilterDrawer(w.querySelector('.filters'),ft);return;}
+  var fd=e.target.closest('.filter-done');
+  if(fd){var w2=fd.closest('.dir-wrap');if(w2){closeFilterDrawer(w2.querySelector('.filters'));document.getElementById('scrim').classList.remove('show');}return;}
+  var p=e.target.closest('[data-pend]');
+  if(p){e.preventDefault();toast((p.dataset.pend||'This link')+' — will be connected once provided.','info');return;}
+  var s=e.target.closest('[data-social]');
+  if(s){e.preventDefault();toast(s.dataset.social+' profile will be linked once provided.','info');}
+});
+document.querySelectorAll('[data-social]').forEach(function(a){var u=CONFIG.social&&CONFIG.social[a.dataset.social.toLowerCase()];if(u){a.href=u;a.target='_blank';a.rel='noopener';a.removeAttribute('data-social');}});
+document.addEventListener('submit',function(e){if(e.target.id==='hsearch'){e.preventDefault();var v=document.getElementById('hs-q').value.trim();location.href='universities.html'+(v?('?q='+encodeURIComponent(v)):'');}});
+var tt=document.getElementById('totop');window.addEventListener('scroll',function(){tt.classList.toggle('show',window.scrollY>600);});tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+document.getElementById('burger').addEventListener('click',openMenu);
+document.getElementById('mm-close').addEventListener('click',closeMenu);
+document.getElementById('scrim').addEventListener('click',function(){
+  closeMenu();
+  document.querySelectorAll('.filters.open').forEach(function(f){closeFilterDrawer(f);});
+});
+document.getElementById('wa-float').addEventListener('click',function(e){
+  e.preventDefault();
+  if(CONFIG.whatsapp){window.open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent('Hello Bluezone — I would like to discuss studying abroad.'),'_blank');}
+  else toast('WhatsApp number coming soon — use the contact page meanwhile.','chat');
+});
+
+/* ---- Keyboard behavior: Escape closes any open overlay; Tab is trapped inside an open mobile menu ---- */
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Escape'&&e.key!=='Tab')return;
+  var mmenu=document.getElementById('mmenu');
+  var openFilters=document.querySelector('.filters.open');
+  if(e.key==='Escape'){
+    if(mmenu&&mmenu.classList.contains('open')){closeMenu();return;}
+    if(openFilters){closeFilterDrawer(openFilters);document.getElementById('scrim').classList.remove('show');return;}
+    var openGroup=document.querySelector('nav.main > div.drop-open');
+    if(openGroup){
+      var trigger=openGroup.querySelector('a.nl');
+      openGroup._suppressOpen=true;
+      closeDrop(openGroup);
+      if(trigger)trigger.focus();
+    }
+    return;
+  }
+  if(e.key==='Tab'&&mmenu&&mmenu.classList.contains('open')){trapFocus(mmenu,e);return;}
+  if(e.key==='Tab'&&openFilters){trapFocus(openFilters,e);}
+});
+
+/* ---- Mega-menu: keep aria-expanded in sync for hover AND keyboard/focus ---- */
+(function(){
+  var groups=document.querySelectorAll('nav.main > div');
+  groups.forEach(function(g){
+    var trigger=g.querySelector('a.nl[aria-haspopup]');
+    if(!trigger)return;
+    function openDrop(){
+      if(g._suppressOpen){g._suppressOpen=false;return;}
+      g.classList.add('drop-open');trigger.setAttribute('aria-expanded','true');
+    }
+    g.addEventListener('mouseenter',openDrop);
+    g.addEventListener('mouseleave',function(){closeDrop(g);});
+    g.addEventListener('focusin',openDrop);
+    g.addEventListener('focusout',function(e){
+      if(!g.contains(e.relatedTarget))closeDrop(g);
+    });
+  });
+})();
+function closeDrop(g){g.classList.remove('drop-open');var trigger=g.querySelector('a.nl[aria-haspopup]');if(trigger)trigger.setAttribute('aria-expanded','false');}
+
+window.addEventListener('resize',function(){
+  var f=document.getElementById('dir-filters');
+  if(f&&!f.classList.contains('open'))syncFilterDrawerState(f);
+});
+route();
