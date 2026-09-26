@@ -1375,6 +1375,8 @@ const PROGRAMS=[
 ];
 PROGRAMS.forEach(function(p){p.slug=slugify(p.name);});
 
+const DEST_PHOTO={china:'dest-china.jpg',italy:'dest-italy.jpg',lithuania:'dest-lithuania.jpg',uk:'dest-uk.jpg',france:'dest-france.jpg',cyprus:'dest-cyprus.jpg'};
+function destImg(c,w,h){return DEST_PHOTO[c.id]?'<img src="assets/'+DEST_PHOTO[c.id]+'" alt="'+c.name+'" width="'+w+'" height="'+h+'" loading="lazy">':IMG(c.seed,c.name,w,h);}
 const COUNTRIES=[
  {id:'china',name:'China',route:'study-in-china',title:'Study in China',seed:'bz-china-hero',
   sub:'Explore internationally oriented universities and academic opportunities in China with professional admission guidance from Bluezone Consultants.',
@@ -1768,7 +1770,7 @@ function mountDir(host,opts){
 function pageHome(){
   var tiles=COUNTRIES.map(function(c,i){
     var cls=c.id==='china'?'cn':(c.id==='italy'||c.id==='france')?'wide':'md';
-    return '<a class="dest '+cls+' rv" href="#/'+c.route+'"><span class="duo">'+IMG(c.seed,c.name,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></a>';
+    return '<a class="dest '+cls+' rv" href="#/'+c.route+'"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></a>';
   }).join('');
   var why=[
     ['Counselor-led, from day one','You meet a counselor in Mansehra, Abbottabad or online before you meet a form. Advice is based on your marks and budget, discussed in person.'],
@@ -1786,7 +1788,7 @@ function pageHome(){
   '<section class="sec"><div class="wrap">'+
     shead('Study Destinations'
 ,'Six countries, <em>each with</em> a dedicated guide.','Every destination below has a dedicated country guide — universities, fees, scholarships, admission steps and FAQs.')+
-    '<div class="dest-grid">'+tiles+'<a class="dest slim rv" href="#/destinations/europe"><div><small>Also supported via our counseling desk</small><h3>Other European destinations</h3></div><span class="go">'+I('arrow-right')+'</span></a></div>'+
+    '<div class="dest-grid">'+tiles+'<a class="dest slim rv" href="#/destinations/europe"><span class="duo"><img src="assets/dest-europe.jpg" alt="Other European study destinations" width="1280" height="220" loading="lazy"></span><div><small>Also supported via our counseling desk</small><h3>Other European destinations</h3></div><span class="go">'+I('arrow-right')+'</span></a></div>'+
   '</div></section>'+
   '<section class="sec tint"><div class="wrap">'+
     shead('Why Bluezone','What sets our <em>process apart.</em>')+
@@ -1862,7 +1864,7 @@ function pageDestinations(){
   '<h1>Choose a country like it <em>matters</em> — because it does.</h1>'+
   '<p class="lead">Each destination has a dedicated guide: universities, programs, indicative fees, scholarships, eligibility, the admission process, visa orientation and student life.</p></div></section>'+
   '<section class="sec"><div class="wrap">'+
-    '<div class="grid-d2">'+COUNTRIES.map(function(c){return '<a class="dest rv" href="#/'+c.route+'"><span class="duo">'+IMG(c.seed,c.name,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></a>';}).join('')+
+    '<div class="grid-d2">'+COUNTRIES.map(function(c){return '<a class="dest rv" href="#/'+c.route+'"><span class="duo">'+destImg(c,640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>'+c.facts[0].v+'</small><h3>'+c.name+'</h3></a>';}).join('')+
     '<a class="dest rv" href="#/destinations/europe"><span class="duo">'+IMG('bz-europe','Europe',640,400)+'</span><span class="go">'+I('arrow-up-right')+'</span><small>Supported via counseling</small><h3>Other European destinations</h3></a></div>'+
   '</div></section>'+
   ctab('Undecided between two countries?','We run side-by-side comparisons on total cost, program fit and post-study reality — with your actual marks on the table.',{pt:'Get a Free Profile Assessment'});
