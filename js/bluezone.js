@@ -1426,19 +1426,21 @@ var STORIES=[
   {country:'Cyprus',flag:'🇨🇾',uni:'To be confirmed',program:"Bachelor's",scholarship:'University Waiver',seed:'bz-story-cy1'}
 ];
 function storyCard(s,i){
-  var tag=s.real?'':'<span class="tag sample">SAMPLE — to be replaced with a real, consented story</span>';
-  var media=s.avatar?
-    '<span class="duo story-ph story-avatar"><span class="init">'+esc(s.avatar)+'</span></span>':
+  var tag=s.real?'':'<span class="tag sample">Sample — pending consent</span>';
+  var avatar=s.avatar?
+    '<span class="story-avatar init-avatar"><span>'+esc(s.avatar)+'</span></span>':
     (s.photo?
-      '<span class="duo story-ph"><img src="assets/'+s.photo+'" alt="Photo of '+esc(s.name||'Bluezone student')+'" width="640" height="640" loading="lazy" decoding="async"></span>':
-      '<span class="duo story-ph">'+IMG(s.seed,'Portrait placeholder for a Bluezone student success story',320,320)+'</span>');
+      '<span class="story-avatar"><img src="assets/'+s.photo+'" alt="Photo of '+esc(s.name||'Bluezone student')+'" width="112" height="112" loading="lazy" decoding="async"></span>':
+      '<span class="story-avatar">'+IMG(s.seed,'Portrait placeholder for a Bluezone student success story',112,112)+'</span>');
   var name=s.name?esc(s.name):'Student Name — to be provided';
   var quote=s.quote?esc(s.quote):'Quote from the student, in their own words, once approved for publication.';
   return '<div class="story rv" data-country="'+s.country+'">'+tag+
-  media+
-  '<div class="story-b"><span class="eyebrow">'+s.flag+' '+s.country+'</span><h3>'+name+'</h3>'+
-  '<div class="qfacts"><div><span>University</span><b>'+s.uni+'</b></div><div><span>Program</span><b>'+s.program+'</b></div><div><span>Scholarship</span><b>'+s.scholarship+'</b></div></div>'+
-  '<p>\u201c'+quote+'\u201d</p></div></div>';
+  '<span class="story-qmark">\u201c</span>'+
+  '<p class="story-quote">'+quote+'</p>'+
+  '<div class="story-foot">'+avatar+
+  '<div class="story-id"><b>'+name+'</b><span>'+esc(s.program)+' \u00b7 '+esc(s.uni)+'</span></div></div>'+
+  '<div class="story-tagrow"><span class="eyebrow">'+s.flag+' '+s.country+'</span><span class="story-sch">'+esc(s.scholarship)+'</span></div>'+
+  '</div>';
 }
 function pageTestimonials(){
   $('#page').innerHTML=crumb([{t:'Success Stories'}])+
