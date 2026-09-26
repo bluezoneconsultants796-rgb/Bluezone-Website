@@ -330,13 +330,14 @@ a.chip:hover{background:var(--tint);color:var(--brand)}
 .dest{position:relative;border-radius:var(--r);overflow:hidden;min-height:208px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#fff;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .dest:hover{transform:translateY(var(--lift));box-shadow:var(--e3)}
 .dest .duo{position:absolute;inset:0;border-radius:0}
-.dest .duo img{transition:transform .5s var(--ease)}
-.dest:hover .duo img{transform:scale(1.045)}
-.dest::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(4,18,12,.06) 22%,rgba(4,18,12,.55) 62%,rgba(4,18,12,.92) 100%)}
+.dest .duo img{transition:transform .6s var(--ease);filter:saturate(.82) contrast(1.06) brightness(.92)}
+.dest:hover .duo img{transform:scale(1.06)}
+.dest::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(6,20,14,.32) 0%,rgba(6,20,14,0) 45%);mix-blend-mode:multiply}
+.dest::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(2,8,5,.94) 0%,rgba(2,8,5,.68) 24%,rgba(2,8,5,.18) 52%,rgba(2,8,5,.05) 68%,rgba(2,8,5,.22) 100%)}
 .dest>*{position:relative;z-index:2}
-.dest h3{color:#fff;font-size:22px;letter-spacing:-.015em;font-weight:700}
-.dest small{font:500 12px var(--fb);color:rgba(255,255,255,.78)}
-.dest .go{position:absolute;top:16px;right:16px;z-index:2;width:32px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;transition:.2s var(--ease)}
+.dest h3{color:#fff;font-size:22px;letter-spacing:-.015em;font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+.dest small{font:600 11.5px var(--fb);color:rgba(255,255,255,.92);text-transform:uppercase;letter-spacing:.06em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.dest .go{position:absolute;top:16px;right:16px;z-index:2;width:32px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(4,18,12,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;transition:.2s var(--ease)}
 .dest .go .ic{width:14px;height:14px;color:#fff}
 .dest:hover .go{background:#fff;border-color:#fff;transform:rotate(45deg)}
 .dest:hover .go .ic{color:var(--ink)}
