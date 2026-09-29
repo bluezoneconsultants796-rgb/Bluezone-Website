@@ -1,3 +1,16 @@
+# Design update — corporate education-brand redesign
+
+- New homepage: `index.html` + `css/home.css` + `js/home.js` (clean, bright, restrained motion: 8-24px reveals, 200-700ms).
+  Brand blue `#2D3192` sampled from the Bluezone logo. No custom cursor, grain, WebGL, scroll-jacking or pinned sections.
+- Inner pages keep `css/bluezone.css` + `js/bluezone.js`; `css/inner-theme.css` (linked on every inner page) applies the blue/white theme and white header.
+- Homepage uses only verified facts (200+ students placed in China; 4 offices; 6 destinations). University listings, team profiles
+  and most student stories are shown as honest "being verified / coming soon" states. Nothing invented.
+- Tuition figures on destination cards come from the existing destination data and are indicative.
+- `assets/`: new cropped card/hero/feature images derived from existing photography.
+- Social links, phone/WhatsApp values remain the placeholders documented in `src/docs/PLACEHOLDERS.md`.
+
+---
+
 # Bluezone Consultants — Website (GitHub Pages ready)
 
 `index.html` sits at the repo root — that's where GitHub Pages looks for it.

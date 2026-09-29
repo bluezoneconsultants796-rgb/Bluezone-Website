@@ -143,7 +143,7 @@ function fallbackImg(w,h){
   var fs=Math.max(11,Math.round(Math.min(w,h)*0.075));
   var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'
     +'<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">'
-    +'<stop offset="0" stop-color="#0A7A55"/><stop offset="1" stop-color="#045A40"/></linearGradient></defs>'
+    +'<stop offset="0" stop-color="#3339A8"/><stop offset="1" stop-color="#2D3192"/></linearGradient></defs>'
     +'<rect width="100%" height="100%" fill="url(#g)"/>'
     +'<circle cx="'+(w/2)+'" cy="'+(h/2-fs*0.95)+'" r="'+(fs*1.25)+'" fill="#ffffff" fill-opacity="0.18"/>'
     +'<path d="M'+(w/2-fs*0.6)+' '+(h/2-fs*1.05)+'l'+(fs*0.6)+' -'+(fs*0.32)+'l'+(fs*0.6)+' '+(fs*0.32)+'l-'+(fs*0.6)+' '+(fs*0.32)+'z" fill="#ffffff" fill-opacity="0.85"/>'

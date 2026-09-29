@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bluezone Consultants — Study Abroad Guidance from Pakistan, Australia & China</title>
+<title>Bluezone Consultants — Study Abroad Guidance from Pakistan &amp; China</title>
 <meta name="description" content="Bluezone Consultants Pvt. Ltd. guides students to universities in China, Italy, Lithuania, the UK, France and Cyprus — from eligibility checks through to visa preparation.">
-<meta name="theme-color" content="#0F2247">
+<meta name="theme-color" content="#2D3192">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bluezone Consultants Pvt. Ltd.">
 <meta property="og:title" content="Bluezone Consultants — Study Abroad Guidance">
-<meta property="og:description" content="International education consultancy. Mansehra · Abbottabad · Perth (WA).">
+<meta property="og:description" content="International education consultancy. Mansehra · Abbottabad · Perth (WA) · Guangxi (China).">
 <meta property="og:image" content="assets/logo-full.png">
 <link rel="icon" type="image/png" href="assets/favicon-256.png">
 <link rel="apple-touch-icon" href="assets/favicon-256.png">
@@ -24,732 +24,16 @@
   Build sitemap.xml from ROUTES + one URL per university / program /
   scholarship / blog slug in the data below.
 -->
-<script type="application/ld+json" id="seo-jsonld">{"@context": "https://schema.org", "@graph": [{"@type": "EducationalOrganization", "name": "Bluezone Consultants Pvt. Ltd.", "description": "International education consultancy assisting students with university admission, scholarships and visa guidance.", "areaServed": ["Pakistan", "Australia"], "address": [{"@type": "PostalAddress", "streetAddress": "Office 101 & 102, Above Passport Office, Ari Ada", "addressLocality": "Mansehra", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "Near Old Police Chowki, Supply", "addressLocality": "Abbottabad", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "35 Hagart Way, Lockridge WA 6054", "addressCountry": "AU"}], "telephone": "+92 000 0000001", "sameAs": ["https://www.facebook.com/DUMMY_REPLACE_ME", "https://www.instagram.com/DUMMY_REPLACE_ME", "https://www.linkedin.com/company/DUMMY_REPLACE_ME", "https://www.youtube.com/@DUMMY_REPLACE_ME"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the first consultation free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The first consultation carries no obligation."}}, {"@type": "Question", "name": "Do you guarantee admission or a visa?", "acceptedAnswer": {"@type": "Answer", "text": "No. We prepare accurate, complete applications and track them to a decision. Decisions belong to universities and embassies."}}, {"@type": "Question", "name": "Which countries can I be guided for?", "acceptedAnswer": {"@type": "Answer", "text": "China, Italy, Lithuania, the United Kingdom, France and Cyprus, with further European destinations supported case-by-case through our counseling desk."}}]}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<script type="application/ld+json" id="seo-jsonld">{"@context": "https://schema.org", "@graph": [{"@type": "EducationalOrganization", "name": "Bluezone Consultants Pvt. Ltd.", "description": "International education consultancy assisting students with university admission, scholarships and visa guidance.", "areaServed": ["Pakistan", "Australia"], "address": [{"@type": "PostalAddress", "streetAddress": "Office 101 & 102, Above Passport Office, Ari Ada", "addressLocality": "Mansehra", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "Near Old Police Chowki, Supply", "addressLocality": "Abbottabad", "addressCountry": "PK"}, {"@type": "PostalAddress", "streetAddress": "35 Hagart Way, Lockridge WA 6054", "addressCountry": "AU"}], "telephone": "+92 000 0000001", "sameAs": ["https://www.facebook.com/DUMMY_REPLACE_ME", "https://www.instagram.com/DUMMY_REPLACE_ME", "https://www.linkedin.com/company/DUMMY_REPLACE_ME", "https://www.youtube.com/@DUMMY_REPLACE_ME"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the first consultation free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The first consultation carries no obligation."}}, {"@type": "Question", "name": "Do you guarantee admission or a visa?", "acceptedAnswer": {"@type": "Answer", "text": "No. We prepare accurate, complete applications and track them to a decision. Decisions belong to universities and embassies."}}, {"@type": "Question", "name": "Which countries can I be guided for?", "acceptedAnswer": {"@type": "Answer", "text": "China, Italy, Lithuania, the United Kingdom, France and Cyprus, with further European destinations supported case-by-case through our counseling desk."}}]}]}</script><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* =====================================================================
-   BLUEZONE DESIGN SYSTEM — v5 (premium/editorial consolidation)
-   One system, one set of tokens. Selector names are unchanged from the
-   previous stylesheet so no markup edits are required.
-   ===================================================================== */
-
-:root{
-  /* ---- Brand ---- */
-  --brand:#0F2247;        /* primary — deep royal navy */
-  --brand-dark:#081326;   /* pressed / deep surfaces */
-  --brand-mid:#2E4E82;    /* links, icons, mid emphasis */
-  --gold:#C9A227;         /* true gold — university/honours accent, used sparingly */
-  --gold-dark:#9C7C18;
-  --gold-ink:#1D1600;
-
-  /* legacy variable names kept so every existing rule still resolves */
-  --green:var(--brand-mid); --green-mid:var(--brand-mid); --green-d:var(--brand); --green-dd:var(--brand);
-  --accent-rgb:15,34,71; --accent-dark-rgb:8,19,38;
-
-  /* ---- Ink & neutrals ---- */
-  --ink:#0B0E16; --ink2:#464C58; --ink3:#7A8090; --ink-rgb:11,14,22;
-  --ink-deep:#060B18;
-
-  /* ---- Surfaces (cool, institutional paper — not cold SaaS grey) ---- */
-  --mint:#F6F7FA;          /* page background — cool paper, brand-tinted */
-  --tint:#EDF0F6;          /* subtle brand-tinted surface */
-  --tint2:#E1E6EF;
-  --warm:#EFF0EC;          /* ivory panel */
-  --line:#E1E3EA;          /* hairline border */
-  --line2:#CDD1DC;
-  --gray-100:#F1F3F5; --gray-200:#E2E6EA; --gray-300:#C8CFD7;
-  --plum:var(--ink-deep); --wa:var(--brand-mid);
-
-  /* ---- Radius scale: controlled, not uniform ---- */
-  --r-sm:10px;    /* controls: inputs, buttons, chips, small tiles */
-  --r:16px;       /* cards */
-  --r-lg:22px;    /* major panels / hero media / CTA band */
-
-  /* ---- Elevation: restrained. Border does the work; shadow is rare. ---- */
-  --ring:0 0 0 1px rgba(var(--ink-rgb),.06);
-  --ring-hover:0 0 0 1px rgba(var(--ink-rgb),.10);
-  --e1:0 1px 2px rgba(var(--ink-rgb),.05);
-  --e2:0 1px 2px rgba(var(--ink-rgb),.04), 0 6px 16px -10px rgba(var(--ink-rgb),.14);
-  --e3:0 2px 4px rgba(var(--ink-rgb),.05), 0 16px 32px -16px rgba(var(--ink-rgb),.22);
-  --e4:0 4px 10px rgba(var(--ink-rgb),.06), 0 28px 56px -20px rgba(var(--ink-rgb),.30);
-  --e-accent:0 1px 2px rgba(3,51,37,.18), 0 10px 22px -12px rgba(3,51,37,.45);
-  --e-accent-hover:0 2px 4px rgba(3,51,37,.22), 0 14px 30px -14px rgba(3,51,37,.55);
-  --sh-sm:var(--e1); --sh:var(--e2); --sh-lg:var(--e3);
-
-  /* ---- Type ---- */
-  --fd:'Sora',-apple-system,'Segoe UI',sans-serif;
-  --fb:'Inter',-apple-system,'Segoe UI',sans-serif;
-  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-
-  /* ---- Motion ---- */
-  --ease:cubic-bezier(.32,.72,0,1);
-  --spring:cubic-bezier(.34,1.42,.64,1);
-  --lift:-3px;
-
-  --wrap:1160px; --hh:68px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-html,body{overflow-x:clip}
-body{font:400 16px/1.7 var(--fb);color:var(--ink);background:var(--mint);-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-ul,ol{list-style:none}
-::selection{background:var(--brand);color:#fff}
-:focus-visible{outline:2px solid var(--brand-mid);outline-offset:2px;border-radius:4px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
-main{min-height:60vh}
-section{scroll-margin-top:130px}
-.skip{position:absolute;left:-999px;top:0;background:var(--brand-dark);color:#fff;padding:10px 16px;z-index:300}
-.skip:focus{left:12px;top:12px}
-noscript div{background:#B42318;color:#fff;padding:14px;text-align:center;font:600 14px var(--fb)}
-
-.ic{width:18px;height:18px;flex:none;vertical-align:-3px}
-.btn .ic{width:16px;height:16px}
-.tlink .ic,.chip .ic{width:14px;height:14px}
-.tag .ic{width:12px;height:12px}
-.u-loc .ic,.crumbs .ic,.pmeta .ic{width:13px;height:13px}
-.notice .ic{width:17px;height:17px}
-.snote .ic{width:14px;height:14px}
-.toast .ic{width:16px;height:16px;color:var(--gold)}
-.success-panel .big .ic{width:32px;height:32px}
-
-/* ---------- TYPOGRAPHY SCALE ---------- */
-h1,h2,h3{font-family:var(--fd);font-weight:700;line-height:1.12;letter-spacing:-.02em;color:var(--ink);overflow-wrap:break-word}
-h1{font-size:clamp(35px,4.6vw,53px);line-height:1.08;font-weight:700}
-h2{font-size:clamp(26px,3vw,36px);font-weight:700}
-h3{font-size:19px;font-weight:650;letter-spacing:-.012em}
-h1 em,h2 em,h3 em{font-style:normal;font-weight:700;color:var(--brand)}
-p{color:var(--ink2)}
-.lead{font-size:18px;line-height:1.65;max-width:58ch;color:var(--ink2);font-weight:440}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font:600 11px/1 var(--fb);letter-spacing:.09em;color:var(--gold-dark)}
-.eyebrow::before{content:"";width:18px;height:1.5px;background:var(--gold)}
-.shead{max-width:640px;margin-bottom:44px}
-.shead h2{margin:12px 0 12px}
-.snote{font-size:12.5px;color:var(--ink3);display:flex;gap:6px;align-items:flex-start;margin-top:14px}
-
-/* ---------- BUTTONS ----------
-   One clear hierarchy: solid (primary) > line (secondary) > ghost (on
-   dark) > tlink (tertiary). Flat fills, no gradients, no shimmer — the
-   accent is used for one action at a time. */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 14px var(--fb);letter-spacing:-.005em;padding:13px 26px;border-radius:var(--r-sm);border:1.5px solid transparent;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease),box-shadow .25s var(--ease),transform .25s var(--ease);line-height:1.2;white-space:nowrap}
-.btn:active{transform:scale(.97)}
-.btn .ic{transition:transform .18s var(--ease)}
-.btn:hover .ic{transform:translateX(2px)}
-.btn:hover{transform:translateY(-1px)}
-.btn-solid{background:var(--brand);color:#fff;box-shadow:var(--e1)}
-.btn-solid:hover{background:var(--brand-dark);box-shadow:var(--e2)}
-.btn-line{background:#fff;border-color:var(--line2);color:var(--ink)}
-.btn-line:hover{border-color:var(--brand);color:var(--brand)}
-.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff;background:none}
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-.btn-gold{background:var(--gold);color:var(--gold-ink);box-shadow:0 1px 2px rgba(107,84,10,.28),0 10px 22px -12px rgba(107,84,10,.55)}
-.btn-gold:hover{background:var(--gold-dark);color:#fff;box-shadow:0 2px 4px rgba(107,84,10,.32),0 14px 30px -14px rgba(107,84,10,.6)}
-.btn-sm{padding:9px 17px;font-size:13px;border-radius:var(--r-sm)}
-.btn .ic{width:16px;height:16px}
-.btn-sm .ic{width:14px;height:14px}
-@media (prefers-reduced-motion:reduce){.btn,.btn .ic{transition:none}}
-.tlink{display:inline-flex;align-items:center;gap:6px;font:600 14px var(--fb);color:var(--brand);border-bottom:1.5px solid var(--line2);padding-bottom:2px;transition:border-color .2s,color .2s}
-.tlink:hover{border-color:var(--brand);color:var(--brand-dark)}
-
-/* A single, consistent photographic treatment (subtle desaturation) so
-   imagery from mixed/placeholder sources reads as one coherent brand
-   style rather than a random assortment of crops and colour casts. */
-.duo{position:relative;display:block;background:var(--ink);overflow:hidden;border-radius:var(--r)}
-.duo img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.03);transition:filter .3s var(--ease)}
-
-/* ---------- HEADER ---------- */
-.util{background:var(--ink-deep);color:rgba(255,255,255,.7);font-size:12px;height:36px;display:flex;align-items:center}
-.util .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.util a{display:inline-flex;align-items:center;gap:6px;transition:color .15s}
-.util a:hover{color:#fff}
-.util .ic{width:13px;height:13px}
-.util .u-cta{color:#fff;font-weight:600}
-header.site{position:sticky;top:0;z-index:90;background:rgba(250,249,246,.9);backdrop-filter:blur(12px) saturate(1.1);border-bottom:1px solid var(--line);transition:box-shadow .25s var(--ease),background .25s}
-header.site.scrolled{box-shadow:var(--e1);background:rgba(250,249,246,.97)}
-.navbar{height:var(--hh);display:flex;align-items:center;gap:22px}
-.brand{display:flex;align-items:center;gap:11px;flex:none}
-.brand .mark{width:40px;height:40px;border-radius:var(--r-sm);background:var(--brand);display:grid;place-items:center;flex:none}
-.brand .mark img{width:100%;height:100%;object-fit:contain;border-radius:inherit}
-.brand .mark svg{width:24px;height:24px}
-.brand .word{line-height:1.05}
-.brand .word b{font:700 18px var(--fd);letter-spacing:-.015em;display:block;color:var(--ink)}
-.brand .word span{font:600 8.5px var(--fb);letter-spacing:.18em;color:var(--brand-mid);text-transform:uppercase}
-nav.main{display:flex;align-items:center;gap:2px;margin-left:auto}
-nav.main>div{position:relative}
-nav.main>div>a.nl{display:flex;align-items:center;gap:5px;padding:9px 12px;font:500 13.5px var(--fb);color:var(--ink2);border-radius:9px;transition:color .15s,background .15s}
-nav.main>div>a.nl:hover,nav.main>div>a.nl[aria-current]{color:var(--brand);background:var(--tint)}
-nav.main .nl .ic{width:13px;height:13px}
-
-.drop{position:absolute;top:calc(100% + 10px);left:50%;transform:translate(-50%,4px) scale(.98);min-width:260px;background:#fff;border-radius:var(--r);box-shadow:var(--e3);padding:10px;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease);transform-origin:top center}
-nav.main>div:hover .drop,nav.main>div:focus-within .drop{opacity:1;visibility:visible;transform:translate(-50%,0) scale(1)}
-.drop .dh{font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);padding:8px 12px 6px}
-.drop a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--r-sm);font:500 14px var(--fb);transition:background .15s}
-.drop a:hover{background:var(--tint);color:var(--brand)}
-.drop a .dc{width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center;background:var(--tint);color:var(--brand);font:700 12px var(--fd)}
-.drop a small{display:block;font-size:11.5px;color:var(--ink3);font-weight:400}
-.nav-cta{display:flex;gap:10px;align-items:center;flex:none}
-.burger{display:none;width:44px;height:44px;border-radius:var(--r-sm);border:1px solid var(--line2);align-items:center;justify-content:center;transition:border-color .15s,background .15s}
-.burger:hover{border-color:var(--brand);background:var(--tint)}
-
-.hr{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.hutil-toggle{position:relative}
-.hutil-trigger{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--fb);color:var(--ink2);padding:6px 10px;border-radius:999px;transition:color .15s,background .15s}
-.hutil-trigger:hover,.hutil-toggle:focus-within .hutil-trigger{color:var(--brand);background:var(--tint)}
-.hutil-trigger .ic{width:13px;height:13px}
-.hutil{display:flex;flex-direction:column;gap:1px;position:absolute;top:calc(100% + 8px);right:0;min-width:225px;background:#fff;border-radius:var(--r);box-shadow:var(--e3);padding:8px;opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;z-index:50}
-.hutil-toggle:hover .hutil,.hutil-toggle:focus-within .hutil{opacity:1;visibility:visible;transform:none}
-.hutil a{display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:9px;font:500 13px var(--fb);color:var(--ink)}
-.hutil a:hover{background:var(--tint);color:var(--brand)}
-.hutil .ic{width:14px;height:14px;color:var(--brand-mid)}
-
-.mmenu{position:fixed;inset:0;z-index:120;background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .32s var(--ease)}
-.mmenu.open{transform:none}
-.mmenu .mm-top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)}
-.mmenu .mm-body{overflow-y:auto;padding:12px 20px 40px;flex:1}
-.mmenu .mm-group{font:600 10px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:22px 0 6px}
-.mmenu a.mlink{display:flex;align-items:center;justify-content:space-between;padding:14px 2px;font:600 17px var(--fd);letter-spacing:-.01em;color:var(--ink);border-bottom:1px solid var(--line);transition:color .15s,padding-left .15s}
-.mmenu a.mlink:active{color:var(--brand);padding-left:6px}
-.mmenu a.mlink .ic{color:var(--ink3)}
-.mmenu .mm-ctas{display:grid;gap:10px;margin-top:24px}
-.mmenu .mm-sub a{display:block;padding:10px 2px 10px 14px;font:500 14.5px var(--fb);color:var(--ink2);border-left:2px solid var(--line);transition:border-color .15s,color .15s}
-.mmenu .mm-sub a:active{border-color:var(--brand);color:var(--brand)}
-.scrim{position:fixed;inset:0;background:rgba(6,9,17,.5);backdrop-filter:blur(2px);z-index:110;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
-.scrim.show{opacity:1;visibility:visible}
-
-.crumbs{display:flex;flex-wrap:wrap;gap:7px;align-items:center;font-size:12.5px;color:var(--ink3);padding:22px 0 4px}
-.crumbs a{color:var(--ink2);transition:color .15s}
-.crumbs a:hover{color:var(--brand)}
-.crumbs span{color:var(--ink);font-weight:500}
-
-/* ---------- PAGE HERO ---------- */
-.phero{padding:32px 0 60px;position:relative;overflow:hidden;background:var(--warm)}
-.phero-lg{padding-top:56px;padding-bottom:88px}
-.cta-alt{display:inline-block;margin-top:6px;font:500 14px var(--fb);color:var(--ink3);border-bottom:1px solid var(--line2);padding-bottom:2px;transition:color .2s var(--ease),border-color .2s var(--ease)}
-.cta-alt:hover{color:var(--brand);border-color:var(--brand)}
-.ph-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
-.phero h1{margin:16px 0 18px}
-.arch{aspect-ratio:4/4.4;max-height:440px;border-radius:var(--r-lg);box-shadow:var(--e2)}
-.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-radius:var(--r);overflow:hidden;margin-top:30px;box-shadow:var(--e1)}
-.facts div{background:#fff;padding:15px 18px}
-.facts b{display:block;font:700 14.5px var(--fb);letter-spacing:-.005em}
-.facts span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
-
-/* ---------- TAGS / CHIPS / BADGES ----------
-   Quiet, meaningful labels — never decoration. */
-.tag{display:inline-flex;align-items:center;gap:5px;font:600 10.5px var(--fb);letter-spacing:.01em;padding:5px 10px;border-radius:999px;background:var(--tint);color:var(--brand)}
-.tag.t2{background:var(--gray-100);color:var(--ink2)}
-.tag.t3{background:rgba(15,34,71,.1);color:var(--brand-dark)}
-.chip{display:inline-flex;align-items:center;font:500 12.5px var(--fb);padding:6px 13px;border-radius:999px;background:var(--gray-100);color:var(--ink2);transition:background .15s,color .15s}
-a.chip:hover{background:var(--tint);color:var(--brand)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
-.chips .chip{cursor:pointer;user-select:none}
-.chips .chip.act{background:var(--brand);color:#fff}
-
-/* ---------- SECTION RHYTHM ---------- */
-.sec{padding:96px 0}
-.sec.white{background:#fff}
-.sec.tint{background:var(--warm)}
-.sec.dark{background:linear-gradient(175deg,var(--ink) 0%,var(--ink-deep) 100%);color:#F7F9FA;position:relative}
-.sec.dark::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.55),transparent)}
-.sec.dark h2,.sec.dark h3{color:#fff}
-.sec.dark .eyebrow{color:var(--gold)}
-.sec.dark p{color:rgba(247,249,250,.66)}
-.sec.dark .em{color:var(--gold)}
-
-/* ---------- HOME HERO ---------- */
-.hero{background:linear-gradient(180deg,var(--warm),var(--mint) 82%);padding:64px 0 84px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
-.hero h1{margin:18px 0 20px}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-.meta-row{display:flex;gap:24px;flex-wrap:wrap;margin-top:32px;padding-top:22px;border-top:1px solid var(--line2)}
-.meta-row>div{font-size:13px;color:var(--ink2)}
-.meta-row b{display:flex;gap:7px;align-items:center;font:600 13px var(--fb);color:var(--ink)}
-.meta-row .ic{width:14px;height:14px;color:var(--brand-mid)}
-.hero-media{position:relative}
-.hero-media .arch{aspect-ratio:4/4.6}
-.float-card{position:absolute;left:-14px;bottom:32px;background:rgba(255,255,255,.97);border-radius:var(--r);padding:15px 19px;display:flex;gap:12px;align-items:center;box-shadow:var(--e3);max-width:260px;transition:transform .3s var(--ease)}
-.float-card:hover{transform:translateY(var(--lift))}
-.float-card .fi{width:38px;height:38px;border-radius:var(--r-sm);background:var(--tint);color:var(--brand);display:grid;place-items:center;flex:none}
-.float-card b{font:600 13.5px var(--fb);display:block}
-.float-card span{font-size:12px;color:var(--ink3)}
-.intake-chip{position:absolute;top:24px;right:-8px;background:var(--brand);color:#fff;border-radius:999px;padding:9px 16px;font:600 12px var(--fb);display:flex;gap:8px;align-items:center;box-shadow:var(--e2)}
-
-/* ---------- SEARCH HERO (universities / directory pages) ---------- */
-.s-hero{position:relative;min-height:560px;display:flex;align-items:center;color:#fff;overflow:hidden}
-.s-hero .hbg{position:absolute;inset:0;overflow:hidden}
-.s-hero .hbg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;transform:scale(1.04);opacity:0;animation:heroZoom 1.9s cubic-bezier(.16,1,.3,1) forwards;will-change:transform,opacity}
-@media(min-width:900px){.s-hero{min-height:640px}}
-@media(min-width:1280px){.s-hero{min-height:700px}}
-.s-hero .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(95deg,rgba(4,18,12,.88) 0%,rgba(4,18,12,.6) 55%,rgba(4,18,12,.18) 100%)}
-.s-hero .hcopy{position:relative;z-index:2;padding:96px 24px 116px;width:100%;max-width:var(--wrap);margin:0 auto}
-.s-hero .hcopy>*{opacity:0;transform:translateY(24px);animation:heroUp .8s cubic-bezier(.16,1,.3,1) forwards;will-change:transform,opacity}
-.s-hero .hcopy>*:nth-child(1){animation-delay:.15s}
-.s-hero .hcopy>*:nth-child(2){animation-delay:.32s}
-.s-hero .hcopy>*:nth-child(3){animation-delay:.48s}
-.s-hero .hcopy>*:nth-child(4){animation-delay:.62s}
-@keyframes heroZoom{0%{transform:scale(1.04);opacity:0}100%{transform:scale(1);opacity:1}}
-@keyframes heroUp{to{opacity:1;transform:none}}
-.s-hero h1{color:#fff;max-width:15ch;font-size:clamp(38px,5.4vw,64px);letter-spacing:-.025em;font-weight:700}
-.s-hero h1 em{color:var(--gold)}
-.s-hero p{max-width:52ch;color:rgba(255,255,255,.9);font-size:17.5px;margin-top:18px}
-.s-hero .cta-row{margin-top:30px}
-.hero-alt{display:inline-block;margin-top:16px;font:500 14px var(--fb);color:rgba(255,255,255,.62);border-bottom:1px solid rgba(255,255,255,.28);padding-bottom:2px;transition:color .2s var(--ease),border-color .2s var(--ease)}
-.hero-alt:hover{color:#fff;border-color:rgba(255,255,255,.7)}
-.hsearch{position:relative;z-index:3;display:flex;max-width:780px;margin:-28px auto 0;box-shadow:var(--e3);border-radius:var(--r-sm);overflow:hidden}
-.hsearch input{flex:1;min-width:0;padding:18px 22px;font:500 16px var(--fb);border:0;background:#fff;outline:0}
-.hsearch button{width:60px;background:var(--brand);color:#fff;display:grid;place-items:center}
-.hsearch .ic{width:20px;height:20px}
-
-/* ---------- STAT STRIP (single consistent surface, not multi-colour) --- */
-.award-strip{display:grid;grid-template-columns:repeat(3,1fr);background:var(--brand-dark);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 2px rgba(3,17,12,.3),0 24px 48px -20px rgba(3,17,12,.55);position:relative;z-index:3}
-.award-strip::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 140% at 0% 0%,rgba(201,162,39,.18),transparent 55%)}
-.award-strip>div{position:relative;padding:26px 28px;display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:104px;border-left:1px dashed rgba(255,255,255,.18)}
-.award-strip>div:first-child{border-left:0}
-.award-strip b{font:700 17px var(--fd);letter-spacing:-.01em;color:#fff}
-.award-strip span{font:500 12.5px var(--fb);color:rgba(255,255,255,.62)}
-@media(max-width:820px){.award-strip{grid-template-columns:1fr}.award-strip>div{border-left:0;border-top:1px dashed rgba(255,255,255,.18)}.award-strip>div:first-child{border-top:0}}
-
-.office-badge{display:flex;gap:10px;align-items:flex-start;background:var(--tint);border:1px solid var(--tint2);border-radius:var(--r-sm);padding:12px 14px;margin:10px 0;font:600 12.5px var(--fb);color:var(--ink)}
-.office-badge .ic{flex:none;color:var(--brand-mid);margin-top:1px}
-.office-badge b{color:var(--brand)}
-
-.story{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 20px;display:flex;flex-direction:column;position:relative;transition:box-shadow .25s var(--ease),transform .25s var(--ease)}
-.story:hover{box-shadow:var(--e2);transform:translateY(var(--lift))}
-.story .tag.sample{position:absolute;top:14px;right:14px;z-index:2;background:var(--tint2);color:var(--ink2);font:600 9.5px var(--fb);letter-spacing:.04em;padding:4px 10px;border-radius:20px}
-.story-qmark{font:700 44px/1 var(--fd);color:var(--gold);opacity:.55;margin-bottom:-8px}
-.story-quote{font:italic 400 15px/1.65 var(--fb);color:var(--ink);margin:0 0 22px;flex-grow:1}
-.story-foot{display:flex;align-items:center;gap:12px}
-.story-avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--tint);display:block}
-.story-avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.story-avatar.init-avatar{display:flex;align-items:center;justify-content:center;font:700 15px var(--fb);color:var(--brand)}
-.story-id{display:flex;flex-direction:column;gap:1px;min-width:0}
-.story-id b{font-size:14.5px;line-height:1.25}
-.story-id span{font-size:11.5px;color:var(--ink3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.story-tagrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-.story-tagrow .eyebrow{margin:0}
-.story-sch{font:600 10.5px var(--fb);color:var(--brand-mid);text-align:right}
-.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-
-/* ---------- DESTINATION TILES ---------- */
-.dest-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.grid-d2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.dest{position:relative;border-radius:var(--r);overflow:hidden;min-height:208px;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;box-shadow:var(--e2);border:1px solid rgba(255,255,255,.08);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.dest:hover{transform:translateY(var(--lift));box-shadow:var(--e3)}
-.dest:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.dest .duo{position:absolute;inset:0;border-radius:0}
-.dest .duo img{transition:transform .6s var(--ease);filter:saturate(.86) contrast(1.05) brightness(.96)}
-.dest:hover .duo img{transform:scale(1.06)}
-.dest::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(2,8,5,.5) 0%,rgba(2,8,5,.05) 38%,rgba(2,8,5,0) 55%,rgba(2,8,5,.14) 100%)}
-.dest>*{position:relative;z-index:2}
-.dest-info{display:inline-flex;flex-direction:column;gap:5px;align-self:flex-start;max-width:100%;background:rgba(4,16,11,.5);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 24px rgba(0,0,0,.22);border-radius:14px;padding:12px 16px;transition:background .35s var(--ease),transform .35s var(--ease)}
-.dest:hover .dest-info{background:rgba(4,16,11,.66);transform:translateY(-2px)}
-.dest h3{color:#fff;font-size:21px;letter-spacing:-.015em;font-weight:700;line-height:1.15;display:flex;align-items:center;gap:8px}
-.dflag{font-size:17px;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35));display:inline-block;width:20px;height:14px;border-radius:3px;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),0 1px 3px rgba(0,0,0,.35);background-size:cover;background-position:center}
-.dflag-china{background:radial-gradient(circle at 27% 30%,#FFDE00 0 22%,transparent 23%),#DE2910}
-.dflag-italy{background:linear-gradient(90deg,#009246 0 33%,#fff 33% 67%,#CE2B37 67% 100%)}
-.dflag-lithuania{background:linear-gradient(180deg,#FDB913 0 33%,#006A44 33% 67%,#C1272D 67% 100%)}
-.dflag-uk{background-color:#012169;background-image:linear-gradient(#fff 0 0),linear-gradient(#fff 0 0),linear-gradient(#C8102E 0 0),linear-gradient(#C8102E 0 0);background-size:100% 34%,34% 100%,100% 16%,16% 100%;background-position:center,center,center,center;background-repeat:no-repeat}
-.dflag-france{background:linear-gradient(90deg,#0055A4 0 33%,#fff 33% 67%,#EF4135 67% 100%)}
-.dflag-cyprus{background:radial-gradient(ellipse at 50% 58%,#D57800 0 40%,transparent 41%),#fff}
-.dest small{font:600 10.5px var(--fb);color:rgba(255,255,255,.82);text-transform:uppercase;letter-spacing:.07em}
-.dest .go{position:absolute;top:16px;right:16px;z-index:2;width:32px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(4,18,12,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;transition:.2s var(--ease)}
-.dest .go .ic{width:14px;height:14px;color:#fff}
-.dest:hover .go{background:#fff;border-color:#fff;transform:rotate(45deg)}
-.dest:hover .go .ic{color:var(--ink)}
-.dest.cn{grid-column:span 2;grid-row:span 2}
-.dest.wide{grid-column:span 4}
-.dest.md{grid-column:span 2}
-.dest.slim{grid-column:span 6;min-height:110px;flex-direction:row;align-items:center;justify-content:space-between;gap:20px}
-.dest.slim .dest-info{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none;padding:0}
-.dest.slim:hover .dest-info{transform:none}
-.dest-grid>.dest:nth-child(1){transition-delay:.02s}
-.dest-grid>.dest:nth-child(2){transition-delay:.09s}
-.dest-grid>.dest:nth-child(3){transition-delay:.16s}
-.dest-grid>.dest:nth-child(4){transition-delay:.23s}
-.dest-grid>.dest:nth-child(5){transition-delay:.3s}
-.dest-grid>.dest:nth-child(6){transition-delay:.37s}
-.dest-grid>.dest:nth-child(7){transition-delay:.44s}
-
-.feat-index{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.feat-index li{display:flex;gap:18px;padding:28px;border-radius:var(--r);background:#fff;border:1px solid var(--line);transition:box-shadow .25s var(--ease),transform .25s var(--ease),border-color .25s var(--ease)}
-.feat-index li:hover{box-shadow:var(--e2);transform:translateY(var(--lift));border-color:var(--line2)}
-.feat-index .num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--tint);color:var(--brand);display:grid;place-items:center;font:700 15.5px var(--fd)}
-.feat-index h3{font-size:17px;margin-bottom:6px}
-.feat-index p{font-size:14.5px;line-height:1.6}
-
-/* ---------- JOURNEY / PROCESS ---------- */
-.journey{padding:88px 0}
-.j-list{display:grid;grid-template-columns:repeat(5,1fr);gap:36px 28px;margin-top:8px}
-.j-list li{position:relative;list-style:none}
-.j-num{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--ink-deep);border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);font:700 13.5px var(--fd);margin-bottom:16px;transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
-.j-list li:hover .j-num{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.16)}
-.j-list li:not(:nth-child(5n+1))::before{content:"";position:absolute;top:19px;left:-28px;width:28px;height:1.5px;background:rgba(255,255,255,.22)}
-.j-list h3{font-size:15px;margin:0 0 6px;color:#fff}
-.j-list p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55}
-@media(max-width:900px){.j-list li::before{display:none}}
-.journey .wrap>div:last-child{display:flex;gap:14px;flex-wrap:wrap;margin-top:44px}
-@media(max-width:520px){
-  .journey .wrap>div:last-child{flex-direction:column}
-  .journey .wrap>div:last-child .btn{width:100%}
-  .promo .in,.bigband .in{flex-direction:column;align-items:flex-start}
-  .promo .in .btn,.bigband .in .btn{width:100%;justify-content:center}
-  .s-hero .hcopy{padding:52px 16px 68px}
-  .s-hero .cta-row .btn{width:100%}
-  .hsearch{margin-top:-20px}
-  .hsearch input{padding:15px 16px;font-size:15px}
-}
-
-/* ---------- DIRECTORY / FILTER DRAWER ---------- */
-.dir-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:36px;align-items:start}
-.filters{position:sticky;top:calc(var(--hh) + 16px);background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
-.filters .fh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.filters .fh b{font:700 15px var(--fd)}
-.fgroup{border-top:1px solid var(--line);padding:14px 0}
-.fgroup>b{display:block;font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
-.fgroup label{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink2);padding:5px 0;cursor:pointer}
-.fgroup input[type=checkbox],.fgroup input[type=radio]{accent-color:var(--brand);width:15px;height:15px;flex:none}
-.fgroup select{width:100%;padding:10px 11px;border-radius:var(--r-sm);border:1px solid var(--line2);font:500 13.5px var(--fb);background:#fff;color:var(--ink)}
-.clearf{font:600 12px var(--fb);color:var(--brand);display:inline-flex;gap:5px;align-items:center;cursor:pointer}
-.clearf .ic{width:13px;height:13px}
-.dir-tools{display:flex;gap:12px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
-.searchbar{flex:1;min-width:200px;display:flex;align-items:center;gap:10px;border-radius:999px;padding:12px 18px;background:#fff;border:1px solid var(--line2);transition:border-color .2s var(--ease)}
-.searchbar:focus-within{border-color:var(--brand)}
-.searchbar .ic{width:16px;height:16px;color:var(--ink3)}
-.searchbar input{border:0;outline:0;flex:1;min-width:0;font:500 14px var(--fb);color:var(--ink);background:none}
-.dir-tools select{padding:12px 15px;border-radius:999px;border:1px solid var(--line2);font:500 13.5px var(--fb);background:#fff;color:var(--ink)}
-.filter-toggle{display:none}
-.filter-done{display:none}
-.rmeta{font:500 13px var(--fb);color:var(--ink3);margin-bottom:16px}
-.rmeta b{color:var(--ink);font-family:var(--fb);font-weight:700}
-.empty{border:1.5px dashed var(--line2);border-radius:var(--r);padding:52px 24px;text-align:center;color:var(--ink3)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.tab{font:600 13px var(--fb);padding:10px 18px;border-radius:999px;background:#fff;border:1px solid var(--line2);color:var(--ink2);transition:.2s var(--ease)}
-.tab.on{background:var(--brand);border-color:var(--brand);color:#fff}
-
-/* ---------- UNIVERSITY ROW CARD ---------- */
-.u-row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:22px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;margin-bottom:14px;transition:box-shadow .25s var(--ease),transform .25s var(--ease)}
-.u-row:hover{box-shadow:var(--e2);transform:translateY(var(--lift))}
-.u-row>div:last-child{min-width:0}
-.uimg{display:block}
-.uimg .duo{aspect-ratio:1;border-radius:var(--r-sm)}
-.u-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
-.u-head>div:first-child{min-width:0}
-.u-head h3{font-size:19px}
-.u-head h3 a:hover{color:var(--brand)}
-.u-loc{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink3);margin:4px 0 12px}
-.u-loc .ic{color:var(--brand-mid)}
-.u-tags{display:flex;gap:6px;flex-wrap:wrap}
-.u-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
-.u-meta{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:12.5px;color:var(--ink3);margin-bottom:16px;padding-top:14px;border-top:1px dashed var(--line)}
-.u-meta b{display:block;font:700 14px var(--fb);color:var(--ink)}
-.u-actions{display:flex;gap:10px;flex-wrap:wrap}
-
-.fee-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.fee-row{display:grid;grid-template-columns:minmax(140px,.9fr) minmax(120px,.8fr) minmax(0,1.4fr);gap:14px;padding:16px 20px;border-top:1px solid var(--line);align-items:baseline}
-.fee-row:first-child{border-top:0;background:var(--ink)}
-.fee-row.fee-head span,.fee-row.fee-head b{color:#fff;font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase}
-.fee-row b{font:600 14px var(--fb)}
-.fee-row .val{font:700 15px var(--fb);color:var(--brand)}
-.fee-row small{font-size:12.5px;color:var(--ink3)}
-.fee-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
-.fee-dark .fee-row{border-color:rgba(255,255,255,.1)}
-.fee-dark .fee-row:first-child{background:rgba(255,255,255,.06)}
-.fee-dark .fee-row b{color:#fff}
-.fee-dark .fee-row .val{color:var(--gold)}
-.fee-dark .fee-row small{color:rgba(255,255,255,.55)}
-
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.steps li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-.steps li:hover{transform:translateY(var(--lift));box-shadow:var(--e2)}
-.steps .sn{font:700 12px var(--fb);letter-spacing:.04em;color:var(--brand-mid);display:block;margin-bottom:10px}
-.sec.dark .steps li{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.14)}
-.sec.dark .steps .sn{color:var(--gold)}
-.sec.dark .steps p{color:rgba(255,255,255,.66)}
-
-.acc{border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden}
-.acc-item+.acc-item{border-top:1px solid var(--line)}
-.acc-head{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;padding:19px 22px;font:600 15px var(--fb);color:var(--ink);transition:background .15s,color .15s}
-.acc-head:hover{background:var(--tint);color:var(--brand)}
-.acc-head .ic{color:var(--brand-mid);transition:transform .3s var(--ease);flex:none}
-.acc-item.open .acc-head .ic{transform:rotate(180deg)}
-.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--ease)}
-.acc-item.open .acc-body{grid-template-rows:1fr}
-.acc-body>div{overflow:hidden}
-.acc-body p{padding:0 22px 22px;font-size:14.5px;max-width:72ch;line-height:1.65}
-
-.subnav{position:sticky;top:var(--hh);z-index:60;background:rgba(250,249,246,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.subnav .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:0 12px}
-.subnav .wrap::-webkit-scrollbar{display:none}
-.subnav a{font:500 13px var(--fb);color:var(--ink2);padding:14px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
-.subnav a:hover{color:var(--brand);border-color:var(--brand)}
-
-/* ---------- CARDS ----------
-   Selective use: a border does the grouping, shadow only on hover. */
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:box-shadow .25s var(--ease),transform .25s var(--ease);display:flex;flex-direction:column}
-.card:hover{box-shadow:var(--e2);transform:translateY(var(--lift))}
-.card .ci{width:42px;height:42px;border-radius:var(--r-sm);background:var(--tint);color:var(--brand);display:grid;place-items:center;margin-bottom:16px}
-.card h3{font-size:17px;margin-bottom:9px}
-.card p{font-size:14.5px;line-height:1.6}
-.card .cfoot{margin-top:auto;padding-top:18px;display:flex;gap:8px;flex-wrap:wrap}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:980px){.grid4{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.grid4{grid-template-columns:1fr}}
-
-.sch-card{border-left:3px solid var(--brand)}
-.sch-card .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
-.sch-card .meta{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
-.sch-card .src{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink3);margin-top:6px}
-.sch-card .src .ic{width:14px;height:14px}
-
-.tst{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:16px;transition:box-shadow .25s,transform .25s var(--ease)}
-.tst:hover{box-shadow:var(--e2);transform:translateY(var(--lift))}
-.tst .qmark{font:700 40px var(--fd);color:var(--tint2);line-height:.5;height:22px}
-.tst .ph{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
-.tst .ph .av{width:42px;height:42px;border-radius:999px;background:var(--tint);display:grid;place-items:center;color:var(--brand);flex:none}
-.tst .ph b{font:600 14px var(--fb);display:block}
-.tst .ph span{font-size:12.5px;color:var(--ink3)}
-
-/* CTA band — one dark surface, one accent, no glow rings. */
-.ctab{background:linear-gradient(160deg,var(--ink) 0%,var(--ink-deep) 100%);border-radius:var(--r-lg);padding:54px 50px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:center;position:relative;overflow:hidden}
-.ctab h2{color:#fff;margin-bottom:12px}
-.ctab p{margin-bottom:24px;color:rgba(255,255,255,.7)}
-.ctab .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-.ctab small{display:block;margin-top:14px;font-size:12px;color:rgba(255,255,255,.48)}
-
-.office{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:box-shadow .2s,transform .2s var(--ease)}
-.office:hover{box-shadow:var(--e2);transform:translateY(var(--lift))}
-.office .oh{display:flex;gap:14px;align-items:center;margin-bottom:16px}
-.office .oh .ci{width:44px;height:44px;border-radius:var(--r-sm);background:var(--tint);color:var(--brand);display:grid;place-items:center;flex:none}
-.office .oh h3{font-size:17px}
-.office .oh small{font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--brand-mid)}
-.office .row{display:flex;gap:10px;font-size:14px;color:var(--ink2);padding:8px 0;align-items:flex-start}
-.office .row .ic{width:15px;height:15px;color:var(--brand-mid);margin-top:3px}
-.office .row .pend{color:var(--ink3);font-style:italic;font-size:13px}
-.office .oactions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-
-/* ---------- FORMS ---------- */
-.form-shell{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px}
-fieldset{border:0;margin-bottom:8px}
-legend{font:700 19px var(--fd);letter-spacing:-.01em;margin:24px 0 8px;padding-bottom:14px;border-bottom:1px solid var(--line);width:100%;display:flex;gap:10px;align-items:center;color:var(--ink)}
-legend:first-of-type{margin-top:0}
-legend .ic{width:18px;height:18px;color:var(--brand-mid)}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-.frow.one{grid-template-columns:1fr}
-.field label{display:block;font:600 12.5px var(--fb);color:var(--ink);margin-bottom:7px}
-.field label em{color:var(--brand);font-style:normal}
-.field input,.field select,.field textarea{width:100%;padding:12px 14px;border-radius:var(--r-sm);border:1.5px solid var(--line2);font:500 14px var(--fb);color:var(--ink);background:var(--mint);transition:border-color .15s,box-shadow .15s,background .15s}
-.field textarea{min-height:112px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--brand);background:#fff;box-shadow:0 0 0 3px rgba(4,90,64,.12)}
-.field input[aria-invalid=true]{border-color:#C0362C;background:#FCF3F2}
-.field .hint{font-size:11.5px;color:var(--ink3);margin-top:5px}
-.upload{display:flex;gap:14px;align-items:center;border:1.5px dashed var(--line2);border-radius:var(--r-sm);padding:17px;cursor:pointer;background:var(--mint);transition:.2s var(--ease)}
-.upload:hover{border-color:var(--brand);background:var(--tint)}
-.upload .ic{width:20px;height:20px;color:var(--brand-mid)}
-.upload b{font:600 13.5px var(--fb);display:block}
-.upload span{font-size:12px;color:var(--ink3)}
-.upload input{display:none}
-.upload.has{border-style:solid;border-color:var(--brand);background:var(--tint)}
-.upload .fname{font:600 13px var(--fb);color:var(--brand);word-break:break-all}
-.form-note{font-size:12.5px;color:var(--ink3);margin-top:16px;display:flex;gap:7px}
-.form-note .ic{flex:none;margin-top:2px}
-.success-panel{text-align:center;padding:44px 24px}
-.success-panel .big{width:68px;height:68px;border-radius:999px;background:var(--tint);color:var(--brand);display:grid;place-items:center;margin:0 auto 22px}
-
-.post-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:26px;padding:26px 0;border-top:1px solid var(--line2);align-items:start}
-.post-row:first-child{border-top:0}
-.post-row .pimg .duo{aspect-ratio:16/11}
-.post-row h3{font-size:21px;margin:9px 0}
-.post-row h3 a:hover{color:var(--brand)}
-.pmeta{display:flex;gap:16px;font-size:12.5px;color:var(--ink3);flex-wrap:wrap}
-.pmeta span{display:inline-flex;gap:5px;align-items:center}
-.article{max-width:700px;margin:0 auto}
-.article .aimg{aspect-ratio:16/8;margin:28px 0}
-.article h2{font-size:25px;margin:34px 0 14px}
-.article p{margin-bottom:18px;line-height:1.75;font-size:16.5px}
-
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden}
-.stats div{background:var(--ink-deep);padding:26px 22px}
-.stats .v{font:800 34px var(--fd);color:#fff;display:block;line-height:1.1;letter-spacing:-.01em}
-.stats .l{font:500 13px var(--fb);color:rgba(255,255,255,.66)}
-.stats .p{display:inline-flex;margin-top:9px;font:700 10px var(--fb);letter-spacing:.06em;color:var(--gold);background:rgba(15,169,120,.16);padding:3px 9px;border-radius:999px;text-transform:uppercase}
-
-.notice{display:flex;gap:12px;background:var(--tint);border:1px solid var(--tint2);border-radius:var(--r-sm);padding:15px 17px;font-size:13.5px;color:var(--brand-dark);align-items:flex-start}
-.notice .ic{flex:none;margin-top:2px;color:var(--brand)}
-.notice.gold{background:rgba(15,169,120,.08);border-color:rgba(15,169,120,.24);color:var(--brand-dark)}
-.notice.gold .ic{color:var(--gold)}
-
-/* ---------- FOOTER ---------- */
-footer.site{background:linear-gradient(175deg,var(--ink),var(--ink-deep));color:rgba(255,255,255,.65);margin-top:88px}
-.f-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:40px;padding:60px 0 42px}
-.f-brand .brand .word b{color:#fff}
-.f-brand .brand .word span{color:var(--brand-mid)}
-.f-brand p{font-size:13.5px;color:rgba(255,255,255,.55);margin:18px 0 20px;max-width:32ch;line-height:1.65}
-.socials{display:flex;gap:10px}
-.socials a{width:36px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;transition:.2s var(--ease)}
-.socials a:hover{background:#fff;border-color:#fff}
-.socials a .ic{width:16px;height:16px;color:#fff}
-.socials a:hover .ic{color:var(--ink)}
-.f-col b{display:block;font:600 10.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px}
-.f-col a{display:block;font-size:13.5px;padding:5px 0;color:rgba(255,255,255,.62);transition:color .15s}
-.f-col a:hover{color:#fff}
-.f-bot{border-top:1px solid rgba(255,255,255,.12);padding:22px 0;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px}
-.f-dis{padding:18px 0 26px;font-size:11.5px;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.08);line-height:1.65}
-
-#wa-float{position:fixed;right:20px;bottom:20px;z-index:95;width:52px;height:52px;border-radius:999px;background:var(--brand);color:#fff;display:grid;place-items:center;box-shadow:var(--e2);transition:transform .2s var(--ease),box-shadow .2s}
-#wa-float:hover{transform:translateY(var(--lift));box-shadow:var(--e3)}
-#wa-float:active{transform:scale(.96)}
-#wa-float svg{width:26px;height:26px;fill:#fff}
-#wa-float .tip{position:absolute;right:62px;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;font:600 12px var(--fb);padding:8px 13px;border-radius:9px;white-space:nowrap;opacity:0;visibility:hidden;transition:.2s}
-#wa-float:hover .tip{opacity:1;visibility:visible}
-
-#toasts{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;gap:10px;align-items:center;width:min(92vw,440px);pointer-events:none}
-.toast{background:var(--ink);color:#fff;font:500 13.5px var(--fb);padding:14px 20px;border-radius:var(--r-sm);box-shadow:var(--e3);display:flex;gap:10px;align-items:center;animation:toastIn .3s var(--ease);max-width:100%}
-@keyframes toastIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
-
-/* Reveal-on-scroll: quiet fade only. */
-html.rv .rv{opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
-html.rv .rv.on{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){html.rv .rv{opacity:1;transform:none;transition:none!important}html{scroll-behavior:auto}.s-hero .hbg img{animation:none!important;transform:none;opacity:1}.s-hero .hcopy>*{animation:none!important;opacity:1;transform:none}}
-
-.d-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:44px;align-items:start;padding:26px 0 22px}
-.d-hero .dimg{aspect-ratio:16/10}
-.qfacts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-radius:var(--r);overflow:hidden}
-.qfacts div{background:#fff;padding:15px 17px}
-.qfacts span{font:600 10px var(--fb);letter-spacing:.11em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:3px}
-.qfacts b{font:700 14.5px var(--fb);letter-spacing:-.005em}
-.qfacts b .tag{margin-left:4px}
-
-.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.prog-grid a{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:17px 18px;transition:.2s var(--ease)}
-.prog-grid a:hover{background:var(--tint);border-color:var(--tint2);transform:translateY(var(--lift))}
-.prog-grid .pi{width:38px;height:38px;border-radius:var(--r-sm);background:var(--tint);color:var(--brand);display:grid;place-items:center;flex:none}
-.prog-grid b{font:600 14.5px var(--fb);display:block}
-.prog-grid small{font-size:12px;color:var(--ink3)}
-
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center}
-.split .simg{aspect-ratio:4/3}
-
-/* ---------- SUPPORTING HOME-PAGE BANDS (single-surface, restrained) --- */
-.promo{background:var(--ink-deep);color:#fff;margin-top:52px;border-radius:var(--r-lg)}
-.promo .in{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:32px 48px;flex-wrap:wrap}
-.promo h2{color:#fff;font-size:24px;font-weight:600}
-.pillars,.news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pillar{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:32px 26px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:12px;transition:box-shadow .25s var(--ease),transform .25s var(--ease),border-color .25s var(--ease)}
-.pillar:hover{box-shadow:var(--e2);transform:translateY(var(--lift));border-color:var(--line2)}
-.pillar .pi{width:52px;height:52px;border-radius:14px;background:var(--tint);display:grid;place-items:center;margin-bottom:4px}
-.pillar .pi .ic{width:24px;height:24px;color:var(--brand)}
-.pillar h3{font-size:18.5px}
-.pillar p{font-size:14.5px;color:var(--ink2);margin-bottom:auto}
-.bigband{background:var(--brand);color:#fff;border-radius:var(--r-lg)}
-.bigband .in{display:flex;justify-content:space-between;align-items:center;gap:28px;padding:44px 44px;flex-wrap:wrap}
-.bigband h2{color:#fff;font-size:clamp(26px,3.4vw,38px);line-height:1.12;max-width:17ch}
-.badge{background:rgba(255,255,255,.12);color:#fff;padding:14px 18px;max-width:280px;font-weight:600;display:flex;gap:10px;align-items:center;border-radius:var(--r-sm)}
-.badge .ic{width:24px;height:24px;flex:none}
-.feat{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-lg);overflow:hidden}
-.feat .txt{background:var(--warm);padding:48px 44px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;justify-content:center}
-.feat .pic{min-height:320px}
-.feat .pic.duo{border-radius:0}
-.news h3{font-size:18px;margin:14px 0 8px}
-.news h3 a:hover{color:var(--brand)}
-.news p{font-size:14.5px;color:var(--ink2)}
-.news .duo{aspect-ratio:16/10}
-
-[hidden]{display:none!important}
-.mapframe{width:100%;height:270px;border:0;border-radius:var(--r);box-shadow:none;border:1px solid var(--line)}
-.qf{display:grid;gap:12px;max-width:900px}
-.qf>div{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:19px 22px}
-.qf dt{font-weight:700;color:var(--ink);margin-bottom:6px}
-.qf dd{color:var(--ink2);font-size:15px;line-height:1.65}
-.qa{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 20px;margin:0 0 12px}
-.qa summary{cursor:pointer;font-weight:600}
-.qa p{margin-top:10px;color:var(--ink2)}
-
-.city-hero{position:relative;min-height:320px;display:flex;align-items:flex-end;color:#fff;margin-bottom:0}
-.city-hero .duo{position:absolute;inset:0;z-index:0;border-radius:0}
-.city-hero .duo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,12,.3) 0%,rgba(4,18,12,.9) 100%)}
-.city-hero .wrap{position:relative;z-index:1;padding:46px 24px 32px}
-.city-hero h1{color:#fff}
-.city-hero .eyebrow{color:var(--gold)}
-.city-hero .lead{color:rgba(255,255,255,.88)}
-.city-hero .crumbs{color:rgba(255,255,255,.7)}
-.city-hero .crumbs a{color:#fff}
-
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:1080px){
-  nav.main{display:none}
-  .hutil-toggle{display:none}
-  .burger{display:flex}
-  .dir-layout{grid-template-columns:1fr}
-  .filters{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:115;border-radius:20px 20px 0 0;max-height:80vh;overflow-y:auto;transform:translateY(105%);transition:transform .34s var(--ease);box-shadow:var(--e4);padding-bottom:24px}
-  .filters::before{content:"";display:block;width:40px;height:4px;border-radius:99px;background:var(--line2);margin:0 auto 14px}
-  .filters.open{transform:none}
-  .filter-toggle{display:inline-flex}
-  .filter-done{display:inline-flex}
-}
-@media(max-width:900px){
-  .s-hero .hcopy{padding:64px 20px 84px}
-  .s-hero h1{max-width:100%}
-  .promo .in{padding:28px 26px}
-  .bigband .in{padding:32px 26px}
-  .feat .txt{padding:36px 26px}
-  .hero-grid,.ph-grid,.d-hero,.split,.feat{grid-template-columns:1fr;gap:32px}
-  .hero-media{max-width:420px}
-  .dest-grid{grid-template-columns:repeat(2,1fr)}
-  .dest.cn,.dest.wide,.dest.md,.dest.slim{grid-column:span 2;grid-row:auto}
-  .dest.slim{flex-direction:column;align-items:flex-start;min-height:0}
-  .grid-d2{grid-template-columns:repeat(2,1fr)}
-  .feat-index,.grid2,.grid3,.grid4,.steps,.prog-grid,.story-grid{grid-template-columns:repeat(2,1fr)}
-  .j-list{grid-template-columns:repeat(2,1fr)}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .ctab{grid-template-columns:1fr;padding:36px 28px}
-  .ctab .ctas{justify-content:flex-start}
-  .f-top{grid-template-columns:repeat(2,1fr);gap:32px}
-  .u-row{grid-template-columns:80px minmax(0,1fr);gap:16px}
-  .post-row{grid-template-columns:1fr}
-  .post-row .pimg .duo{max-height:220px}
-  .util{display:none}
-  .feat .pic{min-height:220px}
-  .pillars,.news{grid-template-columns:1fr}
-  .promo .in,.bigband .in{flex-direction:column;align-items:flex-start}
-}
-@media(max-width:640px){
-  .frow{grid-template-columns:1fr}
-  .fee-row{grid-template-columns:1fr;gap:4px}
-  .fee-row.fee-head{display:none}
-}
-@media(max-width:520px){
-  .wrap{padding:0 16px}
-  .sec{padding:56px 0}
-  .journey{padding:56px 0}
-  .feat-index,.grid2,.grid3,.grid4,.steps,.prog-grid,.j-list,.facts,.grid-d2,.story-grid{grid-template-columns:1fr}
-  .dest-grid{grid-template-columns:1fr}
-  .dest.cn,.dest.wide,.dest.md,.dest.slim{grid-column:span 1}
-  .u-row{grid-template-columns:1fr}
-  .u-row .uimg .duo{aspect-ratio:16/8}
-  .u-meta{gap:10px 20px}
-  .form-shell{padding:24px 18px}
-  .hero{padding:44px 0 56px}
-  .hero .cta-row .btn{width:100%}
-  .float-card{left:0;max-width:220px}
-  .brand .word b{font-size:16px}
-  .navbar{gap:12px}
-  .promo .in,.bigband .in{padding:26px 22px}
-  .ctab{padding:28px 20px}
-}
-
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/home.css">
 </head>
-<body>
+<body class="js">
 <a class="skip" href="#page">Skip to content</a>
 <noscript>
 <div>This website works best with JavaScript enabled. A summary of this page is below.</div>
-<main style="max-width:820px;margin:24px auto;padding:0 20px;font:16px/1.7 Inter,sans-serif;color:#0B1017">
+<main style="max-width:820px;margin:24px auto;padding:0 20px;font:16px/1.7 Inter,sans-serif;color:#131735">
 <h1>Bluezone Consultants Pvt. Ltd. — Study Abroad Guidance from Pakistan &amp; Australia</h1>
 <p>Bluezone Consultants guides students from Pakistan and beyond through every stage of studying
 abroad — choosing the right country and university, preparing a complete application, applying
@@ -794,93 +78,747 @@ Kingdom, France and Cyprus, with further European destinations supported case-by
 </main>
 </noscript>
 
-<header class="site" id="site-header">
-  <div class="wrap navbar">
+<header class="header" id="site-header">
+  <div class="wrap nav">
     <a class="brand" href="index.html" aria-label="Bluezone Consultants home">
-      <span class="mark"><img src="assets/logo-icon.png" alt="Bluezone Consultants logo" width="40" height="40"></span>
-      <span class="word"><b>Bluezone</b><span>Consultants</span></span>
+      <img src="assets/logo-icon.png" alt="Bluezone Consultants logo" width="50" height="50">
+      <span class="brand-text"><b>Bluezone</b><small>Consultants</small></span>
     </a>
-    <div class="hr"><div class="hutil-toggle"><button class="hutil-trigger" type="button" aria-haspopup="true" aria-expanded="false">Quick links<span data-ic="chevron-down"></span></button><div class="hutil"><a href="offices.html"><span data-ic="map-pin"></span>Our offices</a><a href="contact.html"><span data-ic="chat"></span>Talk to a counselor</a><a id="u-phone" href="#" hidden><span data-ic="phone"></span><span id="u-phone-t"></span></a><a href="universities.html"><span data-ic="search"></span>Search universities</a></div></div><nav class="main" aria-label="Primary">
-      <div><a class="nl" data-nav="about" href="about.html">About Us</a></div>
-      <div>
-        <a class="nl" data-nav="destinations" href="destinations.html" aria-haspopup="true" aria-expanded="false" aria-controls="drop-dest">Study Destinations <span data-ic="chevron-down"></span></a>
-        <div class="drop" id="drop-dest" role="group" aria-label="Study destination countries"></div>
-      </div>
-      <div><a class="nl" data-nav="universities" href="universities.html">Universities</a></div>
-      <div>
-        <a class="nl" data-nav="programs" href="programs.html" aria-haspopup="true" aria-expanded="false" aria-controls="drop-programs">Programs <span data-ic="chevron-down"></span></a>
-        <div class="drop" id="drop-programs" role="group" aria-label="Programs menu">
-          <div class="dh">Explore</div>
-          <a href="programs.html"><span class="dc">A</span><span>All Programs<small>17 study fields</small></span></a>
-          <a href="admission-guide.html"><span class="dc">B</span><span>Admission Guide<small>Step-by-step journey</small></span></a>
-          <a href="services.html"><span class="dc">C</span><span>Student Services<small>How we support you</small></span></a>
-          <a href="testimonials.html"><span class="dc">D</span><span>Success Stories<small>200+ placed in China alone</small></span></a>
+    <ul class="nav-links">
+      <li class="has-menu">
+        <button class="nl" type="button" aria-expanded="false">Destinations
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="menu">
+          <a href="study-in-china.html">China</a>
+          <a href="study-in-italy.html">Italy</a>
+          <a href="study-in-uk.html">United Kingdom</a>
+          <a href="study-in-lithuania.html">Lithuania</a>
+          <a href="study-in-france.html">France</a>
+          <a href="study-in-cyprus.html">Cyprus</a>
+          <a href="destinations.html">All destinations</a>
         </div>
-      </div>
-      <div><a class="nl" data-nav="scholarships" href="scholarships.html">Scholarships</a></div>
-      <div><a class="nl" data-nav="blog" href="blog.html">Blog</a></div>
-      <div><a class="nl" data-nav="contact" href="contact.html">Contact</a></div>
-    </nav></div>
+      </li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="universities.html">Universities</a></li>
+      <li><a href="scholarships.html">Scholarships</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
     <div class="nav-cta">
-      <a class="btn btn-gold btn-sm" href="apply.html">Apply Now <span data-ic="arrow-right"></span></a>
-      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="mmenu"><span data-ic="menu"></span></button>
+      <a class="link-plain" href="contact.html">Talk to a Counselor</a>
+      <a class="btn btn-primary btn-sm" href="apply.html">Apply Now</a>
     </div>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </header>
 
-<div class="scrim" id="scrim"></div>
-<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true" inert>
-  <div class="mm-top">
-    <a class="brand" href="index.html"><span class="mark"><img src="assets/logo-icon.png" alt="Bluezone Consultants logo" width="40" height="40"></span><span class="word"><b>Bluezone</b><span>Consultants</span></span></a>
-    <button class="burger" id="mm-close" type="button" aria-label="Close menu"><span data-ic="x"></span></button>
+<div class="drawer" id="mobile-drawer">
+  <details>
+    <summary>Destinations <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="sub">
+      <a href="study-in-china.html">China</a>
+      <a href="study-in-italy.html">Italy</a>
+      <a href="study-in-uk.html">United Kingdom</a>
+      <a href="study-in-lithuania.html">Lithuania</a>
+      <a href="study-in-france.html">France</a>
+      <a href="study-in-cyprus.html">Cyprus</a>
+      <a href="destinations.html">All destinations</a>
+    </div>
+  </details>
+  <a class="d-link" href="programs.html">Programs</a>
+  <a class="d-link" href="universities.html">Universities</a>
+  <a class="d-link" href="scholarships.html">Scholarships</a>
+  <a class="d-link" href="services.html">Services</a>
+  <a class="d-link" href="about.html">About</a>
+  <a class="d-link" href="contact.html">Contact</a>
+  <div class="d-cta">
+    <a class="btn btn-outline" href="contact.html">Talk to a Counselor</a>
+    <a class="btn btn-primary" href="apply.html">Apply Now</a>
   </div>
-  <div class="mm-body" id="mm-body"></div>
 </div>
 
-<main id="page" tabindex="-1"></main>
+<main id="page">
 
-<footer class="site">
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-badge intro d1"><i></i> First consultation is free</span>
+      <h1 class="intro d2">Study abroad.<span>Start with the right plan.</span></h1>
+      <p class="lead intro d3">Personalized guidance for students from Pakistan — from choosing your destination and university to applications, scholarships, visa guidance and pre-departure support.</p>
+      <div class="hero-cta intro d4">
+        <a class="btn btn-primary" href="contact.html">Get Free Counseling
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-outline" href="destinations.html">Explore Destinations</a>
+      </div>
+      <ul class="hero-points intro d5">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>No obligation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Counselor-led, not automated</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>6 study destinations</li>
+      </ul>
+    </div>
+    <div class="hero-media intro-media">
+      <div class="hero-img">
+        <img src="assets/hero-card.jpg" alt="Bluezone student preparing a study-abroad application" width="880" height="957">
+      </div>
+      <div class="hero-float">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></span>
+        <div><b>200+</b><span>Students placed in China alone</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST / STATS ============ -->
+<section class="trust">
   <div class="wrap">
-    <div class="f-top">
-      <div class="f-brand">
-        <a class="brand" href="index.html"><span class="mark"><img src="assets/logo-icon.png" alt="Bluezone Consultants logo" width="40" height="40"></span><span class="word"><b>Bluezone</b><span>Consultants</span></span></a>
-        <p>An international education consultancy helping students explore higher education abroad — from first consultation to first semester.</p>
-        <div class="socials">
-          <a href="#" data-social="Facebook" aria-label="Facebook"><span data-ic="facebook"></span></a>
-          <a href="#" data-social="Instagram" aria-label="Instagram"><span data-ic="instagram"></span></a>
-          <a href="#" data-social="LinkedIn" aria-label="LinkedIn"><span data-ic="linkedin"></span></a>
-          <a href="#" data-social="YouTube" aria-label="YouTube"><span data-ic="youtube"></span></a>
+    <div class="stats">
+      <div class="stat rv d1"><div class="num" data-count="200" data-suffix="+">0</div><div class="lbl">Students placed in China alone</div></div>
+      <div class="stat rv d2"><div class="num" data-count="6">0</div><div class="lbl">Study destination countries</div></div>
+      <div class="stat rv d3"><div class="num" data-count="4">0</div><div class="lbl">Counselor-led offices</div></div>
+      <div class="stat rv d4"><div class="num" data-count="6">0</div><div class="lbl">Core study fields covered</div></div>
+    </div>
+    <div class="dest-strip rv">
+      <span>We guide students to</span>
+      <a class="chip" href="study-in-china.html">🇨🇳 China</a>
+      <a class="chip" href="study-in-italy.html">🇮🇹 Italy</a>
+      <a class="chip" href="study-in-uk.html">🇬🇧 United Kingdom</a>
+      <a class="chip" href="study-in-lithuania.html">🇱🇹 Lithuania</a>
+      <a class="chip" href="study-in-france.html">🇫🇷 France</a>
+      <a class="chip" href="study-in-cyprus.html">🇨🇾 Cyprus</a>
+    </div>
+  </div>
+</section>
+<!-- ============ SERVICES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead-row">
+      <div class="shead rv"><span class="eyebrow">What We Do</span><h2>How Bluezone can help</h2><p>Six services that cover the full journey — from your first shortlist to your first week on campus.</p></div>
+      <a class="link-arrow rv" href="services.html">All services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="svc-grid">
+      <a class="card svc rv d1" href="services.html#university-selection">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <h3>University Shortlisting</h3>
+        <p>We shortlist universities and countries against your academics, budget and goals — where you're genuinely competitive.</p>
+        <span class="go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card svc rv d2" href="services.html#admission-processing">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 3h6v3H9zM9 11h6M9 15h4"/></svg></span>
+        <h3>Application Support</h3>
+        <p>End-to-end handling of your application — forms, fees, deadlines and follow-up with the university until a decision arrives.</p>
+        <span class="go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card svc rv d3" href="scholarships.html">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"/></svg></span>
+        <h3>Scholarship Guidance</h3>
+        <p>We identify scholarships you genuinely qualify for, decode the official calls, and help you build a competitive submission.</p>
+        <span class="go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card svc rv d1" href="services.html#document-preparation">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h6"/></svg></span>
+        <h3>Document Preparation</h3>
+        <p>Transcripts, certificates and supporting documents checked and formatted correctly before submission.</p>
+        <span class="go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card svc rv d2" href="services.html#visa-guidance">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg></span>
+        <h3>Visa Documentation Guidance</h3>
+        <p>Educational guidance on visa categories, documentation and interview preparation. Outcomes rest with the embassy.</p>
+        <span class="go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card svc rv d3" href="services.html#pre-departure">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3-1 5-3 6-6l9-9-3-3-9 9c-3 1-5 3-6 6Z"/><path d="M14 7l3 3"/></svg></span>
+        <h3>Pre-Departure Support</h3>
+        <p>A structured briefing on travel, accommodation, money and first weeks abroad — tailored to your destination.</p>
+        <span class="go">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINATIONS ============ -->
+<section class="sec soft">
+  <div class="wrap">
+    <div class="shead-row">
+      <div class="shead rv"><span class="eyebrow">Destinations</span><h2>Explore your study destination</h2><p>Six destinations, each with its own intake calendar, tuition range and visa route.</p></div>
+      <a class="link-arrow rv" href="destinations.html">All destinations
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="dest-grid">
+      <a class="card dest rv d1" href="study-in-china.html">
+        <div class="ph"><span class="tag">🇨🇳 Popular</span><img src="assets/card-china.jpg" alt="University campus in China" width="720" height="540" loading="lazy"></div>
+        <div class="body">
+          <h3>China</h3>
+          <p>Affordable, modern universities with English-taught programs and scholarship options at many institutions.</p>
+          <div class="meta"><span>MBBS</span><span>Engineering</span><span>Business</span><span>CS</span></div>
+          <div class="facts"><div><small>Intake</small><b>September</b></div><div><small>Tuition</small><b>CNY 24k–52k/yr</b></div></div>
+          <span class="go">Explore China <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card dest rv d2" href="study-in-italy.html">
+        <div class="ph"><span class="tag">🇮🇹 Scholarships</span><img src="assets/card-italy.jpg" alt="University campus in Italy" width="720" height="540" loading="lazy"></div>
+        <div class="body">
+          <h3>Italy</h3>
+          <p>Public and private universities with MAECI and DSU scholarship routes for eligible students.</p>
+          <div class="meta"><span>MBBS</span><span>Dentistry</span><span>Nursing</span></div>
+          <div class="facts"><div><small>Intake</small><b>September</b></div><div><small>Tuition</small><b>€0–3,000/yr*</b></div></div>
+          <span class="go">Explore Italy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card dest rv d3" href="study-in-uk.html">
+        <div class="ph"><span class="tag">🇬🇧 Globally recognized</span><img src="assets/card-uk.jpg" alt="University campus in the United Kingdom" width="720" height="540" loading="lazy"></div>
+        <div class="body">
+          <h3>United Kingdom</h3>
+          <p>Historic institutions and specialist colleges, with applications filed through UCAS where applicable.</p>
+          <div class="meta"><span>Business</span><span>Engineering</span><span>CS</span></div>
+          <div class="facts"><div><small>Intakes</small><b>Sep / Jan</b></div><div><small>Tuition</small><b>£15k–28k/yr</b></div></div>
+          <span class="go">Explore UK <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card dest rv d1" href="study-in-lithuania.html">
+        <div class="ph"><span class="tag">🇱🇹 EU</span><img src="assets/card-lithuania.jpg" alt="University campus in Lithuania" width="720" height="540" loading="lazy"></div>
+        <div class="body">
+          <h3>Lithuania</h3>
+          <p>A quietly excellent EU destination — English-taught programs, modern campuses, affordable living.</p>
+          <div class="meta"><span>Engineering</span><span>Business</span><span>Nursing</span></div>
+          <div class="facts"><div><small>Intake</small><b>Sep (some Jan)</b></div><div><small>Tuition</small><b>€2.9k–8.5k/yr</b></div></div>
+          <span class="go">Explore Lithuania <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card dest rv d2" href="study-in-france.html">
+        <div class="ph"><span class="tag">🇫🇷 Growing English options</span><img src="assets/card-france.jpg" alt="University campus in France" width="720" height="540" loading="lazy"></div>
+        <div class="body">
+          <h3>France</h3>
+          <p>Public universities and grandes écoles, applying via Campus France / Études en France where applicable.</p>
+          <div class="meta"><span>Business</span><span>Engineering</span></div>
+          <div class="facts"><div><small>Intake</small><b>September</b></div><div><small>Tuition</small><b>≈€3,000/yr*</b></div></div>
+          <span class="go">Explore France <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card dest rv d3" href="study-in-cyprus.html">
+        <div class="ph"><span class="tag">🇨🇾 EU member</span><img src="assets/card-cyprus.jpg" alt="University campus in Cyprus" width="720" height="540" loading="lazy"></div>
+        <div class="body">
+          <h3>Cyprus</h3>
+          <p>English-taught programs in an EU jurisdiction with a genuinely international campus culture.</p>
+          <div class="meta"><span>Business</span><span>Nursing</span><span>CS</span></div>
+          <div class="facts"><div><small>Intake</small><b>September</b></div><div><small>Tuition</small><b>€3.5k–9.5k/yr</b></div></div>
+          <span class="go">Explore Cyprus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED DESTINATION ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="feature rv">
+      <div class="ph"><img src="assets/feature-italy.jpg" alt="University architecture in Italy" width="960" height="720" loading="lazy"></div>
+      <div class="txt">
+        <span class="eyebrow">Featured Destination</span>
+        <h2>Study in Italy</h2>
+        <p>Public universities with income-based tuition, plus scholarship routes for students who qualify.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>MAECI &amp; DSU scholarship guidance for eligible students</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Popular programs in Medicine, Dentistry and Nursing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Public tuition from €0–3,000/yr, income-based</li>
+        </ul>
+        <a class="btn btn-white" href="study-in-italy.html">Explore Italy
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ PATH FINDER ============ -->
+<section class="sec soft">
+  <div class="wrap">
+    <div class="shead center rv" style="max-width:640px">
+      <span class="eyebrow">Find Your Path</span>
+      <h2>Find the right path for you</h2>
+      <p>Answer four quick questions and we'll point you to the right next step. This isn't an admission decision — it's a starting point for your counseling session.</p>
+    </div>
+    <div class="pf rv" id="pathfinder">
+      <div class="pf-side">
+        <div>
+          <h3>Your plan</h3>
+          <p>Four short questions, then a personalized next step.</p>
+        </div>
+        <ol class="pf-steps" id="pf-steps">
+          <li class="active" data-step="0"><b>1</b><span>Study field</span></li>
+          <li data-step="1"><b>2</b><span>Destination</span></li>
+          <li data-step="2"><b>3</b><span>Study level</span></li>
+          <li data-step="3"><b>4</b><span>Priority</span></li>
+        </ol>
+      </div>
+      <div class="pf-main">
+        <div class="pf-bar"><i id="pf-bar-i"></i></div>
+        <div id="pf-body"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY BLUEZONE ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead center rv" style="max-width:640px;margin-inline:auto;text-align:center">
+      <span class="eyebrow">Why Bluezone</span>
+      <h2>Why students choose Bluezone</h2>
+      <p>A study-abroad plan built around your profile — not a template.</p>
+    </div>
+    <div class="why-grid rv">
+      <div class="why">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5"/></svg></span>
+        <h3>Personalized Guidance</h3>
+        <p>Every recommendation is matched to your academic profile, budget and goals — not a one-size-fits-all list.</p>
+      </div>
+      <div class="why">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        <h3>Clear Process</h3>
+        <p>You always know the next step — from eligibility check to visa file — with deadlines tracked on your behalf.</p>
+      </div>
+      <div class="why">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 4.5 2.5C11.5 6 13 5 15 5c3.5 0 5.5 3.5 3.5 7.5C20 16.65 12 21 12 21Z"/></svg></span>
+        <h3>Destination Support</h3>
+        <p>Country-specific guidance across six destinations — intake calendars, visa routes and living costs explained plainly.</p>
+      </div>
+      <div class="why">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 2v4M16 2v4M4 10h16"/></svg></span>
+        <h3>Application Support</h3>
+        <p>Forms, documents and submissions handled end-to-end through the correct channel for your destination.</p>
+      </div>
+      <div class="why">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"/></svg></span>
+        <h3>Scholarship Guidance</h3>
+        <p>We screen calls you genuinely qualify for before any application fee is paid — no chasing long-shot awards.</p>
+      </div>
+      <div class="why">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg></span>
+        <h3>Visa Documentation Guidance</h3>
+        <p>Educational guidance on categories, paperwork and interview preparation. Decisions always rest with the embassy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ STUDENT JOURNEY ============ -->
+<section class="sec soft">
+  <div class="wrap">
+    <div class="shead center rv" style="max-width:640px;margin-inline:auto;text-align:center">
+      <span class="eyebrow">The Journey</span>
+      <h2>Your study abroad journey</h2>
+      <p>Six stages from first conversation to departure. Click a stage for details.</p>
+    </div>
+    <div class="journey rv">
+      <div class="j-track" id="j-track" role="tablist" aria-label="Study abroad journey steps">
+        <div class="j-fill" id="j-fill"></div>
+        <button class="j-step on" data-i="0" role="tab" aria-selected="true"><span class="j-dot">01</span><h3>Counseling</h3></button>
+        <button class="j-step" data-i="1" role="tab" aria-selected="false"><span class="j-dot">02</span><h3>Shortlisting</h3></button>
+        <button class="j-step" data-i="2" role="tab" aria-selected="false"><span class="j-dot">03</span><h3>Application</h3></button>
+        <button class="j-step" data-i="3" role="tab" aria-selected="false"><span class="j-dot">04</span><h3>Offer</h3></button>
+        <button class="j-step" data-i="4" role="tab" aria-selected="false"><span class="j-dot">05</span><h3>Visa</h3></button>
+        <button class="j-step" data-i="5" role="tab" aria-selected="false"><span class="j-dot">06</span><h3>Departure</h3></button>
+      </div>
+      <div class="j-detail" id="j-detail">
+        <span class="n swap" id="j-n">01</span>
+        <div class="swap" id="j-copy">
+          <h4>Counseling</h4>
+          <p>A free, no-obligation session to understand your academics, budget and goals — and map out realistic destinations.</p>
         </div>
       </div>
-      <div class="f-col"><b>Study Destinations</b><div id="f-dest"></div></div>
-      <div class="f-col"><b>Programs</b>
-        <a href="programs.html?p=mbbs">MBBS / Medicine</a><a href="programs.html?p=dentistry">Dentistry</a><a href="programs.html?p=engineering">Engineering</a><a href="programs.html?p=business">Business</a><a href="programs.html?p=computer-science">IT &amp; Computing</a><a href="programs.html">Other Programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCHOLARSHIPS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead-row">
+      <div class="shead rv"><span class="eyebrow">Scholarships</span><h2>Scholarship opportunities</h2><p>We screen every call against your profile before you apply — figures and deadlines are as published by the official source.</p></div>
+      <a class="link-arrow rv" href="scholarships.html">All scholarships
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="sch-grid">
+      <div class="card sch rv d1">
+        <div class="sch-top"><span class="ctry">🇮🇹 Italy</span><span class="badge">Per-call funding</span></div>
+        <h3>MAECI — Italian Government Scholarship</h3>
+        <p>Italy's government scholarship programme for international students at Italian institutions.</p>
+        <dl>
+          <div><dt>Provider</dt><dd>Italian Ministry of Foreign Affairs</dd></div>
+          <div><dt>Degree</dt><dd>Master, PhD</dd></div>
+          <div><dt>Deadline</dt><dd>Annual call — official portal</dd></div>
+        </dl>
+        <a class="link-arrow go" href="scholarships.html#maeci">Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <div class="f-col"><b>Resources</b>
-        <a href="admission-guide.html">Admission Guide</a><a href="scholarships.html">Scholarships</a><a href="blog.html">Blog</a><a href="universities.html">University Directory</a><a href="contact.html">FAQs &amp; Contact</a>
+      <div class="card sch rv d2">
+        <div class="sch-top"><span class="ctry">🇮🇹 Italy</span><span class="badge">Income &amp; merit</span></div>
+        <h3>Regional (DSU) Grants</h3>
+        <p>Income- and merit-based student support from Italian regions: grants, meals and accommodation.</p>
+        <dl>
+          <div><dt>Provider</dt><dd>Regional DSU offices</dd></div>
+          <div><dt>Degree</dt><dd>Bachelor, Master, PhD</dd></div>
+          <div><dt>Deadline</dt><dd>Per region &amp; academic year</dd></div>
+        </dl>
+        <a class="link-arrow go" href="scholarships.html#dsu">Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <div class="f-col"><b>Company</b>
-        <a href="about.html">About</a><a href="contact.html">Contact</a><a href="offices.html">Our Offices</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a>
+      <div class="card sch rv d3">
+        <div class="sch-top"><span class="ctry">🇨🇳 China</span><span class="badge full">Fully funded</span></div>
+        <h3>China Scholarship Council (CSC)</h3>
+        <p>China's national scholarship programme for international students across Chinese universities.</p>
+        <dl>
+          <div><dt>Provider</dt><dd>China Scholarship Council</dd></div>
+          <div><dt>Degree</dt><dd>Bachelor, Master, PhD</dd></div>
+          <div><dt>Deadline</dt><dd>Per annual call — verify current cycle</dd></div>
+        </dl>
+        <a class="link-arrow go" href="scholarships.html#csc">Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="f-bot">
-      <span>© <span id="yr"></span> Bluezone Consultants Pvt. Ltd. All rights reserved.</span>
-      <span>Mansehra · Abbottabad · Perth (WA)</span>
+    <div class="note-box rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+      <span>Bluezone does not publish invented scholarship amounts or deadlines. Every figure above is drawn from the official provider — always confirm the current call before applying.</span>
     </div>
-    <p class="f-dis">Bluezone Consultants provides guidance and application-support services only. We do not guarantee admission, scholarships, or visa outcomes. Fee figures shown are indicative estimates pending verification; always confirm current figures, recognition status, and requirements with official university and government sources.</p>
+  </div>
+</section>
+
+<!-- ============ UNIVERSITIES ============ -->
+<section class="sec soft">
+  <div class="wrap">
+    <div class="shead rv"><span class="eyebrow">Universities</span><h2>Find your university</h2><p>Search by name, country or program.</p></div>
+    <div class="uni rv">
+      <div class="uni-form">
+        <div class="fld"><label for="u-q">Search university, country or program</label><input id="u-q" type="text" placeholder="e.g. “Chengdu”, “Engineering”, “Italy”" autocomplete="off"></div>
+        <div class="fld"><label for="u-dest">Destination</label>
+          <select id="u-dest"><option value="">Any</option><option>China</option><option>Italy</option><option>United Kingdom</option><option>Lithuania</option><option>France</option><option>Cyprus</option></select>
+        </div>
+        <div class="fld"><label for="u-prog">Program</label>
+          <select id="u-prog"><option value="">Any</option><option>Medicine</option><option>Engineering</option><option>Business</option><option>Computer Science</option><option>Nursing</option></select>
+        </div>
+        <div class="fld"><label for="u-lvl">Study level</label>
+          <select id="u-lvl"><option value="">Any</option><option>Bachelor</option><option>Master</option><option>PhD</option></select>
+        </div>
+        <button class="btn btn-primary" type="button" id="u-search">Search
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </div>
+      <div class="uni-state">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h6"/></svg></span>
+        <div>
+          <h3>University listings are being verified</h3>
+          <p>We're finalizing a fully verified university database. In the meantime, talk to a counselor for a personalized shortlist matched to your academics and budget — free, no obligation.</p>
+        </div>
+        <a class="btn btn-outline" href="contact.html">Talk to a Counselor</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ STUDENT STORIES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead-row">
+      <div class="shead rv"><span class="eyebrow">Success Stories</span><h2>Student outcomes, published with consent</h2><p>We publish a story only with the student's written consent, real name, university and photo.</p></div>
+      <div class="slider-ctrl rv">
+        <button class="sbtn prev" id="st-prev" aria-label="Previous stories" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="sbtn next" id="st-next" aria-label="Next stories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="slider rv">
+      <div class="slider-viewport" id="story-viewport">
+        <div class="slider-track" id="story-track">
+
+          <div class="card story">
+            <span class="qm">&#8220;</span>
+            <blockquote>Bluezone handled every step of my Chengdu University application, from document checklists to the scholarship interview, so I could focus on preparing rather than paperwork.</blockquote>
+            <div class="top"><span class="av"><img src="assets/story-hamza.jpg" alt="Photo of Hamza Basharat" width="64" height="64" loading="lazy"></span><div><b>Hamza Basharat</b><span>Master's — Law</span></div></div>
+            <div class="meta"><div><small>University</small><b>Chengdu University</b></div><div><small>Destination</small><b>🇨🇳 China</b></div></div>
+            <span class="fund">Fully-Funded Scholarship</span>
+          </div>
+
+          <div class="card story">
+            <span class="qm">&#8220;</span>
+            <blockquote>From my first meeting at the office to my visa stamp, the Bluezone team kept my Chengdu University file moving and answered every question along the way.</blockquote>
+            <div class="top"><span class="av"><img src="assets/story-rizwan.jpg" alt="Photo of Rizwan Ali" width="64" height="64" loading="lazy"></span><div><b>Rizwan Ali</b><span>Master's — Law</span></div></div>
+            <div class="meta"><div><small>University</small><b>Chengdu University</b></div><div><small>Destination</small><b>🇨🇳 China</b></div></div>
+            <span class="fund">Fully-Funded Scholarship</span>
+          </div>
+
+          <div class="card story">
+            <span class="qm">&#8220;</span>
+            <blockquote>Knowing my tuition and hostel fees were both covered took the financial pressure off, and Bluezone made sure my application met every requirement on time.</blockquote>
+            <div class="top"><span class="av"><img src="assets/story-khizer.jpg" alt="Photo of Khizer Farhad" width="64" height="64" loading="lazy"></span><div><b>Khizer Farhad</b><span>Master's — Economics</span></div></div>
+            <div class="meta"><div><small>University</small><b>To be confirmed</b></div><div><small>Destination</small><b>🇨🇳 China</b></div></div>
+            <span class="fund">Tuition &amp; Hostel Fee Waiver</span>
+          </div>
+
+          <div class="card story">
+            <span class="qm">&#8220;</span>
+            <blockquote>As one of the few women applying for a CSC scholarship in mechanical engineering, I appreciated how clearly the Bluezone team explained each stage of the process.</blockquote>
+            <div class="top"><span class="av">SH</span><div><b>Sawera Hameed</b><span>Mechanical Engineering</span></div></div>
+            <div class="meta"><div><small>University</small><b>To be confirmed</b></div><div><small>Destination</small><b>🇨🇳 China</b></div></div>
+            <span class="fund">Fully-Funded (CSC)</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="trust-note rv">Additional stories for Italy, Lithuania, UK and Cyprus are in progress and will publish once students confirm consent. <a class="link-arrow" style="display:inline-flex" href="testimonials.html">See all stories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+  </div>
+</section>
+
+<!-- ============ STUDENT LIFE ============ -->
+<section class="sec soft">
+  <div class="wrap">
+    <div class="shead rv"><span class="eyebrow">Student Life</span><h2>Life after you arrive</h2><p>What campus, city and day-to-day life can look like at your destination.</p></div>
+    <div class="life-grid rv">
+      <a class="life" href="study-in-china.html">
+        <img src="assets/dest-china.jpg" alt="Campus life in China" width="400" height="533" loading="lazy">
+        <figcaption>Campus &amp; City <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></figcaption>
+      </a>
+      <a class="life" href="study-in-italy.html">
+        <img src="assets/dest-italy.jpg" alt="Campus life in Italy" width="400" height="533" loading="lazy">
+        <figcaption>Classroom &amp; Campus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></figcaption>
+      </a>
+      <a class="life" href="study-in-uk.html">
+        <img src="assets/dest-uk.jpg" alt="Campus life in the United Kingdom" width="400" height="533" loading="lazy">
+        <figcaption>Student Life <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></figcaption>
+      </a>
+      <a class="life" href="study-in-lithuania.html">
+        <img src="assets/dest-lithuania.jpg" alt="Campus life in Lithuania" width="400" height="533" loading="lazy">
+        <figcaption>Accommodation &amp; City <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></figcaption>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead rv"><span class="eyebrow">Our Team</span><h2>Meet our team</h2><p>Counselors across our Mansehra, Abbottabad and Perth offices, plus our China partner desk.</p></div>
+    <div class="team-grid rv">
+      <div class="card member pending">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg></div>
+        <div class="b"><h3>Mansehra counseling team</h3><small>Office 101 &amp; 102, Ari Ada, Mansehra</small><span class="pill">Profiles coming soon</span></div>
+      </div>
+      <div class="card member pending">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg></div>
+        <div class="b"><h3>Abbottabad counseling team</h3><small>Near Old Police Chowki, Supply</small><span class="pill">Profiles coming soon</span></div>
+      </div>
+      <div class="card member pending">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg></div>
+        <div class="b"><h3>Perth (WA) team</h3><small>Lockridge, Western Australia</small><span class="pill">Profiles coming soon</span></div>
+      </div>
+      <div class="card member pending">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg></div>
+        <div class="b"><h3>Guangxi partner desk</h3><small>Guangxi Future Link, China</small><span class="pill">Profiles coming soon</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GLOBAL PRESENCE ============ -->
+<section class="sec soft">
+  <div class="wrap">
+    <div class="shead rv"><span class="eyebrow">Global Presence</span><h2>Local support.<br>Global opportunities.</h2></div>
+    <div class="presence rv">
+      <div class="map-card" id="map-card">
+        <iframe id="map-frame" loading="lazy" title="Map: Mansehra Office" src="https://www.google.com/maps?q=Office%20101%20%26%20102%2C%20Above%20Passport%20Office%2C%20Ari%20Ada%2C%20Mansehra%2C%20Pakistan&output=embed"></iframe>
+      </div>
+      <div class="offices" id="office-list">
+        <button class="card office sel" type="button" data-q="Office 101 %26 102, Above Passport Office, Ari Ada, Mansehra, Pakistan" data-title="Mansehra Office">
+          <span class="flag">PK</span>
+          <span><h3>Mansehra, Pakistan</h3><p class="addr">Office 101 &amp; 102, Above Passport Office, Ari Ada</p><p class="hrs">Mon–Sat, 10:00–18:00 PKT</p></span>
+          <span class="dir">Map<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </button>
+        <button class="card office" type="button" data-q="Near Old Police Chowki, Supply, Abbottabad, Pakistan" data-title="Abbottabad Office">
+          <span class="flag">PK</span>
+          <span><h3>Abbottabad, Pakistan</h3><p class="addr">Near Old Police Chowki, Supply</p><p class="hrs">Mon–Sat, 10:00–18:00 PKT</p></span>
+          <span class="dir">Map<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </button>
+        <button class="card office" type="button" data-q="35 Hagart Way, Lockridge WA 6054, Australia" data-title="Perth (Lockridge) Office">
+          <span class="flag">AU</span>
+          <span><h3>Perth (Lockridge), Australia</h3><p class="addr">35 Hagart Way, Lockridge WA 6054</p><p class="hrs">Serves Western Australia locally</p></span>
+          <span class="dir">Map<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </button>
+        <div class="card office" style="cursor:default">
+          <span class="flag">CN</span>
+          <span><h3>Guangxi, China</h3><p class="addr">Partner office: Guangxi Future Link</p><span class="tagp">Partner office — supports China-bound students</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ CONSULTATION CTA ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="book rv">
+      <div>
+        <span class="eyebrow">Ready to start?</span>
+        <h2>Book your free first consultation</h2>
+        <p>Talk through your academics, budget and destination options with a counselor. No obligation, no cost.</p>
+      </div>
+      <div class="book-actions">
+        <a class="btn btn-white" href="contact.html">Book Free Counseling
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost-w" href="#" id="cta-whatsapp">WhatsApp a Counselor
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+        </a>
+        <span class="book-note">Replies within one working day</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec soft">
+  <div class="wrap">
+    <div class="faq-layout">
+      <div class="faq-side rv">
+        <span class="eyebrow">FAQ</span>
+        <h2>Frequently asked questions</h2>
+        <p>Can't find what you're looking for?</p>
+        <a class="btn btn-primary" href="contact.html">Ask a Counselor</a>
+      </div>
+      <div class="acc rv" id="faq-acc">
+        <div class="acc-item open">
+          <button class="acc-q" aria-expanded="true">Is the first consultation free?
+            <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="acc-a"><div><p>Yes. The first consultation carries no obligation — you'll leave with a clearer picture of your options either way.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" aria-expanded="false">Which destinations do you support?
+            <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="acc-a"><div><p>China, Italy, Lithuania, the United Kingdom, France and Cyprus, with further European destinations supported case-by-case through our counseling desk.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" aria-expanded="false">Can you help me choose a university?
+            <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="acc-a"><div><p>Yes — we shortlist universities against your academics, budget, program and city preferences, based on where you're genuinely competitive.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" aria-expanded="false">Do you provide scholarship guidance?
+            <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="acc-a"><div><p>Yes — including MAECI and DSU for Italy and other official calls per destination. We screen eligibility before you pay any application fee.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" aria-expanded="false">Do you help with visa documentation?
+            <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="acc-a"><div><p>Yes — educational guidance on visa categories, documentation and interview preparation. Outcomes rest with the relevant embassy or immigration authority.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" aria-expanded="false">Do you guarantee admission or visa approval?
+            <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="acc-a"><div><p>No. We prepare accurate, complete applications and track them to a decision — but admission, scholarships and visas are decided by universities and embassies, not by us.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" aria-expanded="false">What happens after I receive an offer?
+            <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="acc-a"><div><p>We move into visa documentation, pre-departure briefing and arrival planning — so the transition from offer to campus is structured, not improvised.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="final rv">
+      <div class="bg"><img src="assets/cta-student.jpg" alt="Bluezone student preparing to study abroad" width="1200" height="937" loading="lazy"></div>
+      <div class="in">
+        <h2>Your next step starts here.</h2>
+        <p>Speak with a Bluezone counselor and understand your study-abroad options — free, no obligation.</p>
+        <div class="row">
+          <a class="btn btn-white" href="contact.html">Book Free Counseling
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost-w" href="contact.html">Contact Bluezone</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <span class="logo-tile"><img src="assets/logo-full.png" alt="Bluezone Consultants" width="140" height="112"></span>
+      <p>International education consultancy guiding students from Pakistan through university admission, scholarships and visa preparation.</p>
+      <div class="socials" aria-hidden="true">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-3-2-3s-2 1.5-2 3v6h-4Z"/></svg></span>
+      </div>
+      <p class="social-note">Social profiles are being finalized — see contact page for verified channels.</p>
+    </div>
+    <div>
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="study-in-china.html">China</a></li>
+        <li><a href="study-in-italy.html">Italy</a></li>
+        <li><a href="study-in-uk.html">United Kingdom</a></li>
+        <li><a href="study-in-lithuania.html">Lithuania</a></li>
+        <li><a href="study-in-france.html">France</a></li>
+        <li><a href="study-in-cyprus.html">Cyprus</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Success Stories</a></li>
+        <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+    <div class="foot-offices">
+      <h4>Offices</h4>
+      <ul>
+        <li><b>Mansehra, Pakistan</b>Office 101 &amp; 102, Ari Ada</li>
+        <li><b>Abbottabad, Pakistan</b>Near Old Police Chowki, Supply</li>
+        <li><b>Perth, Australia</b>Lockridge WA 6054</li>
+        <li><b>Guangxi, China</b>Partner: Guangxi Future Link</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Bluezone Consultants Pvt. Ltd. is not a visa-issuing authority, not a university, and does not guarantee admission, scholarships or visa outcomes. Those decisions belong to universities and embassies.</p>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> Bluezone Consultants Pvt. Ltd. All rights reserved.</span>
+      <div class="legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="offices.html">All Offices</a></div>
+    </div>
   </div>
 </footer>
 
-<button id="totop" type="button" aria-label="Back to top">↑</button>
-<a id="wa-float" href="#" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.5-.6c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.1-.5 3.4a11.6 11.6 0 0 0 4.5 4.9c1.7.9 2.7 1 3.7.8.7-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3Z"/></svg>
-  <span class="tip">Chat with a counselor</span>
+<a class="fab" id="fab-wa" href="#" aria-label="Chat with Bluezone on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+  <span>WhatsApp</span>
 </a>
-
-<div id="toasts" role="status" aria-live="polite"></div>
-
-<script>window.PAGE_ROUTE='';</script>
-<script src="js/bluezone.js"></script>
-
+<script src="js/home.js"></script>
 </body>
 </html>
