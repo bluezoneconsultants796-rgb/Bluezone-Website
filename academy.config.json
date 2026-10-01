@@ -1,0 +1,16 @@
+{
+  "_read_me": "Fill in the real values below, then run:  node build-academy.js   Empty values are simply left out of the pages and the SEO data (nothing fake is ever published). Do NOT put dummy numbers here.",
+  "academyName": "BlueZone Academy",
+  "parentName": "BlueZone Consultants",
+  "domain": "",
+  "phone": "",
+  "whatsapp": "",
+  "email": "",
+  "studentsCount": "300+",
+  "offices": [
+    { "city": "Abbottabad", "address": "", "hours": "" },
+    { "city": "Mansehra", "address": "", "hours": "" }
+  ],
+  "social": { "facebook": "", "instagram": "", "youtube": "", "googleBusinessProfile": "" },
+  "dateModified": "2026-10-01"
+}

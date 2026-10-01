@@ -165,3 +165,6 @@ section .w>p.src{max-width:none}
 @media(max-width:960px){.cols2,.cf2{grid-template-columns:1fr}.cf4{grid-template-columns:1fr 1fr}.kv{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.cf4,.kv{grid-template-columns:1fr}}
 a.l{display:inline-block;margin-top:8px;font-weight:600}
+/* academy static pages */
+section[id]{scroll-margin-top:130px}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:#25d366;color:#fff!important;font:700 14px Inter,sans-serif;padding:12px 18px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
