@@ -73,6 +73,7 @@
   }
   var sceneCache = {};
   function scene(key) {
+    return '';
     if (sceneCache[key]) return sceneCache[key];
     var P = PAL[key] || PAL.journey, r = rng(hash(key)), id = 'g' + hash(key).toString(36).replace('-', 'n');
     var kind = P[3] === 'sea' ? 'hills' : P[3], stars = '', i;
@@ -120,7 +121,6 @@
     var wrap = d.createElement('div'); wrap.className = 'ub-bg'; wrap.appendChild(bg(key, true));
     var ov = d.createElement('div'); ov.className = 'ub-ov';
     hero.insertBefore(ov, hero.firstChild); hero.insertBefore(wrap, hero.firstChild);
-    parallax.push({ el: wrap, host: hero });
   }
 
   /* ---------- 2. destination cards (.dc is built by main.js, so observe) ---------- */

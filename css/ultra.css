@@ -102,3 +102,24 @@ h2{position:relative}
   .u-r{opacity:1;transform:none;transition:none}
   .ub-bg{transform:none!important}
 }
+
+
+/* ================= IDP-style split banner: text on solid colour, photo in its own curved panel ================= */
+.ub-scene{background:linear-gradient(110deg,#1b1d5e 30%,#2f3198 50%,#1b1d5e 70%);background-size:220% 100%;animation:shim 1.8s linear infinite}
+@keyframes shim{to{background-position:-220% 0}}
+.ub-photo.on~*,.ub-photo.on{--x:0}
+.hero.ub{background:linear-gradient(115deg,#171a55 0%,#23267f 55%,#2b2d91 100%);min-height:420px;align-items:center;padding:56px 0 110px!important}
+.ub-ov{display:none}
+.hero.ub>.ub-bg{position:absolute;inset:0 0 0 auto;width:44%;border-radius:340px 0 0 0;overflow:hidden;transform:none!important;box-shadow:-30px 0 80px rgba(0,0,0,.25)}
+.hero.ub:before{content:"";position:absolute;z-index:2;right:calc(44% - 1px);bottom:0;width:170px;height:96px;background:var(--gold);border-radius:170px 0 0 0;opacity:.95}
+.hero.ub .w>div{max-width:52%}
+.hero.ub h1{max-width:none!important;text-shadow:none}
+.hero.ub p{max-width:560px}
+.ub-badge{display:none}
+@media(max-width:860px){
+  .hero.ub{display:block;min-height:0;padding:0 0 84px!important}
+  .hero.ub>.ub-bg{position:relative;inset:auto;width:100%;height:230px;border-radius:0 0 0 110px;box-shadow:none}
+  .hero.ub:before{display:none}
+  .hero.ub>.w{padding-top:26px}
+  .hero.ub .w>div{max-width:none}
+}
