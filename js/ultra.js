@@ -6,6 +6,7 @@
   'use strict';
   var d = document, reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
   var PH = 'images/photos/';
+  d.documentElement.setAttribute('data-theme', 'light'); /* site is always light, on every device */
 
   /* ---------- keys ---------- */
   var COUNTRIES = {
@@ -133,6 +134,7 @@
   }
   function dcards(root) {
     (root || d).querySelectorAll('.dc:not([data-u])').forEach(function (el) {
+      if (el.closest('#dest')) return;
       var k = countryOf(el); if (!k) return;
       el.setAttribute('data-u', 1);
       var ph = d.createElement('div'); ph.className = 'u-ph'; ph.appendChild(bg(k, false));
@@ -172,8 +174,11 @@
       cards += '<a class="rib-c" data-k="' + k + '" href="' + COUNTRIES[k][2] + '.html" aria-label="Study in ' + COUNTRIES[k][1] + '"><div class="rt"><strong>' + COUNTRIES[k][1] + '</strong></div></a>';
     });
     var sec = d.createElement('section'); sec.className = 'rib';
-    sec.innerHTML = '<div class="hd"><h2>Your dream study destination awaits</h2><a class="btn o" href="study-destinations.html">Compare all countries</a></div><div class="rib-t">' + cards + cards + '</div>';
+    sec.innerHTML = '<div class="hd"><h2>Study Abroad Destinations: Your Dream Country Awaits</h2><a class="btn o" href="study-destinations.html">Compare all countries</a></div><div class="rib-t">' + cards + cards + '</div>';
     sec.querySelectorAll('.rib-c').forEach(function (c) { c.insertBefore(bg(c.getAttribute('data-k'), false), c.firstChild); c.draggable = false; });
+    var lead = d.querySelector('#dest .dlead'), dl = d.querySelector('#dest .dlinks');
+    if (lead) { var lw = d.createElement('div'); lw.className = 'rib-lead'; lead.innerHTML = lead.innerHTML.replace(/\s*Hover or tap a card to read more\.?/i, ''); lw.appendChild(lead); sec.querySelector('.hd').insertAdjacentElement('afterend', lw); }
+    if (dl) sec.appendChild(dl);
     s.insertAdjacentElement('afterend', sec);
     var first = sec.nextElementSibling; if (first && first.tagName === 'SECTION') first.style.paddingTop = '40px';
   }
@@ -218,6 +223,13 @@
     if (reduce || !io) return;
     d.querySelectorAll('.band>.w>div,.fc').forEach(function (el) { if (!el.hasAttribute('data-cnt')) { el.setAttribute('data-cnt', 1); if (!el.classList.contains('u-r')) io.observe(el); } });
   }
+
+  setTimeout(function () {
+    d.querySelectorAll('.u-r:not(.u-in)').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 1.2 && r.bottom > -200) { el.classList.add('u-in'); setTimeout(function () { el.classList.remove('u-r', 'u-in') }, 1200); }
+    });
+  }, 2500);
 
   var ticking = false;
   function onScroll() {
