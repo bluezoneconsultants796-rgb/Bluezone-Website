@@ -123,3 +123,93 @@ h2{position:relative}
   .hero.ub>.w{padding-top:26px}
   .hero.ub .w>div{max-width:none}
 }
+
+/* =====================================================================================================
+   IDP-STYLE SOFT THEME: IDP's palette (mint-cyan, grey bands, green + blue buttons, orange accent, charcoal footer),
+   soft rounded cards, pill buttons, clean white header. Overrides the older navy/gold tokens.
+   ===================================================================================================== */
+:root{--navy:#0a66d1;--navy2:#084fa3;--gold:#e07b00;--green:#0a7f62;--green2:#086650;--lime:#54c21f;--deepblue:#1e4b7e;
+  --bg:#fff;--alt:#f2f2f2;--hero:#effcff;--card:#fff;--text:#3b3b3b;--head:#262626;--line:#d9d9d9;--dark:#333;--pale:#fff1dc}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--navy:#6db3ff;--navy2:#4a9bf0;--gold:#ffa13d;--hero:#10222b;--alt:#1b1d24;--dark:#16181d;--pale:#2a2616;--green:#14a07d}}
+:root[data-theme="dark"]{--navy:#6db3ff;--navy2:#4a9bf0;--gold:#ffa13d;--hero:#10222b;--alt:#1b1d24;--dark:#16181d;--pale:#2a2616;--green:#14a07d}
+body{color:var(--text);background:var(--bg)}
+h1,h2,h3{color:var(--head)}
+
+/* header: clean white like idp.com */
+header{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid rgba(0,0,0,.07)}
+nav>div>a:after{background:var(--gold)}
+
+/* buttons: green primary, outlined pill secondary */
+.btn,.btn.g,.hero.ub .btn{background:var(--green);border-color:var(--green);color:#fff;box-shadow:none;padding:12px 26px;font-weight:600}
+.btn:hover,.btn.g:hover,.hero.ub .btn:hover{background:var(--green2);border-color:var(--green2);box-shadow:0 10px 24px rgba(10,127,98,.3)}
+.btn.o{background:transparent;color:var(--head);border-color:var(--head)}
+.btn.o:hover{background:var(--head);color:var(--bg);border-color:var(--head);box-shadow:none}
+.top b{background:#ff5a1f;color:#fff}
+
+/* sections: white / grey / mint rhythm */
+.alt{background:var(--alt)}
+#dest,#steps,#offices,.cta,.nl{background:var(--hero)}
+.cta,.nl{color:var(--head)}.nl h3{color:var(--head)}.nl p{opacity:1}.nl #nm{color:var(--green)}
+.hero{background:var(--hero)}
+.band{background:linear-gradient(115deg,#17375e,var(--deepblue))}
+.band b{color:#ffb454}
+
+/* soft cards */
+.card,.fc,.sc,.sv div,.pills a{border:0;border-radius:16px;box-shadow:0 2px 18px rgba(25,45,80,.08)}
+.fc{box-shadow:0 14px 40px rgba(25,45,80,.14)}
+.card:hover,.pills a:hover{box-shadow:0 14px 36px rgba(25,45,80,.14)}
+.ic{background:var(--hero);color:var(--navy);border-radius:14px}
+.sc{border-radius:22px;box-shadow:0 18px 50px rgba(25,45,80,.14)}
+.tabs button{border:1px solid transparent!important;color:var(--head)}
+.tabs button.on{background:var(--hero)!important;color:var(--navy)!important;border-color:var(--navy)!important}
+.a2 .card{background:var(--hero);box-shadow:none}
+
+/* forms: crisp outlined fields */
+input,select,textarea,.sf input,.sf select{border:1px solid #6b6b6b;border-radius:8px;min-height:46px;background:#fff;color:#262626}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) input,:root:not([data-theme="light"]) select,:root:not([data-theme="light"]) textarea{background:#1e2128;color:#eee;border-color:#6b7080}}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--navy);box-shadow:0 0 0 3px rgba(10,102,209,.18)}
+
+/* tables + chips */
+th{background:var(--deepblue)}
+tbody tr:hover{background:var(--hero)}
+.dtabs button{border:1px solid #7a7a7a;border-radius:99px}.dtabs button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* section headings get IDP's short orange bar */
+.u-ul:after{background:var(--gold);width:0}.u-ul.u-in:after,h2.u-ul:after{width:36px}
+.u-th{background:var(--deepblue);border-radius:16px 16px 0 0}
+.card{overflow:hidden}
+
+/* banner re-coloured: deep IDP blue panel, blue quarter-shape beside photo, no curved bottom (flat like idp.com) */
+.hero.ub{background:linear-gradient(105deg,#122d4f 0%,#1a3f6d 55%,var(--deepblue) 100%)}
+.hero.ub:after{display:none}
+.hero.ub:before{background:var(--navy);width:190px;height:110px;border-radius:190px 0 0 0;opacity:1}
+.ub-scene{background:linear-gradient(110deg,#122d4f 30%,#2a5e9c 50%,#122d4f 70%);background-size:220% 100%}
+
+/* home hero blobs in IDP colours */
+.art .a{background:var(--lime)}.art .b{background:var(--gold)}
+.chip{box-shadow:0 10px 26px rgba(25,45,80,.16)}
+
+/* footer: charcoal like idp.com */
+footer{background:#333}footer hr{border-top-color:#555}footer .cols a{color:#e6e6e6;font-size:13px}footer .cols a:hover{text-decoration:underline}
+
+/* ---------- "BlueZone can help you" counselling block (IDP's mint form section) ---------- */
+.help{background:var(--hero);padding:80px 0}
+.help .w{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.help h2{font-size:34px;margin-bottom:12px}
+.help h2:after{content:"";display:block;width:36px;height:4px;border-radius:4px;background:var(--gold);margin-top:12px}
+.help p.lead{margin:0 0 24px;max-width:520px}
+.help form{display:grid;grid-template-columns:1fr 1fr;gap:16px 16px}
+.help label{font-weight:500;font-size:14px;gap:6px}
+.help label.full{grid-column:1/-1}
+.help .ph2{display:grid;grid-template-columns:78px 1fr;gap:10px}
+.help .ph2 input:first-child{text-align:center}
+.help .btn{grid-column:1/-1;justify-self:start;padding:13px 40px}
+.help .ok{grid-column:1/-1;color:var(--green);font-weight:600;min-height:22px}
+.help-r{position:relative;height:520px}
+.help-r i{position:absolute;display:block}
+.help-r .g1{left:4%;top:12%;width:76%;height:72%;background:var(--lime);border-radius:0 0 50% 50% / 0 0 40% 40%;border-top-left-radius:0}
+.help-r .o1{right:0;bottom:12%;width:110px;height:110px;background:var(--gold);border-radius:110px 0 0 0;z-index:2}
+.help-r .b1{left:28%;bottom:-2%;width:56%;height:90px;background:var(--navy);border-radius:90px 90px 0 0;z-index:0}
+.help-ph{position:absolute;left:12%;top:0;width:78%;height:92%;border-radius:160px 0 160px 0;overflow:hidden;z-index:1;box-shadow:0 24px 60px rgba(25,45,80,.25)}
+.help-ph .ub-bg-in{position:absolute;inset:0}
+@media(max-width:900px){.help .w{grid-template-columns:1fr;gap:30px}.help-r{height:340px;order:-1}.help form{grid-template-columns:1fr}.help h2{font-size:28px}}

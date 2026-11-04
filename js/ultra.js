@@ -242,10 +242,42 @@
     }, { passive: true });
   }
 
+
+  /* ---------- 7. "BlueZone can help you" block above the footer (IDP style) ---------- */
+  function help() {
+    if (d.querySelector('.help') || d.querySelector('#p-contact,#p-home')) return;
+    var f = d.querySelector('footer'); if (!f) return;
+    var dest = Object.keys(COUNTRIES).map(function (k) { return '<option>' + COUNTRIES[k][1] + '</option>'; }).join('');
+    var sec = d.createElement('section'); sec.className = 'help';
+    sec.innerHTML = '<div class="w"><div><h2>BlueZone can help you</h2><p class="lead">Enter your details and one of our expert counsellors will reach out to you so we can connect you to the right course, country, university and even scholarships.</p>' +
+      '<form id="hf" novalidate><label>First name*<input name="f" required autocomplete="given-name"></label><label>Last name*<input name="l" required autocomplete="family-name"></label>' +
+      '<label class="full">Mobile number*<span class="ph2"><input value="+92" readonly aria-label="Country code"><input name="m" required inputmode="tel" autocomplete="tel"></span></label>' +
+      '<label>Preferred study destination*<select name="c"><option value="">Select</option>' + dest + '<option>Not sure yet</option></select></label>' +
+      '<label>When would you like to start?*<select name="w"><option value="">Select</option><option>Next intake</option><option>Within 6 months</option><option>Within 12 months</option><option>Not sure yet</option></select></label>' +
+      '<label>Preferred study level*<select name="s"><option value="">Select</option><option>Foundation</option><option>Bachelor\u2019s</option><option>Master\u2019s</option><option>PhD</option></select></label>' +
+      '<label>Nearest office*<select name="o"><option value="">Select</option><option>Mansehra</option><option>Abbottabad</option><option>Online</option></select></label>' +
+      '<button class="btn" type="submit">Submit</button><div class="ok" role="status"></div></form></div>' +
+      '<div class="help-r" aria-hidden="true"><i class="g1"></i><i class="b1"></i><i class="o1"></i><div class="help-ph"></div></div></div>';
+    sec.querySelector('.help-ph').appendChild(bg('contact', true));
+    f.parentNode.insertBefore(sec, f);
+    sec.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fm = e.target, v = function (n) { return (fm.elements[n].value || '').trim() }, ok = fm.querySelector('.ok'), bad = false;
+      ['f', 'l', 'm', 'c', 'w', 's', 'o'].forEach(function (n) { var el = fm.elements[n], x = !v(n); el.style.borderColor = x ? '#d93025' : ''; if (x) bad = true; });
+      if (bad) { ok.style.color = '#d93025'; ok.textContent = 'Please fill the fields marked *'; return; }
+      var msg = 'Hello BlueZone, I am ' + v('f') + ' ' + v('l') + ' (+92 ' + v('m') + '). Destination: ' + v('c') + '. Start: ' + v('w') + '. Level: ' + v('s') + '. Nearest office: ' + v('o') + '. Please contact me.';
+      var C = window.BZC || {};
+      ok.style.color = ''; ok.textContent = 'Thank you, ' + v('f') + '. A counsellor will contact you soon.';
+      if (C.whatsapp) window.open('https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      else if (C.email) location.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Counselling request') + '&body=' + encodeURIComponent(msg);
+      else setTimeout(function () { location.href = 'contact.html?msg=' + encodeURIComponent(msg) }, 900);
+    });
+  }
+
   /* ---------- run ---------- */
   function all(root) { dcards(root); thumbs(root); reveal(root); }
   function init() {
-    banner(); article(); ribbon(); all(); counters(); magnetic(); onScroll();
+    banner(); article(); ribbon(); help(); all(); counters(); magnetic(); onScroll();
     addEventListener('scroll', onScroll, { passive: true });
     var t = 0;
     new MutationObserver(function () { if (t) return; t = setTimeout(function () { t = 0; all(); }, 80); }).observe(d.body, { childList: true, subtree: true });
