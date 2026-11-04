@@ -138,7 +138,7 @@ function pageHtml(o) {
   var graph = [org, { '@type': 'WebSite', '@id': DOM + '/#site', url: DOM + '/', name: BRAND, publisher: { '@id': DOM + '/#org' }, inLanguage: 'en' }, node,
     { '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.n, item: c.u })) }];
   if (fq.length) graph.push({ '@type': 'FAQPage', mainEntity: fq.map(q => ({ '@type': 'Question', name: q[0], acceptedAnswer: { '@type': 'Answer', text: q[1] } })) });
-  var scripts = (o.needsContent ? '<script src="js/content.js" defer></script>' : '') + '<script src="js/static.js" defer></script><script src="js/pro.js" defer></script>';
+  var scripts = (o.needsContent ? '<script src="js/content.js" defer></script>' : '') + '<script src="js/static.js" defer></script><script src="js/pro.js" defer></script><script src="js/ultra.js" defer></script>';
   var mainOpen = '<main id="' + (o.mainId || 'p-page') + '">', mainClose = '</main>';
   var inner = o.mainId ? body : '<div id="pg">' + body + '</div>';
   var h = '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">' +
@@ -147,7 +147,7 @@ function pageHtml(o) {
     '<meta property="og:type" content="' + (o.kind === 'article' ? 'article' : 'website') + '"><meta property="og:locale" content="en_PK"><meta property="og:site_name" content="' + BRAND + '"><meta property="og:title" content="' + esc(title) + '"><meta property="og:description" content="' + esc(desc) + '"><meta property="og:url" content="' + url + '"><meta property="og:image" content="' + DOM + '/images/hero.jpg">' +
     '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="' + esc(title) + '"><meta name="twitter:description" content="' + esc(desc) + '">' +
     '<link rel="icon" href="images/logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/pro.css">' +
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/pro.css"><link rel="stylesheet" href="css/ultra.css">' +
     '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }) + '</script>' +
     '<script src="js/routes.js"></script><script src="js/site-config.js"></script></head><body>' +
     sym + rw(markNav(head, o.file), ids) + mainOpen + inner + mainClose + rw(foot, ids) + rw(fl, ids) + scripts + '</body></html>';

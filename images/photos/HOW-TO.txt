@@ -1,0 +1,86 @@
+MANUAL OPTION (no API key needed)
+
+For each line: open the link, pick a wide, bright photo, click Download (free), rename it to the file name shown
+and put it in this folder (images/photos/). Best size: 1600x900 or bigger, JPG. Unsplash and Pexels are free for commercial use.
+
+uk.jpg   london big ben
+   https://unsplash.com/s/photos/london-big-ben
+   https://www.pexels.com/search/london%20big%20ben/
+australia.jpg   sydney opera house
+   https://unsplash.com/s/photos/sydney-opera-house
+   https://www.pexels.com/search/sydney%20opera%20house/
+canada.jpg   toronto skyline
+   https://unsplash.com/s/photos/toronto-skyline
+   https://www.pexels.com/search/toronto%20skyline/
+usa.jpg   new york skyline
+   https://unsplash.com/s/photos/new-york-skyline
+   https://www.pexels.com/search/new%20york%20skyline/
+new-zealand.jpg   new zealand lake mountains
+   https://unsplash.com/s/photos/new-zealand-lake-mountains
+   https://www.pexels.com/search/new%20zealand%20lake%20mountains/
+ireland.jpg   cliffs of moher
+   https://unsplash.com/s/photos/cliffs-of-moher
+   https://www.pexels.com/search/cliffs%20of%20moher/
+malaysia.jpg   kuala lumpur petronas
+   https://unsplash.com/s/photos/kuala-lumpur-petronas
+   https://www.pexels.com/search/kuala%20lumpur%20petronas/
+china.jpg   shanghai skyline
+   https://unsplash.com/s/photos/shanghai-skyline
+   https://www.pexels.com/search/shanghai%20skyline/
+uae.jpg   dubai skyline
+   https://unsplash.com/s/photos/dubai-skyline
+   https://www.pexels.com/search/dubai%20skyline/
+italy.jpg   rome colosseum
+   https://unsplash.com/s/photos/rome-colosseum
+   https://www.pexels.com/search/rome%20colosseum/
+france.jpg   paris eiffel tower
+   https://unsplash.com/s/photos/paris-eiffel-tower
+   https://www.pexels.com/search/paris%20eiffel%20tower/
+korea.jpg   seoul skyline
+   https://unsplash.com/s/photos/seoul-skyline
+   https://www.pexels.com/search/seoul%20skyline/
+cyprus.jpg   cyprus coast sea
+   https://unsplash.com/s/photos/cyprus-coast-sea
+   https://www.pexels.com/search/cyprus%20coast%20sea/
+lithuania.jpg   vilnius old town
+   https://unsplash.com/s/photos/vilnius-old-town
+   https://www.pexels.com/search/vilnius%20old%20town/
+ielts.jpg   students studying exam library
+   https://unsplash.com/s/photos/students-studying-exam-library
+   https://www.pexels.com/search/students%20studying%20exam%20library/
+visa.jpg   passport boarding pass travel documents
+   https://unsplash.com/s/photos/passport-boarding-pass-travel-documents
+   https://www.pexels.com/search/passport%20boarding%20pass%20travel%20documents/
+scholarship.jpg   graduation caps celebration
+   https://unsplash.com/s/photos/graduation-caps-celebration
+   https://www.pexels.com/search/graduation%20caps%20celebration/
+money.jpg   student budget laptop calculator
+   https://unsplash.com/s/photos/student-budget-laptop-calculator
+   https://www.pexels.com/search/student%20budget%20laptop%20calculator/
+health.jpg   doctor stethoscope health care
+   https://unsplash.com/s/photos/doctor-stethoscope-health-care
+   https://www.pexels.com/search/doctor%20stethoscope%20health%20care/
+housing.jpg   student apartment dorm room
+   https://unsplash.com/s/photos/student-apartment-dorm-room
+   https://www.pexels.com/search/student%20apartment%20dorm%20room/
+sim.jpg   smartphone mobile network city
+   https://unsplash.com/s/photos/smartphone-mobile-network-city
+   https://www.pexels.com/search/smartphone%20mobile%20network%20city/
+university.jpg   university campus historic building students
+   https://unsplash.com/s/photos/university-campus-historic-building-students
+   https://www.pexels.com/search/university%20campus%20historic%20building%20students/
+course.jpg   students lecture classroom university
+   https://unsplash.com/s/photos/students-lecture-classroom-university
+   https://www.pexels.com/search/students%20lecture%20classroom%20university/
+journey.jpg   airport departure plane window
+   https://unsplash.com/s/photos/airport-departure-plane-window
+   https://www.pexels.com/search/airport%20departure%20plane%20window/
+blog.jpg   student writing notebook laptop cafe
+   https://unsplash.com/s/photos/student-writing-notebook-laptop-cafe
+   https://www.pexels.com/search/student%20writing%20notebook%20laptop%20cafe/
+contact.jpg   counsellor meeting students office
+   https://unsplash.com/s/photos/counsellor-meeting-students-office
+   https://www.pexels.com/search/counsellor%20meeting%20students%20office/
+academy.jpg   english classroom teacher students
+   https://unsplash.com/s/photos/english-classroom-teacher-students
+   https://www.pexels.com/search/english%20classroom%20teacher%20students/

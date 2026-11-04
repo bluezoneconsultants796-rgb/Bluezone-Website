@@ -39,3 +39,12 @@ study-in-<country>.html    14 real, indexable country pages (UK, Australia, Cana
                            run: node tools/prerender.js   then   node build-academy.js   (rebuilds sitemap.xml with every page)
 js/destinations-new.js     text for the 6 newer countries
 Placeholder data still in index.html: office phones/emails (+92 000 ...), "dummy" hours, ambassador names. Replace before launch.
+
+---- Nov 2026: ULTRA layer (photo banners + motion) ----
+css/ultra.css, js/ultra.js   loaded on every page. Inner-page heroes become full-width photo banners with Ken Burns zoom and
+                             parallax (like idp.com). Destination cards, blog/guide cards and article headers get photos too,
+                             home page gets a scrolling destination photo ribbon, plus reveal-on-scroll and count-up numbers.
+images/photos/<key>.jpg      photo slots: uk australia canada usa new-zealand ireland malaysia china uae italy france korea cyprus
+                             lithuania ielts visa scholarship money health housing sim university course journey blog contact academy
+                             No photo yet = animated illustrated scene is shown instead (never an empty box).
+tools/get-photos.js          downloads all photos at once from Pixabay (free API key). See comments at the top of the file.

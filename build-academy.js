@@ -103,7 +103,7 @@ function render(pg) {
   const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/<\//g, '<\\/');
   const bc = '<p style="font-size:13px;margin:0 0 14px">' + crumbs.map((c, i) => i === crumbs.length - 1 ? c[0] : '<a href="' + c[1] + '" style="color:var(--navy)">' + c[0] + '</a>').join(' / ') + '</p>';
   let h = '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<title>' + esc(title) + '</title><meta name="description" content="' + esc(desc) + '">' + canon + '<meta name="robots" content="index,follow,max-image-preview:large"><meta name="geo.region" content="PK-KP"><meta name="geo.placename" content="Abbottabad, Mansehra">' + og +
-    '<link rel="icon" href="images/logo.png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"><link rel="stylesheet" href="css/style.css">\n<script type="application/ld+json">' + ld + '</script></head><body>\n' + header() + '\n<main>';
+    '<link rel="icon" href="images/logo.png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/ultra.css">\n<script type="application/ld+json">' + ld + '</script></head><body>\n' + header() + '\n<main>';
   h += '<div class="hero" style="padding:44px 0 ' + (pg.facts ? 90 : 56) + 'px"><div class="w" style="grid-template-columns:1fr"><div>' + bc + '<h1 style="font-size:40px;max-width:860px">' + pg.h1 + '</h1><p>' + pg.lead + '</p><p class="upd">Last reviewed ' + MODTXT + '. Fees and rules are checked against the official sources linked at the bottom of each page.</p>' + cta() + '</div></div></div>';
   if (pg.facts) h += '<div class="w"><div class="facts">' + pg.facts.map(f => '<div class="fc"><b>' + f[0] + '</b><span>' + f[1] + '</span></div>').join('') + '</div></div>';
   const secs = pg.sec.slice();
@@ -113,7 +113,7 @@ function render(pg) {
   h += '<section' + (secs.length % 2 ? ' class="alt"' : '') + '><div class="w"><div class="banner"><div><h3>' + (pg.bannerT || 'Find your level, then plan your band') + '</h3><p>' + (pg.bannerP || 'Tell us your target university or visa and your exam date. A counsellor will suggest the right course and the date to book.') + '</p></div>' + (waNum ? '<a class="btn" href="https://wa.me/' + waNum + '" rel="noopener">Message us on WhatsApp</a>' : '<a class="btn" href="index.html#offices">Find our offices</a>') + '</div></div></section>';
   h += '<section' + ((secs.length + 1) % 2 ? ' class="alt"' : '') + '><div class="w"><h2>Keep reading</h2><div class="g3">' + PAGES_NAV.filter(x => x[0] !== pg.file).slice(0, 3).map(x => '<a class="card bc" href="' + x[0] + '"><small>Academy</small><h3>' + x[1] + '</h3><p>' + (PAGE_BLURB[x[0]] || '') + '</p><span class="m">Read more</span></a>').join('') + '</div></div></section>';
   if (pg.src) h += '<section><div class="w"><h2>Sources</h2><ul class="src">' + pg.src.map(s => '<li><a href="' + s[1] + '" target="_blank" rel="noopener">' + s[0] + '</a></li>').join('') + '</ul></div></section>';
-  h += '</main>\n' + footer() + '\n</body></html>\n';
+  h += '</main>\n' + footer() + '\n<script src="js/ultra.js" defer></script></body></html>\n';
   return h;
 }
 const PAGE_BLURB = {

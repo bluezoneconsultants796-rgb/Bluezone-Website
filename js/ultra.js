@@ -1,0 +1,254 @@
+/* BlueZone ULTRA layer. Runs on every page after pro.js.
+   1 cinematic photo banners   2 destination cards with photos   3 thumbnails on blog/guide cards
+   4 article featured image    5 home destination ribbon          6 reveal / parallax / counters / magnetic buttons
+   Photos: images/photos/<key>.jpg  (run tools/get-photos.js once to download them). Missing photo = animated scene. */
+(function () {
+  'use strict';
+  var d = document, reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var PH = 'images/photos/';
+
+  /* ---------- keys ---------- */
+  var COUNTRIES = {
+    'uk': ['United Kingdom', 'UK', 'study-in-uk'], 'australia': ['Australia', 'Australia', 'study-in-australia'],
+    'canada': ['Canada', 'Canada', 'study-in-canada'], 'usa': ['United States', 'USA', 'study-in-usa'],
+    'new-zealand': ['New Zealand', 'New Zealand', 'study-in-new-zealand'], 'ireland': ['Ireland', 'Ireland', 'study-in-ireland'],
+    'malaysia': ['Malaysia', 'Malaysia', 'study-in-malaysia'], 'china': ['China', 'China', 'study-in-china'],
+    'uae': ['Dubai', 'Dubai & UAE', 'study-in-dubai-uae'], 'italy': ['Italy', 'Italy', 'study-in-italy'],
+    'france': ['France', 'France', 'study-in-france'], 'korea': ['South Korea', 'South Korea', 'study-in-south-korea'],
+    'cyprus': ['Cyprus', 'Cyprus', 'study-in-cyprus'], 'lithuania': ['Lithuania', 'Lithuania', 'study-in-lithuania']
+  };
+  /* sky top, sky bottom, accent, style (city | hills | sea) */
+  var PAL = {
+    uk: ['#1b2a63', '#c9d4ee', '#e0334c', 'city'], australia: ['#0b5d8f', '#ffc98a', '#ff8a3d', 'sea'],
+    canada: ['#26456e', '#f5c9c0', '#e63946', 'hills'], usa: ['#14275f', '#b9c8ea', '#d62839', 'city'],
+    'new-zealand': ['#0f4c5c', '#cfe8d5', '#2a9d8f', 'hills'], ireland: ['#0f5132', '#cfe9c7', '#2e9e5b', 'hills'],
+    malaysia: ['#10306b', '#ffd27a', '#f4a300', 'city'], china: ['#5a0f1b', '#ffb88a', '#e63946', 'city'],
+    uae: ['#2b1b4f', '#ffbf7a', '#e9a61a', 'city'], italy: ['#1f3d2b', '#f7dba7', '#c0392b', 'hills'],
+    france: ['#16255c', '#e3d7f2', '#e63946', 'city'], korea: ['#1a2350', '#ffc2d1', '#e63946', 'city'],
+    cyprus: ['#0b4f7a', '#bfe6f5', '#f4a300', 'sea'], lithuania: ['#1d3b2a', '#f5e2a9', '#e9a61a', 'hills'],
+    ielts: ['#1f2170', '#9db4ff', '#e9a61a', 'city'], visa: ['#18235c', '#a8c0f5', '#e9a61a', 'city'],
+    scholarship: ['#3a1f70', '#ffd9a0', '#e9a61a', 'hills'], money: ['#0f3d3e', '#b7e4d0', '#e9a61a', 'city'],
+    health: ['#0b4f6c', '#c5ecf2', '#2ec4b6', 'hills'], housing: ['#2b2d91', '#ffd9a0', '#e9a61a', 'city'],
+    sim: ['#1b1f6b', '#9fd0ff', '#e9a61a', 'city'], university: ['#21265f', '#e6d9b8', '#e9a61a', 'city'],
+    course: ['#2b2d91', '#c7d2ff', '#e9a61a', 'city'], journey: ['#2b2d91', '#ffdca0', '#e9a61a', 'hills'],
+    blog: ['#1f2170', '#c9d1ff', '#e9a61a', 'city'], contact: ['#2b2d91', '#ffd9a0', '#e9a61a', 'city'],
+    academy: ['#1f2170', '#ffd9a0', '#e9a61a', 'city'], home: ['#2b2d91', '#ffd9a0', '#e9a61a', 'city']
+  };
+
+  function keyFor(s) {
+    s = (s || '').toLowerCase().replace(/^.*\//, '').replace(/[#?].*$/, '').replace(/\.html$/, '');
+    var m = s.match(/^study-in-(.+)$/);
+    if (m) { var c = { 'dubai-uae': 'uae', 'south-korea': 'korea' }[m[1]] || m[1]; if (COUNTRIES[c]) return c; }
+    if (/^study-destinations/.test(s)) return 'journey';
+    if (/ielts|pte|toefl|english|academy|abbottabad|mansehra/.test(s)) return /academy|abbottabad|mansehra/.test(s) && !/ielts/.test(s) ? 'academy' : 'ielts';
+    if (/visa|document|attest|hec|guardian/.test(s)) return 'visa';
+    if (/scholar|chevening/.test(s)) return 'scholarship';
+    if (/loan|money|bank|fees/.test(s)) return 'money';
+    if (/insurance|health/.test(s)) return 'health';
+    if (/accommodation|housing/.test(s)) return 'housing';
+    if (/sim-card/.test(s)) return 'sim';
+    if (/universit|ranking/.test(s)) return 'university';
+    if (/course|where-and-what|statement|sop/.test(s)) return 'course';
+    if (/^blog($|-)/.test(s)) return /graduate|first-month/.test(s) ? 'journey' : 'blog';
+    if (/contact/.test(s)) return 'contact';
+    if (/essentials/.test(s)) return 'housing';
+    return 'journey';
+  }
+
+  /* ---------- generated scene (fallback when no photo) ---------- */
+  function rng(seed) { var t = seed; return function () { t |= 0; t = t + 0x6D2B79F5 | 0; var r = Math.imul(t ^ t >>> 15, 1 | t); r = r + Math.imul(r ^ r >>> 7, 61 | r) ^ r; return ((r ^ r >>> 14) >>> 0) / 4294967296; }; }
+  function hash(s) { var h = 7; for (var i = 0; i < s.length; i++) h = h * 31 + s.charCodeAt(i) | 0; return h; }
+  function layer(r, kind, y, hmin, hmax, fill, op) {
+    var p = '', x = -120;
+    if (kind === 'city') {
+      p = 'M-120 700';
+      while (x < 1800) { var w = 40 + r() * 90, h = hmin + r() * (hmax - hmin); p += 'L' + x + ' ' + (y - h) + 'L' + (x + w) + ' ' + (y - h); x += w; }
+      p += 'L' + x + ' 700Z';
+    } else {
+      p = 'M-120 700L-120 ' + y;
+      while (x < 1800) { var w2 = 160 + r() * 240, h2 = hmin + r() * (hmax - hmin); p += 'Q' + (x + w2 / 2) + ' ' + (y - h2) + ' ' + (x + w2) + ' ' + y; x += w2; }
+      p += 'L' + x + ' 700Z';
+    }
+    return '<path d="' + p + '" fill="' + fill + '" opacity="' + op + '"/>';
+  }
+  var sceneCache = {};
+  function scene(key) {
+    if (sceneCache[key]) return sceneCache[key];
+    var P = PAL[key] || PAL.journey, r = rng(hash(key)), id = 'g' + hash(key).toString(36).replace('-', 'n');
+    var kind = P[3] === 'sea' ? 'hills' : P[3], stars = '', i;
+    for (i = 0; i < 26; i++) stars += '<circle class="sc-st" cx="' + (r() * 1600 | 0) + '" cy="' + (r() * 260 | 0) + '" r="' + (1 + r() * 1.6).toFixed(1) + '" fill="#fff" style="animation-delay:-' + (r() * 4).toFixed(1) + 's"/>';
+    var svg = '<svg viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">' +
+      '<defs><linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P[0] + '"/><stop offset="1" stop-color="' + P[1] + '"/></linearGradient>' +
+      '<radialGradient id="' + id + 's"><stop offset="0" stop-color="' + P[2] + '" stop-opacity=".95"/><stop offset="1" stop-color="' + P[2] + '" stop-opacity="0"/></radialGradient></defs>' +
+      '<rect width="1600" height="700" fill="url(#' + id + ')"/>' + stars +
+      '<circle cx="' + (900 + r() * 400 | 0) + '" cy="300" r="220" fill="url(#' + id + 's)"/>' +
+      '<circle cx="' + (1000 + r() * 300 | 0) + '" cy="290" r="62" fill="' + P[2] + '" opacity=".9"/>' +
+      '<g class="sc-cl"><ellipse cx="200" cy="150" rx="120" ry="22" fill="#fff" opacity=".22"/><ellipse cx="270" cy="136" rx="80" ry="18" fill="#fff" opacity=".22"/></g>' +
+      '<g class="sc-cl2"><ellipse cx="0" cy="230" rx="150" ry="24" fill="#fff" opacity=".16"/></g>' +
+      '<g class="sc-l2">' + layer(r, kind, 520, 60, 180, P[0], .55) + '</g>' +
+      '<g class="sc-l1">' + layer(r, kind, 600, 50, 150, '#0d0f33', .75) + '</g>' +
+      (P[3] === 'sea' ? '<rect y="560" width="1600" height="140" fill="' + P[0] + '" opacity=".55"/>' : '') +
+      '<rect y="640" width="1600" height="60" fill="#0a0c2d" opacity=".6"/></svg>';
+    return sceneCache[key] = svg;
+  }
+
+  /* ---------- photo layer: scene underneath, real photo fades in on top when file exists ---------- */
+  var okCache = {};
+  function bg(key, withKB) {
+    var el = d.createElement('div'); el.className = 'ub-bg-in';
+    el.style.cssText = 'position:absolute;inset:0';
+    el.innerHTML = '<div class="ub-scene">' + scene(key) + '</div><div class="ub-photo"></div>';
+    var ph = el.querySelector('.ub-photo');
+    if (!withKB) ph.style.animation = 'none';
+    var url = PH + key + '.jpg';
+    if (okCache[key] === false) return el;
+    if (okCache[key]) { ph.style.backgroundImage = 'url(' + url + ')'; ph.className += ' on'; return el; }
+    var im = new Image();
+    im.onload = function () { okCache[key] = true; ph.style.backgroundImage = 'url(' + url + ')'; requestAnimationFrame(function () { ph.className += ' on' }); };
+    im.onerror = function () { okCache[key] = false; };
+    im.src = url;
+    return el;
+  }
+
+  /* ---------- 1. cinematic banner ---------- */
+  var parallax = [];
+  function banner() {
+    var hero = d.querySelector('main .hero');
+    if (!hero || d.querySelector('#p-home') || hero.classList.contains('ub')) return;
+    var key = keyFor(location.pathname);
+    hero.classList.add('ub');
+    var wrap = d.createElement('div'); wrap.className = 'ub-bg'; wrap.appendChild(bg(key, true));
+    var ov = d.createElement('div'); ov.className = 'ub-ov';
+    hero.insertBefore(ov, hero.firstChild); hero.insertBefore(wrap, hero.firstChild);
+    parallax.push({ el: wrap, host: hero });
+  }
+
+  /* ---------- 2. destination cards (.dc is built by main.js, so observe) ---------- */
+  function countryOf(el) {
+    var h = (el.getAttribute && el.getAttribute('href')) || '', k = keyFor(h);
+    if (COUNTRIES[k] && /study-in-/.test(h)) return k;
+    var t = (el.textContent || '').slice(0, 60), best = null;
+    Object.keys(COUNTRIES).forEach(function (c) { if (!best && t.indexOf(COUNTRIES[c][0]) > -1) best = c; });
+    return best;
+  }
+  function dcards(root) {
+    (root || d).querySelectorAll('.dc:not([data-u])').forEach(function (el) {
+      var k = countryOf(el); if (!k) return;
+      el.setAttribute('data-u', 1);
+      var ph = d.createElement('div'); ph.className = 'u-ph'; ph.appendChild(bg(k, false));
+      el.insertBefore(ph, el.firstChild);
+    });
+  }
+
+  /* ---------- 3. thumbnails on blog / guide cards ---------- */
+  function thumbs(root) {
+    (root || d).querySelectorAll('.bc:not([data-u]),a.card:not([data-u]),.g3>.card:not([data-u])').forEach(function (el) {
+      if (el.closest('.dc,.rib,header,footer,.a2')) return;
+      var a = el.tagName === 'A' ? el : el.querySelector('a[href]');
+      var href = a ? a.getAttribute('href') : '';
+      if (!href || /^(tel|mailto)/.test(href) || /#/.test(href) || /^https?:/.test(href) || /^(contact|index)\.html/.test(href)) return;
+      el.setAttribute('data-u', 1);
+      var th = d.createElement('div'); th.className = 'u-th'; th.appendChild(bg(keyFor(href), false));
+      el.insertBefore(th, el.firstChild);
+    });
+  }
+
+  /* ---------- 4. article featured image ---------- */
+  function article() {
+    var a = d.querySelector('.a2 h1'); if (!a || d.querySelector('.u-fig')) return;
+    var fig = d.createElement('div'); fig.className = 'u-fig';
+    var w = d.createElement('div'); w.className = 'ub-bg'; w.appendChild(bg(keyFor(location.pathname), true));
+    fig.appendChild(w);
+    var m = a.parentNode.querySelector('.m');
+    (m || a).insertAdjacentElement('afterend', fig);
+    parallax.push({ el: w, host: fig, soft: true });
+  }
+
+  /* ---------- 5. home ribbon ---------- */
+  function ribbon() {
+    var s = d.querySelector('#p-home .search'); if (!s || d.querySelector('.rib')) return;
+    var keys = Object.keys(COUNTRIES), cards = '';
+    keys.forEach(function (k, i) {
+      cards += '<a class="rib-c" data-k="' + k + '" href="' + COUNTRIES[k][2] + '.html"><i>' + String(i + 1).padStart(2, '0') + '</i><div><strong>' + COUNTRIES[k][1] + '</strong><span>Visa, fees &amp; scholarships ›</span></div></a>';
+    });
+    var sec = d.createElement('section'); sec.className = 'rib';
+    sec.innerHTML = '<div class="hd"><h2>Where will your story begin?</h2><a class="btn o" href="study-destinations.html">Compare all countries</a></div><div class="rib-t">' + cards + cards + '</div>';
+    sec.querySelectorAll('.rib-c').forEach(function (c) { c.insertBefore(bg(c.getAttribute('data-k'), false), c.firstChild); });
+    s.insertAdjacentElement('afterend', sec);
+    var first = sec.nextElementSibling; if (first && first.tagName === 'SECTION') first.style.paddingTop = '40px';
+  }
+
+  /* ---------- 6. reveal, counters, parallax, magnetic ---------- */
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target; io.unobserve(el); el.classList.add('u-in');
+      if (el.hasAttribute('data-cnt')) count(el);
+      setTimeout(function () { el.classList.remove('u-r', 'u-in'); el.style.removeProperty('--d') }, 1200);
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -6% 0px' }) : null;
+
+  var SEL = 'section h2,.card,.dc,.fc,.bc,.stp details,.band>.w>div,.off>*,.amb>*,.cta,.nl,.tw,.rib-c';
+  function reveal(root) {
+    if (reduce || !io) return;
+    (root || d).querySelectorAll(SEL).forEach(function (el) {
+      if (el.hasAttribute('data-r') || el.closest('header,.dd,.mob')) return;
+      el.setAttribute('data-r', 1);
+      var r = el.getBoundingClientRect();
+      if (r.top < innerHeight * .9 && r.bottom > 0 && !el.matches('.fc,.band>.w>div')) return; /* already visible: leave alone */
+      var sib = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : 0;
+      el.style.setProperty('--d', Math.min(sib, 6) * 0.07 + 's');
+      el.classList.add('u-r'); if (el.tagName === 'H2') el.classList.add('u-ul');
+      io.observe(el);
+    });
+  }
+  function count(el) {
+    var b = el.matches('b') ? el : el.querySelector('b'); if (!b || b.getAttribute('data-done')) return;
+    b.setAttribute('data-done', 1);
+    var t = b.textContent, m = t.match(/^([^\d]*)(\d[\d,]*)([^\d]*)$/); if (!m) return;
+    var n = parseInt(m[2].replace(/,/g, ''), 10), comma = m[2].indexOf(',') > -1, t0 = performance.now(), D = 1400;
+    if (n < 2) return;
+    (function step(now) {
+      var p = Math.min(1, (now - t0) / D), v = Math.round(n * (1 - Math.pow(1 - p, 3)));
+      b.textContent = m[1] + (comma ? v.toLocaleString('en-US') : v) + m[3];
+      if (p < 1) requestAnimationFrame(step); else b.textContent = t;
+    })(t0);
+  }
+  function counters() {
+    if (reduce || !io) return;
+    d.querySelectorAll('.band>.w>div,.fc').forEach(function (el) { if (!el.hasAttribute('data-cnt')) { el.setAttribute('data-cnt', 1); if (!el.classList.contains('u-r')) io.observe(el); } });
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking || reduce) return; ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      parallax.forEach(function (p) {
+        var r = p.host.getBoundingClientRect(); if (r.bottom < -50 || r.top > innerHeight) return;
+        p.el.style.transform = 'translate3d(0,' + ((-r.top) * (p.soft ? .08 : .22)).toFixed(1) + 'px,0)';
+      });
+    });
+  }
+
+  function magnetic() {
+    if (reduce || !matchMedia('(hover:hover)').matches) return;
+    d.addEventListener('mousemove', function (e) {
+      var b = e.target.closest && e.target.closest('.hero .btn,.cta .btn');
+      d.querySelectorAll('.btn[data-mg]').forEach(function (x) { if (x !== b) { x.style.transform = ''; x.removeAttribute('data-mg') } });
+      if (!b) return;
+      var r = b.getBoundingClientRect(); b.setAttribute('data-mg', 1);
+      b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .18).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * .28).toFixed(1) + 'px)';
+    }, { passive: true });
+  }
+
+  /* ---------- run ---------- */
+  function all(root) { dcards(root); thumbs(root); reveal(root); }
+  function init() {
+    banner(); article(); ribbon(); all(); counters(); magnetic(); onScroll();
+    addEventListener('scroll', onScroll, { passive: true });
+    var t = 0;
+    new MutationObserver(function () { if (t) return; t = setTimeout(function () { t = 0; all(); }, 80); }).observe(d.body, { childList: true, subtree: true });
+  }
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', init); else init();
+})();
