@@ -95,20 +95,33 @@
   }
 
   /* ---------- photo layer: scene underneath, real photo fades in on top when file exists ---------- */
-  var okCache = {};
-  function bg(key, withKB) {
+  var okCache = {}, seqN = {}, VARS = {};
+  ['ielts', 'visa', 'scholarship', 'money', 'health', 'housing', 'sim', 'university', 'course', 'journey', 'blog', 'contact', 'academy'].forEach(function (k) { VARS[k] = 4; });
+  /* each topic has up to 4 photos: key.jpg, key-2.jpg, key-3.jpg, key-4.jpg.
+     Cards on one page take them in turn (never the same photo twice side by side); banners pick by page name. */
+  function pick(key, seed) {
+    var n = VARS[key] || 1; if (n < 2) return key;
+    var i;
+    if (seed && seed !== 'seq') i = Math.abs(hash(seed)) % n;
+    else { seqN[key] = (seqN[key] || 0) + 1; i = (seqN[key] - 1) % n; }
+    return i ? key + '-' + (i + 1) : key;
+  }
+  function bg(key, withKB, seed) {
     var el = d.createElement('div'); el.className = 'ub-bg-in';
     el.style.cssText = 'position:absolute;inset:0';
     el.innerHTML = '<div class="ub-scene">' + scene(key) + '</div><div class="ub-photo"></div>';
     var ph = el.querySelector('.ub-photo');
     if (!withKB) ph.style.animation = 'none';
-    var url = PH + key + '.jpg';
-    if (okCache[key] === false) return el;
-    if (okCache[key]) { ph.style.backgroundImage = 'url(' + url + ')'; ph.className += ' on'; return el; }
-    var im = new Image();
-    im.onload = function () { okCache[key] = true; ph.style.backgroundImage = 'url(' + url + ')'; requestAnimationFrame(function () { ph.className += ' on' }); };
-    im.onerror = function () { okCache[key] = false; };
-    im.src = url;
+    function show(file) {
+      var url = PH + file + '.jpg';
+      if (okCache[file] === false) { if (file !== key) show(key); return; }
+      if (okCache[file]) { ph.style.backgroundImage = 'url(' + url + ')'; ph.className += ' on'; return; }
+      var im = new Image();
+      im.onload = function () { okCache[file] = true; ph.style.backgroundImage = 'url(' + url + ')'; requestAnimationFrame(function () { ph.className += ' on' }); };
+      im.onerror = function () { okCache[file] = false; if (file !== key) show(key); };
+      im.src = url;
+    }
+    show(pick(key, seed));
     return el;
   }
 
@@ -119,7 +132,7 @@
     if (!hero || d.querySelector('#p-home') || hero.classList.contains('ub')) return;
     var key = keyFor(location.pathname);
     hero.classList.add('ub');
-    var wrap = d.createElement('div'); wrap.className = 'ub-bg'; wrap.appendChild(bg(key, true));
+    var wrap = d.createElement('div'); wrap.className = 'ub-bg'; wrap.appendChild(bg(key, true, 'h:' + location.pathname));
     var ov = d.createElement('div'); ov.className = 'ub-ov';
     hero.insertBefore(ov, hero.firstChild); hero.insertBefore(wrap, hero.firstChild);
   }
@@ -150,7 +163,7 @@
       var href = a ? a.getAttribute('href') : '';
       if (!href || /^(tel|mailto)/.test(href) || /#/.test(href) || /^https?:/.test(href) || /^(contact|index)\.html/.test(href)) return;
       el.setAttribute('data-u', 1);
-      var th = d.createElement('div'); th.className = 'u-th'; th.appendChild(bg(keyFor(href), false));
+      var th = d.createElement('div'); th.className = 'u-th'; th.appendChild(bg(keyFor(href), false, 'seq'));
       el.insertBefore(th, el.firstChild);
     });
   }
@@ -159,7 +172,7 @@
   function article() {
     var a = d.querySelector('.a2 h1'); if (!a || d.querySelector('.u-fig')) return;
     var fig = d.createElement('div'); fig.className = 'u-fig';
-    var w = d.createElement('div'); w.className = 'ub-bg'; w.appendChild(bg(keyFor(location.pathname), true));
+    var w = d.createElement('div'); w.className = 'ub-bg'; w.appendChild(bg(keyFor(location.pathname), true, 'h:' + location.pathname));
     fig.appendChild(w);
     var m = a.parentNode.querySelector('.m');
     (m || a).insertAdjacentElement('afterend', fig);
@@ -270,7 +283,7 @@
       '<label>Nearest office*<select name="o"><option value="">Select</option><option>Mansehra</option><option>Abbottabad</option><option>Online</option></select></label>' +
       '<button class="btn" type="submit">Submit</button><div class="ok" role="status"></div></form></div>' +
       '<div class="help-r" aria-hidden="true"><i class="g1"></i><i class="b1"></i><i class="o1"></i><div class="help-ph"></div></div></div>';
-    sec.querySelector('.help-ph').appendChild(bg('contact', true));
+    sec.querySelector('.help-ph').appendChild(bg('contact', true, 'h:' + location.pathname + 'x'));
     f.parentNode.insertBefore(sec, f);
     sec.querySelector('form').addEventListener('submit', function (e) {
       e.preventDefault();
