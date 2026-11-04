@@ -169,11 +169,11 @@
     var s = d.querySelector('#p-home .search'); if (!s || d.querySelector('.rib')) return;
     var keys = Object.keys(COUNTRIES), cards = '';
     keys.forEach(function (k, i) {
-      cards += '<a class="rib-c" data-k="' + k + '" href="' + COUNTRIES[k][2] + '.html"><i>' + String(i + 1).padStart(2, '0') + '</i><div><strong>' + COUNTRIES[k][1] + '</strong><span>Visa, fees &amp; scholarships ›</span></div></a>';
+      cards += '<a class="rib-c" data-k="' + k + '" href="' + COUNTRIES[k][2] + '.html" aria-label="Study in ' + COUNTRIES[k][1] + '"><div class="rt"><strong>' + COUNTRIES[k][1] + '</strong></div></a>';
     });
     var sec = d.createElement('section'); sec.className = 'rib';
-    sec.innerHTML = '<div class="hd"><h2>Where will your story begin?</h2><a class="btn o" href="study-destinations.html">Compare all countries</a></div><div class="rib-t">' + cards + cards + '</div>';
-    sec.querySelectorAll('.rib-c').forEach(function (c) { c.insertBefore(bg(c.getAttribute('data-k'), false), c.firstChild); });
+    sec.innerHTML = '<div class="hd"><h2>Your dream study destination awaits</h2><a class="btn o" href="study-destinations.html">Compare all countries</a></div><div class="rib-t">' + cards + cards + '</div>';
+    sec.querySelectorAll('.rib-c').forEach(function (c) { c.insertBefore(bg(c.getAttribute('data-k'), false), c.firstChild); c.draggable = false; });
     s.insertAdjacentElement('afterend', sec);
     var first = sec.nextElementSibling; if (first && first.tagName === 'SECTION') first.style.paddingTop = '40px';
   }

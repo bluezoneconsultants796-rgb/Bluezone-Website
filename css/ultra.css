@@ -213,3 +213,26 @@ footer{background:#333}footer hr{border-top-color:#555}footer .cols a{color:#e6e
 .help-ph{position:absolute;left:12%;top:0;width:78%;height:92%;border-radius:160px 0 160px 0;overflow:hidden;z-index:1;box-shadow:0 24px 60px rgba(25,45,80,.25)}
 .help-ph .ub-bg-in{position:absolute;inset:0}
 @media(max-width:900px){.help .w{grid-template-columns:1fr;gap:30px}.help-r{height:340px;order:-1}.help form{grid-template-columns:1fr}.help h2{font-size:28px}}
+
+/* =================== CLEAN IDP-STYLE DESTINATION TILES =================== */
+/* ribbon: uniform tiles, never pauses, click always opens */
+.rib{padding:60px 0 24px;background:var(--alt)}
+.rib-t{gap:20px;animation:rib 55s linear infinite!important;animation-play-state:running!important;padding:6px 0 10px}
+.rib:hover .rib-t,.rib-t:hover{animation-play-state:running!important}
+.rib{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.rib .hd{position:relative;z-index:2}
+.rib-c,.rib-c:nth-child(even){flex:0 0 232px;height:300px;margin-top:0;border-radius:16px;box-shadow:0 6px 22px rgba(25,45,80,.14);-webkit-user-drag:none;user-select:none}
+.rib-c:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(25,45,80,.26)}
+.rib-c:after{background:linear-gradient(to top,rgba(10,20,40,.55),rgba(10,20,40,.05) 55%)}
+.rib-c .rt{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px}
+.rib-c strong{font:800 22px Outfit,sans-serif;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.rib-c .ub-bg-in{position:absolute;inset:0}
+@media(max-width:560px){.rib-c,.rib-c:nth-child(even){flex-basis:180px;height:240px}}
+
+/* destination grid cards: photo + centred name only (details appear on hover, like idp.com) */
+.dc{border-radius:16px;box-shadow:0 6px 22px rgba(25,45,80,.14);align-items:center;justify-content:center;text-align:center}
+.dc:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(25,45,80,.26)}
+.dc>*:not(.u-ph):not(.in):not(strong){display:none!important}
+.dc strong{font:800 24px Outfit,sans-serif;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.dc .u-ph:after{background:linear-gradient(to top,rgba(10,20,40,.5),rgba(10,20,40,.05) 60%)}
+.dc .in{border:0;border-radius:16px;box-shadow:inset 0 0 0 2px var(--navy)}
