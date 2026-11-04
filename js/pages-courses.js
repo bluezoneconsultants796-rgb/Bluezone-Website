@@ -61,6 +61,10 @@ sec:[
 ['DAAD','Germany','Master’s and PhD','Many programmes close in autumn for the following year','Monthly stipend, travel, insurance'],
 ['Türkiye Burslari','Türkiye','Bachelor’s to PhD','Usually January to February','Tuition, housing, monthly stipend, flights'],
 ['Chinese Government Scholarship (CSC)','China','Bachelor’s to PhD','Early in the year through HEC and the university route','Tuition, accommodation, stipend, insurance'],
+['Italian regional DSU scholarships','Italy','Bachelor’s, master’s and PhD','Often summer, for example early September for DSU Toscana','Tuition waiver, grant, meals and accommodation if awarded'],
+['MAECI Italian Government Scholarships','Italy','Master’s and research','Usually early in the year','Monthly allowance, confirm current terms'],
+['Eiffel Excellence Scholarship','France','Master’s and PhD','Applied for by the French institution, usually in winter','Monthly allowance, travel and insurance'],
+['Global Korea Scholarship (GKS)','South Korea','Bachelor’s, master’s and PhD','Usually opens early in the year via NIIED and the embassy','Tuition, monthly stipend, airfare, insurance and a Korean language year'],
 ['Erasmus Mundus Joint Masters','Europe','Master’s','Usually January to February','Tuition and living allowance'],
 ['University scholarships','Any','All','Often with the offer or by the offer deadline','Part-tuition discounts']],cap:'Windows are indicative. Official pages carry the live dates. Eligibility, quotas and funded costs change.'}}]},
 {k:'how',t:'How to prepare a winning application',s:'Preparation',c:[
@@ -91,6 +95,12 @@ sec:[
 ['United States','SEVP-certified school search','The school can issue I-20 forms'],
 ['Ireland','Interim List of Eligible Programmes (ILEP)','Your programme is listed, and whether it is on the eligible list for the permission you need'],
 ['New Zealand','NZQA register','Provider and programme approval'],
+['Dubai and UAE','KHDA and UAE Ministry of Higher Education lists','Licence and programme accreditation'],
+['Italy','Universitaly and the Ministry of University and Research','Recognised university and programme open to non-EU students'],
+['France','Campus France and the university site','Recognised programme listed for international students'],
+['South Korea','Study in Korea and HiKorea visa-issuing status','The university can issue D-2 student visas'],
+['Cyprus','Ministry of Education and CY.Q.A.A accreditation','Accredited in the Republic of Cyprus'],
+['Lithuania','Study in Lithuania and SKVC accreditation','Accredited university and programme'],
 ['Malaysia','Malaysian Qualifications Register and EMGS list','Programme accreditation and approval to enrol international students']]}},
 {note:'Open the register yourself. Do not accept a link or screenshot from an agent as proof.'}]},
 {k:'fake',t:'Fake universities and fake offers',s:'Red flags',c:[

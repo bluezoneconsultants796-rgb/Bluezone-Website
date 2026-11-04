@@ -168,3 +168,16 @@ a.l{display:inline-block;margin-top:8px;font-weight:600}
 /* academy static pages */
 section[id]{scroll-margin-top:130px}
 .wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:#25d366;color:#fff!important;font:700 14px Inter,sans-serif;padding:12px 18px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+
+/* ---- Destinations section (Nov 2026) ---- */
+.dlead{margin:-16px 0 22px;max-width:860px;font-size:15px}
+.dtabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}.dtabs button{border:1px solid var(--line);background:var(--card);color:var(--head);border-radius:99px;padding:8px 16px;font:600 13px Inter,sans-serif;cursor:pointer}.dtabs button.on,.dtabs button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.dc{flex-direction:column;gap:10px;align-items:flex-start;justify-content:flex-end;text-align:left;padding:18px;text-decoration:none}
+.dc strong{font:800 22px Outfit,sans-serif;line-height:1.15}
+.dc .cc{position:absolute;top:14px;left:16px;font:700 12px Inter,sans-serif;letter-spacing:.08em;background:rgba(255,255,255,.2);border-radius:6px;padding:3px 8px}
+.dc .bd{position:absolute;top:14px;right:14px;font:700 11px Inter,sans-serif;background:#e9a61a;color:#222;border-radius:99px;padding:3px 10px}
+.dc .hl{display:flex;flex-wrap:wrap;gap:6px;font:500 11px Inter,sans-serif}.dc .hl i{font-style:normal;background:rgba(255,255,255,.18);border-radius:99px;padding:3px 9px}
+.dc.open .in{opacity:1}
+.dc.cta{background:var(--card);color:var(--head);border:2px dashed var(--navy)}.dc.cta span:not(.btn){font:400 13px/1.5 Inter,sans-serif}.dc.cta .btn{margin-top:auto;padding:8px 16px}.dc.cta.alt2{background:var(--pale)}
+.dnote{margin:22px 0 0;font-size:14px}.dnote a{color:var(--navy);font-weight:600}
+@media(hover:none){.dc .in{display:flex}}

@@ -30,3 +30,12 @@ These are real HTML pages (not #/ routes) so Google can index each one.
 3) Upload the whole folder to your hosting, then submit sitemap.xml in Google Search Console.
 4) Create/claim the Google Business Profile for BOTH offices (biggest factor for "IELTS near me" searches).
 Edit wording in build-academy.js (page text lives there), then run the build again.
+
+---- Nov 2026: PRO + SEO layer ----
+css/pro.css, js/pro.js     smooth animations, scroll progress, back-to-top, working hero search
+study-in-<country>.html    14 real, indexable country pages (UK, Australia, Canada, USA, New Zealand, Ireland, Malaysia,
+                           China, Dubai/UAE, Italy, France, South Korea, Cyprus, Lithuania). Built by tools/prerender.js
+                           (needs Node + Playwright). After editing any country text in js/main.js or js/destinations-new.js,
+                           run: node tools/prerender.js   then   node build-academy.js   (rebuilds sitemap.xml with every page)
+js/destinations-new.js     text for the 6 newer countries
+Placeholder data still in index.html: office phones/emails (+92 000 ...), "dummy" hours, ambassador names. Replace before launch.

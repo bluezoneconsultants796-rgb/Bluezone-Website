@@ -28,6 +28,9 @@ const kv = a => '<div class="kv">' + a.map(k => '<div><b>' + k[0] + '</b><span>'
 const p = t => '<p>' + t + '</p>';
 const urdu = t => '<div class="note" lang="ur-Latn"><b>Roman Urdu khulasa: </b>' + t + '</div>';
 const S = 'index.html#/p/';
+const ROUTES = require('./js/routes.js');
+/* index.html#/p/steps  ->  study-abroad-steps.html  (real pages, so Google can index them) */
+const fixLinks = h => h.replace(/index\.html#\/([\w\/-]+)/g, (m, k) => ROUTES.file('#/' + k) || m);
 
 function cta(label) {
   const l = label || 'Book a free level test';
@@ -60,7 +63,7 @@ function officeLines() {
 }
 function footer() {
   return '<footer><div class="w"><div class="top2"><a class="logo" href="index.html"><img src="images/logo.png" alt="" style="background:#fff;border-radius:8px;padding:3px" width="44" height="44"><span>BlueZone<small>ACADEMY</small></span></a>' + (waNum ? '<a class="btn o" style="color:#fff;border-color:#fff" href="https://wa.me/' + waNum + '" rel="noopener">WhatsApp us</a>' : '<a class="btn o" style="color:#fff;border-color:#fff" href="index.html#offices">Find our offices</a>') + '</div>' +
-    '<div class="cols"><div><h4>Academy</h4>' + PAGES_NAV.map(x => '<a href="' + x[0] + '">' + x[1] + '</a>').join('') + '</div>' +
+    '<div class="cols"><div><h4>Study abroad</h4>' + [['uk','UK'],['australia','Australia'],['canada','Canada'],['usa','USA'],['new-zealand','New Zealand'],['ireland','Ireland'],['malaysia','Malaysia'],['china','China'],['dubai-uae','Dubai and UAE'],['italy','Italy'],['france','France'],['south-korea','South Korea'],['cyprus','Cyprus'],['lithuania','Lithuania']].map(x => '<a href="study-in-' + x[0] + '.html">Study in ' + x[1] + '</a>').join('') + '</div><div><h4>Academy</h4>' + PAGES_NAV.map(x => '<a href="' + x[0] + '">' + x[1] + '</a>').join('') + '</div>' +
     '<div><h4>IELTS guides</h4><a href="' + S + 'what-is-ielts">What is IELTS?</a><a href="' + S + 'ielts-prep">IELTS study plan</a><a href="' + S + 'book-test">Fees and booking</a><a href="' + S + 'english-tests">IELTS vs PTE vs TOEFL</a></div>' +
     '<div><h4>Study abroad</h4><a href="' + S + 'steps">Study abroad steps</a><a href="' + S + 'scholarships">Scholarships</a><a href="' + S + 'documents">Documents</a><a href="index.html">' + esc(PARENT) + '</a></div>' +
     '<div><h4>Find us</h4>' + (cfg.offices || []).map(o => '<a href="academy.html#offices">' + esc(o.city) + (o.address ? ': ' + esc(o.address) : '') + '</a>').join('') + (telNum ? '<a href="tel:' + telNum + '">' + esc(cfg.phone) + '</a>' : '') + (cfg.email ? '<a href="mailto:' + esc(cfg.email) + '">' + esc(cfg.email) + '</a>' : '') + '</div></div>' +
@@ -195,7 +198,7 @@ pages.push({
   facts: [['4 skills', 'Listening, Reading, Writing, Speaking'], ['6.5 overall', 'Typical master’s requirement, often with 6.0 minimum per skill'], ['Rs 75,600', 'IELTS on computer, Abbottabad (British Council)'], [N, 'Students who have taken IELTS with us']],
   courses: [{ name: 'IELTS Preparation Course Abbottabad', desc: 'Preparation for IELTS Academic and General Training with a diagnostic test, skill-by-skill training, timed mock tests and feedback on Writing and Speaking.', level: 'Intermediate to Advanced', teaches: 'IELTS Listening, Reading, Writing and Speaking' }],
   sec: [
-    { id: 'who', t: 'Who this course is for', nav: 'Who it is for', c: ul(['Students applying to universities in the UK, Australia, Canada, Ireland, New Zealand, the USA, China or Malaysia', 'Nurses, doctors and other health professionals who must meet a regulator’s per-skill score', 'People applying for work or migration routes that accept IELTS General Training or Academic', 'Anyone who already took IELTS and is stuck one band below the target', 'Students who were told to “just take IELTS” but have never seen the test']) + p('If your English is below intermediate (B1), start with our <a href="english-language-courses-abbottabad-mansehra.html">English language course</a>. IELTS preparation works best once you can already follow everyday English.') },
+    { id: 'who', t: 'Who this course is for', nav: 'Who it is for', c: ul(['Students applying to universities in the UK, Australia, Canada, Ireland, New Zealand, the USA, China, Malaysia, Dubai, Italy, France, South Korea, Cyprus or Lithuania', 'Nurses, doctors and other health professionals who must meet a regulator’s per-skill score', 'People applying for work or migration routes that accept IELTS General Training or Academic', 'Anyone who already took IELTS and is stuck one band below the target', 'Students who were told to “just take IELTS” but have never seen the test']) + p('If your English is below intermediate (B1), start with our <a href="english-language-courses-abbottabad-mansehra.html">English language course</a>. IELTS preparation works best once you can already follow everyday English.') },
     { id: 'tracks', t: 'Course tracks', nav: 'Tracks', c: table(['Track', 'Best for', 'Target', 'Main focus'], [
       ['Foundation', 'First-time test takers with a basic or mid B1 level', 'Band 5.5 to 6.0', 'Test format, core grammar and vocabulary, simple essay and speaking structure'],
       ['Core', 'Students near band 6.0 who need to move up', 'Band 6.5', 'Technique for every question type, timed practice, regular Writing and Speaking feedback'],
@@ -369,10 +372,24 @@ pages.push({
 
 /* ---------- write ---------- */
 let failed = false;
-pages.forEach(pg => { fs.writeFileSync(path.join(ROOT, pg.file), render(pg)); console.log('wrote ' + pg.file + ' (' + pg.sec.length + ' sections, ' + (pg.faq || []).length + ' FAQs)'); });
+pages.forEach(pg => { fs.writeFileSync(path.join(ROOT, pg.file), fixLinks(render(pg))); console.log('wrote ' + pg.file + ' (' + pg.sec.length + ' sections, ' + (pg.faq || []).length + ' FAQs)'); });
+/* ---------- js/site-config.js: one place for contact details used by the whole site ---------- */
+(function () {
+  const clean = o => { const r = {}; Object.keys(o || {}).forEach(k => { if (o[k]) r[k] = o[k]; }); return r; };
+  const offices = {};
+  (cfg.offices || []).concat(cfg.otherOffices || []).forEach(o => { if (o.city) offices[o.city] = clean(o); });
+  const out = clean({ name: PARENT, phone: cfg.phone, whatsapp: waNum, email: cfg.email });
+  out.social = clean(cfg.social); out.offices = offices;
+  fs.mkdirSync(path.join(ROOT, 'js'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, 'js', 'site-config.js'),
+    '/* Generated by build-academy.js from academy.config.json. Do not edit by hand. */\nwindow.BZC=' + JSON.stringify(out) + ';\n');
+  console.log('wrote js/site-config.js');
+})();
+
 if (DOMAIN) {
-  const urls = ['index.html'].concat(pages.map(x => x.file));
-  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.map(u => '  <url><loc>' + DOMAIN + '/' + (u === 'index.html' ? '' : u) + '</loc><lastmod>' + MOD + '</lastmod></url>').join('\n') + '\n</urlset>\n');
+  const extra = fs.existsSync(path.join(ROOT, 'sitemap-extra.json')) ? JSON.parse(fs.readFileSync(path.join(ROOT, 'sitemap-extra.json'), 'utf8')) : [];
+  const urls = ['index.html'].concat(extra, pages.map(x => x.file));
+  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + [...new Set(urls)].map(u => '  <url><loc>' + DOMAIN + '/' + (u === 'index.html' ? '' : u) + '</loc><lastmod>' + MOD + '</lastmod><priority>' + (u === 'index.html' ? '1.0' : /^study-in-/.test(u) ? '0.9' : '0.7') + '</priority></url>').join('\n') + '\n</urlset>\n');
   fs.writeFileSync(path.join(ROOT, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + DOMAIN + '/sitemap.xml\n');
   console.log('wrote sitemap.xml and robots.txt for ' + DOMAIN);
 } else {

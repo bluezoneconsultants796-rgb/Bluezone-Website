@@ -163,6 +163,11 @@ sec:[
 ['Australia','IELTS, PTE Academic, TOEFL and others','The government expects tests taken in person for visa purposes. Check Home Affairs'],
 ['Canada','IELTS Academic or General, plus others depending on the programme and route','Check your school and IRCC'],
 ['United States','TOEFL or IELTS; also Duolingo at some schools','Each university sets its own policy'],
+['Dubai and UAE','IELTS, TOEFL, EmSAT or university tests','Each university sets its own policy'],
+['Italy','IELTS 6.0 or an MOI certificate, depending on course','Italian-taught degrees need Italian instead'],
+['France','IELTS or TOEFL for English-taught; DELF/TCF for French-taught','Check each programme'],
+['South Korea','TOPIK for Korean-taught; IELTS or TOEFL for English-taught','TOPIK also affects part-time work hours'],
+['Cyprus and Lithuania','IELTS, with MOI accepted by some universities','Check each university'],
 ['New Zealand and Ireland','IELTS and others','Check the provider page and immigration rules']]}},
 {note:'Do not choose a test only because it is cheaper. A test your target university or visa office does not accept is money lost.'}]},
 {k:'choose',t:'How to choose in one afternoon',s:'Choose',c:[
