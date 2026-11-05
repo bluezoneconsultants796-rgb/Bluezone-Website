@@ -38,6 +38,8 @@
 
   function keyFor(s) {
     s = (s || '').toLowerCase().replace(/^.*\//, '').replace(/[#?].*$/, '').replace(/\.html$/, '');
+    s = s.replace(/-from-(mansehra|abbottabad|kpk)$/, '');
+    if (/^study-abroad-consultants/.test(s)) return 'contact';
     var m = s.match(/^study-in-(.+)$/);
     if (m) { var c = { 'dubai-uae': 'uae', 'south-korea': 'korea' }[m[1]] || m[1]; if (COUNTRIES[c]) return c; }
     if (/^study-destinations/.test(s)) return 'journey';
