@@ -283,17 +283,22 @@ body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media(max-width:380px){.facts{grid-template-columns:1fr}}
 
 
-/* =================== "Your study abroad steps": person over colourful leaf shapes (IDP style) =================== */
-.u-person{position:relative;height:460px;overflow:hidden;display:block;background:none;padding:0;border-radius:0}
-.u-person i{position:absolute;display:block;transform:scale(.6);opacity:0;transition:transform 1s var(--ease),opacity .8s}
-.u-person .lo{left:3%;top:2%;width:50%;height:54%;background:#ff8a00;border-radius:6% 42% 6% 72%}
-.u-person .lb{right:2%;top:4%;width:46%;height:50%;background:#0b7bff;border-radius:44% 6% 64% 6%;transition-delay:.12s}
-.u-person .lg{left:-2%;bottom:8%;width:34%;height:42%;background:#5cc61f;border-radius:70% 6% 6% 44%;transition-delay:.24s}
-.u-person img{position:absolute;left:50%;bottom:0;width:74%;max-width:420px;height:auto;z-index:2;transform:translate(-50%,40px);opacity:0;transition:transform 1s var(--ease) .15s,opacity .9s .15s;filter:drop-shadow(0 18px 24px rgba(20,30,60,.18))}
-.u-person.in i{transform:none;opacity:1}
+/* =================== "Your study abroad steps": compact, person on a soft circle (no leaf shapes) =================== */
+#steps{padding:40px 0 44px;background:radial-gradient(760px 360px at 12% 15%,#d9efff 0,transparent 62%),radial-gradient(620px 340px at 92% 95%,#dcf6e8 0,transparent 62%),linear-gradient(180deg,#f3f9ff,#f5fcf8)}
+#steps h2{margin-bottom:20px}
+#steps .steps{gap:32px}
+#steps .stp{gap:9px}
+#steps .stp summary{padding:12px 18px}
+#steps .stp p{padding:0 18px 12px}
+.u-person{position:relative;height:350px;overflow:hidden;display:block;background:none;padding:0;border-radius:0}
+.u-person::before,.u-person::after{content:"";position:absolute;left:50%;border-radius:50%;opacity:0;transform:translateX(-50%) scale(.75);transition:transform 1s var(--ease),opacity .8s}
+.u-person::before{width:330px;height:330px;bottom:-50px;background:linear-gradient(160deg,#b9e0ff 0%,#c8f2df 65%,#fff1d2 100%);box-shadow:0 30px 60px rgba(11,123,255,.12)}
+.u-person::after{width:392px;height:392px;bottom:-81px;border:1.5px dashed rgba(11,123,255,.28);transition-delay:.12s}
+.u-person.in::before,.u-person.in::after{opacity:1;transform:translateX(-50%)}
+.u-person img{position:absolute;left:50%;bottom:0;height:100%;width:auto;max-width:none;z-index:2;transform:translate(-50%,30px);opacity:0;transition:transform 1s var(--ease) .15s,opacity .9s .15s;filter:drop-shadow(0 14px 18px rgba(20,30,60,.16))}
 .u-person.in img{transform:translate(-50%,0);opacity:1}
-.u-person.in .lo{animation:lf 7s ease-in-out 1.2s infinite alternate}.u-person.in .lb{animation:lf 8s ease-in-out 1.4s infinite alternate-reverse}.u-person.in .lg{animation:lf 6s ease-in-out 1.3s infinite alternate}
-@keyframes lf{from{translate:0 0}to{translate:0 -10px}}
-@media(max-width:960px){.u-person{height:380px}.u-person img{width:64%}}
-@media(max-width:560px){.u-person{height:320px}}
-@media(prefers-reduced-motion:reduce){.u-person i,.u-person img{transition:none;transform:none;opacity:1}.u-person img{transform:translate(-50%,0)}.u-person.in i{animation:none!important}}
+@media(max-width:960px){#steps{padding:34px 0}.u-person{height:300px}.u-person::before{width:280px;height:280px}.u-person::after{width:332px;height:332px;bottom:-66px}}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #steps{background:radial-gradient(760px 360px at 12% 15%,#1f2a52 0,transparent 62%),radial-gradient(620px 340px at 92% 95%,#173a33 0,transparent 62%),linear-gradient(180deg,#171a2e,#16211f)}:root:not([data-theme="light"]) .u-person::before{background:linear-gradient(160deg,#2c4a8a,#1f5a52 70%,#4a4020);box-shadow:none}}
+:root[data-theme="dark"] #steps{background:radial-gradient(760px 360px at 12% 15%,#1f2a52 0,transparent 62%),radial-gradient(620px 340px at 92% 95%,#173a33 0,transparent 62%),linear-gradient(180deg,#171a2e,#16211f)}
+:root[data-theme="dark"] .u-person::before{background:linear-gradient(160deg,#2c4a8a,#1f5a52 70%,#4a4020);box-shadow:none}
+@media(prefers-reduced-motion:reduce){.u-person::before,.u-person::after,.u-person img{transition:none;opacity:1}.u-person::before,.u-person::after{transform:translateX(-50%)}.u-person img{transform:translate(-50%,0)}}

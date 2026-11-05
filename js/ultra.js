@@ -301,11 +301,11 @@
     });
   }
 
-  /* ---------- 8. home "steps" visual: photo of the team over colour leaves ---------- */
+  /* ---------- 8. home "steps" visual: photo on a soft circle ---------- */
   function person() {
     var big = d.querySelector('.steps .big'); if (!big || big.classList.contains('u-person')) return;
     big.className = 'u-person'; big.removeAttribute('style');
-    big.innerHTML = '<i class="lo"></i><i class="lb"></i><i class="lg"></i><img src="images/steps-person.webp" width="800" height="987" loading="lazy" alt="BlueZone counsellor ready to guide your study abroad journey">';
+    big.innerHTML = '<img src="images/steps-person.webp" width="800" height="987" loading="lazy" alt="BlueZone counsellor ready to guide your study abroad journey">';
     var go = function () { big.classList.add('in'); };
     if ('IntersectionObserver' in window && !reduce) {
       var o = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { go(); o.disconnect(); } }, { threshold: .25 });
