@@ -301,10 +301,22 @@
     });
   }
 
+  /* ---------- 8. home "steps" visual: photo of the team over colour leaves ---------- */
+  function person() {
+    var big = d.querySelector('.steps .big'); if (!big || big.classList.contains('u-person')) return;
+    big.className = 'u-person'; big.removeAttribute('style');
+    big.innerHTML = '<i class="lo"></i><i class="lb"></i><i class="lg"></i><img src="images/steps-person.webp" width="800" height="987" loading="lazy" alt="BlueZone counsellor ready to guide your study abroad journey">';
+    var go = function () { big.classList.add('in'); };
+    if ('IntersectionObserver' in window && !reduce) {
+      var o = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { go(); o.disconnect(); } }, { threshold: .25 });
+      o.observe(big); setTimeout(go, 4000);
+    } else go();
+  }
+
   /* ---------- run ---------- */
   function all(root) { dcards(root); thumbs(root); reveal(root); }
   function init() {
-    banner(); article(); ribbon(); help(); all(); counters(); magnetic(); onScroll();
+    banner(); article(); ribbon(); help(); person(); all(); counters(); magnetic(); onScroll();
     addEventListener('scroll', onScroll, { passive: true });
     var t = 0;
     new MutationObserver(function () { if (t) return; t = setTimeout(function () { t = 0; all(); }, 80); }).observe(d.body, { childList: true, subtree: true });
