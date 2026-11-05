@@ -313,10 +313,40 @@
     } else go();
   }
 
+  /* ---------- 9. student video stories (IELTS pages + China pages) ---------- */
+  function stories() {
+    if (d.getElementById('u-stories')) return;
+    var page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '');
+    var IELTS = [
+      { v: 'hammad-ielts', n: 'Hammad But', t: 'IELTS success story' },
+      { v: 'ikrash-ielts', n: 'Ikrash', t: 'IELTS success story' }
+    ];
+    var CHINA = [
+      { v: 'abbas-khan-china', n: 'Abbas Khan', t: 'Study in China' },
+      { v: 'zain-china', n: 'Zain', t: 'Study in China' }
+    ];
+    var sets = {
+      'ielts-in-pakistan': { h: 'IELTS stories from our students', p: 'Hear it from students who prepared and booked their IELTS with BlueZone.', l: IELTS },
+      'academy': { h: 'IELTS stories from our students', p: 'Hear it from students who prepared and booked their IELTS with BlueZone.', l: IELTS },
+      'study-in-china': { h: 'China stories from our students', p: 'Students we helped on their way to study in China, in their own words.', l: CHINA },
+      'study-in-china-from-mansehra': { h: 'China stories from our students', p: 'Students we helped on their way to study in China, in their own words.', l: CHINA }
+    };
+    var s = sets[page]; if (!s) return;
+    var foot = d.querySelector('footer'); if (!foot) return;
+    var sec = d.createElement('section'); sec.id = 'u-stories'; sec.className = 'u-stories';
+    var cards = s.l.map(function (x) {
+      return '<figure class="u-vid"><video controls playsinline preload="none" poster="videos/' + x.v + '.jpg" aria-label="' + x.n + ' - ' + x.t + '"><source src="videos/' + x.v + '.mp4" type="video/mp4"></video><figcaption><b>' + x.n + '</b><span>' + x.t + '</span></figcaption></figure>';
+    }).join('');
+    sec.innerHTML = '<div class="w"><div class="u-stories-in"><div class="u-stories-t"><h2>' + s.h + '</h2><p>' + s.p + '</p><a class="btn g" href="contact.html">Free counselling</a></div><div class="u-vids">' + cards + '</div></div></div>';
+    foot.parentNode.insertBefore(sec, foot);
+    var vs = sec.querySelectorAll('video');
+    vs.forEach(function (v) { v.addEventListener('play', function () { vs.forEach(function (o) { if (o !== v) o.pause(); }); }); });
+  }
+
   /* ---------- run ---------- */
   function all(root) { dcards(root); thumbs(root); reveal(root); }
   function init() {
-    banner(); article(); ribbon(); help(); person(); all(); counters(); magnetic(); onScroll();
+    banner(); article(); ribbon(); help(); person(); stories(); all(); counters(); magnetic(); onScroll();
     addEventListener('scroll', onScroll, { passive: true });
     var t = 0;
     new MutationObserver(function () { if (t) return; t = setTimeout(function () { t = 0; all(); }, 80); }).observe(d.body, { childList: true, subtree: true });
