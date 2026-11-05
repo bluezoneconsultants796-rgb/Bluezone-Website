@@ -343,10 +343,34 @@
     vs.forEach(function (v) { v.addEventListener('play', function () { vs.forEach(function (o) { if (o !== v) o.pause(); }); }); });
   }
 
+  /* ---------- 10. scrolling universities strip (home, under the hero) ---------- */
+  function unis() {
+    if (d.getElementById('u-unis')) return;
+    var anchor = d.querySelector('#p-home .rib'); if (!anchor) return;
+    var L = [
+      ['UK','Durham University'],['AU','Australian National University'],['CA','Dalhousie University'],['US','Northeastern University'],['IE','Dublin City University'],['NZ','Auckland University of Technology'],['AE','Heriot-Watt University Dubai'],['EU','HULT International Business School'],
+      ['UK','Newcastle University'],['AU','Monash University'],['CA','Simon Fraser University'],['US','Drexel University'],['IE','Maynooth University'],['NZ','Massey University'],['AE','Middlesex University Dubai'],['EU','Eotvos Lorand University'],
+      ['UK','Queen Mary University of London'],['AU','Macquarie University'],['CA','Brock University'],['US','University of Arizona'],['IE','National College of Ireland'],['NZ','Lincoln University'],['AE','Curtin University Dubai'],['EU','GISMA University of Applied Sciences'],
+      ['UK','Brunel University London'],['AU','Deakin University'],['CA','University of Victoria'],['US','Oregon State University'],['IE','Atlantic Technological University'],['NZ','University of Canterbury'],['AE','De Montfort University Dubai'],['EU','Montpellier Business School'],
+      ['UK','Cardiff Metropolitan University'],['AU','Griffith University'],['CA','Seneca College'],['US','Illinois Institute of Technology'],['AU','La Trobe University'],['CA','George Brown College'],['US','Arizona State University'],['UK','Heriot-Watt University'],
+      ['UK','Aston University'],['AU','Curtin University'],['CA','Humber College'],['US','George Mason University'],['UK','Loughborough University'],['AU','Flinders University'],['CA','Conestoga College'],['US','University of Massachusetts Amherst']
+    ];
+    function row(a, cls) {
+      var h = a.map(function (x) { return '<li><b>' + x[0] + '</b><span>' + x[1] + '</span></li>'; }).join('');
+      return '<div class="u-un-row ' + cls + '"><ul>' + h + h + '</ul></div>';
+    }
+    var half = Math.ceil(L.length / 2);
+    var sec = d.createElement('section'); sec.id = 'u-unis'; sec.className = 'u-unis';
+    sec.innerHTML = '<div class="w u-un-hd"><div><p class="u-un-eb">Universities</p><h2>Popular universities across our study destinations</h2></div><a class="btn o" href="find-a-university.html">Find a university</a></div>' +
+      '<div class="u-un-wrap" aria-label="Popular universities">' + row(L.slice(0, half), 'a') + row(L.slice(half), 'b') + '</div>';
+    var host = anchor.closest('section') || anchor;
+    if (host.contains(anchor) && host !== anchor && anchor.parentNode !== host.parentNode) host.insertAdjacentElement('afterend', sec); else anchor.insertAdjacentElement('afterend', sec);
+  }
+
   /* ---------- run ---------- */
   function all(root) { dcards(root); thumbs(root); reveal(root); }
   function init() {
-    banner(); article(); ribbon(); help(); person(); stories(); all(); counters(); magnetic(); onScroll();
+    banner(); article(); ribbon(); help(); person(); stories(); unis(); all(); counters(); magnetic(); onScroll();
     addEventListener('scroll', onScroll, { passive: true });
     var t = 0;
     new MutationObserver(function () { if (t) return; t = setTimeout(function () { t = 0; all(); }, 80); }).observe(d.body, { childList: true, subtree: true });
