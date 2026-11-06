@@ -334,3 +334,9 @@ body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @keyframes u-un-r{from{transform:translateX(-50%)}to{transform:none}}
 @media(max-width:760px){.u-un-hd{flex-direction:column;align-items:flex-start}.u-unis{padding:34px 0 30px}}
 @media(prefers-reduced-motion:reduce){.u-un-row{overflow-x:auto}.u-un-row ul{animation:none}}
+
+/* logo mode: white tiles with the university logo; falls back to a name chip when a logo file is missing */
+.u-un-row li.lg{padding:12px 26px;height:84px;border-radius:14px;background:#fff;border-color:#e6e9f0;justify-content:center;min-width:150px}
+.u-un-row li.lg img{display:block;height:58px;width:auto;max-width:176px;object-fit:contain}
+.u-un-row li.lg b,.u-un-row li.lg span{display:none}
+.u-un-row li.nl{height:84px;border-radius:14px}
